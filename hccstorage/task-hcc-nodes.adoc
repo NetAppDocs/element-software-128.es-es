@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-nodes.html 
+summary: Puede ver sus activos de almacenamiento en su sistema utilizando la página Nodos de control de nube híbrida. 
+keywords: netapp, element, cluster, inventory, nodes, storage 
+---
+= Consulta tu inventario en la página de Nodos.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes ver tus recursos de almacenamiento en tu sistema y determinar sus direcciones IP, nombres y versiones de software.
+
+Puede consultar la información de almacenamiento de sus sistemas de múltiples nodos.  Silink:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["dominios de protección personalizados"] Una vez asignados, puede ver qué dominios de protección están asignados a nodos específicos.
+
+.Pasos
+. Abra la dirección IP del nodo de administración en un navegador web. Por ejemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento all-flash SolidFire .
+. En el menú de navegación izquierdo, seleccione *Nodos*.
++
+image::hcc_nodes_storage_2nodes.png[Imagen de la página de nodos de control de nube híbrida]
+
++
+
+NOTE: Al iniciar una nueva sesión de NetApp Hybrid Cloud Control por primera vez, puede haber una demora en la carga de la página de nodos de NetApp Hybrid Cloud Control cuando el nodo de administración esté gestionando muchos clústeres.  El tiempo de carga varía dependiendo del número de clústeres que estén siendo gestionados activamente por el nodo de gestión.  En los siguientes lanzamientos, experimentará tiempos de carga más rápidos.
+
+. En la pestaña *Almacenamiento* de la página Nodos, revise la siguiente información:
++
+.. Clústeres de dos nodos: Aparece una etiqueta de “dos nodos” en la pestaña Almacenamiento y se enumeran los nodos testigo asociados.
+.. Clústeres de tres nodos: Se enumeran los nodos de almacenamiento y los nodos testigo asociados.  Los clústeres de tres nodos tienen un nodo testigo desplegado en espera para mantener una alta disponibilidad en caso de fallo de un nodo.
+.. Clusters con cuatro nodos o más: Aparece información para clusters con cuatro o más nodos.  Los nodos testigo no aplican.  Si comenzaste con dos o tres nodos de almacenamiento y agregaste más nodos, los nodos testigo seguirán apareciendo.  De lo contrario, no aparecerá la tabla de nodos testigo.
+.. Versión del paquete de firmware: A partir de la versión 2.14 de los servicios de administración, si tiene clústeres que ejecutan Element 12.0 o posterior, puede ver la versión del paquete de firmware para estos clústeres.  Si los nodos de un clúster tienen diferentes versiones de firmware, puede ver *Múltiple* en la columna *Versión del paquete de firmware*.
+.. Dominios de protección personalizados: Si se utilizan dominios de protección personalizados en el clúster, puede ver las asignaciones de dominios de protección personalizados para cada nodo del clúster.  Si los dominios de protección personalizados no están habilitados, esta columna no aparece.
+
+
+. Puedes manipular la información de estas páginas de varias maneras:
++
+.. Para filtrar la lista de elementos en los resultados, seleccione el icono *Filtrar* y seleccione los filtros.  También puedes introducir texto para el filtro.
+.. Para mostrar u ocultar columnas, seleccione el icono *Mostrar/Ocultar columnas*.
+.. Para descargar la tabla, seleccione el icono *Descargar*.
+
+
+
+
+
+TIP: Para ver la cantidad de almacenamiento, consulte el panel de control de NetApp Hybrid Cloud Control (HCC). Verlink:task-hcc-dashboard.html["Supervise los recursos de almacenamiento con el panel de control de HCC."] .
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

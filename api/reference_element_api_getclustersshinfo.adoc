@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_getclustersshinfo.html 
+sidebar: sidebar 
+keywords: ssh,service,status,get,getting,cluster,info,getclustersshinfo 
+summary: Puede utilizar el método GetClusterSshInfo para consultar el estado del servicio SSH para todo el clúster de almacenamiento. 
+---
+= Obtener información SSH del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetClusterSshInfo` Método para consultar el estado del servicio SSH para todo el clúster de almacenamiento.
+
+
+
+== Parámetro
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+resultado
+ a| 
+Un objeto JSON que contiene el estado del servicio SSH para el clúster de almacenamiento, el tiempo restante hasta que se deshabilite SSH y el estado del servicio SSH para cada nodo.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "GetClusterSshInfo",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : {
+    “enabled”: “true”,
+    “timeRemaining”: "00:43:21",
+    "nodes": [
+    {
+        "nodeID": 1,
+        "enabled": true
+    },
+    {
+        "nodeID": 2,
+        "enabled": true
+    },
+    {
+        "nodeID": 3,
+        "enabled": false
+    },
+    {
+        "nodeID": 4,
+        "enabled": false
+    } ]
+			}
+	}
+----
+
+
+== Nueva versión
+
+10,3

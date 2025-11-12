@@ -1,0 +1,29 @@
+---
+permalink: concepts/concept_solidfire_concepts_volumes.html 
+sidebar: sidebar 
+keywords: what is, element, volume, storage volume, persistent volume 
+summary: El sistema de almacenamiento NetApp SolidFire aprovisiona el almacenamiento mediante volúmenes.  Los volúmenes son dispositivos de bloque a los que acceden a través de la red los clientes iSCSI o Fibre Channel. 
+---
+= Volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El sistema de almacenamiento NetApp Element aprovisiona el almacenamiento mediante volúmenes.  Los volúmenes son dispositivos de bloque a los que acceden a través de la red los clientes iSCSI o Fibre Channel.
+
+El almacenamiento de elementos le permite crear, ver, editar, eliminar, clonar, realizar copias de seguridad o restaurar volúmenes para cuentas de usuario.  También puede administrar cada volumen en un clúster y agregar o eliminar volúmenes en grupos de acceso a volúmenes.
+
+
+
+== Volúmenes persistentes
+
+Los volúmenes persistentes permiten almacenar los datos de configuración del nodo de administración en un clúster de almacenamiento específico, en lugar de localmente con una máquina virtual, de modo que los datos se puedan conservar en caso de pérdida o eliminación del nodo de administración.  Los volúmenes persistentes son una configuración de nodo de administración opcional, pero recomendada.
+
+En los scripts de instalación y actualización se incluye una opción para habilitar volúmenes persistentes cuandolink:../mnode/task_mnode_install.html["despliegue de un nuevo nodo de gestión"] .  Los volúmenes persistentes son volúmenes en un clúster de almacenamiento basado en software Element que contienen información de configuración del nodo de administración para la máquina virtual del nodo de administración del host, la cual persiste más allá de la vida útil de la máquina virtual.  Si se pierde el nodo de administración, una máquina virtual de nodo de administración de reemplazo puede reconectarse y recuperar los datos de configuración de la máquina virtual perdida.
+
+La funcionalidad de volúmenes persistentes, si está habilitada durante la instalación o actualización, crea automáticamente varios volúmenes.  Estos volúmenes, al igual que cualquier volumen basado en software Element, se pueden visualizar mediante la interfaz web del software Element, el complemento NetApp Element para vCenter Server o la API, según sus preferencias e instalación.  Los volúmenes persistentes deben estar activos y funcionando con una conexión iSCSI al nodo de administración para mantener los datos de configuración actuales que se pueden utilizar para la recuperación.
+
+
+NOTE: Los volúmenes persistentes asociados a los servicios de gestión se crean y se asignan a una nueva cuenta durante la instalación o actualización.  Si utiliza volúmenes persistentes, no modifique ni elimine los volúmenes ni sus cuentas asociadas.

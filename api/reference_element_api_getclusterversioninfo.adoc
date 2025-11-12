@@ -1,0 +1,185 @@
+---
+permalink: api/reference_element_api_getclusterversioninfo.html 
+sidebar: sidebar 
+keywords: cluster,version,info,get,getting,getclusterversioninfo 
+summary: Puede utilizar el método GetClusterVersionInfo para recuperar información sobre la versión del software Element que se ejecuta en cada nodo del clúster.  Este método también devuelve información sobre los nodos que actualmente están en proceso de actualización de software. 
+---
+= ObtenerInformación de versión del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetClusterVersionInfo` Método para recuperar información sobre la versión del software Element que se ejecuta en cada nodo del clúster.  Este método también devuelve información sobre los nodos que actualmente están en proceso de actualización de software.
+
+
+
+== miembros del objeto de información de versión del clúster
+
+Este método tiene los siguientes miembros de objeto:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de nodo
+ a| 
+Identificador del nodo.
+ a| 
+entero
+
+
+
+ a| 
+revisión interna del nodo
+ a| 
+Versión de software interna del nodo.
+ a| 
+cadena
+
+
+
+ a| 
+nodeVersion
+ a| 
+Versión de software del nodo.
+ a| 
+cadena
+
+|===
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+clusterAPIVersion
+ a| 
+La versión actual de la API en el clúster.
+ a| 
+cadena
+
+
+
+ a| 
+versión del clúster
+ a| 
+Versión del software Element que se está ejecutando actualmente en el clúster.
+ a| 
+cadena
+
+
+
+ a| 
+Información de versión del clúster
+ a| 
+Lista de nodos del clúster con información de versión para cada nodo.
+ a| 
+matriz de objetos JSON
+
+
+
+ a| 
+Versión de clúster pendiente
+ a| 
+Si está presente, esta es la versión a la que se está actualizando o revirtiendo el software del clúster.
+ a| 
+cadena
+
+
+
+ a| 
+Información de la versión del software
+ a| 
+El estado de una actualización.  Miembros del objeto:
+
+* versión actual:
++
+La versión actual del software en un nodo.
+
+* nodeID: ID del nodo que se está actualizando de currentVersion a pendingVersion.  Este campo es 0 (cero) si no hay ninguna actualización en curso.
+* packageName: Nombre del paquete de software que se está instalando.
+* pendingVersion: La versión del software que se está instalando.
+* startTime: La fecha y hora en que se inició la instalación, en formato UTC+0.
+
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetClusterVersionInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+   "clusterAPIVersion": "6.0",
+   "clusterVersion": "6.1382",
+   "clusterVersionInfo": [
+   {
+      "nodeID": 1,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 2,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 3,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 4,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   }
+ ],
+   "softwareVersionInfo": {
+      "currentVersion": "6.1382",
+      "nodeID": 0,
+      "packageName": "",
+      "pendingVersion": "6.1382",
+      "startTime": ""
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,42 @@
+---
+permalink: storage/task_system_manage_virtual_edit_a_virtual_network.html 
+sidebar: sidebar 
+keywords: virtual network, edit, ip address block, vlan attributes 
+summary: Puedes cambiar los atributos de la VLAN, como el nombre de la VLAN, la máscara de red y el tamaño de los bloques de direcciones IP.  La etiqueta VLAN y la SVIP no se pueden modificar para una VLAN.  El atributo de puerta de enlace no es un parámetro válido para VLAN que no sean VRF. 
+---
+= Editar una red virtual
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes cambiar los atributos de la VLAN, como el nombre de la VLAN, la máscara de red y el tamaño de los bloques de direcciones IP.  La etiqueta VLAN y la SVIP no se pueden modificar para una VLAN.  El atributo de puerta de enlace no es un parámetro válido para VLAN que no sean VRF.
+
+Si existen sesiones iSCSI, de replicación remota u otras sesiones de red, la modificación podría fallar.
+
+Al administrar el tamaño de los rangos de direcciones IP de VLAN, debe tener en cuenta las siguientes limitaciones:
+
+* Solo puedes eliminar direcciones IP del rango de direcciones IP inicial asignado en el momento de la creación de la VLAN.
+* Puedes eliminar un bloque de direcciones IP que se agregó después del rango de direcciones IP inicial, pero no puedes cambiar el tamaño de un bloque de IP eliminando direcciones IP.
+* Cuando intentas eliminar direcciones IP, ya sea del rango de direcciones IP inicial o de un bloque IP, que están en uso por nodos del clúster, la operación podría fallar.
+* No se pueden reasignar direcciones IP específicas en uso a otros nodos del clúster.
+
+
+Puede agregar un bloque de direcciones IP siguiendo el siguiente procedimiento:
+
+. Seleccione *Clúster* > *Red*.
+. Seleccione el icono Acciones para la VLAN que desea editar.
+. Seleccione *Editar*.
+. En el cuadro de diálogo *Editar VLAN*, introduzca los nuevos atributos para la VLAN.
+. Seleccione *Agregar un bloque* para agregar un bloque no contiguo de direcciones IP para la red virtual.
+. Seleccione *Guardar cambios*.
+
+
+.Enlace a artículos de la base de conocimientos para la resolución de problemas
+Enlace a los artículos de la Base de conocimientos para obtener ayuda con la resolución de problemas relacionados con la administración de sus rangos de direcciones IP de VLAN.
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Duplicate_IP_warning_after_adding_a_storage_node_in_VLAN_on_Element_cluster["Advertencia de IP duplicada tras agregar un nodo de almacenamiento en la VLAN del clúster Element"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element["Cómo determinar qué direcciones IP de VLAN están en uso y a qué nodos están asignadas esas direcciones IP en Element"^]
+

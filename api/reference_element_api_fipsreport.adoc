@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_fipsreport.html 
+sidebar: sidebar 
+keywords: object,objects,fipsReport,FIPS,140-2 
+summary: El objeto fipsReport contiene información sobre la compatibilidad con FIPS 140-2 para todos los nodos del clúster de almacenamiento.  Puede recuperar esta información utilizando el método GetFipsReport. 
+---
+= Informe fips
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto fipsReport contiene información sobre la compatibilidad con FIPS 140-2 para todos los nodos del clúster de almacenamiento.  Puedes recuperar esta información utilizando el `GetFipsReport` método.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+nodos
+ a| 
+Un informe sobre el estado de compatibilidad con FIPS 140-2 para cada nodo del clúster de almacenamiento.
+ a| 
+Informe de nodo fips
+
+
+
+ a| 
+nodos de error
+ a| 
+Información de error para cada nodo que no respondió con el estado de soporte FIPS 140-2.
+ a| 
+Informe de nodo de error de fips
+
+|===

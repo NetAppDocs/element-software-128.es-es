@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getlldpconfig.html 
+sidebar: sidebar 
+keywords: lldp,config,configuration,get,getting,getlldpinfo,storage 
+summary: 'Puede utilizar el método GetLldpConfig para obtener la configuración del protocolo de descubrimiento de capa de enlace (LLDP) para cada nodo de un clúster de almacenamiento.' 
+---
+= Obtener configuración de Lldp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetLldpConfig` Método para obtener la configuración del Protocolo de Descubrimiento de Capa de Enlace (LLDP) para cada nodo de un clúster de almacenamiento.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+lldpConfig
+ a| 
+Información sobre la configuración LLDP del clúster de almacenamiento.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetLldpConfig",
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+	"id": null,
+		"result": {
+			"lldpConfig": {
+				"enableLldp": true,
+				"enableMed": false,
+				"enableOtherProtocols": true
+		}
+	}
+}
+----

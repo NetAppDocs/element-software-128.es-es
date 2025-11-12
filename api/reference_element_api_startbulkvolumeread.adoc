@@ -1,0 +1,191 @@
+---
+permalink: api/reference_element_api_startbulkvolumeread.html 
+sidebar: sidebar 
+keywords: volume,read,session,start,starting,bulk,startbulkvolumeread 
+summary: Puede utilizar el método StartBulkVolumeRead para iniciar una sesión de lectura masiva de volumen en un volumen específico. 
+---
+= Iniciar lectura de volumen masivo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `StartBulkVolumeRead` Método para iniciar una sesión de lectura masiva de volumen en un volumen especificado.
+
+Solo dos procesos de volumen masivo pueden ejecutarse simultáneamente en un volumen.  Al inicializar la sesión, los datos se leen desde un volumen de almacenamiento SolidFire para almacenarse en una fuente de copia de seguridad externa.  Se accede a los datos externos mediante un servidor web que se ejecuta en un nodo de almacenamiento Element.  La información de interacción con el servidor para el acceso a datos externos se transmite mediante un script que se ejecuta en el sistema de almacenamiento.
+
+Al inicio de una operación de lectura masiva de volumen, se crea una instantánea del volumen y esta se elimina una vez finalizada la lectura.  También puede leer una instantánea del volumen introduciendo el ID de la instantánea como parámetro.  Cuando se lee una instantánea anterior, el sistema no crea una nueva instantánea del volumen, ni elimina la instantánea anterior una vez finalizada la lectura.
+
+
+NOTE: Este proceso crea una nueva instantánea si no se proporciona el ID de una instantánea existente.  Se pueden crear instantáneas si la capacidad del clúster se encuentra en la etapa 2 o 3.  No se crean instantáneas cuando la capacidad del clúster se encuentra en la etapa 4 o 5.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+formato
+ a| 
+El formato de los datos de volumen.  Puede ser cualquiera de los siguientes:
+
+* `uncompressed`Se devuelve cada byte del volumen sin compresión alguna.
+* `native`Se devuelven datos opacos que son más pequeños y se almacenan y escriben de manera más eficiente en una escritura de volumen masivo posterior.
+
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+ID de volumen
+ a| 
+El identificador del volumen que se va a leer.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+ID de instantánea
+ a| 
+El ID de una instantánea creada previamente que se utilizó para lecturas de volumen masivas.  Si no se introduce ningún ID, se realiza una instantánea de la imagen del volumen activo actual.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+guion
+ a| 
+El nombre de un script ejecutable.  Si no se proporciona un nombre de script, la clave y la URL son necesarias para acceder a los nodos de almacenamiento de Element.  El script se ejecuta en el nodo primario y la clave y la URL se devuelven al script para que se pueda contactar con el servidor web local.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+Parámetros del script
+ a| 
+Parámetros JSON para pasar al script.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON. link:reference_element_api_attributes.html["Más información"].
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+manejador asíncrono
+ a| 
+El ID del proceso asíncrono que se comprobará para verificar su finalización.
+ a| 
+entero
+
+
+
+ a| 
+llave
+ a| 
+Clave opaca que identifica de forma única la sesión.
+ a| 
+cadena
+
+
+
+ a| 
+URL
+ a| 
+URL para acceder al servidor web del nodo.
+ a| 
+cadena
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "StartBulkVolumeRead",
+   "params": {
+      "volumeID" : 5,
+      "format"  : "native",
+      "snapshotID" : 2
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+      "id" : 1,
+   "result" : {
+      "asyncHandle" : 1,
+      "key" : "11eed8f086539205beeaadd981aad130",
+      "url" : "https://127.0.0.1:44000/"
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

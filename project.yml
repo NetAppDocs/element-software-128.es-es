@@ -1,0 +1,54 @@
+---
+settings:
+  name: Element Software
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  versions:
+  - version-number: '12.8'
+    url: "/element-software"
+  - version-number: '12.7'
+    url: "/element-software-127"
+  - version-number: '12.5'
+    url: "/element-software-125"
+  - version-number: '12.3'
+    url: "/element-software-123"
+  langs: es-es,us-en,de-de,fr-fr,it-it,pt-br,ja-jp,ko-kr,zh-cn,zh-tw
+sidebar:
+  entries:
+  - title: Documentación del software SolidFire y Element 12.8
+    url: "/index.html"
+  - title: Notas de la versión
+    entries:
+    - title: Notas de la versión actual y anterior
+      url: "/concepts/concept_rn_relatedrn_element.html"
+    - title: Qué hay de nuevo
+      url: "/concepts/concept_rn_whats_new_element.html"
+  - section: concepts
+  - title: Requisitos
+    entries:
+    - title: Requisitos de red
+      url: "/storage/concept_prereq_networking.html"
+    - title: Configuración de conmutadores para clústeres que ejecutan el software
+        Element
+      url: "/storage/concept_prereq_switch_configuration_for_solidfire_clusters.html"
+    - title: Requisitos del puerto de red
+      url: "/storage/reference_prereq_network_port_requirements.html"
+  - section: try
+  - section: hardware
+  - section: setup
+  - section: storage
+  - section: hccstorage
+  - section: api
+  - title: Administre el almacenamiento con el complemento Element para vCenter Server.
+    url: "/element-plug-in-index.html"
+  - title: Supervise el almacenamiento con NetApp SolidFire Active IQ
+    url: "/monitor-storage-active-iq.html"
+  - section: mnode
+  - section: upgrade
+  - title: Versiones anteriores
+    url: "/element-earlierversions.html"
+  - title: Avisos legales
+    url: "/legal-notices.html"

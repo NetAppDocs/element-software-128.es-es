@@ -1,0 +1,20 @@
+---
+permalink: storage/task_data_protection_delete_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, delete 
+summary: Puedes eliminar una programación de instantáneas.  Después de eliminar la programación, no se ejecutarán más instantáneas programadas.  Las instantáneas creadas por la programación permanecen en el sistema de almacenamiento. 
+---
+= Eliminar una programación de instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes eliminar una programación de instantáneas.  Después de eliminar la programación, no se ejecutarán más instantáneas programadas.  Las instantáneas creadas por la programación permanecen en el sistema de almacenamiento.
+
+. Haz clic en *Protección de datos* > *Programaciones*.
+. Haz clic en el icono *Acciones* del horario que deseas eliminar.
+. En el menú que aparece, haga clic en *Eliminar*.
+. Confirma la acción.
+

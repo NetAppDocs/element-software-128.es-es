@@ -1,0 +1,32 @@
+---
+permalink: storage/task_data_protection_back_up_volume_to_openstack_swift.html 
+sidebar: sidebar 
+keywords: volume backup, openstack swift object store 
+summary: Puede realizar copias de seguridad de volúmenes en almacenes de objetos externos que sean compatibles con OpenStack Swift. 
+---
+= Realizar una copia de seguridad de un volumen en un almacén de objetos Swift de OpenStack
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede realizar copias de seguridad de volúmenes en almacenes de objetos externos que sean compatibles con OpenStack Swift.
+
+. Haz clic en *Administración* > *Volúmenes*.
+. Haz clic en el icono de Acciones del volumen que deseas respaldar.
+. En el menú resultante, haga clic en *Realizar copia de seguridad en*.
+. En el cuadro de diálogo *Copia de seguridad integrada*, en *Realizar copia de seguridad en*, seleccione *Swift*.
+. Seleccione un formato de datos en *Formato de datos*:
++
+** *Nativo*: Un formato comprimido legible únicamente por los sistemas de almacenamiento SolidFire .
+** *Sin comprimir*: Un formato sin comprimir compatible con otros sistemas.
+
+
+. Introduzca una URL para acceder al almacén de objetos en el campo *URL*.
+. Introduzca un nombre de usuario para la cuenta en el campo *Nombre de usuario*.
+. Introduzca la clave de autenticación de la cuenta en el campo *Clave de autenticación*.
+. Introduzca el contenedor en el que desea almacenar la copia de seguridad en el campo *Contenedor*.
+. *Opcional*: Introduzca una etiqueta de nombre para añadir al prefijo en el campo *Etiqueta de nombre*.
+. Haz clic en *Iniciar lectura*.
+

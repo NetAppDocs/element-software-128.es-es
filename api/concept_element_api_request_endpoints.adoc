@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_request_endpoints.html 
+sidebar: sidebar 
+keywords: request,endpoints 
+summary: 'En la API se utilizan tres tipos de puntos de conexión de solicitud (clúster de almacenamiento, creación de clúster de almacenamiento y por nodo).  Siempre debes utilizar el punto de conexión más reciente compatible con tu versión del software Element.' 
+---
+= puntos de conexión de solicitud
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En la API se utilizan tres tipos de puntos de conexión de solicitud (clúster de almacenamiento, creación de clúster de almacenamiento y por nodo).  Siempre debes utilizar el punto de conexión más reciente compatible con tu versión del software Element.
+
+Los tres puntos de conexión de solicitud en la API se designan de las siguientes maneras:
+
+
+
+== Métodos de la API de clúster
+
+El punto de conexión HTTPS para las solicitudes de API de todo el clúster de almacenamiento es `+https://<mvip>/json-rpc/<api-version>+` , dónde:
+
+* `<mvip>`es la dirección IP virtual de gestión para el clúster de almacenamiento.
+* `<api-version>`es la versión de la API que estás utilizando.
+
+
+
+
+== Métodos de la API para la creación y arranque de clústeres
+
+El punto de conexión HTTPS para crear un clúster de almacenamiento y acceder a las solicitudes de la API de arranque es `+https://<nodeIP>/json-rpc/<api-version>+` , dónde:
+
+* `<nodeIP>`es la dirección IP del nodo que está agregando al clúster.
+* `<api-version>`es la versión de la API que estás utilizando.
+
+
+
+
+== Métodos de API por nodo
+
+El punto de conexión HTTPS para las solicitudes de API de nodos de almacenamiento individuales es `+https://<nodeIP>:442/json-rpc/<api-version>+` , dónde:
+
+* `<nodeIP>`es la dirección IP de administración del nodo de almacenamiento; 442 es el puerto en el que se ejecuta el servidor HTTPS.
+* `<api-version>`es la versión de la API que estás utilizando.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

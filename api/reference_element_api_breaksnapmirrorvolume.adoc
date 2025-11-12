@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP,source,snapshot 
+summary: La interfaz web de Element utiliza el método BreakSnapMirrorVolume para romper la relación SnapMirror entre un contenedor de origen ONTAP y un volumen de destino de Element.  La interrupción de un volumen Element SnapMirror resulta útil si un sistema ONTAP deja de estar disponible mientras se replican datos en un volumen Element.  Esta función permite a un administrador de almacenamiento tomar el control de un volumen Element SnapMirror , romper su relación con el sistema ONTAP remoto y revertir el volumen a una instantánea anterior. 
+---
+= BreakSnapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz web de Element utiliza `BreakSnapMirrorVolume` Método para romper la relación SnapMirror entre un contenedor de origen ONTAP y un volumen de destino Element.  La interrupción de un volumen Element SnapMirror resulta útil si un sistema ONTAP deja de estar disponible mientras se replican datos en un volumen Element.  Esta función permite a un administrador de almacenamiento tomar el control de un volumen Element SnapMirror , romper su relación con el sistema ONTAP remoto y revertir el volumen a una instantánea anterior.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de volumen
+ a| 
+El volumen sobre el que se realizará la operación de ruptura.  El modo de acceso al volumen debe ser snapMirrorTarget.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+ID de instantánea
+ a| 
+Revierte el volumen al estado de instantánea identificado por este ID.  El comportamiento predeterminado es volver a la instantánea más reciente.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+preservar
+ a| 
+Conservar cualquier instantánea más reciente que la instantánea identificada por snapshotID. Valores posibles:
+
+* verdadero: Conservar las instantáneas más recientes que snapshotID.
+* false: No conservar instantáneas más recientes que snapshotID.
+
+
+Si es falso, se eliminarán todas las instantáneas más recientes que snapshotID.
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+acceso
+ a| 
+Modo de acceso al volumen resultante. Valores posibles:
+
+* leer/escribir
+* Solo lectura
+* bloqueado
+
+ a| 
+cadena
+ a| 
+leer/escribir
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Nueva versión
+
+10,0
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_breaksnapmirrorrelationship.adoc[Relación BreakSnapMirror]

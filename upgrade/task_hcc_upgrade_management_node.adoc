@@ -1,0 +1,195 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_management_node.html 
+summary: Como parte de una actualización del sistema de almacenamiento NetApp SolidFire , se actualiza el nodo de administración. 
+keywords: netapp, cluster, management node, mNode, upgrade, 10, 11.0, 11.1, 11.3, 11.5, 11.7, 12.0, 12.2, 12.3, 12.3.1, 12.3.2, 12.3.x, 12.5, 12.7, 12.8 
+---
+= Actualizar un nodo de administración
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede actualizar su nodo de administración a la versión 12.5 o posterior desde la versión 12.3.x o posterior.
+
+Ya no es necesario actualizar el sistema operativo del nodo de administración para actualizar el software Element en el clúster de almacenamiento.  Puede actualizar fácilmente los servicios de administración a la última versión para realizar actualizaciones de Element utilizando NetApp Hybrid Cloud Control.  Siga el procedimiento de actualización del nodo de administración para su caso particular si desea actualizar el sistema operativo del nodo de administración por otros motivos, como la corrección de problemas de seguridad.
+
+
+NOTE: Si necesita información sobre la actualización de nodos de administración a la versión 12.2 o anterior, consulte la https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_management_node.html["Documentación de actualización del nodo de administración de Element 12.3.x"^] .
+
+
+
+== Paso 1: Actualizar la versión del hardware de la máquina virtual en un nodo de administración
+
+Si va a realizar una actualización in situ de un nodo de administración existente a Element 12.8, antes de actualizar, debe asegurarse de que la versión del hardware de la máquina virtual en el nodo de administración sea compatible con ESXi 6.7 (versión de hardware de la máquina virtual 14) o posterior, según su entorno.
+
+.Pasos
+. Inicie sesión en vSphere Web Client como administrador de vCenter.
+. Desde el menú del cliente vSphere, seleccione *Máquinas virtuales y plantillas*.
+. Haz clic con el botón derecho en la máquina virtual (VM) y selecciona *Encendido* > *Apagar sistema operativo invitado*.
++
+Espere hasta que la máquina virtual se apague.
+
+. Haz clic con el botón derecho en la máquina virtual y selecciona *Compatibilidad* > *Actualizar compatibilidad de la máquina virtual*.
+. Seleccione *Sí*.
+. Seleccione ESXi 6.7 o una versión posterior, según la versión de su entorno vSphere.
+. Seleccione *OK*.
+. Una vez finalizada la actualización, haga clic con el botón derecho en la máquina virtual y seleccione *Encender* > *Activar*.
+. Seleccione *Actualización del cliente vSphere* y verifique que la compatibilidad de la máquina virtual esté en la versión deseada.
+
+
+
+
+== Paso 2: Actualice un nodo de administración a Element 12.5 o posterior.
+
+Elige una de las siguientes opciones de actualización:
+
+* <<Actualizar un nodo de administración a la versión 12.5 o posterior desde la versión 12.3.x o posterior.>>
+* <<Reconfigurar la autenticación mediante la API REST del nodo de administración>>
++
+Elija esta opción si ha actualizado *secuencialmente* (1) la versión de sus servicios de administración y (2) la versión de su almacenamiento Element y desea *mantener* su nodo de administración existente:
+
+
+
+
+NOTE: Si no actualiza secuencialmente sus servicios de administración seguidos del almacenamiento de Element, no podrá reconfigurar la reautenticación utilizando este procedimiento.  Siga el procedimiento de actualización correspondiente.
+
+
+
+=== Actualizar un nodo de administración a la versión 12.5 o posterior desde la versión 12.3.x o posterior.
+
+Puede realizar una actualización in situ del nodo de administración de la versión 12.3.x o posterior a la versión 12.5 o posterior sin necesidad de aprovisionar una nueva máquina virtual de nodo de administración.
+
+
+NOTE: El nodo de administración Element 12.5 o posterior es una actualización opcional.  No es necesario para las implementaciones existentes.
+
+.Antes de empezar
+* La memoria RAM de la máquina virtual del nodo de administración es de 24 GB.
+* El nodo de administración que pretende actualizar es la versión 12.0 y utiliza redes IPv4.  La versión 12.5 o posterior del nodo de administración no admite IPv6.
++
+
+TIP: Para comprobar la versión de su nodo de administración, inicie sesión en su nodo de administración y consulte el número de versión de Element en el banner de inicio de sesión.
+
+* Has actualizado tu paquete de servicios de administración a la última versión utilizando NetApp Hybrid Cloud Control.  Puede acceder a NetApp Hybrid Cloud Control desde la siguiente IP: `\https://<ManagementNodeIP>`
+* Si está actualizando su nodo de administración a la versión 12.5 o posterior, necesita los servicios de administración 2.21.61 o posterior para continuar.
+* Ha configurado un adaptador de red adicional (si es necesario) siguiendo las instrucciones paralink:../mnode/task_mnode_install_add_storage_NIC.html["Configurar una NIC de almacenamiento adicional"] .
++
+
+NOTE: Los volúmenes persistentes podrían requerir un adaptador de red adicional si eth0 no puede enrutarse a la SVIP.  Configure un nuevo adaptador de red en la red de almacenamiento iSCSI para permitir la configuración de volúmenes persistentes.
+
+* Los nodos de almacenamiento ejecutan Element 12.3.x o posterior.
+
+
+.Pasos
+. Inicie sesión en la máquina virtual del nodo de administración mediante SSH o acceso a la consola.
+. Descarga el https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["nodo de gestión ISO"^] para el software Element desde el sitio de soporte de NetApp a la máquina virtual del nodo de administración.
++
+
+NOTE: El nombre de la ISO es similar a `solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. Compruebe la integridad de la descarga ejecutando md5sum en el archivo descargado y compare el resultado con el que está disponible en el sitio de soporte de NetApp para el software Element, como en el siguiente ejemplo:
++
+`sudo md5sum -b <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. Monte la imagen ISO del nodo de administración y copie el contenido al sistema de archivos utilizando los siguientes comandos:
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount <solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso> /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. Cambie al directorio de inicio y desmonte el archivo ISO desde `/mnt` :
++
+[listing]
+----
+sudo umount /mnt
+----
+. Elimine la imagen ISO para ahorrar espacio en el nodo de administración:
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. En el nodo de administración que está actualizando, ejecute el siguiente comando para actualizar la versión del sistema operativo del nodo de administración.  El script conserva todos los archivos de configuración necesarios después de la actualización, como la configuración del recopilador y el proxy de Active IQ .
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1
+----
++
+El nodo de gestión se reinicia con un nuevo sistema operativo una vez finalizado el proceso de actualización.
+
++
+
+NOTE: Después de ejecutar el comando sudo descrito en este paso, la sesión SSH se finaliza.  El acceso a la consola es necesario para continuar la monitorización.  Si no tiene acceso a la consola al realizar la actualización, vuelva a intentar el inicio de sesión SSH y verifique la conectividad después de 15 a 30 minutos.  Una vez que inicie sesión, podrá confirmar la nueva versión del sistema operativo en el banner SSH que indica que la actualización se realizó correctamente.
+
+. En el nodo de administración, ejecute el `redeploy-mnode` Script para conservar la configuración anterior de los servicios de administración:
++
+
+NOTE: El script conserva la configuración anterior de los servicios de administración, incluida la configuración del servicio recopilador Active IQ , los controladores (vCenters) o el proxy, según su configuración.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode -mu <mnode user>
+----
+
+
+
+IMPORTANT: Si previamente habías deshabilitado la funcionalidad SSH en el nodo de administración, necesitaslink:../mnode/task_mnode_ssh_management.html["Deshabilitar SSH nuevamente"] en el nodo de gestión recuperado.  Capacidad SSH que proporcionalink:../mnode/task_mnode_enable_remote_support_connections.html["Acceso a la sesión del túnel de soporte remoto (RST) de NetApp Support"] Está habilitado en el nodo de administración de forma predeterminada.
+
+
+
+=== Reconfigurar la autenticación mediante la API REST del nodo de administración
+
+Puede conservar su nodo de administración existente si ha actualizado secuencialmente (1) los servicios de administración y (2) el almacenamiento de elementos.  Si ha seguido un orden de actualización diferente, consulte los procedimientos para las actualizaciones de nodos de administración in situ.
+
+.Antes de empezar
+* Has actualizado tus servicios de gestión a la versión 2.20.69 o posterior.
+* Su clúster de almacenamiento ejecuta Element 12.3 o posterior.
+* Has actualizado secuencialmente tus servicios de gestión y, posteriormente, has actualizado tu almacenamiento Element.  No podrá reconfigurar la autenticación mediante este procedimiento a menos que haya completado las actualizaciones en la secuencia descrita.
+
+
+.Pasos
+. Abra la interfaz de usuario de la API REST del nodo de administración en el nodo de administración:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. Seleccione *Autorizar* y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` si el valor no está ya asignado.
+.. Seleccione *Autorizar* para iniciar una sesión.
+
+
+. Desde la interfaz de usuario de la API REST, seleccione *POST /services/reconfigure-auth*.
+. Seleccione *Probarlo*.
+. Para el parámetro *load_images*, seleccione `true` .
+. Seleccione *Ejecutar*.
++
+El cuerpo de la respuesta indica que la reconfiguración fue exitosa.
+
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

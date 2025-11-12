@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_modifyclusteradmin.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,admin,settings,modifyclusteradmin 
+summary: 'Puede utilizar el método ModifyClusterAdmin para cambiar la configuración de un administrador de clúster, un administrador de clúster LDAP o un administrador de clúster de proveedor de identidad (IdP) de terceros.  No se puede cambiar el acceso para la cuenta de administrador del clúster.' 
+---
+= Modificar administrador de clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyClusterAdmin` Método para cambiar la configuración de un administrador de clúster, un administrador de clúster LDAP o un administrador de clúster de proveedor de identidad (IdP) de terceros.  No se puede cambiar el acceso para la cuenta de administrador del clúster.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+acceso
+ a| 
+Controla qué métodos puede usar este administrador de clúster.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ID de administrador del clúster
+ a| 
+ClusterAdminID para que el administrador del clúster, el administrador del clúster LDAP o el administrador del clúster IdP lo modifiquen.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+contraseña
+ a| 
+Contraseña utilizada para autenticar al administrador de este clúster.  Este parámetro no se aplica a un administrador de clúster LDAP o IdP.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ModifyClusterAdmin",
+   "params": {
+     "clusterAdminID"  : 2,
+     "password"   : "7925Brc429a"
+   },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+ "id" : 1
+ "result" : { }
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_app_b_access_control.adoc[Control de acceso]

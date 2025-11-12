@@ -1,0 +1,16 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_set_the_network_time_protocol.html 
+sidebar: sidebar 
+keywords: set, ntp, broadcasts, query, updates, clocks, synchronize, 
+summary: 'La configuración del Protocolo de Tiempo de Red (NTP) se puede lograr de dos maneras: o bien instruyendo a cada nodo de un clúster para que escuche las transmisiones o bien instruyendo a cada nodo para que consulte a un servidor NTP para obtener actualizaciones.' 
+---
+= Configurar el protocolo de tiempo de red
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configuración del Protocolo de Tiempo de Red (NTP) se puede lograr de dos maneras: o bien instruyendo a cada nodo de un clúster para que escuche las transmisiones o bien instruyendo a cada nodo para que consulte a un servidor NTP para obtener actualizaciones.
+
+El protocolo NTP se utiliza para sincronizar los relojes a través de una red.  La conexión a un servidor NTP interno o externo debe formar parte de la configuración inicial del clúster.

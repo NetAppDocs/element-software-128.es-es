@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_deletevolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,delete,deleting,DeleteVolumeAccessGroup 
+summary: Puede utilizar DeleteVolumeAccessGroup para eliminar un grupo de acceso a volumen. 
+---
+= Eliminar grupo de acceso al volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `DeleteVolumeAccessGroup` Eliminar un grupo de acceso a volumen.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de grupo de acceso al volumen
+ a| 
+El ID del grupo de acceso al volumen que se va a eliminar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+eliminarIniciadoresHuérfanos
+ a| 
+Especifica si se deben eliminar los objetos iniciadores o no. Valores posibles:
+
+* verdadero: Eliminar los objetos iniciadores después de que se eliminen de un grupo de acceso a volúmenes.
+* falso: No elimine los objetos iniciadores después de que se eliminen de un grupo de acceso a volúmenes. Este es el valor predeterminado.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+fuerza
+ a| 
+Agregar esta bandera forzará la eliminación del grupo de acceso al volumen, incluso si tiene un ID o etiqueta de red virtual. Valores posibles:
+
+* Verdadero: Se eliminará el grupo de acceso al volumen.
+* falso: Valor predeterminado.  No elimine el grupo de acceso al volumen si tiene un ID de red virtual o una etiqueta.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no tiene valores de retorno.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "DeleteVolumeAccessGroup",
+   "params": {
+          "force": true,
+	  "volumeAccessGroupID"  : 3
+   },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {}
+}
+----
+
+
+== Nueva versión
+
+9,6

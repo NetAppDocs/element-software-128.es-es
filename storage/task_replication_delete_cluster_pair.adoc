@@ -1,0 +1,21 @@
+---
+permalink: storage/task_replication_delete_cluster_pair.html 
+sidebar: sidebar 
+keywords: cluster pairs, delete 
+summary: Puedes eliminar un par de clústeres desde la interfaz de usuario de Element de cualquiera de los clústeres del par. 
+---
+= Eliminar un par de clústeres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes eliminar un par de clústeres desde la interfaz de usuario de Element de cualquiera de los clústeres del par.
+
+. Haz clic en *Protección de datos* > *Pares de clústeres*.
+. Haz clic en el icono de Acciones para un par de clústeres.
+. En el menú que aparece, haga clic en *Eliminar*.
+. Confirma la acción.
+. Repita los pasos desde el segundo clúster en el emparejamiento de clústeres.
+

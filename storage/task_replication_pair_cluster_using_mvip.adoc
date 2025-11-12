@@ -1,0 +1,36 @@
+---
+permalink: storage/task_replication_pair_cluster_using_mvip.html 
+sidebar: sidebar 
+keywords: pair clusters, mvip, connection 
+summary: Puede emparejar dos clústeres para la replicación en tiempo real utilizando el MVIP de un clúster para establecer una conexión con el otro clúster.  Para utilizar este método se requiere acceso de administrador de clúster en ambos clústeres.  El nombre de usuario y la contraseña del administrador del clúster se utilizan para autenticar el acceso al clúster antes de que los clústeres puedan emparejarse. 
+---
+= Agrupamiento de pares mediante MVIP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede emparejar dos clústeres para la replicación en tiempo real utilizando el MVIP de un clúster para establecer una conexión con el otro clúster.  Para utilizar este método se requiere acceso de administrador de clúster en ambos clústeres.  El nombre de usuario y la contraseña del administrador del clúster se utilizan para autenticar el acceso al clúster antes de que los clústeres puedan emparejarse.
+
+. En el clúster local, seleccione *Protección de datos* > *Pares de clústeres*.
+. Haga clic en *Par de clústeres*.
+. Haga clic en *Iniciar emparejamiento* y haga clic en *Sí* para indicar que tiene acceso al clúster remoto.
+. Introduzca la dirección MVIP del clúster remoto.
+. Haga clic en *Completar el emparejamiento en el clúster remoto*.
++
+En la ventana *Autenticación requerida*, ingrese el nombre de usuario y la contraseña del administrador del clúster remoto.
+
+. En el clúster remoto, seleccione *Protección de datos* > *Pares de clústeres*.
+. Haga clic en *Par de clústeres*.
+. Haga clic en *Completar emparejamiento*.
+. Haz clic en el botón *Completar emparejamiento*.
+
+
+
+
+== Encuentra más información
+
+* xref:task_replication_pair_cluster_using_pairing_key.adoc[Agrupar grupos mediante una clave de emparejamiento]
+* https://www.youtube.com/watch?v=HbKxPZnNvn4&feature=youtu.be["Emparejamiento de clústeres mediante MVIP (vídeo)"]
+

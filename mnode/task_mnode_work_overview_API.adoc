@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_API.html 
+summary: 'Puede utilizar la API del nodo de administración (mNode) para actualizar los servicios del sistema, administrar los activos y la configuración del clúster, ejecutar pruebas y utilidades del sistema, configurar Active IQ para la supervisión del sistema y habilitar o deshabilitar el acceso SSH de soporte de NetApp para la resolución de problemas.' 
+keywords: netapp, mnode api, management node api, rest api 
+---
+= Descripción general de la interfaz de usuario de la API REST del nodo de administración
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mediante la interfaz de usuario de la API REST integrada.(`https://<ManagementNodeIP>/mnode` ), puede ejecutar o comprender las API relacionadas con los servicios del nodo de administración, incluida la configuración del servidor proxy, las actualizaciones del nivel de servicio o la administración de activos.
+
+Tareas que puedes realizar con las API REST:
+
+
+
+== Autorización
+
+* link:task_mnode_api_get_authorizationtouse.html["Obtén autorización para usar las API REST"]
+
+
+
+
+== Configuración de activos
+
+* link:task_mnode_enable_activeIQ.html["Habilitar Active IQ y la monitorización de NetApp"]
+* link:task_mnode_configure_proxy_server.html["Configurar un servidor proxy para el nodo de administración"]
+* link:task_mnode_multi_vcenter_config.html["Configurar NetApp Hybrid Cloud Control para varios vCenters"]
+* link:task_mnode_add_assets.html["Agregar un activo de controlador al nodo de administración"]
+* link:task_mnode_manage_storage_cluster_assets.html["Crear y administrar activos de clúster de almacenamiento"]
+
+
+
+
+== Gestión de activos
+
+* link:task_mnode_edit_vcenter_assets.html["Ver o editar los recursos del controlador existentes"]
+* link:task_mnode_manage_storage_cluster_assets.html["Crear y administrar activos de clúster de almacenamiento"]
+* link:../hccstorage/task-hcc-collectlogs.html#use-the-rest-api-to-collect-netapp-hci-logs["Utilice la API REST para recopilar los registros del sistema Element."]
+* link:task_mnode_api_find_mgmt_svcs_version.html["Verifique las versiones del sistema operativo y los servicios del nodo de administración."]
+* link:task_mnode_logs.html["Obtención de registros de los servicios de administración"]
+
+
+[discrete]
+== Encuentra más información
+
+* link:task_mnode_access_ui.html["Acceda al nodo de administración"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

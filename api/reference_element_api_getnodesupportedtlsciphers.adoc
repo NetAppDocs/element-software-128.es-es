@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_getnodesupportedtlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,ciphers,get,getting,supported,getnodesupportedtlsciphers 
+summary: Puede utilizar el método GetNodeSupportedTlsCiphers en un solo nodo para obtener una lista de los cifrados TLS que actualmente son compatibles con este nodo.  Puedes utilizar este método en nodos de gestión y almacenamiento. 
+---
+= ObtenerCifradosTLSCompatiblesConNodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetNodeSupportedTlsCiphers` Método en un solo nodo para obtener una lista de los cifrados TLS que actualmente son compatibles con este nodo.  Puedes utilizar este método en nodos de gestión y almacenamiento.
+
+
+
+== Parámetro
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+Cifrados obligatorios
+ a| 
+Lista de conjuntos de cifrado TLS obligatorios para el nodo.  Se trata de cifrados que están siempre activos en el nodo.
+ a| 
+cadena
+
+
+
+ a| 
+Cifrados suplementarios por defecto
+ a| 
+Lista de conjuntos de cifrado TLS suplementarios predeterminados para el nodo.  Los cifrados suplementarios se restauran a esta lista cuando se ejecuta el método API ResetNodeSupplementalTlsCiphers.
+ a| 
+cadena
+
+
+
+ a| 
+Cifrados suplementarios compatibles
+ a| 
+Lista de conjuntos de cifrado TLS suplementarios disponibles que puede configurar con el método API SetNodeSupplementalTlsCiphers.
+ a| 
+cadena
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "GetNodeSupportedTlsCiphers",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+	"defaultSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256"
+	],
+	"mandatoryCiphers": [
+		"DHE-RSA-AES256-SHA256",
+		"DHE-RSA-AES256-GCM-SHA384",
+		"ECDHE-RSA-AES256-SHA384",
+		"ECDHE-RSA-AES256-GCM-SHA384"
+	],
+	"supportedSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256",
+		"DHE-RSA-AES256-SHA",
+		"ECDHE-RSA-AES256-SHA",
+		"DHE-RSA-CAMELLIA256-SHA",
+		"DHE-RSA-AES128-SHA",
+		"ECDHE-RSA-AES128-SHA",
+		"DHE-RSA-CAMELLIA128-SHA"
+	]
+}
+}
+----

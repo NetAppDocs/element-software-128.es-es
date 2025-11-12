@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_data_manage_vvol_protocol_endpoints.html 
+sidebar: sidebar 
+keywords: protocol endpoint, access, cluster, storage node, iscsi supported 
+summary: Los puntos de conexión del protocolo son puntos de acceso utilizados por un host para direccionar el almacenamiento en un clúster que ejecuta el software NetApp Element .  Los puntos de conexión del protocolo no pueden ser eliminados ni modificados por un usuario, no están asociados a una cuenta y no pueden agregarse a un grupo de acceso por volumen. 
+---
+= Aprenda sobre los puntos finales del protocolo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los puntos de conexión del protocolo son puntos de acceso utilizados por un host para direccionar el almacenamiento en un clúster que ejecuta el software NetApp Element .  Los puntos de conexión del protocolo no pueden ser eliminados ni modificados por un usuario, no están asociados a una cuenta y no pueden agregarse a un grupo de acceso por volumen.
+
+Un clúster que ejecuta el software Element crea automáticamente un punto final de protocolo por cada nodo de almacenamiento en el clúster.  Por ejemplo, un clúster de almacenamiento de seis nodos tiene seis puntos finales de protocolo que están asignados a cada host ESXi.  Los puntos finales del protocolo son gestionados dinámicamente por el software Element y se crean, mueven o eliminan según sea necesario sin ninguna intervención.  Los puntos finales del protocolo son el destino del enrutamiento múltiple y actúan como un proxy de E/S para las LUN subsidiarias.  Cada extremo del protocolo consume una dirección SCSI disponible, al igual que un destino iSCSI estándar.  Los puntos finales del protocolo aparecen como un dispositivo de almacenamiento de un solo bloque (512 bytes) en el cliente vSphere, pero este dispositivo de almacenamiento no está disponible para formatearse ni utilizarse como almacenamiento.
+
+iSCSI es el único protocolo compatible.  El protocolo Fibre Channel no es compatible.

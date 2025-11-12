@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectiondomainresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainResiliency 
+summary: 'El objeto protectionDomainResiliency contiene el estado de resiliencia de este clúster de almacenamiento.  La resiliencia indica la capacidad del clúster de almacenamiento para recuperarse automáticamente de una o más fallas dentro de un único dominio de protección de su tipo de dominio de protección asociado.  Se considera que un clúster de almacenamiento se ha recuperado cuando puede seguir leyendo y escribiendo datos a pesar del fallo de cualquier nodo de almacenamiento individual (un estado conocido como tolerancia de nodo).' 
+---
+= Resiliencia del dominio de protección
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto protectionDomainResiliency contiene el estado de resiliencia de este clúster de almacenamiento.  La resiliencia indica la capacidad del clúster de almacenamiento para recuperarse automáticamente de una o más fallas dentro de un único dominio de protección de su tipo de dominio de protección asociado.  Se considera que un clúster de almacenamiento se ha recuperado cuando puede seguir leyendo y escribiendo datos a pesar del fallo de cualquier nodo de almacenamiento individual (un estado conocido como tolerancia de nodo).
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+Resiliencias del esquema de protección
+ a| 
+Una lista de objetos (uno por cada esquema de protección) que contiene información sobre la resiliencia ante fallos para el tipo de dominio de protección asociado.
+ a| 
+xref:reference_element_api_protectionschemeresiliency.adoc[Resiliencia del esquema de protección]formación
+
+
+
+ a| 
+singleFailureThresholdBytesForBlockData
+ a| 
+El número máximo de bytes que se pueden almacenar en el clúster de almacenamiento antes de perder la capacidad de recuperarse automáticamente a un estado de tolerancia del nodo.
+ a| 
+entero
+
+
+
+ a| 
+Fracasos sostenibles para el conjunto
+ a| 
+El número previsto de fallos simultáneos que pueden ocurrir sin perder la capacidad de recuperarse automáticamente hasta alcanzar un estado de tolerancia de nodos para el quórum del conjunto.
+ a| 
+entero
+
+|===

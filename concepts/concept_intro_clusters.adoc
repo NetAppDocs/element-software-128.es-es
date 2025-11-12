@@ -1,0 +1,83 @@
+---
+permalink: concepts/concept_intro_clusters.html 
+sidebar: sidebar 
+keywords: element, solidfire, cluster, what is, authoritative  cluster, rule of thirds, stranded capacity, storage efficiency, storage cluster quorum 
+summary: Un clúster es el centro de un sistema de almacenamiento SolidFire y está formado por una colección de nodos.  Para aprovechar al máximo la eficiencia del almacenamiento de SolidFire , debe tener al menos cuatro nodos en un clúster.  Un clúster aparece en la red como un único grupo lógico y, por lo tanto, se puede acceder a él como almacenamiento en bloque. 
+---
+= Clústeres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un clúster es el centro de un sistema de almacenamiento SolidFire y está formado por una colección de nodos.  Para aprovechar al máximo la eficiencia del almacenamiento de SolidFire , debe tener al menos cuatro nodos en un clúster.  Un clúster aparece en la red como un único grupo lógico y, por lo tanto, se puede acceder a él como almacenamiento en bloque.
+
+La creación de un nuevo clúster inicializa un nodo como propietario de las comunicaciones para un clúster y establece comunicaciones de red para cada nodo del clúster.  Este proceso se realiza solo una vez para cada nuevo clúster.  Puedes crear un clúster utilizando la interfaz de usuario de Element o la API.
+
+Puedes escalar horizontalmente un clúster añadiendo nodos adicionales.  Al agregar un nuevo nodo, no se interrumpe el servicio y el clúster utiliza automáticamente el rendimiento y la capacidad del nuevo nodo.
+
+Los administradores y los anfitriones pueden acceder al clúster utilizando direcciones IP virtuales.  Cualquier nodo del clúster puede alojar las direcciones IP virtuales.  La IP virtual de gestión (MVIP) permite la gestión del clúster a través de una conexión de 1 GbE, mientras que la IP virtual de almacenamiento (SVIP) permite el acceso del host al almacenamiento a través de una conexión de 10 GbE.  Estas direcciones IP virtuales permiten conexiones consistentes independientemente del tamaño o la composición de un clúster SolidFire .  Si falla un nodo que aloja una dirección IP virtual, otro nodo del clúster comienza a alojar la dirección IP virtual.
+
+
+NOTE: A partir de la versión 11.0 de Element, los nodos se pueden configurar con direcciones IPv4, IPv6 o ambas para su red de administración.  Esto se aplica tanto a los nodos de almacenamiento como a los nodos de administración, excepto al nodo de administración 11.3 y posteriores, que no admiten IPv6.  Al crear un clúster, solo se puede usar una única dirección IPv4 o IPv6 para MVIP y el tipo de dirección correspondiente debe configurarse en todos los nodos.
+
+.Más sobre clústeres
+* <<clústeres de almacenamiento autorizados>>
+* <<Regla de los tercios>>
+* <<capacidad varada>>
+* <<Eficiencia de almacenamiento>>
+* <<quórum del clúster de almacenamiento>>
+
+
+
+
+== clústeres de almacenamiento autorizados
+
+El clúster de almacenamiento autorizado es el clúster de almacenamiento que NetApp Hybrid Cloud Control utiliza para autenticar a los usuarios.
+
+Si su nodo de administración solo tiene un clúster de almacenamiento, entonces ese es el clúster autoritativo.  Si su nodo de administración tiene dos o más clústeres de almacenamiento, uno de esos clústeres se asigna como clúster autorizado y solo los usuarios de ese clúster pueden iniciar sesión en NetApp Hybrid Cloud Control.  Para averiguar qué clúster es el clúster autorizado, puede utilizar el `GET /mnode/about` API.  En la respuesta, la dirección IP en el `token_url` El campo es la dirección IP virtual de gestión (MVIP) del clúster de almacenamiento autoritativo.  Si intenta iniciar sesión en NetApp Hybrid Cloud Control como un usuario que no pertenece al clúster autorizado, el intento de inicio de sesión fallará.
+
+Muchas funciones de NetApp Hybrid Cloud Control están diseñadas para funcionar con múltiples clústeres de almacenamiento, pero la autenticación y la autorización tienen limitaciones.  La limitación en torno a la autenticación y autorización es que el usuario del clúster autoritativo puede ejecutar acciones en otros clústeres vinculados a NetApp Hybrid Cloud Control incluso si no es usuario en los otros clústeres de almacenamiento.
+
+Antes de proceder a administrar varios clústeres de almacenamiento, debe asegurarse de que los usuarios definidos en los clústeres autorizados estén definidos en todos los demás clústeres de almacenamiento con los mismos permisos.  Puedes gestionar los usuarios desde ellink:../storage/concept_system_manage_manage_cluster_administrator_users.html["Interfaz de usuario del software Element"] .
+
+Verlink:../mnode/task_mnode_manage_storage_cluster_assets.html["crear y administrar activos de clúster de almacenamiento"] Para obtener más información sobre cómo trabajar con los recursos del clúster de almacenamiento del nodo de administración.
+
+
+
+== Regla de los tercios
+
+Cuando se mezclan distintos tipos de nodos de almacenamiento en un clúster de almacenamiento NetApp SolidFire , ningún nodo de almacenamiento individual puede contener más del 33 % de la capacidad total del clúster de almacenamiento.
+
+
+
+== capacidad varada
+
+Si un nodo recién agregado representa más del 50 por ciento de la capacidad total del clúster, parte de la capacidad de este nodo se vuelve inutilizable ("varada"), de modo que cumpla con la regla de capacidad.  Esta situación se mantendrá hasta que se añada más capacidad de almacenamiento.  Si se añade un nodo muy grande que también incumple la regla de capacidad, el nodo que antes estaba aislado dejará de estarlo, mientras que el nodo recién añadido quedará aislado.  La capacidad siempre debe añadirse por pares para evitar que esto suceda.  Cuando un nodo queda aislado, se genera un fallo de clúster apropiado.
+
+
+
+== Eficiencia de almacenamiento
+
+Los clústeres de almacenamiento NetApp SolidFire utilizan la deduplicación, la compresión y el aprovisionamiento ligero para reducir la cantidad de almacenamiento físico necesario para almacenar un volumen.
+
+* *Compresión*
++
+La compresión reduce la cantidad de almacenamiento físico necesario para un volumen al combinar bloques de datos en grupos de compresión, cada uno de los cuales se almacena como un solo bloque.
+
+* *Desduplicación*
++
+La deduplicación reduce la cantidad de almacenamiento físico necesario para un volumen al descartar bloques de datos duplicados.
+
+* *Aprovisionamiento ligero*
++
+Un volumen de aprovisionamiento ligero o LUN es aquel para el cual no se reserva almacenamiento por adelantado.  En cambio, el almacenamiento se asigna dinámicamente, según se necesite.  Cuando se eliminan datos del volumen o LUN, el espacio libre se devuelve al sistema de almacenamiento.
+
+
+
+
+
+== quórum del clúster de almacenamiento
+
+El software Element crea un clúster de almacenamiento a partir de nodos seleccionados, que mantiene una base de datos replicada de la configuración del clúster.  Se requiere un mínimo de tres nodos para participar en el conjunto de clústeres para mantener el quórum y garantizar la resiliencia del clúster.

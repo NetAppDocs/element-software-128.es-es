@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_getconfig.html 
+sidebar: sidebar 
+keywords: node,get,getting,info,config,configuration,getconfig 
+summary: Puedes utilizar el método de la API GetConfig para obtener toda la información de configuración de un nodo.  Este método de la API incluye la misma información disponible en los métodos de la API GetClusterConfig y GetNetworkConfig. 
+---
+= Obtener configuración
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetConfig` Método API para obtener toda la información de configuración de un nodo.  Este método de la API incluye la misma información disponible en ambos. `GetClusterConfig` y `GetNetworkConfig` Métodos de la API.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+configuración
+ a| 
+Los detalles de configuración del clúster.  Este objeto contiene:
+
+* xref:reference_element_api_cluster.adoc[clúster]Información del clúster que identifica cómo se comunica el nodo de almacenamiento con el clúster de almacenamiento con el que está asociado.
+* xref:reference_element_api_network_all_interfaces.adoc[red (todas las interfaces)]Tipos de conexión de red y configuración actual para cada interfaz de red del nodo.
+
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Debido a la extensión de este ejemplo de respuesta, se documenta en un tema complementario.
+
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+* xref:reference_element_api_getclusterconfig.adoc[Obtener configuración de clúster]
+* xref:reference_element_api_getnetworkconfig.adoc[Obtener configuración de red]
+* xref:reference_element_api_response_example_getconfig.adoc[Obtener configuración]
+

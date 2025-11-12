@@ -1,0 +1,27 @@
+---
+permalink: storage/task_system_manage_fips_enable_encryption_at_rest.html 
+sidebar: sidebar 
+keywords: fips, security, encryption at rest, enable, disable, drives 
+summary: Puede habilitar y deshabilitar el cifrado en reposo para todo el clúster.  Esta función no está habilitada de forma predeterminada.  Para admitir unidades FIPS, debe habilitar el cifrado en reposo. 
+---
+= Habilitar el cifrado en reposo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede habilitar y deshabilitar el cifrado en reposo para todo el clúster.  Esta función no está habilitada de forma predeterminada.  Para admitir unidades FIPS, debe habilitar el cifrado en reposo.
+
+. En la interfaz de usuario del software NetApp Element , haga clic en *Clúster* > *Configuración*.
+. Haga clic en *Habilitar cifrado en reposo*.
+
+
+
+
+== Encuentra más información
+
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[Habilitar y deshabilitar el cifrado para un clúster]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

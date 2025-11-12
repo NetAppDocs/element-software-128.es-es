@@ -1,0 +1,95 @@
+= Parámetros
+:allow-uri-read: 
+
+
+Puedes usar el `Shutdown` Método para reiniciar o apagar los nodos de un clúster.  Con este método puede apagar un solo nodo, varios nodos o todos los nodos del clúster.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+nodos
+ a| 
+Lista de NodeIDs para los nodos que se reiniciarán o apagarán.
+ a| 
+matriz de enteros
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+opción
+ a| 
+Medidas a tomar para el grupo. Valores posibles:
+
+* reiniciar: Reinicia el clúster.
+* detener: Realiza un apagado completo.
+
+ a| 
+cadena
+ a| 
+Reanudar
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "Shutdown",
+   "params": {
+     "nodes": [
+       2,
+       3,
+       4
+     ],
+     "option": "halt"
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "failed": [],
+     "successful": [
+          6
+      [
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

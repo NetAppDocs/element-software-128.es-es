@@ -1,0 +1,86 @@
+---
+permalink: hardware/task_h610s_repl.html 
+sidebar: sidebar 
+keywords: h610s, replacement, node replacement, chassis replacement, maintenance 
+summary: 'Es posible que necesite reemplazar el chasis si falla el ventilador, la unidad central de procesamiento (CPU) o el módulo de memoria en línea dual (DIMM), o para solucionar problemas de sobrecalentamiento o problemas con el proceso de arranque.  El LED ámbar parpadeante en la parte frontal del chasis indica una posible necesidad de reemplazar el chasis.  Debe ponerse en contacto con el soporte de NetApp antes de continuar.' 
+---
+= Reemplazar un nodo H610S
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible que necesite reemplazar el chasis si falla el ventilador, la unidad central de procesamiento (CPU) o el módulo de memoria en línea dual (DIMM), o para solucionar problemas de sobrecalentamiento o problemas con el proceso de arranque.  El LED ámbar parpadeante en la parte frontal del chasis indica una posible necesidad de reemplazar el chasis.  Debe ponerse en contacto con el soporte de NetApp antes de continuar.
+
+
+NOTE: Ver ellink:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/NetApp_H610S_installation_requirements_for_replacement_or_expansion_nodes["Artículo de la base de conocimientos"^] Para obtener información sobre los requisitos de instalación para los nodos H610S.  Los nodos de almacenamiento H610S nuevos y de repuesto podrían tener requisitos de instalación adicionales según la versión del software Element existente del clúster de almacenamiento.  Póngase en contacto con el soporte de NetApp para obtener más información.
+
+
+TIP: Los términos "nodo" y "chasis" se utilizan indistintamente en el caso del H610S, que es un chasis de una unidad de rack (1U).
+
+
+
+== Mejores prácticas para agregar y eliminar unidades
+
+Deberá seguir estas prácticas recomendadas para agregar unidades al clúster:
+
+* Agrega todas las unidades de bloque y asegúrate de que la sincronización de bloques esté completa antes de agregar las unidades de partición.
+* Para el software Element 10.x y versiones posteriores, agregue todas las unidades de bloque a la vez.  Asegúrese de no realizar esta operación con más de tres nodos a la vez.
+* Para el software Element 9.x y versiones anteriores, agregue tres unidades a la vez, permitiendo que se sincronicen completamente antes de agregar el siguiente grupo de tres.
+* Retire la unidad de partición y asegúrese de que la sincronización de la partición esté completa antes de retirar las unidades de bloque.
+* Retire todas las unidades de bloque de un solo nodo a la vez.  Asegúrese de que la sincronización de todos los bloques esté completa antes de pasar al siguiente nodo.
+
+
+.Lo que necesitarás
+* Usted se ha puesto en contacto con el soporte de NetApp .  Si va a solicitar un repuesto, debería tener un caso abierto con el soporte de NetApp .
+* Has obtenido el nodo de reemplazo.
+* Llevas una pulsera antiestática (ESD) o has tomado otra protección antiestática.
+* Si necesita realizar el proceso de Restauración de Imagen de Fábrica (RTFI), ya ha obtenido la llave USB.  El soporte de NetApp puede ayudarle a decidir si necesita realizar el proceso RTFI.
+* Tienes un teclado y un monitor.
+* Has eliminado correctamente el nodo averiado del clúster.
+* Si un módulo DIMM ha fallado, significa que ha retirado unidades antes de eliminar el nodo del clúster.
+
+
+.Acerca de esta tarea
+Las alarmas en la interfaz de usuario de Element te avisan cuando falla un host.  Debe hacer coincidir el número de serie del host averiado del cliente web de VMware vSphere con el número de serie que figura en la etiqueta de la parte posterior del nodo.
+
+.Pasos
+. Localice la etiqueta de servicio en la parte delantera del chasis averiado.
++
+image::h610s-servicetag.gif[Muestra la etiqueta de servicio en la parte delantera del chasis H610S.]
+
+. Verifique que el número de serie en la etiqueta de servicio coincida con el número de caso de soporte de NetApp cuando solicitó el chasis de reemplazo.
+. Conecta el teclado y el monitor a la parte posterior del chasis averiado.
+. Verifique el número de serie del nodo averiado con el soporte de NetApp .
+. Apague el chasis.
+. Etiqueta las unidades de la parte delantera y los cables de la parte trasera con sus ubicaciones, para que puedas volver a colocarlos en los mismos lugares después del reemplazo.  Consulte la siguiente imagen para ver la ubicación de las unidades en el chasis:
++
+image::h610s-drives.gif[Muestra la parte frontal del chasis H610S con las unidades etiquetadas.]
+
+. Retire los cables.
+. Retire el chasis aflojando los tornillos moleteados de las orejas de montaje.  Deberá empaquetar y devolver el chasis defectuoso a NetApp.
+. Instale el chasis de repuesto.
+. Retire con cuidado las unidades del chasis averiado e insértelas en el chasis de repuesto.
++
+
+NOTE: Debes insertar las unidades en las mismas ranuras en las que estaban antes de extraerlas.
+
+. Retire las fuentes de alimentación del chasis averiado e insértelas en el chasis de repuesto.
+. Inserte los cables de alimentación y los cables de red en sus puertos originales.
+. Se podrían insertar transceptores conectables de factor de forma pequeño (SFP) en los puertos 10GbE del nodo de reemplazo.  Debes quitarlos antes de conectar los puertos 10GbE.
++
+
+NOTE: Consulte la documentación del fabricante del switch si este no reconoce los cables.
+
+. Encienda el chasis pulsando el botón de encendido situado en la parte frontal.  El nodo tarda aproximadamente cinco minutos y 30 segundos en arrancar.
+. Realice los pasos de configuración.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

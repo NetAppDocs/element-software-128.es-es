@@ -1,0 +1,351 @@
+---
+permalink: api/reference_element_api_modifyschedule.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,schedule,scheduled,delete,pause,modifyschedule 
+summary: Puedes usar ModifySchedule para cambiar los intervalos en los que se produce una instantánea programada.  También puedes eliminar o pausar una programación utilizando este método. 
+---
+= Modificar horario
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `ModifySchedule` para cambiar los intervalos en los que se produce una instantánea programada.  También puedes eliminar o pausar una programación utilizando este método.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+atributos
+ a| 
+Se utiliza para cambiar la frecuencia de aparición de la instantánea. Valores posibles:
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+horas
+ a| 
+Número de horas entre instantáneas o hora en la que se realizará la instantánea en el modo Días de la semana o Días del mes. Los valores válidos son de 0 a 24.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+nombre
+ a| 
+El nombre de la instantánea.  Si no se introduce ningún nombre, se utiliza la fecha y hora en que se tomó la instantánea del grupo.  La longitud máxima permitida para el nombre es de 244 caracteres.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+minutos
+ a| 
+Número de minutos entre instantáneas o minuto en el que se tomará la instantánea en el modo Días de la semana o Días del mes. Los valores válidos son de 0 a 59.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+| último estado de ejecución | El resultado o estado de la última creación de instantánea programada. | cadena | Ninguno | No 
+
+
+ a| 
+pausa
+ a| 
+Indica si se debe pausar la programación o no.  Valores válidos:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+periódico
+ a| 
+Indica si la programación será recurrente o no.  Los valores válidos son:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ejecutarSiguienteIntervalo
+ a| 
+Se utiliza para elegir si se debe ejecutar o no la instantánea la próxima vez que el programador esté activo.  Valores válidos:
+
+* `true`
+* `false`
+
+
+Cuando se establece en verdadero, la instantánea programada se ejecuta la próxima vez que el programador esté activo y luego se restablece a falso.
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+ID de programación
+ a| 
+Identificador único del horario.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nombre del horario
+ a| 
+Nombre único para el horario.  La longitud máxima permitida para el nombre del programa es de 244 caracteres.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+Tipo de horario
+ a| 
+Indica el tipo de horario que se va a crear.  El único valor admitido es `snapshot` .
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+El nombre único asignado a la programación, el período de retención de la instantánea creada y el ID del volumen desde el cual se creó la instantánea.  Valores válidos:
+
+* `enableRemoteReplication`Indica si la instantánea debe incluirse en la replicación remota.  (booleano)
+* `ensureSerialCreation`: Especifica si se debe permitir la creación de una nueva instantánea si hay una replicación de instantánea anterior en curso.  (booleano)
+* `name`Nombre de la instantánea que se utilizará.  (cadena)
+* `retention`: El tiempo durante el cual se conserva la instantánea.  Dependiendo de la hora, se muestra en uno de los siguientes formatos:
++
+** `fifo`La instantánea se conserva según el principio de primero en entrar, primero en salir (FIFO).  Si está vacía, la instantánea se conserva indefinidamente.  (cadena)
+** HH:mm:ss
+
+
+* `volumeID`: El identificador del volumen que se incluirá en la instantánea.  (entero)
+* `volumes`: Una lista de identificadores de volumen que se incluirán en la instantánea del grupo.  (matriz de enteros)
+
+ a| 
+link:reference_element_api_schedule.html["cronograma"^]
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+La etiqueta utilizada por el software SnapMirror para especificar la política de retención de instantáneas en un punto final de SnapMirror .
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+para ser eliminado
+ a| 
+Indica si la programación está marcada para su eliminación.  Valores válidos:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+fecha de inicio
+ a| 
+Indica la fecha en que comenzó o comenzará el horario por primera vez.
+ a| 
+cadena de fecha ISO 8601
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+días del mes
+ a| 
+Los días del mes en que se tomará la fotografía.  Los valores válidos son del 1 al 31.
+ a| 
+matriz de enteros
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+días laborables
+ a| 
+Día de la semana en que se creará la instantánea.  El día de la semana comienza el domingo con el valor 0 y un desplazamiento de 1.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+cronograma
+ a| 
+Un objeto que contiene los atributos de programación modificados.
+ a| 
+xref:reference_element_api_schedule.adoc[cronograma]
+
+|===
+
+
+== Ejemplo de solicitud
+
+[listing]
+----
+{
+  "method": "ModifySchedule",
+  "params": {
+    "scheduleName" : "Chicago",
+    "scheduleID" : 3
+    },
+  "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+            },
+      "hasError": false,
+      "hours": 5,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 3,
+      "scheduleInfo": {
+        "volumeID": "2"
+            },
+      "scheduleName": "Chicago",
+      "scheduleType": "Snapshot",
+      "startingDate": null,
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 2,
+          "offset": 1
+      }
+      ]
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,143 @@
+---
+permalink: api/reference_element_api_testaddressavailability.html 
+sidebar: sidebar 
+keywords: ip,address,availability,test,testing,ensemble,cluster,testaddressavailability 
+summary: Puede utilizar el método TestAddressAvailability para comprobar si una determinada dirección IP está en uso en una interfaz dentro del clúster de almacenamiento. 
+---
+= Disponibilidad de direcciones de prueba
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `TestAddressAvailability` Método para comprobar si una determinada dirección IP está en uso en una interfaz dentro del clúster de almacenamiento.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+interfaz
+ a| 
+La interfaz de red de destino (como eth0, Bond10G, etc.).
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+DIRECCIÓN
+ a| 
+La dirección IP que se va a buscar en la interfaz de destino.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+El ID de VLAN de destino.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+se acabó el tiempo
+ a| 
+Tiempo de espera en segundos para probar la dirección de destino.
+ a| 
+entero
+ a| 
+5
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+DIRECCIÓN
+ a| 
+La dirección IP probada.
+ a| 
+cadena
+
+
+
+ a| 
+disponible
+ a| 
+Verdadero si la dirección IP solicitada está en uso, y falso si no lo está.
+ a| 
+booleano
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+	"method": "TestAddressAvailability",
+	"params": {
+		"interface": "Bond10G",
+		"address": "10.0.0.1",
+		"virtualNetworkTag": 1234
+	}
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"address":"10.0.0.1",
+		"available": true
+	}
+}
+----
+
+
+== Nueva versión
+
+11,0

@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_session_fibre_channel.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: El objeto de sesión contiene información sobre cada sesión de Fibre Channel que es visible para el clúster y en qué puertos de destino es visible.  Puede recuperar esta información con el método API ListFibreChannelSessions. 
+---
+= sesión (Canal de fibra)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de sesión contiene información sobre cada sesión de Fibre Channel que es visible para el clúster y en qué puertos de destino es visible.  Puedes recuperar esta información con el `ListFibreChannelSessions` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+iniciadorWWPN
+ a| 
+El nombre de puerto mundial (WWPN) del iniciador que está conectado al puerto de destino.
+ a| 
+cadena
+
+
+
+ a| 
+ID de nodo
+ a| 
+El nodo propietario de la sesión Fibre Channel.
+ a| 
+entero
+
+
+
+ a| 
+iniciador
+ a| 
+Información sobre el servidor iniciador de esta sesión de Fibre Channel.  Miembros:
+
+* alias: El nombre descriptivo asignado al iniciador.
+* atributos: Los atributos de este iniciador.
+* initiatorID: El ID de este iniciador.
+* nombreIniciador: El nombre de este iniciador.
+* volumeAccessGroups: Una lista de los grupos de acceso a volúmenes asociados con este iniciador.
+
+ a| 
+Objeto JSON
+
+
+
+ a| 
+ID de servicio
+ a| 
+El ID de servicio del puerto de destino involucrado en esta sesión.
+ a| 
+entero
+
+
+
+ a| 
+targetWWPN
+ a| 
+El WWPN del puerto de destino involucrado en esta sesión.
+ a| 
+cadena
+
+
+
+ a| 
+ID de grupo de acceso al volumen
+ a| 
+El ID del grupo de acceso al volumen al que pertenece el initiatorWWPN.  Si no se encuentra en un grupo de acceso a volúmenes, este valor es nulo.
+ a| 
+entero
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listfibrechannelsessions.adoc[Lista de sesiones de FibreChannel]

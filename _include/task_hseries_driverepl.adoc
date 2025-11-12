@@ -1,0 +1,113 @@
+= Mejores prácticas para agregar y eliminar unidades
+:allow-uri-read: 
+
+
+Si una unidad está defectuosa o si su nivel de desgaste cae por debajo de un umbral, debe reemplazarla.  Las alarmas en la interfaz de usuario del software Element le notifican cuando una unidad ha fallado o está a punto de fallar.  Puedes reemplazar en caliente una unidad averiada.
+
+.Acerca de esta tarea
+Este procedimiento sirve para reemplazar unidades en nodos de almacenamiento H410S y H610S.  Al extraer una unidad, esta se desconecta de internet.  Los datos que contiene la unidad se eliminan y se migran a otras unidades del clúster.  La migración de datos a otras unidades activas del sistema puede tardar desde unos minutos hasta una hora, dependiendo de la utilización de la capacidad y las operaciones de E/S activas en el clúster.  Deberá seguir estas buenas prácticas para el manejo de unidades durante su extracción y reemplazo:
+
+* Mantén la unidad en la bolsa ESD hasta que estés listo para instalarla.
+* Abra la bolsa ESD a mano o corte la parte superior con unas tijeras.
+* Utilice siempre una pulsera antiestática conectada a tierra a una superficie sin pintar de su chasis.
+* Utilice siempre ambas manos al extraer, instalar o transportar una unidad.
+* Nunca fuerce una unidad en el chasis.
+* Utilice siempre embalaje homologado para el envío de unidades.
+* No apile las unidades una encima de otra.
+
+
+
+
+== Mejores prácticas para agregar y eliminar unidades
+
+* Agrega todas las unidades de bloque y asegúrate de que la sincronización de bloques esté completa antes de agregar las unidades de partición.
+* Para el software Element 10.x y versiones posteriores, agregue todas las unidades de bloque a la vez.  Asegúrese de no realizar esta operación con más de tres nodos a la vez.
+* Para el software Element 9.x y versiones anteriores, agregue tres unidades a la vez, permitiendo que se sincronicen completamente antes de agregar el siguiente grupo de tres.
+* Retire la unidad de partición y asegúrese de que la sincronización de la partición esté completa antes de retirar las unidades de bloque.
+* Retire todas las unidades de bloque de un solo nodo a la vez.  Asegúrese de que la sincronización de todos los bloques esté completa antes de pasar al siguiente nodo.
+
+
+.Pasos
+. Elimine la unidad del clúster utilizando la interfaz de usuario del software NetApp Element :
++
+.. Desde la interfaz de usuario de Element, seleccione *Clúster > Unidades*.
+.. Seleccione *Falló* para ver la lista de unidades que fallaron.
+.. Anote el número de ranura de la unidad averiada.  Necesitas esta información para localizar la unidad averiada en el chasis.
+.. Seleccione *Acciones* para la unidad que desea eliminar.
+.. Seleccione *Eliminar*.
++
+
+NOTE: Si no hay suficiente capacidad para extraer las unidades activas antes de eliminar un nodo, aparecerá un mensaje de error al confirmar la extracción de la unidad.  Una vez resuelto el error, ya puede extraer físicamente la unidad del chasis.
+
+
+
+. Reemplace la unidad del chasis:
++
+.. Desembale la unidad de repuesto y colóquela sobre una superficie plana y libre de estática cerca del rack.  Guarda los materiales de embalaje para cuando devuelvas la unidad defectuosa a NetApp.  Aquí se muestra la vista frontal de los nodos de almacenamiento H610S y H410S con las unidades:
++
+image::h610s_h410s.png[Muestra la vista frontal de los nodos de almacenamiento H610S y H410S.]
+
+.. (*Solo H410S*) Realice los siguientes pasos:
++
+... Identifique el nodo haciendo coincidir el número de serie (etiqueta de servicio) con el número que anotó en la interfaz de usuario de Element.  El número de serie se encuentra en una pegatina en la parte posterior de cada nodo.  Una vez identificado el nodo, puede utilizar la información de la ranura para identificar la ranura en la que se encuentra la unidad averiada. Las unidades están ordenadas alfabéticamente de la A a la D y del 0 al 5.
+... Retire el bisel.
+... Pulse el botón de liberación de la unidad averiada:
++
+image::h410s_drive.png[Muestra el botón de liberación en la unidad para nodos de almacenamiento H410S.]
+
++
+Al presionar el botón de liberación, la manija de leva del accionamiento se abre parcialmente y el accionamiento se libera del plano medio.
+
+... Abra la manija de la leva y deslice la unidad hacia afuera con cuidado usando ambas manos.
+... Coloque la unidad sobre una superficie antiestática y nivelada.
+... Inserte la unidad de repuesto en la ranura hasta el fondo del chasis utilizando ambas manos.
+... Presione la manija de la leva hasta que haga clic.
+... Vuelva a instalar el bisel.
+... Notifique al soporte de NetApp sobre el reemplazo de la unidad.  El soporte de NetApp le proporcionará instrucciones para devolver la unidad defectuosa.
+
+
+.. (*Solo H610S*) Realice los siguientes pasos:
++
+... Haga coincidir el número de ranura de la unidad averiada en la interfaz de usuario de Element con el número del chasis.  El LED del disco averiado está iluminado en color ámbar.
+... Retire el bisel.
+... Pulse el botón de liberación y retire la unidad averiada como se muestra en la siguiente ilustración:
++
+image::h610s_driveremove.png[Muestra cómo se extrae la unidad del nodo H610S.]
+
++
+
+NOTE: Asegúrese de que el asa de la bandeja esté completamente abierta antes de intentar deslizar la unidad fuera del chasis.
+
+... Deslice la unidad hacia afuera y colóquela sobre una superficie nivelada y libre de estática.
+... Pulse el botón de liberación de la unidad de repuesto antes de insertarla en la bahía de la unidad.  El asa de la bandeja de la unidad se abre con un resorte.
++
+image::H600S_driveinstall.png[Muestra la unidad que se está instalando en el nodo H610S.]
+
+... Inserte la unidad de repuesto sin utilizar una fuerza excesiva.  Cuando la unidad esté insertada completamente, se oirá un clic.
+... Cierre con cuidado el asa de la bandeja de la unidad.
+... Vuelva a instalar el bisel.
+... Notifique al soporte de NetApp sobre el reemplazo de la unidad.  El soporte de NetApp le proporcionará instrucciones para devolver la unidad defectuosa.
+
+
+
+
+. Vuelva a agregar la unidad al clúster utilizando la interfaz de usuario de Element.
++
+
+NOTE: Cuando se instala una nueva unidad en un nodo existente, la unidad se registra automáticamente como *Disponible* en la interfaz de usuario de Element.  Debes agregar la unidad al clúster antes de que pueda participar en él.
+
++
+.. Desde la interfaz de usuario de Element, seleccione *Clúster > Unidades*.
+.. Seleccione *Disponible* para ver la lista de unidades disponibles.
+.. Seleccione el icono de Acciones de la unidad que desea agregar y seleccione *Agregar*.
+
+
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

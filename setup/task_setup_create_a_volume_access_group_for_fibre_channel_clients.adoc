@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Los grupos de acceso a volúmenes permiten la comunicación entre clientes Fibre Channel y volúmenes en un sistema de almacenamiento SolidFire .  La asignación de iniciadores de cliente Fibre Channel (WWPN) a los volúmenes en un grupo de acceso a volúmenes permite la E/S de datos segura entre una red Fibre Channel y un volumen SolidFire .' 
+---
+= Cree un grupo de acceso por volumen para clientes Fibre Channel.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los grupos de acceso a volúmenes permiten la comunicación entre clientes Fibre Channel y volúmenes en un sistema de almacenamiento SolidFire .  La asignación de iniciadores de cliente Fibre Channel (WWPN) a los volúmenes de un grupo de acceso a volúmenes permite la E/S de datos segura entre una red Fibre Channel y un volumen SolidFire .
+
+También puede agregar iniciadores iSCSI a un grupo de acceso a volúmenes; esto les da a los iniciadores acceso a los mismos volúmenes en el grupo de acceso a volúmenes.
+
+.Pasos
+. Haz clic en *Administración* > *Grupos de acceso*.
+. Haga clic en *Crear grupo de acceso*.
+. Introduzca un nombre para el grupo de acceso al volumen en el campo *Nombre*.
+. Seleccione y agregue los iniciadores de Fibre Channel de la lista *Iniciadores de Fibre Channel no enlazados*.
++
+
+NOTE: Puedes añadir o eliminar iniciadores más adelante.
+
+. *Opcional:* Seleccione y agregue un iniciador iSCSI de la lista *Iniciadores*.
+. Para adjuntar volúmenes al grupo de acceso, siga los siguientes pasos:
++
+.. Seleccione un volumen de la lista *Volúmenes*.
+.. Haga clic en *Adjuntar volumen*.
+
+
+. Haga clic en *Crear grupo de acceso*.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

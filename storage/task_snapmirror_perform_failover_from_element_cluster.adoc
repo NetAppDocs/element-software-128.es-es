@@ -1,0 +1,32 @@
+---
+permalink: storage/task_snapmirror_perform_failover_from_element_cluster.html 
+sidebar: sidebar 
+keywords: element, ui, failover, cluster, perform a failover, snapmirror 
+summary: Puede realizar una conmutación por error desde el clúster Element para que el volumen de destino sea de lectura/escritura y accesible para los hosts en el lado de destino.  Antes de realizar una conmutación por error desde el clúster Element, debe romper la relación SnapMirror . 
+---
+= Realizar una conmutación por error desde un clúster de Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede realizar una conmutación por error desde el clúster Element para que el volumen de destino sea de lectura/escritura y accesible para los hosts en el lado de destino.  Antes de realizar una conmutación por error desde el clúster Element, debe romper la relación SnapMirror .
+
+Utilice la interfaz de usuario de NetApp Element para realizar la conmutación por error.  Si la interfaz de usuario de Element no está disponible, también puede usar ONTAP System Manager o ONTAP CLI para ejecutar el comando para romper la relación.
+
+.Lo que necesitarás
+* Existe una relación SnapMirror y tiene al menos una instantánea válida en el volumen de destino.
+* Necesitas realizar una conmutación por error al volumen de destino debido a una interrupción no planificada o un evento planificado en el sitio principal.
+
+
+.Pasos
+. En la interfaz de usuario de Element, haga clic en *Protección de datos* > *Relaciones de SnapMirror *.
+. Encuentre la relación con el volumen de origen que desea conmutar por error.
+. Haz clic en el icono *Acciones*.
+. Haga clic en *Interrupción*.
+. Confirma la acción.
++
+El volumen en el clúster de destino ahora tiene acceso de lectura y escritura y se puede montar en los hosts de la aplicación para reanudar las cargas de trabajo de producción.  Como resultado de esta acción, se detiene toda la replicación de SnapMirror .  La relación muestra un estado de ruptura.
+
+

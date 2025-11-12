@@ -1,0 +1,23 @@
+---
+permalink: storage/concept_intro_clusters.html 
+sidebar: sidebar 
+keywords: clusters, about clusters, collection of nodes, nodes in a cluster, block storage, logical group, add nodes, access cluster 
+summary: Un clúster es el centro de un sistema de almacenamiento SolidFire y está formado por una colección de nodos.  Para aprovechar al máximo la eficiencia del almacenamiento de SolidFire , debe tener al menos cuatro nodos en un clúster.  Un clúster aparece en la red como un único grupo lógico y, por lo tanto, se puede acceder a él como almacenamiento en bloque. 
+---
+= Clústeres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un clúster es el centro de un sistema de almacenamiento SolidFire y está formado por una colección de nodos.  Para aprovechar al máximo la eficiencia del almacenamiento de SolidFire , debe tener al menos cuatro nodos en un clúster.  Un clúster aparece en la red como un único grupo lógico y, por lo tanto, se puede acceder a él como almacenamiento en bloque.
+
+La creación de un nuevo clúster inicializa un nodo como propietario de las comunicaciones para un clúster y establece comunicaciones de red para cada nodo del clúster.  Este proceso se realiza solo una vez para cada nuevo clúster.  Puedes crear un clúster utilizando la interfaz de usuario de Element o la API.
+
+Puedes escalar horizontalmente un clúster añadiendo nodos adicionales.  Al agregar un nuevo nodo, no se interrumpe el servicio y el clúster utiliza automáticamente el rendimiento y la capacidad del nuevo nodo.
+
+Los administradores y los anfitriones pueden acceder al clúster utilizando direcciones IP virtuales.  Cualquier nodo del clúster puede alojar las direcciones IP virtuales.  La IP virtual de gestión (MVIP) permite la gestión del clúster a través de una conexión de 1 GbE, mientras que la IP virtual de almacenamiento (SVIP) permite el acceso del host al almacenamiento a través de una conexión de 10 GbE.  Estas direcciones IP virtuales permiten conexiones consistentes independientemente del tamaño o la composición de un clúster SolidFire .  Si falla un nodo que aloja una dirección IP virtual, otro nodo del clúster comienza a alojar la dirección IP virtual.
+
+
+NOTE: A partir de la versión 11.0 de Element, los nodos se pueden configurar con direcciones IPv4, IPv6 o ambas para su red de administración.  Esto se aplica tanto a los nodos de almacenamiento como a los nodos de administración, excepto al nodo de administración 11.3 y posteriores, que no admiten IPv6.  Al crear un clúster, solo se puede usar una única dirección IPv4 o IPv6 para MVIP y el tipo de dirección correspondiente debe configurarse en todos los nodos.

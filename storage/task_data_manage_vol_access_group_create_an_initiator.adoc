@@ -1,0 +1,53 @@
+---
+permalink: storage/task_data_manage_vol_access_group_create_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, create, fc, iscsi, aliases, chap 
+summary: Puede crear iniciadores iSCSI o Fibre Channel y, opcionalmente, asignarles alias. 
+---
+= Crear un iniciador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede crear iniciadores iSCSI o Fibre Channel y, opcionalmente, asignarles alias.
+
+También puede asignar atributos CHAP basados en el iniciador mediante una llamada a la API.  Para agregar un nombre de cuenta CHAP y credenciales por iniciador, debe usar el `CreateInitiator` Llamada a la API para eliminar y agregar acceso y atributos CHAP.  El acceso del iniciador se puede restringir a una o más VLAN especificando uno o más ID de red virtual a través de `CreateInitiators` y `ModifyInitiators` Llamadas a la API.  Si no se especifican redes virtuales, el iniciador puede acceder a todas las redes.
+
+Para obtener más detalles, consulte la información de referencia de la API. link:../api/concept_element_api_about_the_api.html["Gestiona el almacenamiento con la API de Element"]
+
+.Pasos
+. Haz clic en *Administración* > *Iniciadores*.
+. Haz clic en *Crear iniciador*.
+. Siga los pasos para crear un único iniciador o varios iniciadores:
++
+[cols="25,75"]
+|===
+| Opción | Pasos 
+
+
+ a| 
+Crea un único iniciador
+ a| 
+.. Haga clic en *Crear un único iniciador*.
+.. Introduzca el IQN o WWPN del iniciador en el campo *IQN/WWPN*.
+.. Introduzca un nombre amigable para el iniciador en el campo *Alias*.
+.. Haz clic en *Crear iniciador*.
+
+
+
+
+ a| 
+Crear múltiples iniciadores
+ a| 
+.. Haga clic en *Crear iniciadores en masa*.
+.. Introduzca una lista de IQN o WWPN en el cuadro de texto.
+.. Haz clic en *Añadir iniciadores*.
+.. Elija un iniciador de la lista resultante y haga clic en el icono Agregar correspondiente en la columna *Alias* para agregar un alias al iniciador.
+.. Haz clic en la marca de verificación para confirmar el nuevo alias.
+.. Haz clic en *Crear iniciadores*.
+
+
+|===
+

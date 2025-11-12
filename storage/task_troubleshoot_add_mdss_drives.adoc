@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_add_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, add, multi-drive slice service 
+summary: 'Puede agregar una segunda unidad de metadatos en un nodo SolidFire convirtiendo la unidad de bloques en la ranura 2 en una unidad de partición.  Esto se logra habilitando la función de servicio de segmentación de múltiples unidades (MDSS).  Para habilitar esta función, debe ponerse en contacto con el soporte de NetApp .' 
+---
+= Agregar unidades MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede agregar una segunda unidad de metadatos en un nodo SolidFire convirtiendo la unidad de bloques en la ranura 2 en una unidad de partición.  Esto se logra habilitando la función de servicio de segmentación de múltiples unidades (MDSS).  Para habilitar esta función, debe ponerse en contacto con el soporte de NetApp .
+
+Para que una unidad de partición esté disponible, puede ser necesario reemplazar una unidad averiada por una unidad nueva o de repuesto.  Debe agregar la unidad de partición del sistema al mismo tiempo que agrega la unidad para la ranura 2.  Si intenta agregar la unidad de partición de la ranura 2 sola o antes de agregar la unidad de partición del sistema, el sistema generará un error.
+
+. Haz clic en *Clúster* > *Unidades*.
+. Haz clic en *Disponible* para ver la lista de unidades disponibles.
+. Seleccione las unidades de partición que desea agregar.
+. Haz clic en *Acciones en lote*.
+. Haga clic en *Agregar*.
+. Confirme en la pestaña *Unidades activas* que las unidades se han agregado.
+

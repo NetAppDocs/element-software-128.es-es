@@ -1,0 +1,18 @@
+---
+permalink: concepts/concept_intro_management_node.html 
+sidebar: sidebar 
+keywords: what is, element mnode, management node, mnode 
+summary: 'El nodo de gestión (mNode) es una máquina virtual que se ejecuta en paralelo con uno o más clústeres de almacenamiento basados ​​en software Element.  Se utiliza para actualizar y proporcionar servicios del sistema, incluyendo monitoreo y telemetría, administrar los activos y la configuración del clúster, ejecutar pruebas y utilidades del sistema y habilitar el acceso al soporte de NetApp para la resolución de problemas.' 
+---
+= Nodo de gestión para el software Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ellink:../mnode/task_mnode_work_overview.html["nodo de gestión (mNode)"] es una máquina virtual que se ejecuta en paralelo con uno o más clústeres de almacenamiento basados ​​en software Element.  Se utiliza para actualizar y proporcionar servicios del sistema, incluyendo monitoreo y telemetría, administrar los activos y la configuración del clúster, ejecutar pruebas y utilidades del sistema y habilitar el acceso al soporte de NetApp para la resolución de problemas.
+
+El nodo de administración interactúa con un clúster de almacenamiento para realizar acciones de administración, pero no es miembro del clúster de almacenamiento.  Los nodos de gestión recopilan periódicamente información sobre el clúster a través de llamadas a la API y envían esta información a Active IQ para la monitorización remota (si está habilitada).  Los nodos de gestión también son responsables de coordinar las actualizaciones de software de los nodos del clúster.
+
+A partir de la versión Element 11.3, el nodo de administración funciona como un host de microservicios, lo que permite actualizaciones más rápidas de servicios de software seleccionados fuera de las versiones principales.  Estos microservicios olink:../concepts/concept_intro_management_services_for_afa.html["servicios de administración"] se actualizan con frecuencia como paquetes de servicios.

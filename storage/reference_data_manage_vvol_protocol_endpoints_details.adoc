@@ -1,0 +1,52 @@
+---
+permalink: storage/reference_data_manage_vvol_protocol_endpoints_details.html 
+sidebar: sidebar 
+keywords: protocol endpoints, details, vvols, state, type, id 
+summary: La página Puntos de conexión del protocolo en la pestaña VVols proporciona información sobre los puntos de conexión del protocolo. 
+---
+= Detalles de los puntos de conexión del protocolo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La página Puntos de conexión del protocolo en la pestaña VVols proporciona información sobre los puntos de conexión del protocolo.
+
+* *ID del proveedor principal*
++
+El ID del proveedor del punto final del protocolo principal.
+
+* *ID del proveedor secundario*
++
+El ID del proveedor del punto final del protocolo secundario.
+
+* *ID del punto final del protocolo*
++
+El UUID del punto final del protocolo.
+
+* *Estado del punto final del protocolo*
++
+Estado del punto final del protocolo.  Los valores posibles son los siguientes:
+
++
+** Activo: El punto final del protocolo está en uso.
+** Inicio: El punto final del protocolo se está iniciando.
+** Conmutación por error: El extremo del protocolo ha conmutado por error.
+** Reservado: El punto final del protocolo está reservado.
+
+
+* *Tipo de proveedor*
++
+El tipo de proveedor del punto final del protocolo.  Los valores posibles son los siguientes:
+
++
+** Primario
+** Secundario
+
+
+* *ID de dispositivo SCSI NAA*
++
+El identificador de dispositivo SCSI único a nivel mundial para el punto final del protocolo en formato extendido registrado IEEE NAA.
+
+

@@ -1,0 +1,1115 @@
+---
+permalink: api/reference_element_api_app_b_access_control.html 
+sidebar: sidebar 
+keywords: access,control,type 
+summary: Los métodos de la API de Element disponibles varían según el tipo de acceso que configure. 
+---
+= Control de acceso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los métodos de la API de Element disponibles varían según el tipo de acceso que configure.
+
+
+NOTE: Existen tipos de acceso disponibles a través de la API que no están disponibles en la interfaz de usuario de Element.
+
+
+
+== cuentas
+
+Los siguientes métodos están disponibles para el tipo de acceso a cuentas:
+
+|===
+
+
+ a| 
+Agregar cuenta
+
+
+
+ a| 
+ObtenerCuentaPorID
+
+
+
+ a| 
+Modificar cuenta
+
+
+
+ a| 
+ObtenerCuentaPorNombre
+
+
+
+ a| 
+Lista de cuentas
+
+
+
+ a| 
+Obtén la eficiencia de la cuenta
+
+
+
+ a| 
+Eliminar cuenta
+
+|===
+
+
+== administrador
+
+Todos los métodos están disponibles para el tipo de acceso de administrador.
+
+
+
+== administrador del clúster
+
+Los siguientes métodos están disponibles para el tipo de acceso de administrador de clúster:
+
+|===
+
+
+ a| 
+Agregar administrador de clúster
+
+
+
+ a| 
+ListBackupTargets
+
+
+
+ a| 
+AgregarIniciadoresAlGrupoDeAccesoPorVolumen
+
+
+
+ a| 
+Lista de trabajos de volumen masivo
+
+
+
+ a| 
+Agregar administrador de clúster Ldap
+
+
+
+ a| 
+Lista de administradores de clúster
+
+
+
+ a| 
+Agregar red virtual
+
+
+
+ a| 
+ListClusterPairs
+
+
+
+ a| 
+Agregar red virtual
+
+
+
+ a| 
+Información del puerto del canal de fibra del nodo de lista
+
+
+
+ a| 
+Agregar volumen al grupo de acceso por volumen
+
+
+
+ a| 
+ListBackupTargets
+
+
+
+ a| 
+Clonar múltiples volúmenes
+
+
+
+ a| 
+Hardware de la unidad de lista
+
+
+
+ a| 
+Emparejamiento de clústeres completo
+
+
+
+ a| 
+Lista de sesiones de FibreChannel
+
+
+
+ a| 
+Emparejamiento de volumen completo
+
+
+
+ a| 
+Información del puerto del canal de fibra
+
+
+
+ a| 
+Crear destino de copia de seguridad
+
+
+
+ a| 
+Lista de instantáneas de grupo
+
+
+
+ a| 
+Crear horario
+
+
+
+ a| 
+Lista de volúmenes emparejados activos
+
+
+
+ a| 
+Crear instantánea
+
+
+
+ a| 
+Modificar destino de copia de seguridad
+
+
+
+ a| 
+Crear paquete de soporte
+
+
+
+ a| 
+Modificar administrador de clúster
+
+
+
+ a| 
+Crear paquete de soporte de clúster
+
+
+
+ a| 
+Modificar instantánea de grupo
+
+
+
+ a| 
+CrearInstantáneaDeGrupo
+
+
+
+ a| 
+Modificar UmbralCompletoDeClúster
+
+
+
+ a| 
+Crear grupo de acceso a volumen
+
+
+
+ a| 
+Modificar grupo de acceso al volumen
+
+
+
+ a| 
+Eliminar todos los paquetes de soporte
+
+
+
+ a| 
+Modificar asignaciones de Lun de grupo de acceso a volumen
+
+
+
+ a| 
+Eliminar instantánea
+
+
+
+ a| 
+Modificar par de volúmenes
+
+
+
+ a| 
+Eliminar instantánea de grupo
+
+
+
+ a| 
+Modificar red virtual
+
+
+
+ a| 
+Eliminar grupo de acceso al volumen
+
+
+
+ a| 
+Eliminar administrador del clúster
+
+
+
+ a| 
+Deshabilitar el cifrado en reposo
+
+
+
+ a| 
+Eliminar par de volúmenes
+
+
+
+ a| 
+Deshabilitar la autenticación LDAP
+
+
+
+ a| 
+Eliminar red virtual
+
+
+
+ a| 
+Deshabilitar SNMP
+
+
+
+ a| 
+Eliminar volúmenes del grupo de acceso a volúmenes
+
+
+
+ a| 
+Habilitar cifrado en reposo
+
+
+
+ a| 
+EliminarIniciadoresDelGrupoDeAccesoPorVolumen
+
+
+
+ a| 
+Habilitar autenticación LDAP
+
+
+
+ a| 
+Revertir a instantánea
+
+
+
+ a| 
+Habilitar SNMP
+
+
+
+ a| 
+Revertir a instantánea de grupo
+
+
+
+ a| 
+ObtenerObjetivoDeCopiaDeSeguridad
+
+
+
+ a| 
+SetLoginSessionInfo
+
+
+
+ a| 
+Umbral completo del clúster
+
+
+
+ a| 
+SetNtpInfo
+
+
+
+ a| 
+Obtener ID de nodo maestro del clúster
+
+
+
+ a| 
+SetSnmpACL
+
+
+
+ a| 
+Obtener configuración de hardware
+
+
+
+ a| 
+SetSnmpInfo
+
+
+
+ a| 
+Obtener configuración LDAP
+
+
+
+ a| 
+SetSnmpTrapInfo
+
+
+
+ a| 
+Obtener información de sesión de inicio de sesión
+
+
+
+ a| 
+Configurar hosts de registro remoto
+
+
+
+ a| 
+Obtener información NTP
+
+
+
+ a| 
+Cerrar
+
+
+
+ a| 
+Obtener información de NVRAM
+
+
+
+ a| 
+Iniciar lectura de volumen masivo
+
+
+
+ a| 
+GetRawStats
+
+
+
+ a| 
+Iniciar escritura masiva de volumen
+
+
+
+ a| 
+Obtener ACL SNMP
+
+
+
+ a| 
+Iniciar emparejamiento de clústeres
+
+
+
+ a| 
+ObtenerEficienciaDeGrupoDeAccesoDeVolumen
+
+
+
+ a| 
+Emparejamiento de volumen inicial
+
+
+
+ a| 
+ObtenerAsignaciones de acceso al volumen
+
+
+
+ a| 
+Prueba de autenticación LDAP
+
+
+
+ a| 
+Obtener red virtual
+
+
+
+ a| 
+
+|===
+
+
+== unidades
+
+Los siguientes métodos están disponibles para el tipo de acceso a las unidades:
+
+|===
+
+
+ a| 
+ListDrives
+
+
+
+ a| 
+Eliminar unidades
+
+
+
+ a| 
+Agregar unidades
+
+
+
+ a| 
+Unidades de borrado seguro
+
+|===
+
+
+== nodos
+
+Los siguientes métodos están disponibles para el tipo de acceso a nodos:
+
+|===
+
+
+ a| 
+Agregar nodos
+
+
+
+ a| 
+Lista de nodos pendientes
+
+
+
+ a| 
+Lista de nodos activos
+
+
+
+ a| 
+Eliminar nodos
+
+|===
+
+
+== leer
+
+Los siguientes métodos están disponibles para el tipo de acceso de lectura:
+
+|===
+
+
+ a| 
+ObtenerCuentaPorID
+
+
+
+ a| 
+Listar trabajos clonados
+
+
+
+ a| 
+ObtenerCuentaPorNombre
+
+
+
+ a| 
+Lista de volúmenes eliminados
+
+
+
+ a| 
+ObtenerResultadoAsíncrono
+
+
+
+ a| 
+Hardware de la unidad de lista
+
+
+
+ a| 
+Obtener capacidad del clúster
+
+
+
+ a| 
+ListDrives
+
+
+
+ a| 
+Obtener QoS predeterminado
+
+
+
+ a| 
+Lista de eventos
+
+
+
+ a| 
+GetDriveStats
+
+
+
+ a| 
+Lista de sesiones ISCSIS
+
+
+
+ a| 
+Obtener actualización de software
+
+
+
+ a| 
+Lista de nodos pendientes
+
+
+
+ a| 
+Obtener estadísticas de volumen
+
+
+
+ a| 
+ListSyncJobs
+
+
+
+ a| 
+Lista de cuentas
+
+
+
+ a| 
+Listar grupos de acceso de volumen
+
+
+
+ a| 
+Lista de nodos activos
+
+
+
+ a| 
+ListVolumeStatsByAccount
+
+
+
+ a| 
+Lista de nodos activos
+
+
+
+ a| 
+Listar estadísticas de volumen por volumen
+
+
+
+ a| 
+Listar volúmenes activos
+
+
+
+ a| 
+Lista de estadísticas de volumen por grupo de acceso de volumen
+
+
+
+ a| 
+Lista todos los nodos
+
+
+
+ a| 
+Listar volúmenes para la cuenta
+
+
+
+ a| 
+ListBackupTargets
+
+|===
+
+
+== informes
+
+Los siguientes métodos están disponibles para el tipo de acceso de informes:
+
+|===
+
+
+ a| 
+Borrar fallos de clúster
+
+
+
+ a| 
+ObtenerEficiencia de Volumen
+
+
+
+ a| 
+Obtén la eficiencia de la cuenta
+
+
+
+ a| 
+Obtener estadísticas de volumen
+
+
+
+ a| 
+Obtener capacidad del clúster
+
+
+
+ a| 
+Listar trabajos clonados
+
+
+
+ a| 
+Obtener información de hardware del clúster
+
+
+
+ a| 
+ListClusterFaults
+
+
+
+ a| 
+Obtener información del clúster
+
+
+
+ a| 
+ListClusterPairs
+
+
+
+ a| 
+Obtener ID de nodo maestro del clúster
+
+
+
+ a| 
+Hardware de la unidad de lista
+
+
+
+ a| 
+Obtener estadísticas del clúster
+
+
+
+ a| 
+Lista de eventos
+
+
+
+ a| 
+Información sobre el hardware de la unidad
+
+
+
+ a| 
+Lista de sesiones ISCSIS
+
+
+
+ a| 
+GetDriveStats
+
+
+
+ a| 
+Listas de horarios
+
+
+
+ a| 
+Obtener configuración de red
+
+
+
+ a| 
+Servicios de listas
+
+
+
+ a| 
+Información del hardware del nodo
+
+
+
+ a| 
+ListSyncJobs
+
+
+
+ a| 
+Obtener estadísticas del nodo
+
+
+
+ a| 
+Lista de redes virtuales
+
+
+
+ a| 
+Obtener información SNMP
+
+
+
+ a| 
+ListVolumeStatsByAccount
+
+
+
+ a| 
+Obtener información de trampa SNMP
+
+
+
+ a| 
+Listar estadísticas de volumen por volumen
+
+
+
+ a| 
+ObtenerEficienciaDeGrupoDeAccesoDeVolumen
+
+
+
+ a| 
+Lista de estadísticas de volumen por grupo de acceso de volumen
+
+|===
+
+
+== repositorios
+
+El método ListAllNodes está disponible para el tipo de acceso a repositorios.
+
+
+
+== volúmenes
+
+Los siguientes métodos están disponibles para el tipo de acceso a volúmenes:
+
+|===
+
+
+ a| 
+Crear volumen
+
+
+
+ a| 
+Eliminar volumen
+
+
+
+ a| 
+Modificar destino de copia de seguridad
+
+
+
+ a| 
+Clonar volumen
+
+
+
+ a| 
+Eliminar emparejamiento de volumen
+
+
+
+ a| 
+Modificar volúmenes
+
+
+
+ a| 
+Clonar múltiples volúmenes
+
+
+
+ a| 
+ObtenerObjetivoDeCopiaDeSeguridad
+
+
+
+ a| 
+Modificar par de volúmenes
+
+
+
+ a| 
+Crear destino de copia de seguridad
+
+
+
+ a| 
+Obtener QoS predeterminado
+
+
+
+ a| 
+Purga de volumen eliminado
+
+
+
+ a| 
+Crear instantánea
+
+
+
+ a| 
+Listar volúmenes activos
+
+
+
+ a| 
+Eliminar destino de copia de seguridad
+
+
+
+ a| 
+CrearInstantáneaDeGrupo
+
+
+
+ a| 
+ListBackupTarget
+
+
+
+ a| 
+Eliminar par de volúmenes
+
+
+
+ a| 
+Emparejamiento de volumen completo
+
+
+
+ a| 
+Lista de instantáneas de grupo
+
+
+
+ a| 
+Restaurar volumen eliminado
+
+
+
+ a| 
+Clonar múltiples volúmenes
+
+
+
+ a| 
+Listar volúmenes para la cuenta
+
+
+
+ a| 
+Revertir a instantánea de grupo
+
+
+
+ a| 
+Eliminar instantánea de grupo
+
+
+
+ a| 
+Lista de volúmenes eliminados
+
+
+
+ a| 
+Revertir a instantánea
+
+
+
+ a| 
+Eliminar instantánea
+
+
+
+ a| 
+Lista de instantáneas de grupo
+
+
+
+ a| 
+Iniciar lectura de volumen masivo
+
+
+
+ a| 
+Iniciar escritura masiva de volumen
+
+
+
+ a| 
+Emparejamiento de volumen inicial
+
+
+
+ a| 
+Actualizar estado del volumen masivo
+
+|===
+
+
+== escribir
+
+Los siguientes métodos están disponibles para el tipo de acceso de escritura:
+
+|===
+
+
+ a| 
+Agregar unidades
+
+
+
+ a| 
+Eliminar nodos
+
+
+
+ a| 
+Agregar nodos
+
+
+
+ a| 
+Eliminar cuenta
+
+
+
+ a| 
+Agregar cuenta
+
+
+
+ a| 
+Eliminar volúmenes del grupo de acceso a volúmenes
+
+
+
+ a| 
+Agregar volumen a grupo de acceso a volumen
+
+
+
+ a| 
+EliminarIniciadoresDelGrupoDeAccesoPorVolumen
+
+
+
+ a| 
+AgregarIniciadoresAlGrupoDeAccesoPorVolumen
+
+
+
+ a| 
+Eliminar grupo de acceso al volumen
+
+
+
+ a| 
+Crear grupo de acceso a volumen
+
+
+
+ a| 
+Eliminar volumen
+
+
+
+ a| 
+Modificar grupo de acceso al volumen
+
+
+
+ a| 
+Restaurar volumen eliminado
+
+
+
+ a| 
+Modificar cuenta
+
+
+
+ a| 
+Purga de volumen eliminado
+
+
+
+ a| 
+Crear volumen
+
+
+
+ a| 
+Modificar volumen
+
+
+
+ a| 
+Clonar volumen
+
+
+
+ a| 
+ObtenerResultadoAsíncrono
+
+
+
+ a| 
+Eliminar unidades
+
+|===
+.Información relacionada
+link:../storage/concept_system_manage_manage_cluster_administrator_users.html#view-cluster-admin-details["Obtén información sobre los tipos de acceso disponibles en la interfaz de usuario de Element."]

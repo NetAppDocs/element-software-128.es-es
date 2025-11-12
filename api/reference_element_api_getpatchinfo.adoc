@@ -1,0 +1,95 @@
+---
+permalink: api/reference_element_api_getpatchinfo.html 
+sidebar: sidebar 
+keywords: get,patch,info,patches,getpatchinfo 
+summary: Puede utilizar el método GetPatchInfo para obtener información sobre los parches instalados en un nodo. 
+---
+= Obtener información del parche
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetPatchInfo` Método para obtener información sobre los parches de software Element instalados en un nodo de almacenamiento.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+| `force`  a| 
+Fuerza la ejecución del método en todos los nodos del clúster de almacenamiento.  Esto solo es necesario cuando se envía la API a una dirección IP de clúster en lugar de a un solo nodo. Valores posibles:
+
+* `true`
+* `false`
+
+| booleano | `false` | No 
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+| parches | Objeto que contiene información sobre los parches instalados en este nodo. | Objeto JSON 
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetPatchInfo",
+   "params": {
+      "force": false,
+      },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "patches": {
+          "SUST936": {
+          "date": "Wed 09 Dec 2020 10:41:59 PM UTC",
+          "description": "BMC fixes",
+          "newFiles": [
+              "None"
+          ],
+          "patchedFiles": [
+              "Patched_file_1.bin",
+              "Patched_file_2.dat",
+              "Patched_file_3.tgz"
+          ]
+          }
+        }
+    }
+}
+
+----
+
+
+== Nueva versión
+
+12,3

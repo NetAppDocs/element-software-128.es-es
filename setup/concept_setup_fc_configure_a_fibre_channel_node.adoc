@@ -1,0 +1,38 @@
+---
+permalink: setup/concept_setup_fc_configure_a_fibre_channel_node.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Los nodos Fibre Channel permiten conectar el clúster a una estructura de red Fibre Channel.  Los nodos Fibre Channel se agregan en pares y operan en modo activo-activo (todos los nodos procesan activamente el tráfico del clúster).  Los clústeres que ejecutan la versión 9.0 y posteriores del software Element admiten hasta cuatro nodos; los clústeres que ejecutan versiones anteriores admiten un máximo de dos nodos.' 
+---
+= Configurar un nodo Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los nodos Fibre Channel permiten conectar el clúster a una estructura de red Fibre Channel.  Los nodos Fibre Channel se agregan por pares y funcionan en modo activo-activo (todos los nodos procesan activamente el tráfico del clúster).  Los clústeres que ejecutan la versión 9.0 y posteriores del software Element admiten hasta cuatro nodos; los clústeres que ejecutan versiones anteriores admiten un máximo de dos nodos.
+
+Debe asegurarse de que se cumplen las siguientes condiciones antes de configurar un nodo Fibre Channel:
+
+* Al menos dos nodos Fibre Channel están conectados a conmutadores Fibre Channel.
+* Todos los puertos Fibre Channel de SolidFire deben estar conectados a su estructura Fibre Channel.  Las cuatro conexiones de red SolidFire Bond10G deben conectarse en un grupo de enlace LACP a nivel de conmutador.  Esto permitirá obtener el mejor rendimiento general de los sistemas Fibre Channel.
+* Revise y valide todas las prácticas recomendadas para clústeres Fibre Channel incluidas en este artículo de la base de conocimientos de NetApp .
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/SolidFire_FC_cluster_best_practice["Mejores prácticas para clústeres SolidFire FC"]
+
+
+
+Los pasos de configuración de red y clúster son los mismos para los nodos Fibre Channel y los nodos de almacenamiento.
+
+Cuando se crea un nuevo clúster con nodos Fibre Channel y nodos de almacenamiento SolidFire , las direcciones de nombre de puerto mundial (WWPN) para los nodos están disponibles en la interfaz de usuario de Element.  Puede utilizar las direcciones WWPN para zonificar el conmutador Fibre Channel.
+
+Los WWPN se registran en el sistema cuando se crea un nuevo clúster con nodos.  En la interfaz de usuario de Element, puede encontrar las direcciones WWPN en la columna WWPN de la pestaña Puertos FC, a la que accede desde la pestaña Clúster.
+
+
+
+== Encuentra más información
+
+xref:task_setup_fc_add_fibre_channel_nodes_to_a_cluster.adoc[Agregar nodos Fibre Channel a un clúster]
+
+xref:task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.adoc[Cree un nuevo clúster con nodos Fibre Channel]

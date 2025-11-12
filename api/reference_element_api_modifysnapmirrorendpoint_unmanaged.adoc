@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: El software Element utiliza esta versión del método ModifySnapMirrorEndpoint para modificar el nombre del clúster de almacenamiento o los atributos de dirección IP para un punto de conexión SnapMirror no administrado.  Los puntos de conexión no administrados no se pueden gestionar mediante las API de Element SnapMirror .  Deben gestionarse con el software de gestión ONTAP o con API. 
+---
+= ModificarSnapMirrorEndpoint (no administrado)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El software Element utiliza esta versión de `ModifySnapMirrorEndpoint` Método para modificar el nombre del clúster de almacenamiento o los atributos de dirección IP para un punto de conexión SnapMirror no administrado.  Los puntos de conexión no administrados no se pueden gestionar mediante las API de Element SnapMirror .  Deben gestionarse con el software de gestión ONTAP o con API.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+El punto de conexión SnapMirror que se va a modificar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nombre del clúster
+ a| 
+El nuevo nombre del punto de conexión.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+direcciones ip
+ a| 
+La nueva lista de direcciones IP para un clúster de sistemas de almacenamiento ONTAP que deben comunicarse con este clúster de almacenamiento Element.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+Información sobre el punto de conexión SnapMirror modificado.
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== Nueva versión
+
+10,3

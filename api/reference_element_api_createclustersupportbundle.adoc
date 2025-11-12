@@ -1,0 +1,162 @@
+---
+permalink: api/reference_element_api_createclustersupportbundle.html 
+sidebar: sidebar 
+keywords: CreateClusterSupportBundle,create,cluster,support,bundle,creating 
+summary: Puede utilizar CreateClusterSupportBundle en el nodo de administración para recopilar paquetes de soporte de todos los nodos de un clúster.  Cuando se crea un paquete, se almacena en el nodo como un archivo .tar.gz.  Este método solo se puede ejecutar en un nodo de administración; no funciona cuando se ejecuta en un nodo de almacenamiento. 
+---
+= Crear paquete de soporte de clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `CreateClusterSupportBundle` en el nodo de administración para recopilar paquetes de soporte de todos los nodos de un clúster.  Los paquetes de soporte de nodos individuales están comprimidos como archivos tar.gz.  El paquete de soporte del clúster es un archivo tar que contiene los paquetes de soporte de los nodos.  Este método solo se puede ejecutar en un nodo de administración; no funciona cuando se ejecuta en un nodo de almacenamiento.
+
+
+
+== Parámetros
+
+
+NOTE: Debes llamar a este método contra el nodo de administración. Por ejemplo:
+
+[listing]
+----
+https://<management node IP>:442/json-rpc/10.0
+----
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+permitirIncompleto
+ a| 
+Permite que el script continúe ejecutándose si no se pueden recopilar paquetes de uno o más de los nodos.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+nombre del paquete
+ a| 
+Nombre único para cada paquete de soporte creado.  Si no se proporciona ningún nombre, se utilizará "supportbundle" y el nombre del nodo como nombre del archivo.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+MVIP
+ a| 
+El MVIP del clúster.  Los paquetes se recopilan de todos los nodos del clúster.  Este parámetro es obligatorio si no se especifica el parámetro de nodos.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nodos
+ a| 
+Las direcciones IP de los nodos desde los que se recopilarán los paquetes.  Utilice nodos o mvip, pero no ambos, para especificar los nodos desde los que recopilar paquetes.  Este parámetro es obligatorio si no se especifica mvip.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+contraseña
+ a| 
+La contraseña de administrador del clúster.  *Nota:* Esta contraseña se mostrará como texto al ingresarla.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nombre de usuario
+ a| 
+El nombre de usuario del administrador del clúster.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+"method": "CreateClusterSupportBundle",
+"params": {
+          "bundlename": "clusterbundle",
+          "mvip": "132.119.120.100"
+     }
+   },
+ "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+   "details":{
+      "bundleName":"clusterbundle",
+      "extraArgs":"",
+      "files":[
+          "/tmp/supportbundles/clusterbundle.cl-4SD5.tar"
+      ],
+      "output":"timeout -s KILL 1790s /usr/local/bin/sfclustersupportbundle --quiet --name=\"clusterbundle\" --target-directory=\"/tmp/solidfire-dtemp.MM7f0m\" --user=\"admin\" --pass=\"admin\" --mvip=132.119.120.100"
+       },
+       "duration":"00:00:24.938127",
+       "result":"Passed"
+    }
+}
+----
+
+
+== Nueva versión
+
+9,6

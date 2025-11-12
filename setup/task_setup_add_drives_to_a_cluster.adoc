@@ -1,0 +1,37 @@
+---
+permalink: setup/task_setup_add_drives_to_a_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: Cuando se agrega un nodo al clúster o se instalan nuevas unidades en un nodo existente, las unidades se registran automáticamente como disponibles.  Debe agregar las unidades al clúster utilizando la interfaz de usuario de Element o la API antes de que puedan participar en el clúster. 
+---
+= Agregar unidades a un clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando se agrega un nodo al clúster o se instalan nuevas unidades en un nodo existente, las unidades se registran automáticamente como disponibles.  Debe agregar las unidades al clúster utilizando la interfaz de usuario de Element o la API antes de que puedan participar en el clúster.
+
+Las unidades no se muestran en la lista de Unidades disponibles cuando se dan las siguientes condiciones:
+
+* Las unidades se encuentran en estado Activo, Extrayendo, Borrando o Fallido.
+* El nodo del que forma parte la unidad se encuentra en estado Pendiente.
+
+
+.Pasos
+. Desde la interfaz de usuario de Element, seleccione *Clúster* > *Unidades*.
+. Haz clic en *Disponible* para ver la lista de unidades disponibles.
+. Debe realizar una de las siguientes acciones:
++
+** Para agregar unidades individuales, haga clic en el icono *Acciones* de la unidad que desea agregar y haga clic en *Agregar*.
+** Para agregar varias unidades, seleccione las casillas de verificación de las unidades que desea agregar, haga clic en *Acciones en lote* y, a continuación, en *Agregar*.
++
+....
+== Find more information
+* https://docs.netapp.com/us-en/element-software/index.html[SolidFire and Element Software Documentation]
+* https://docs.netapp.com/us-en/vcp/index.html[NetApp Element Plug-in for vCenter Server^]
+....
+
+
+

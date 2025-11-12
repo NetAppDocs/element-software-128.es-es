@@ -1,0 +1,434 @@
+---
+permalink: api/reference_element_api_volumestats.html 
+sidebar: sidebar 
+keywords: object,objects,volumeStats 
+summary: El objeto volumeStats contiene datos estadísticos para un volumen individual. 
+---
+= estadísticas de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto volumeStats contiene datos estadísticos para un volumen individual.
+
+
+
+== miembros del objeto
+
+Puede utilizar los siguientes métodos para obtener objetos volumeStats para algunos o todos los volúmenes:
+
+* xref:reference_element_api_getvolumestats.adoc[Obtener estadísticas de volumen]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[ListVolumeStatsByAccount]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[Listar estadísticas de volumen por volumen]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[Lista de estadísticas de volumen por grupo de acceso de volumen]
+
+
+Este objeto contiene los siguientes miembros:
+
+[cols="20,50,15,15"]
+|===
+| Nombre | Descripción | Cálculo | Tipo 
+
+
+ a| 
+ID de cuenta
+ a| 
+El ID de la cuenta del propietario del volumen.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+IOPS reales
+ a| 
+Las IOPS reales actuales del volumen en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+retardo asíncrono
+ a| 
+El tiempo transcurrido desde la última sincronización del volumen con el clúster remoto.  Si el volumen no está emparejado, este valor es nulo.  *Nota:* Un volumen de destino en un estado de replicación activo siempre tiene un asyncDelay de 0 (cero).  Los volúmenes de destino tienen en cuenta el sistema durante la replicación y asumen que asyncDelay es preciso en todo momento.
+ a| 
+N/A
+ a| 
+Cadena de duración ISO 8601 o nulo
+
+
+
+ a| 
+Tamaño promedio de IOPS
+ a| 
+Tamaño promedio en bytes de las operaciones de E/S recientes en el volumen en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+crédito de IOPS de explosión
+ a| 
+El número total de créditos IOP disponibles para el usuario.  Cuando los volúmenes no utilizan el máximo de IOPS configurado, se acumulan créditos.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+profundidad de la cola de clientes
+ a| 
+Número de operaciones de lectura y escritura pendientes en el volumen.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+Hosts de metadatos deseados
+ a| 
+Los servicios de metadatos (segmentos) a los que se migran si los metadatos del volumen se migran entre servicios de metadatos.  Un valor "nulo" significa que el volumen no se está migrando.
+ a| 
+N/A
+ a| 
+Objeto JSON
+
+
+
+ a| 
+latenciaUSeg
+ a| 
+El tiempo promedio, en microsegundos, para completar las operaciones al volumen en los últimos 500 milisegundos.  Un valor "0" (cero) significa que no hay E/S en el volumen.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+metadatosHosts
+ a| 
+Los servicios de metadatos (segmentos) en los que residen los metadatos del volumen. Valores posibles:
+
+* primario: Los servicios de metadatos primarios que alojan el volumen.
+* liveSecondaries: Servicios de metadatos secundarios que actualmente se encuentran en estado "activo".
+* deadSecondaries: Servicios de metadatos secundarios que se encuentran en estado inactivo.
+
+ a| 
+N/A
+ a| 
+Objeto JSON
+
+
+
+ a| 
+IOPS normalizadas
+ a| 
+Número promedio de IOPS para todo el clúster en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+bloques no cero
+ a| 
+El número total de bloques de 4 KiB que contienen datos después de que se haya completado la última operación de recolección de basura.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+bytes leídos
+ a| 
+El total acumulado de bytes leídos del volumen desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+readBytesLastSample
+ a| 
+Número total de bytes leídos del volumen durante el último período de muestreo.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Latencia de lectura (segundos)
+ a| 
+Tiempo promedio, en microsegundos, para completar las operaciones de lectura del volumen en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Latencia de lectura (USec) Total
+ a| 
+El tiempo total empleado en realizar operaciones de lectura del volumen.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+operaciones de lectura
+ a| 
+El total de operaciones de lectura realizadas en el volumen desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+readOpsLastSample
+ a| 
+El número total de operaciones de lectura durante el último período de muestra.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+período de muestra MSeg
+ a| 
+Duración del período de muestreo, en milisegundos.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+sliceIopsStats
+ a| 
+Estadísticas de uso de E/S para un volumen.  Disponible a partir del Elemento 12.8.  Valores posibles para sliceIopsStats:
+
+* largeStatistics: Las estadísticas de E/S para el volumen medido durante un período de tiempo más largo, típicamente las últimas 24 horas.
+* smallStatistics: Las estadísticas de E/S para el volumen medido durante un período de tiempo más corto, normalmente la última hora.
+
+
+Valores posibles para largeStatistics y smallStatistics:
+
+* averageReadIops: El promedio de IOPS de lectura para el volumen.
+* averageTotalIops: El promedio total de IOPS (lectura + escritura) para el volumen.
+* averageWriteIops: El promedio de IOPS de escritura para el volumen.
+* nMuestras: El número de muestras incluidas en el cálculo estadístico.
+* peakReadIops: El número máximo de IOPS de lectura observado durante un intervalo estadístico.
+* peakTotalIops: El total máximo de IOPS observado durante un intervalo estadístico.
+* peakWriteIops: El número máximo de IOPS de escritura observado durante un intervalo estadístico.
+* ID de corte: ID de volumen o ID de corte
+
+ a| 
+Punto en el tiempo
+ a| 
+Objeto JSON
+
+
+
+ a| 
+acelerador
+ a| 
+Un valor flotante entre 0 y 1 que representa cuánto está limitando el sistema a los clientes por debajo de su maxIOPS debido a la replicación de datos, errores transitorios y instantáneas tomadas.
+ a| 
+N/A
+ a| 
+flotar
+
+
+
+ a| 
+marca de tiempo
+ a| 
+La hora actual en formato UTC+0.
+ a| 
+N/A
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+lecturas no alineadas
+ a| 
+El total acumulado de operaciones de lectura no alineadas en un volumen desde la creación del volumen.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+escrituras no alineadas
+ a| 
+El total acumulado de operaciones de escritura no alineadas en un volumen desde la creación del volumen.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+grupos de acceso de volumen
+ a| 
+La lista de identificadores de los grupos de acceso a volúmenes a los que pertenece un volumen.
+ a| 
+N/A
+ a| 
+matriz de enteros
+
+
+
+ a| 
+ID de volumen
+ a| 
+El identificador del volumen.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+tamaño del volumen
+ a| 
+Capacidad total aprovisionada en bytes.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+utilización del volumen
+ a| 
+Un valor de punto flotante que describe en qué medida el cliente está utilizando las capacidades de entrada/salida del volumen en comparación con la configuración QoS maxIOPS para ese volumen. Valores posibles:
+
+* 0: El cliente no está utilizando el volumen.
+* 0,01 a 0,99: El cliente no está utilizando completamente las capacidades de IOPS del volumen.
+* 1.00: El cliente está utilizando completamente el volumen hasta el límite de IOPS establecido por la configuración maxIOPS.
+* > 1.00: El cliente está utilizando más del límite establecido por maxIOPS.  Esto es posible cuando la configuración QoS burstIOPS está establecida en un valor superior a maxIOPS.  Por ejemplo, si maxIOPS se establece en 1000 y burstIOPS en 2000, `volumeUtilization` El valor sería de 2,00 si el cliente utiliza completamente el volumen.
+
+ a| 
+N/A
+ a| 
+flotar
+
+
+
+ a| 
+escribirBytes
+ a| 
+El total acumulado de bytes escritos en el volumen desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+writeBytesLastSample
+ a| 
+El número total de bytes escritos en el volumen durante el último período de muestreo.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+Latencia de escritura (segundos)
+ a| 
+Tiempo promedio, en microsegundos, para completar las operaciones de escritura en un volumen en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Latencia de escritura (USec) total
+ a| 
+El tiempo total empleado en realizar operaciones de escritura en el volumen.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+operaciones de escritura
+ a| 
+El total acumulado de operaciones de escritura en el volumen desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+writeOpsLastSample
+ a| 
+El número total de operaciones de escritura durante el último período de muestra.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+bloques cero
+ a| 
+Número total de bloques vacíos de 4 KiB sin datos después de que se haya completado la última ronda de operación de recolección de basura.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+|===

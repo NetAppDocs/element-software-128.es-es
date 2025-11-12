@@ -1,0 +1,215 @@
+---
+permalink: api/reference_element_api_enableldapauthentication.html 
+sidebar: sidebar 
+keywords: LDAP,auth,authentication,enable,enabling,EnableLdapAuthentication 
+summary: Puede utilizar el método EnableLdapAuthentication para configurar una conexión de directorio LDAP para la autenticación LDAP en un clúster.  Los usuarios que sean miembros del directorio LDAP podrán iniciar sesión en el sistema de almacenamiento utilizando sus credenciales LDAP. 
+---
+= Habilitar autenticación LDAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `EnableLdapAuthentication` Método para configurar una conexión de directorio LDAP para la autenticación LDAP en un clúster.  Los usuarios que sean miembros del directorio LDAP podrán iniciar sesión en el sistema de almacenamiento utilizando sus credenciales LDAP.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+tipo de autenticación
+ a| 
+Identifica qué método de autenticación de usuario se debe utilizar. Valores posibles:
+
+* `DirectBind`
+* `SearchAndBind`
+
+ a| 
+cadena
+ a| 
+Buscar y enlazar
+ a| 
+No
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+El DN base del árbol para iniciar la búsqueda del subárbol de grupo.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+tipo de búsqueda de grupo
+ a| 
+Controla el filtro de búsqueda de grupo predeterminado utilizado. Valores posibles:
+
+* NoGroups: No hay soporte para grupos.
+* Active Directory: Membresía anidada de todos los grupos de Active Directory de un usuario.
+* MemberDN: Grupos de estilo MemberDN (nivel único).
+
+ a| 
+cadena
+ a| 
+Directorio activo
+ a| 
+No
+
+
+
+ a| 
+URI del servidor
+ a| 
+Una lista de URI de servidores LDAP o LDAPS separadas por comas.  Puede agregar un puerto personalizado al final de un URI LDAP o LDAPS utilizando dos puntos seguidos del número de puerto.  Por ejemplo, el URI "ldap://1.2.3.4" usa el puerto predeterminado y el URI "ldaps://1.2.3.4:123" usa el puerto personalizado 123.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+userSearchBaseDN
+ a| 
+El DN base del árbol para iniciar la búsqueda de subárboles.  Este parámetro es obligatorio cuando se utiliza un authType de SearchAndBind.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+searchBindDN
+ a| 
+Un DN completo para iniciar sesión y realizar una búsqueda LDAP del usuario.  El DN requiere acceso de lectura al directorio LDAP.  Este parámetro es obligatorio cuando se utiliza un authType de SearchAndBind.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+buscarContraseñaVinculada
+ a| 
+La contraseña de la cuenta searchBindDN utilizada para la búsqueda.  Este parámetro es obligatorio cuando se utiliza un authType de SearchAndBind.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+filtro de búsqueda de usuarios
+ a| 
+El filtro de búsqueda LDAP que se debe utilizar al consultar el servidor LDAP.  La cadena debe contener el texto de marcador de posición "%USERNAME%", que se reemplaza con el nombre de usuario del usuario que se autentica.  Por ejemplo, (&(objectClass=person)(sAMAccountName=%USERNAME%)) utilizará el campo sAMAccountName en Active Directory para que coincida con el nombre de usuario ingresado al iniciar sesión en el clúster.  Este parámetro es obligatorio cuando se utiliza un authType de SearchAndBind.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+plantilla de DN de usuario
+ a| 
+Una plantilla de cadena utilizada para definir un patrón para construir un nombre distinguido de usuario (DN) completo.  La cadena debe contener el texto de marcador de posición "%USERNAME%", que se reemplaza con el nombre de usuario del usuario que se autentica.  Este parámetro es obligatorio cuando se utiliza un authType de DirectBind.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+groupSearchCustomFilter
+ a| 
+Para usar con el tipo de búsqueda CustomFilter, un filtro LDAP que se utilizará para devolver los DN de los grupos de un usuario.  La cadena puede contener el texto de marcador de posición %USERNAME% y %USERDN%, que se reemplazará con su nombre de usuario y nombre de usuario completo según sea necesario.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "EnableLdapAuthentication",
+  "params": {
+     "authType": "SearchAndBind",
+     "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "groupSearchType": "ActiveDirectory",
+     "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+     "searchBindPassword": "zsw@#edcASD12",
+     "sslCert": "",
+     "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))",
+     "serverURIs":[
+           "ldaps://111.22.333.444",
+           "ldap://555.66.777.888"
+           ]
+       },
+  "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

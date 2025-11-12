@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_removedrives.html 
+sidebar: sidebar 
+keywords: cluster,drive,drives,remove,removing,removedrives 
+summary: Puede utilizar el método RemoveDrives para eliminar de forma proactiva las unidades que forman parte del clúster.  Podrías utilizar este método al reducir la capacidad del clúster o al prepararte para reemplazar unidades que se acercan al final de su vida útil.  Antes de extraer la unidad del clúster, se eliminan todos los datos que contiene y se migran a otras unidades del clúster. 
+---
+= Eliminar unidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `RemoveDrives` Método para eliminar de forma proactiva las unidades que forman parte del clúster.  Podrías utilizar este método al reducir la capacidad del clúster o al prepararte para reemplazar unidades que se acercan al final de su vida útil. `RemoveDrives` Crea una tercera copia de los datos del bloque en los otros nodos del clúster y espera a que se complete la sincronización antes de mover las unidades a la lista "Disponibles".  Las unidades de la lista "Disponibles" se eliminan completamente del sistema y no tienen servicios en ejecución ni datos activos.
+
+`RemoveDrives`es un método asíncrono.  Dependiendo de la capacidad total de las unidades que se extraen, la migración de todos los datos podría tardar varios minutos.
+
+Al extraer varias unidades, utilice una sola `RemoveDrives` llamada a un método en lugar de múltiples métodos individuales con una sola unidad cada uno.  Esto reduce la cantidad de equilibrio de datos que debe producirse para estabilizar uniformemente la carga de almacenamiento en el clúster.
+
+También puede eliminar unidades con estado "fallido" mediante `RemoveDrives` .  Cuando se extrae una unidad con estado "fallido", la unidad no vuelve a tener un estado "disponible" o "activo".  La unidad no está disponible para su uso en el clúster.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+unidades
+ a| 
+Lista de identificadores de unidades a eliminar del clúster.
+ a| 
+matriz de enteros
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+manejador asíncrono
+ a| 
+Valor de identificador utilizado para obtener el resultado de la operación.
+ a| 
+entero
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "RemoveDrives",
+   "params": {
+      "drives"  : [3, 4, 5]
+   },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result" : {
+     "asyncHandle": 1
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+* xref:reference_element_api_getasyncresult.adoc[ObtenerResultadoAsíncrono]
+* xref:reference_element_api_listdrives.adoc[ListDrives]
+

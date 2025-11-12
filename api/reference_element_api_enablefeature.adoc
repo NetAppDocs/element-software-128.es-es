@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_enablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableFeature,vvols,virtual volumes,FIPS,140-2,SnapMirror 
+summary: Puede utilizar el método EnableFeature para habilitar funciones del clúster, como VVols, que están deshabilitadas de forma predeterminada. 
+---
+= Habilitar función
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `EnableFeature` Método para habilitar funciones de clúster como VVols que están deshabilitadas de forma predeterminada.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada.
+
+
+NOTE: Para los sistemas que ejecutan el software Element 11.x, habilitar los volúmenes virtuales antes o después de configurar la supervisión del dominio de protección hace que la función de dominios de protección del clúster funcione solo a nivel de nodo.
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+característica
+ a| 
+Habilitar una función de clúster. Valores posibles:
+
+* `fips`Habilitar el cifrado certificado FIPS 140-2 para las comunicaciones HTTPS.
+* `FipsDrives`: Habilitar la compatibilidad con unidades FIPS 140-2 para el clúster de almacenamiento.
+* `SnapMirror`Habilite la función de clúster de replicación SnapMirror .
+* `VolumeLoadBalanceOnActualIOPS`Habilitar el balanceo de segmentos en función de las IOPS reales en lugar de las IOPS mínimas.  Disponible a partir del Elemento 12.8.
+* `vvols`Habilite la función de clúster VVols del software Element.
+
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "vvols"
+    },
+    "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== Nueva versión
+
+9,6

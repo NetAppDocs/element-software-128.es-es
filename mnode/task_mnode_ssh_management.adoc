@@ -1,0 +1,155 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_ssh_management.html 
+summary: Puede habilitar y deshabilitar la funcionalidad SSH en el nodo de administración mediante la interfaz de usuario de NetApp Hybrid Cloud Control o la interfaz de usuario de la API REST, o bien determinar el estado de la funcionalidad de conexión compatible con SSH mediante la interfaz de usuario de la API REST. 
+keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid, cloud, control, hcc 
+---
+= Gestionar la funcionalidad SSH en el nodo de administración
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede deshabilitar, volver a habilitar o determinar el estado de la capacidad SSH en el nodo de administración (mNode) utilizando la API REST.  Capacidad SSH que proporcionalink:task_mnode_enable_remote_support_connections.html["Acceso a la sesión del túnel de soporte remoto (RST) de NetApp Support"] está deshabilitado de forma predeterminada en los nodos de administración que ejecutan servicios de administración 2.18 o posterior.
+
+A partir de Management Services 2.20.69, puede habilitar y deshabilitar la capacidad SSH en el nodo de administración mediante la interfaz de usuario de NetApp Hybrid Cloud Control.
+
+.Lo que necesitarás
+* * Permisos de NetApp Hybrid Cloud Control*: Usted tiene permisos como administrador.
+* *Permisos de administrador del clúster*: Usted tiene permisos como administrador en el clúster de almacenamiento.
+* *Software Element*: Su clúster ejecuta el software NetApp Element 11.3 o posterior.
+* *Nodo de administración*: Ha implementado un nodo de administración que ejecuta la versión 11.3 o posterior.
+* *Actualizaciones de servicios de gestión*:
++
+** Para usar la interfaz de usuario de NetApp Hybrid Cloud Control, debe actualizar su https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["paquete de servicios de gestión"^] a la versión 2.20.69 o posterior.
+** Para usar la interfaz de usuario de la API REST, debe actualizar su https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["paquete de servicios de gestión"^] a la versión 2.17.
+
+
+
+
+.Opciones
+* <<Habilite o deshabilite la funcionalidad SSH en el nodo de administración mediante la interfaz de usuario de NetApp Hybrid Cloud Control.>>
+
+
+Puedes realizar cualquiera de las siguientes tareas después de...link:task_mnode_api_get_authorizationtouse.html["autenticar"] :
+
+* <<Habilite o deshabilite la funcionalidad SSH en el nodo de administración mediante API.>>
+* <<Determinar el estado de la capacidad SSH en el nodo de administración mediante API.>>
+
+
+
+
+== Habilite o deshabilite la funcionalidad SSH en el nodo de administración mediante la interfaz de usuario de NetApp Hybrid Cloud Control.
+
+Puede deshabilitar o volver a habilitar la funcionalidad SSH en el nodo de administración.  Capacidad SSH que proporcionalink:task_mnode_enable_remote_support_connections.html["Acceso a la sesión del túnel de soporte remoto (RST) de NetApp Support"] está deshabilitado de forma predeterminada en los nodos de administración que ejecutan servicios de administración 2.18 o posterior.  Deshabilitar SSH no finaliza ni desconecta las sesiones de cliente SSH existentes con el nodo de administración.  Si deshabilita SSH y decide volver a habilitarlo más adelante, puede hacerlo mediante la interfaz de usuario de NetApp Hybrid Cloud Control.
+
+
+NOTE: Para habilitar o deshabilitar el acceso de soporte mediante SSH para un clúster de almacenamiento, debe usar ellink:../storage/task_system_manage_cluster_enable_and_disable_support_access.html["página de configuración del clúster de Element UI"] .
+
+.Pasos
+. Desde el Panel de control, seleccione el menú de opciones en la parte superior derecha y seleccione *Configurar*.
+. En la pantalla *Administrar acceso para el nodo de administración*, active el interruptor para habilitar SSH para el nodo de administración.
+. Una vez finalizada la resolución de problemas, en la pantalla *Acceso de soporte para el nodo de administración*, active el interruptor para deshabilitar el SSH del nodo de administración.
+
+
+
+
+== Habilite o deshabilite la funcionalidad SSH en el nodo de administración mediante API.
+
+Puede deshabilitar o volver a habilitar la funcionalidad SSH en el nodo de administración.  Capacidad SSH que proporcionalink:task_mnode_enable_remote_support_connections.html["Acceso a la sesión del túnel de soporte remoto (RST) de NetApp Support"] está deshabilitado de forma predeterminada en los nodos de administración que ejecutan servicios de administración 2.18 o posterior.  Deshabilitar SSH no finaliza ni desconecta las sesiones de cliente SSH existentes con el nodo de administración.  Si deshabilita SSH y decide volver a habilitarlo más adelante, puede hacerlo utilizando la misma API.
+
+.Comando API
+Para servicios de gestión 2.18 o posterior:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+Para servicios de gestión 2.17 o anteriores:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: Puedes encontrar al portador `${TOKEN}` utilizado por el comando de la API cuando ustedlink:task_mnode_api_get_authorizationtouse.html["autorizar"] .  El portador `${TOKEN}` está en la respuesta curl.
+
+.Pasos de la interfaz de usuario de la API REST
+. Acceda a la interfaz de usuario de la API REST para el servicio de API del nodo de administración introduciendo la dirección IP del nodo de administración seguida de `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. Seleccione *Autorizar* y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+. Desde la interfaz de usuario de la API REST, seleccione *PUT /settings​/ssh*.
++
+.. Seleccione *Probarlo*.
+.. Configure el parámetro *habilitado* para `false` para deshabilitar SSH o `true` para volver a habilitar la funcionalidad SSH que había sido previamente deshabilitada.
+.. Seleccione *Ejecutar*.
+
+
+
+
+
+
+== Determinar el estado de la capacidad SSH en el nodo de administración mediante API.
+
+Puede determinar si la capacidad SSH está habilitada o no en el nodo de administración mediante una API de servicio de nodo de administración.  SSH está deshabilitado de forma predeterminada en los nodos de administración que ejecutan servicios de administración 2.18 o posterior.
+
+.Comando API
+Para servicios de gestión 2.18 o posterior:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+Para servicios de gestión 2.17 o anteriores:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: Puedes encontrar al portador `${TOKEN}` utilizado por el comando de la API cuando ustedlink:task_mnode_api_get_authorizationtouse.html["autorizar"] .  El portador `${TOKEN}` está en la respuesta del curl...
+
+.Pasos de la interfaz de usuario de la API REST
+. Acceda a la interfaz de usuario de la API REST para el servicio de API del nodo de administración introduciendo la dirección IP del nodo de administración seguida de `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. Seleccione *Autorizar* y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+. Desde la interfaz de usuario de la API REST, seleccione *GET /settings​/ssh*.
++
+.. Seleccione *Probarlo*.
+.. Seleccione *Ejecutar*.
+
+
+
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

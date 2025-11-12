@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_restartservices.html 
+sidebar: sidebar 
+keywords: restart,service,services,restartservices,restarting,node 
+summary: Puede utilizar el método RestartServices para reiniciar los servicios en un nodo. 
+---
+= Reiniciar servicios
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `RestartServices` Método para reiniciar los servicios en un nodo.
+
+
+
+== Parámetros
+
+PRECAUCIÓN:
+
+Este método provoca una interrupción temporal de los servicios del nodo.
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+fuerza
+ a| 
+Establecer en verdadero para reiniciar los servicios en un nodo.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+servicio
+ a| 
+Nombre del servicio que se reiniciará.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+acción
+ a| 
+Acción a realizar en el servicio (iniciar, detener, reiniciar).
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+detalles
+ a| 
+El resultado del procedimiento de reinicio del servicio, incluyendo los errores (si los hubiera).
+ a| 
+Objeto JSON
+
+
+
+ a| 
+duración
+ a| 
+El tiempo, en segundos, que tardó en reiniciarse los servicios en el nodo.
+ a| 
+cadena
+
+
+
+ a| 
+resultado
+ a| 
+Resultados del reinicio.
+ a| 
+cadena
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "RestartServices",
+   "params": {
+              "force" : true
+              "action" : restart,
+             }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": "solidfire stop/waiting\nsolidfire start/running, process 7284\n",
+    "duration": "00:00:02.541594",
+    "result": "Passed"
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,295 @@
+---
+permalink: api/reference_element_api_cluster.html 
+sidebar: sidebar 
+keywords: objects,object,cluster 
+summary: El objeto de clúster contiene información que el nodo utiliza para comunicarse con el clúster.  Puede recuperar esta información con el método de la API GetClusterConfig. 
+---
+= clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de clúster contiene información que el nodo utiliza para comunicarse con el clúster.  Puede recuperar esta información con el método de la API GetClusterConfig.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+cipi
+ a| 
+Interfaz de red utilizada para la comunicación del clúster.
+ a| 
+cadena
+
+
+
+ a| 
+clúster
+ a| 
+Nombre de clúster único.
+ a| 
+cadena
+
+
+
+ a| 
+Capaz de cifrado
+ a| 
+Indica si el nodo admite el cifrado de unidades.
+ a| 
+booleano
+
+
+
+ a| 
+conjunto
+ a| 
+Los nodos que participan en el clúster.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+Configuración de la unidad fips
+ a| 
+Indica si el nodo admite unidades con certificación FIPS 140-2.
+ a| 
+booleano
+
+
+
+ a| 
+mipi
+ a| 
+La interfaz de red utilizada para la gestión de nodos.
+ a| 
+cadena
+
+
+
+ a| 
+nombre
+ a| 
+El nombre del clúster.
+ a| 
+cadena
+
+
+
+ a| 
+ID de nodo
+ a| 
+El ID del nodo en el clúster.
+ a| 
+cadena
+
+
+
+ a| 
+ID de nodo pendiente
+ a| 
+El ID del nodo pendiente en el clúster.
+ a| 
+entero
+
+
+
+ a| 
+role
+ a| 
+Identifica la función del nodo.
+ a| 
+entero
+
+
+
+ a| 
+sipi
+ a| 
+La interfaz de red utilizada para el tráfico de almacenamiento.
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+Estado actual del nodo. Valores posibles:
+
+* Disponible: El nodo no ha sido configurado con un nombre de clúster.
+* Pendiente: El nodo está pendiente para un clúster con nombre específico y se puede agregar.
+* Activo: El nodo es un miembro activo de un clúster y no se puede agregar a otro clúster.
+* PendienteActivo: El nodo actualmente está siendo restaurado a la imagen de software de fábrica y aún no es un miembro activo de un clúster.  Una vez completado, pasará al estado Activo.
+
+ a| 
+cadena
+
+
+
+ a| 
+versión
+ a| 
+La versión del software que se ejecuta en el nodo.
+ a| 
+cadena
+
+|===
+
+
+== Modificabilidad de los miembros y estados de los nodos
+
+Esta tabla indica si los parámetros del objeto pueden modificarse o no en cada estado posible del nodo.
+
+|===
+
+
+| Nombre del parámetro | Estado disponible | Estado pendiente | Estado activo 
+
+
+ a| 
+cipi
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+clúster
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+No
+
+
+
+ a| 
+Capaz de cifrado
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+conjunto
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+mipi
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+No
+
+
+
+ a| 
+nombre
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+ID de nodo
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+ID de nodo pendiente
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+role
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+sipi
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+estado
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+versión
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_getclusterconfig.adoc[Obtener configuración de clúster]

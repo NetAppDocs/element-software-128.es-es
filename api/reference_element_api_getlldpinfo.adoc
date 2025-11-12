@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_getlldpinfo.html 
+sidebar: sidebar 
+keywords: lldp,info,get,getting,getlldpinfo,storage 
+summary: 'Puede utilizar el método GetLldpInfo para obtener la configuración del protocolo de descubrimiento de capa de enlace (LLDP) para cada nodo de un clúster de almacenamiento o para un nodo de almacenamiento individual.' 
+---
+= Obtener información de Lldp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetLldpInfo` Método para obtener la configuración del Protocolo de Descubrimiento de Capa de Enlace (LLDP) para cada nodo de un clúster de almacenamiento o para un nodo de almacenamiento individual.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+lldpInfo
+ a| 
+Información sobre el chasis, la interfaz y la configuración LLDP de los vecinos para cada nodo de un clúster de almacenamiento.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetLldpInfo",
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Debido a la extensión de este ejemplo de respuesta, se documenta en un tema complementario.
+
+
+
+== Nueva versión
+
+11,0
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_response_example_getlldpinfo.adoc[Obtener información de Lldp]

@@ -1,0 +1,16 @@
+---
+permalink: storage/concept_data_manage_vvol_bindings.html 
+sidebar: sidebar 
+keywords: bindings, vvols, bound virtual volumes 
+summary: Para realizar operaciones de E/S con un volumen virtual, un host ESXi primero debe enlazar el volumen virtual. 
+---
+= Aprende sobre encuadernaciones
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para realizar operaciones de E/S con un volumen virtual, un host ESXi primero debe enlazar el volumen virtual.
+
+El clúster SolidFire elige un punto final de protocolo óptimo, crea un enlace que asocia el host ESXi y el volumen virtual con el punto final de protocolo y devuelve el enlace al host ESXi.  Una vez enlazado, el host ESXi puede realizar operaciones de E/S con el volumen virtual enlazado.

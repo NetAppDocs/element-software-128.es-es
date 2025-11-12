@@ -1,0 +1,52 @@
+---
+permalink: storage/task_system_manage_nodes_adding_a_node_to_a_cluster.html 
+sidebar: sidebar 
+keywords: nodes, add, config, cluster, pending, pairs, capacity, rule 
+summary: Puedes agregar nodos a un clúster cuando se necesite más almacenamiento o después de la creación del clúster.  Los nodos requieren una configuración inicial cuando se encienden por primera vez.  Una vez configurado el nodo, aparece en la lista de nodos pendientes y se puede agregar a un clúster. 
+---
+= Agregar un nodo a un clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes agregar nodos a un clúster cuando se necesite más almacenamiento o después de la creación del clúster.  Los nodos requieren una configuración inicial cuando se encienden por primera vez.  Una vez configurado el nodo, aparece en la lista de nodos pendientes y se puede agregar a un clúster.
+
+La versión del software en cada nodo de un clúster debe ser compatible.  Cuando se agrega un nodo a un clúster, este instala la versión del software NetApp Element correspondiente en el nuevo nodo, según sea necesario.
+
+Puedes agregar nodos de menor o mayor capacidad a un clúster existente.  Puede agregar capacidades de nodo mayores a un clúster para permitir el crecimiento de la capacidad.  Los nodos más grandes que se agreguen a un clúster con nodos más pequeños deben agregarse por pares.  Esto proporciona espacio suficiente para que Double Helix pueda mover los datos en caso de que falle uno de los nodos más grandes.  Puedes agregar nodos de menor capacidad a un clúster de nodos más grande para mejorar el rendimiento.
+
+
+NOTE: Si un nodo recién agregado representa más del 50 por ciento de la capacidad total del clúster, parte de la capacidad de este nodo se vuelve inutilizable ("varada"), de modo que cumpla con la regla de capacidad.  Esto seguirá siendo así hasta que se añada más capacidad de almacenamiento.  Si se añade un nodo muy grande que también incumple la regla de capacidad, el nodo que antes estaba aislado dejará de estarlo, mientras que el nodo recién añadido quedará aislado.  La capacidad siempre debe añadirse por pares para evitar que esto ocurra.  Cuando un nodo queda aislado, se produce un fallo de clúster strandedCapacity.
+
+https://www.youtube.com/embed/2smVHWkikXY?rel=0["Vídeo de NetApp : Escala a tu manera: Ampliación de un clúster SolidFire"^]
+
+Puedes agregar nodos a los dispositivos NetApp HCI .
+
+.Pasos
+. Seleccione *Clúster* > *Nodos*.
+. Haz clic en *Pendientes* para ver la lista de nodos pendientes.
++
+Cuando finaliza el proceso de adición de nodos, estos aparecen en la lista de nodos activos.  Hasta entonces, los nodos pendientes aparecerán en la lista de Nodos Activos Pendientes.
+
++
+SolidFire instala la versión del software Element del clúster en los nodos pendientes cuando los agrega a un clúster. Esto podría tardar unos minutos.
+
+. Debe realizar una de las siguientes acciones:
++
+** Para agregar nodos individuales, haga clic en el icono *Acciones* del nodo que desea agregar.
+** Para agregar varios nodos, seleccione la casilla de verificación de los nodos que desea agregar y luego *Acciones en lote*.  *Nota:* Si el nodo que está agregando tiene una versión del software Element diferente a la versión que se ejecuta en el clúster, el clúster actualiza de forma asíncrona el nodo a la versión del software Element que se ejecuta en el maestro del clúster.  Después de que se actualiza el nodo, se agrega automáticamente al clúster.  Durante este proceso asíncrono, el nodo estará en estado pendingActive.
+
+
+. Haga clic en *Agregar*.
++
+El nodo aparece en la lista de nodos activos.
+
+
+
+
+
+== Encuentra más información
+
+xref:concept_system_manage_nodes_node_versioning_and_compatibility.adoc[Control de versiones y compatibilidad de nodos]

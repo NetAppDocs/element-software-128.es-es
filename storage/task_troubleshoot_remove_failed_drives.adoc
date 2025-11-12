@@ -1,0 +1,49 @@
+---
+permalink: storage/task_troubleshoot_remove_failed_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, failed drives, remove 
+summary: El sistema SolidFire marca una unidad como averiada si su autodiagnóstico indica al nodo que ha fallado o si la comunicación con la unidad se interrumpe durante cinco minutos y medio o más.  El sistema muestra una lista de las unidades que han fallado.  Debe eliminar una unidad defectuosa de la lista de unidades defectuosas en el software NetApp Element . 
+---
+= Retire las unidades defectuosas del clúster.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El sistema SolidFire marca una unidad como averiada si su autodiagnóstico indica al nodo que ha fallado o si la comunicación con la unidad se interrumpe durante cinco minutos y medio o más.  El sistema muestra una lista de las unidades que han fallado.  Debe eliminar una unidad defectuosa de la lista de unidades defectuosas en el software NetApp Element .
+
+Las unidades en la lista *Alertas* se muestran como *blockServiceUnhealthy* cuando un nodo está fuera de línea.  Al reiniciar el nodo, si el nodo y sus unidades vuelven a estar en línea en un plazo de cinco minutos y medio, las unidades se actualizan automáticamente y continúan como unidades activas en el clúster.
+
+. En la interfaz de usuario de Element, seleccione *Clúster* > *Unidades*.
+. Haz clic en *Error* para ver la lista de unidades que han fallado.
+. Anote el número de ranura de la unidad averiada.
++
+Necesitas esta información para localizar la unidad averiada en el chasis.
+
+. Retire las unidades defectuosas utilizando uno de los siguientes métodos:
++
+|===
+
+
+| Opción | Pasos 
+
+
+ a| 
+Para extraer unidades individuales
+ a| 
+.. Haz clic en *Acciones* para la unidad que deseas eliminar.
+.. Haga clic en *Eliminar*.
+
+
+
+
+ a| 
+Para extraer varias unidades
+ a| 
+.. Seleccione todas las unidades que desea eliminar y haga clic en *Acciones en lote*.
+.. Haga clic en *Eliminar*.
+
+
+|===
+

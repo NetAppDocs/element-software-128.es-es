@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_manage_vol_access_group_remove_volumes.html 
+sidebar: sidebar 
+keywords: access group, remove volumes from, initiators, chap 
+summary: Cuando se elimina un volumen de un grupo de acceso, el grupo ya no tiene acceso a ese volumen. 
+---
+= Eliminar volúmenes de un grupo de acceso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando se elimina un volumen de un grupo de acceso, el grupo ya no tiene acceso a ese volumen.
+
+Modificar la configuración CHAP en una cuenta o eliminar iniciadores o volúmenes de un grupo de acceso puede provocar que los iniciadores pierdan el acceso a los volúmenes de forma inesperada.  Para verificar que el acceso al volumen no se pierda inesperadamente, cierre siempre las sesiones iSCSI que se verán afectadas por un cambio de cuenta o de grupo de acceso, y verifique que los iniciadores puedan volver a conectarse a los volúmenes después de que se hayan completado los cambios en la configuración del iniciador y la configuración del clúster.
+
+. Haz clic en *Administración* > *Grupos de acceso*.
+. Haga clic en el icono Acciones del grupo de acceso del que desea eliminar volúmenes.
+. Haga clic en *Editar*.
+. En Agregar volúmenes del cuadro de diálogo *Editar grupo de acceso a volúmenes*, haga clic en la flecha de la lista *Volúmenes conectados*.
+. Seleccione el volumen que desea eliminar de la lista y haga clic en el icono *x* para eliminar el volumen de la lista.
++
+Puedes eliminar más volúmenes repitiendo este paso.
+
+. Haz clic en *Guardar cambios*.
+

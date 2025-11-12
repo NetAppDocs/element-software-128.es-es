@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,structure,config,configuration,info,get,getting,getclusterstructure 
+summary: Puede utilizar el método GetClusterStructure para realizar una copia de seguridad de la información de configuración del clúster de almacenamiento actual.  Si se modifica la configuración del clúster de almacenamiento mientras se ejecuta este método, el contenido de la copia de seguridad de la configuración será impredecible.  Puede guardar estos datos en un archivo de texto y restaurarlos en otros clústeres, o en el mismo clúster en caso de desastre. 
+---
+= ObtenerEstructuraDeClúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetClusterStructure` Método para realizar una copia de seguridad de la información de configuración actual del clúster de almacenamiento.  Si se modifica la configuración del clúster de almacenamiento mientras se ejecuta este método, el contenido de la copia de seguridad de la configuración será impredecible.  Puede guardar estos datos en un archivo de texto y restaurarlos en otros clústeres, o en el mismo clúster en caso de desastre.
+
+
+
+== Parámetro
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+resultado
+ a| 
+Un objeto JSON que contiene la información de configuración actual del clúster de almacenamiento.
+ a| 
+xref:reference_element_api_clusterstructure.adoc[Estructura del clúster]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "GetClusterStructure",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : <clusterStructure object containing configuration information>
+	}
+----
+
+
+== Nueva versión
+
+10,3

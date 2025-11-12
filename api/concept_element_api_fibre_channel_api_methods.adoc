@@ -1,0 +1,29 @@
+---
+permalink: api/concept_element_api_fibre_channel_api_methods.html 
+sidebar: sidebar 
+keywords: fibre,channel,method,API,fibre channel 
+summary: Puede utilizar los métodos de la API de Fibre Channel para agregar, modificar o eliminar miembros de nodo Fibre Channel de un clúster de almacenamiento. 
+---
+= Métodos de la API de Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar los métodos de la API de Fibre Channel para agregar, modificar o eliminar miembros de nodo Fibre Channel de un clúster de almacenamiento.
+
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[Obtener asignaciones de LUN de acceso al volumen]
+* xref:reference_element_api_listfibrechannelportinfo.adoc[Información del puerto del canal de fibra]
+* xref:reference_element_api_listfibrechannelsessions.adoc[Lista de sesiones de FibreChannel]
+* xref:reference_element_api_listnodefibrechannelportinfo.adoc[Información del puerto del canal de fibra del nodo de lista]
+* xref:reference_element_api_modifyvolumeaccessgrouplunassignments.adoc[Modificar asignaciones de Lun de grupo de acceso a volumen]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

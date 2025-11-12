@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_deletestoragecontainers.html 
+sidebar: sidebar 
+keywords: virtual,volume,storage,container,delete,deleting,vvol,DeleteStorageContainers 
+summary: 'Puede utilizar el método DeleteStorageContainers para eliminar hasta 2000 contenedores de almacenamiento de volumen virtual (VVol) del sistema a la vez.  Los contenedores de almacenamiento que retire no deben contener ningún VVols.' 
+---
+= Eliminar contenedores de almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `DeleteStorageContainers` Método para eliminar hasta 2000 contenedores de almacenamiento de volumen virtual (VVol) del sistema a la vez.  Los contenedores de almacenamiento que retire no deben contener ningún VVols.
+
+
+
+== Parámetros
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+IDs de contenedores de almacenamiento
+ a| 
+Una lista de los identificadores de los contenedores de almacenamiento que se eliminarán.  Puedes especificar hasta 2000 identificadores en la lista.
+ a| 
+matriz UUID
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "DeleteStorageContainers",
+    "params": {
+        "storageContainerIDs" : ["a9ec1138-e386-4a44-90d7-b9acbbc05176"]
+    },
+    "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== Nueva versión
+
+9,6

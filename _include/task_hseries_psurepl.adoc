@@ -1,0 +1,107 @@
+= Encuentra más información
+:allow-uri-read: 
+
+
+Cada chasis incluye dos unidades de alimentación para redundancia de energía.  Si una fuente de alimentación está defectuosa, debe reemplazarla lo antes posible para garantizar que el chasis tenga una fuente de alimentación redundante.
+
+.Lo que necesitarás
+* Usted ha determinado que la fuente de alimentación está defectuosa.
+* Tienes una fuente de alimentación de repuesto.
+* Usted ha comprobado que la segunda fuente de alimentación está funcionando.
+* Llevas una pulsera antiestática (ESD) o has tomado otras precauciones antiestáticas.
+
+
+.Acerca de esta tarea
+El procedimiento de sustitución se aplica a los siguientes modelos de nodos:
+
+* Chasis NetApp HCI de dos unidades de rack (2U) y cuatro nodos
+* Chasis de almacenamiento H610S de una unidad de rack (1U).
++
+
+NOTE: En el caso del H610S, los términos "nodo" y "chasis" se utilizan indistintamente porque nodo y chasis no son componentes separados, a diferencia del chasis de 2U y cuatro nodos.
+
+
+
+Las alarmas en la interfaz de usuario de Element proporcionan información sobre la unidad de fuente de alimentación defectuosa, refiriéndose a ella como PS1 o PS2.  En un chasis NetApp HCI 2U de cuatro nodos, PS1 se refiere a la unidad en la fila superior del chasis y PS2 se refiere a la unidad en la fila inferior del chasis.  Puede sustituir la fuente de alimentación defectuosa mientras el chasis está encendido y funcionando, siempre que la fuente de alimentación de respaldo esté funcionando.
+
+
+NOTE: Si va a reemplazar ambas fuentes de alimentación en un nodo, las fuentes de alimentación deben tener el mismo número de pieza y potencia.  El uso de fuentes de alimentación incompatibles podría dañar el sistema.
+
+.Pasos
+. Localice la fuente de alimentación defectuosa en el chasis.  El LED de la unidad defectuosa muestra color ámbar.
++
+
+NOTE: La ubicación de las fuentes de alimentación varía según el tipo de chasis.
+
++
+Consulte las imágenes a continuación para ver la ubicación de las fuentes de alimentación:
+
++
+[cols="2*"]
+|===
+| Modelo | Ubicación de las unidades de alimentación 
+
+
+| Chasis de almacenamiento NetApp HCI de 2U y cuatro nodos  a| 
+image::storage_chassis_psu.png[Muestra las unidades de alimentación en una configuración 2U.]
+
+
+NOTE: Los nodos de su chasis pueden tener un aspecto diferente según el tipo de nodos (almacenamiento o computación) que tenga.
+
+
+
+| Chasis H610S  a| 
+image::h610s_psu.png[Muestra las unidades de alimentación en un chasis H610S.]
+
+|===
+. Identifique el nodo correcto utilizando la etiqueta azul extraíble o el número de serie.  La etiqueta azul extraíble muestra el número de serie (S/N) y la disposición de la unidad.  Confirme el número de serie del nodo que se va a reparar.
++
+** Si va a reemplazar ambas fuentes de alimentación, continúe con el paso 3.
+** Si va a reemplazar solo una unidad de fuente de alimentación, pase al paso 4.
+
+
+. Confirme que el nodo se ha apagado o está listo para apagarse para su mantenimiento. Tenga en cuenta lo siguiente:
++
+** Un nodo que se ha apagado no muestra ningún LED de encendido azul en las unidades ni en el botón de encendido.
+** Un nodo que aún no se ha apagado muestra LEDs azules en las unidades y en el botón de encendido.
+** Un nodo que ha sido apagado y está listo para el servicio muestra un LED de la fuente de alimentación parpadeante que se enciende (verde) y se apaga (sin color).
+** Un nodo que aún no se ha apagado muestra LEDs verdes fijos en las fuentes de alimentación.
+
+
+. Desconecte el cable de alimentación de la fuente de alimentación o de ambos cables de alimentación, si va a sustituir ambas unidades.
+. Levante la manija de leva y presione el pestillo azul para deslizar hacia afuera la unidad de fuente de alimentación.
++
+image::psu-remove.gif[Muestra cómo se levanta la manija de la leva y cómo se desliza la unidad de alimentación fuera del chasis.]
+
++
+
+NOTE: La ilustración es un ejemplo.  La ubicación de la(s) fuente(s) de alimentación en el chasis y el color del botón de liberación varían según el tipo de chasis que tenga.
+
++
+
+IMPORTANT: Asegúrese de utilizar ambas manos para soportar el peso de la fuente de alimentación.
+
++
+Repita los pasos 3, 4 y 5 si reemplaza una segunda unidad de fuente de alimentación.
+
+. Localice la etiqueta en la fuente de alimentación que retiró del chasis.  La etiqueta contiene detalles del fabricante y la potencia de salida (en vatios).
++
+
+NOTE: No sustituya la fuente de alimentación si la potencia de la fuente de alimentación de su RMA no coincide con la potencia de la fuente de alimentación extraída.  Póngase en contacto con el soporte de NetApp para conocer los siguientes pasos.
+
+. Utilizando ambas manos, alinee los bordes de la fuente de alimentación con la abertura del chasis, empuje suavemente la unidad dentro del chasis utilizando la manija de leva hasta que encaje en su lugar y vuelva a colocar la manija de leva en la posición vertical.
++
+image::psu-install.gif[Muestra la unidad de alimentación siendo instalada en el chasis.]
+
+. Conecte uno o ambos cables de alimentación.
+. Si reemplazó ambas fuentes de alimentación, vaya a la parte frontal del nodo y presione el botón de encendido para encender los nodos.  Tras encender el dispositivo, el LED del botón de encendido se ilumina en color azul fijo.  Los LED azules de las unidades y del botón de identificación comenzarán a parpadear.
+. Devuelva la unidad defectuosa a NetApp siguiendo las instrucciones de la caja que le fue enviada.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

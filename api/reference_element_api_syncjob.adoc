@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_syncjob.html 
+sidebar: sidebar 
+keywords: object,objects,syncjob 
+summary: El objeto syncJob contiene información sobre trabajos de clonación, replicación remota o sincronización de segmentos que se están ejecutando en un clúster. 
+---
+= trabajo de sincronización
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto syncJob contiene información sobre trabajos de clonación, replicación remota o sincronización de segmentos que se están ejecutando en un clúster.
+
+Puedes recuperar información de sincronización con el `ListSyncJobs` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+bloquesPorSegundo
+ a| 
+Número de bloques de datos que se transfieren por segundo desde el clúster de origen al clúster de destino.  Presente solo si el miembro de tipo está configurado como remoto.
+ a| 
+entero
+
+
+
+ a| 
+tipo de rama
+ a| 
+Devuelto solo para trabajos de sincronización de replicación remota. Valores posibles:
+
+* instantánea
+* volume
+
+ a| 
+cadena
+
+
+
+ a| 
+bytesPorSegundo
+ a| 
+Número de bytes que el clon procesa por segundo.  Presente solo si el miembro de tipo está configurado como clonar o segmentar.
+ a| 
+flotar
+
+
+
+ a| 
+ID de clon
+ a| 
+El identificador de la operación de clonación que está en curso.  Presente solo si el miembro de tipo está configurado como clon.
+ a| 
+entero
+
+
+
+ a| 
+Bytes actuales
+ a| 
+El número de bytes que el clon ha procesado en el volumen de origen.  Presente solo si el miembro de tipo está configurado como clonar o segmentar.
+ a| 
+entero
+
+
+
+ a| 
+ID de servicio de destino
+ a| 
+El identificador del servicio que aloja la réplica principal del volumen.  Presente solo si el miembro de tipo está configurado como remoto.
+ a| 
+entero
+
+
+
+ a| 
+ID de volumen de destino
+ a| 
+El ID del volumen de destino.  Presente solo si el miembro de tipo está configurado como clon o remoto.
+ a| 
+entero
+
+
+
+ a| 
+tiempo transcurrido
+ a| 
+Tiempo transcurrido, en segundos, desde que se inició la tarea de sincronización.
+ a| 
+Número de punto flotante o entero, dependiendo del tipo de operación de sincronización.
+
+
+
+ a| 
+ID de clon de grupo
+ a| 
+El ID de la operación de clonación de grupo que está en curso.
+ a| 
+entero
+
+
+
+ a| 
+ID de nodo
+ a| 
+Especifica el nodo en el que se está realizando la clonación.  Presente solo si el miembro de tipo está configurado como clon.
+ a| 
+entero
+
+
+
+ a| 
+porcentaje completado
+ a| 
+Porcentaje de finalización del trabajo de sincronización.
+ a| 
+Número de punto flotante o entero, dependiendo del tipo de operación de sincronización.
+
+
+
+ a| 
+tiempo restante
+ a| 
+Tiempo estimado, en segundos, para completar la operación.
+ a| 
+flotar
+
+
+
+ a| 
+ID de segmento
+ a| 
+El identificador de la unidad de partición que se está sincronizando.
+ a| 
+entero
+
+
+
+ a| 
+escenario
+ a| 
+Presente solo si el miembro de tipo está configurado como remoto o clon. Valores posibles:
+
+* Metadatos: La replicación está en proceso de determinar qué datos deben transferirse al clúster remoto.  No se informa del estado de esta etapa del proceso de replicación.
+* Datos: La replicación está en proceso de transferir la mayor parte de los datos al clúster remoto.
+* Entero: Indica la compatibilidad con versiones anteriores de la porción para trabajos de sincronización de porciones.
+
+ a| 
+cadena
+
+
+
+ a| 
+ID de instantánea
+ a| 
+El ID de la instantánea a partir de la cual se creó el clon.  Presente solo si el miembro de tipo está configurado como clon.
+ a| 
+entero
+
+
+
+ a| 
+srcServiceID
+ a| 
+El ID del servicio de origen.
+ a| 
+entero
+
+
+
+ a| 
+ID de volumen de origen
+ a| 
+El ID del volumen de origen.
+ a| 
+entero
+
+
+
+ a| 
+totalBytes
+ a| 
+El número total de bytes del clon.  Presente solo si el miembro de tipo está configurado como clonar o segmentar.
+ a| 
+entero
+
+
+
+ a| 
+tipo
+ a| 
+El tipo de operación de sincronización. Valores posibles:
+
+* clon
+* rebanada
+* block
+* remoto
+
+ a| 
+cadena
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]

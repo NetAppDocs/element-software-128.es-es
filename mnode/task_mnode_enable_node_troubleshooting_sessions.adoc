@@ -1,0 +1,239 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_node_troubleshooting_sessions.html 
+summary: A partir de Element 12.5, puede habilitar la cuenta de usuario sfreadonly en el nodo de administración para solucionar problemas de los componentes del sistema sin la ayuda del soporte de NetApp .  También puede habilitar y abrir el acceso al túnel de soporte remoto para el Soporte de NetApp para la resolución de problemas avanzados. 
+keywords: netapp, sfreadonly, connect to support, support tunnel, rst, mnode, management node 
+---
+= Acceso a nodos de almacenamiento mediante SSH para la resolución de problemas básicos
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de Element 12.5, puede utilizar la cuenta del sistema sfreadonly en los nodos de almacenamiento para la resolución de problemas básicos.  También puede habilitar y abrir el acceso al túnel de soporte remoto para el Soporte de NetApp para la resolución de problemas avanzados.
+
+La cuenta de sistema sfreadonly permite ejecutar comandos básicos de solución de problemas de sistema y red de Linux, incluyendo `ping` .
+
+
+WARNING: Salvo indicación expresa del Soporte de NetApp , cualquier modificación de este sistema no está soportada, anulará su contrato de soporte y podría provocar inestabilidad o inaccesibilidad de los datos.
+
+.Antes de empezar
+* *Permisos de escritura*: Verifique que tiene permisos de escritura en el directorio de trabajo actual.
+* *(Opcional) Genera tu propio par de claves*: Ejecutar `ssh-keygen` Desde Windows 10, MacOS o distribución Linux.  Esta es una acción única para crear un par de claves de usuario y se puede reutilizar para futuras sesiones de solución de problemas.  También podrías usar certificados asociados a las cuentas de los empleados, que también funcionarían en este modelo.
+* *Habilitar la funcionalidad SSH en el nodo de administración*: Para habilitar la funcionalidad de acceso remoto en el modo de administración, consultelink:task_mnode_ssh_management.html["este tema"] .  Para los servicios de administración 2.18 y posteriores, la capacidad de acceso remoto está deshabilitada en el nodo de administración de forma predeterminada.
+* *Habilitar la funcionalidad SSH en el clúster de almacenamiento*: Para habilitar la funcionalidad de acceso remoto en los nodos del clúster de almacenamiento, consultelink:https://docs.netapp.com/us-en/element-software/storage/task_system_manage_cluster_enable_and_disable_support_access.html["este tema"] .
+* *Configuración del firewall*: Si su nodo de administración se encuentra detrás de un servidor proxy, se requieren los siguientes puertos TCP en el archivo sshd.config:
++
+[cols="15,25,60"]
+|===
+| Puerto TCP | Descripción | Dirección de conexión 
+
+
+| 443 | Llamadas a la API/HTTPS para el reenvío inverso de puertos a través de un túnel de soporte abierto a la interfaz web | Nodo de gestión a nodos de almacenamiento 
+
+
+| 22 | acceso de inicio de sesión SSH | Nodo de gestión a nodos de almacenamiento o desde nodos de almacenamiento a nodo de gestión 
+|===
+
+
+.Opciones de solución de problemas
+* <<Solucionar problemas de un nodo del clúster>>
+* <<Solucione problemas de un nodo de clúster con el soporte de NetApp>>
+* <<Solucionar problemas de un nodo que no forma parte del clúster>>
+
+
+
+
+== Solucionar problemas de un nodo del clúster
+
+Puede realizar tareas básicas de solución de problemas utilizando la cuenta de sistema sfreadonly:
+
+.Pasos
+. Conéctese al nodo de administración mediante SSH utilizando las credenciales de inicio de sesión de la cuenta que seleccionó al instalar la máquina virtual del nodo de administración.
+. En el nodo de administración, vaya a `/sf/bin` .
+. Encuentra el script adecuado para tu sistema:
++
+** SignSshKeys.ps1
+** SignSshKeys.py
+** SignSshKeys.sh
++
+[NOTE]
+====
+SignSshKeys.ps1 depende de PowerShell 7 o posterior y SignSshKeys.py depende de Python 3.6.0 o posterior. https://docs.python-requests.org/["módulo de solicitudes"^] .
+
+El `SignSshKeys` El script escribe `user` , `user.pub` , y `user-cert.pub` archivos en el directorio de trabajo actual, que luego son utilizados por el `ssh` dominio.  Sin embargo, cuando se proporciona un archivo de clave pública al script, solo se utiliza un archivo de clave pública. `<public_key>` archivo (con `<public_key>` (reemplazado con el prefijo del archivo de clave pública pasado al script) se escribe en el directorio.
+
+====
+
+
+. Ejecuta el script en el nodo de administración para generar el llavero SSH.  El script habilita el acceso SSH utilizando la cuenta de sistema sfreadonly en todos los nodos del clúster.
++
+[listing]
+----
+SignSshKeys --ip [ip address] --user [username] --duration [hours] --publickey [public key path]
+----
++
+.. Reemplace el valor entre corchetes [ ] (incluidos los corchetes) para cada uno de los siguientes parámetros:
++
+
+NOTE: Puede utilizar tanto la forma abreviada como la completa del parámetro.
+
++
+*** *--ip | -i [dirección IP]*: Dirección IP del nodo de destino contra el que se ejecutará la API.
+*** *--user | -u [nombre de usuario]*: Usuario del clúster utilizado para ejecutar la llamada a la API.
+*** *(Opcional) --duration | -d [horas]*: La duración durante la cual una clave firmada debe permanecer válida como un entero en horas.  El valor predeterminado es 24 horas.
+*** *(Opcional) --publickey | -k [ruta de la clave pública]*: La ruta a una clave pública, si el usuario elige proporcionar una.
+
+
+.. Compara tu entrada con el siguiente comando de ejemplo.  En este ejemplo, `10.116.139.195` es la IP del nodo de almacenamiento, `admin` es el nombre de usuario del clúster y la duración de la validez de la clave es de dos horas:
++
+[listing]
+----
+sh /sf/bin/SignSshKeys.sh --ip 10.116.139.195 --user admin --duration 2
+----
+.. Ejecuta el comando.
+
+
+. Conexión SSH a las direcciones IP de los nodos:
++
+[listing]
+----
+ssh -i user sfreadonly@[node_ip]
+----
++
+Podrás ejecutar comandos básicos de solución de problemas de sistemas y redes Linux, tales como: `ping` , y otros comandos de solo lectura.
+
+. (Opcional) Desactivarlink:task_mnode_ssh_management.html["funcionalidad de acceso remoto"] nuevamente después de que se complete la resolución de problemas.
++
+
+NOTE: SSH permanecerá habilitado en el nodo de administración si no lo deshabilita.  La configuración habilitada para SSH persiste en el nodo de administración a través de actualizaciones y mejoras hasta que se deshabilita manualmente.
+
+
+
+
+
+== Solucione problemas de un nodo de clúster con el soporte de NetApp
+
+El soporte de NetApp puede realizar diagnósticos avanzados con una cuenta de sistema que permite a un técnico ejecutar diagnósticos Element más profundos.
+
+.Pasos
+. Conéctese al nodo de administración mediante SSH utilizando las credenciales de inicio de sesión de la cuenta que seleccionó al instalar la máquina virtual del nodo de administración.
+. Ejecute el comando rst con el número de puerto enviado por el Soporte de NetApp para abrir el túnel de soporte:
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
++
+El soporte de NetApp iniciará sesión en su nodo de administración utilizando el túnel de soporte.
+
+. En el nodo de administración, vaya a `/sf/bin` .
+. Encuentra el script adecuado para tu sistema:
++
+** SignSshKeys.ps1
+** SignSshKeys.py
+** SignSshKeys.sh
++
+[NOTE]
+====
+SignSshKeys.ps1 depende de PowerShell 7 o posterior y SignSshKeys.py depende de Python 3.6.0 o posterior. https://docs.python-requests.org/["módulo de solicitudes"^] .
+
+El `SignSshKeys` El script escribe `user` , `user.pub` , y `user-cert.pub` archivos en el directorio de trabajo actual, que luego son utilizados por el `ssh` dominio.  Sin embargo, cuando se proporciona un archivo de clave pública al script, solo se utiliza un archivo de clave pública. `<public_key>` archivo (con `<public_key>` (reemplazado con el prefijo del archivo de clave pública pasado al script) se escribe en el directorio.
+
+====
+
+
+. Ejecuta el script para generar el llavero SSH con el `--sfadmin` bandera.  El script habilita SSH en todos los nodos.
++
+[listing]
+----
+SignSshKeys --ip [ip address] --user [username] --duration [hours] --sfadmin
+----
++
+[NOTE]
+====
+Para SSH como `--sfadmin` Para conectarte a un nodo en clúster, debes generar el llavero SSH usando un `--user` con `supportAdmin` acceso en el clúster.
+
+Para configurar `supportAdmin` Para acceder a las cuentas de administrador del clúster, puede usar la interfaz de usuario de Element o las API:
+
+** link:../storage/concept_system_manage_manage_cluster_administrator_users.html#view-cluster-admin-details["Configure el acceso "supportAdmin" mediante la interfaz de usuario de Element."]
+** Configurar `supportAdmin` acceso mediante el uso de API y agregando `"supportAdmin"` como el `"access"` Tipo de solicitud a la API:
++
+*** link:../api/reference_element_api_addclusteradmin.html["Configure el acceso "supportAdmin" para una nueva cuenta."]
+*** link:../api/reference_element_api_modifyclusteradmin.html["Configure el acceso "supportAdmin" para una cuenta existente."]
++
+Para obtener el `clusterAdminID` , puedes usar ellink:../api/reference_element_api_listclusteradmins.html["Lista de administradores de clúster"] API.
+
+
+
+
+
+Para agregar `supportAdmin` Para acceder, debe tener privilegios de administrador de clúster o de administrador.
+
+====
++
+.. Reemplace el valor entre corchetes [ ] (incluidos los corchetes) para cada uno de los siguientes parámetros:
++
+
+NOTE: Puede utilizar tanto la forma abreviada como la completa del parámetro.
+
++
+*** *--ip | -i [dirección IP]*: Dirección IP del nodo de destino contra el que se ejecutará la API.
+*** *--user | -u [nombre de usuario]*: Usuario del clúster utilizado para ejecutar la llamada a la API.
+*** *(Opcional) --duration | -d [horas]*: La duración durante la cual una clave firmada debe permanecer válida como un entero en horas.  El valor predeterminado es 24 horas.
+
+
+.. Compara tu entrada con el siguiente comando de ejemplo.  En este ejemplo, `192.168.0.1` es la IP del nodo de almacenamiento, `admin` es el nombre de usuario del clúster, la duración de la validez de la clave es de dos horas, y `--sfadmin` Permite el acceso del nodo de soporte de NetApp para la resolución de problemas:
++
+[listing]
+----
+sh /sf/bin/SignSshKeys.sh --ip 192.168.0.1 --user admin --duration 2 --sfadmin
+----
+.. Ejecuta el comando.
+
+
+. Conexión SSH a las direcciones IP de los nodos:
++
+[listing]
+----
+ssh -i user sfadmin@[node_ip]
+----
+. Para cerrar el túnel de soporte remoto, introduzca lo siguiente:
++
+`rst --killall`
+
+. (Opcional) Desactivarlink:task_mnode_ssh_management.html["funcionalidad de acceso remoto"] nuevamente después de que se complete la resolución de problemas.
++
+
+NOTE: SSH permanecerá habilitado en el nodo de administración si no lo deshabilita.  La configuración habilitada para SSH persiste en el nodo de administración a través de actualizaciones y mejoras hasta que se deshabilita manualmente.
+
+
+
+
+
+== Solucionar problemas de un nodo que no forma parte del clúster
+
+Puede realizar la resolución de problemas básicos de un nodo que aún no se ha agregado a un clúster.  Puede utilizar la cuenta de sistema sfreadonly para este propósito con o sin la ayuda del soporte de NetApp .  Si tiene configurado un nodo de administración, puede usarlo para SSH y ejecutar el script proporcionado para esta tarea.
+
+. Desde un ordenador Windows, Linux o Mac que tenga instalado un cliente SSH, ejecute el script apropiado para su sistema proporcionado por el soporte de NetApp .
+. Conexión SSH a la IP del nodo:
++
+[listing]
+----
+ssh -i user sfreadonly@[node_ip]
+----
+. (Opcional) Desactivarlink:task_mnode_ssh_management.html["funcionalidad de acceso remoto"] nuevamente después de que se complete la resolución de problemas.
++
+
+NOTE: SSH permanecerá habilitado en el nodo de administración si no lo deshabilita.  La configuración habilitada para SSH persiste en el nodo de administración a través de actualizaciones y mejoras hasta que se deshabilita manualmente.
+
+
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/hci/index.html["Documentación de NetApp HCI"^]
+

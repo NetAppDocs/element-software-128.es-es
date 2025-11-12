@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_listbulkvolumejobs.html 
+sidebar: sidebar 
+keywords: bulk,volume,job,jobs,volumes,read,write,operation,list,listing,listbulkvolumejobs 
+summary: Puede utilizar el método ListBulkVolumeJobs para obtener información sobre cada operación de lectura o escritura de volumen masivo que se esté produciendo en el sistema. 
+---
+= Lista de trabajos de volumen masivo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ListBulkVolumeJobs` Método para obtener información sobre cada operación de lectura o escritura de volumen masivo que se produce en el sistema.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+Trabajos de gran volumen
+ a| 
+Un conjunto de información para cada trabajo de gran volumen.
+ a| 
+xref:reference_element_api_bulkvolumejob.adoc[Trabajo de gran volumen]formación
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ListBulkVolumeJobs",
+   "params": {
+      },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "bulkVolumeJobs": [
+        {
+          "attributes": {
+            "blocksPerTransfer": 1024,
+            "firstPendingLba": 216064,
+            "nLbas": 2441472,
+            "nextLba": 226304,
+            "pendingLbas": "[220160, 223232, 221184, 224256, 217088, 225280, 222208, 218112, 219136, 216064]",
+            "percentComplete": 8,
+            "startLba": 0
+          },
+          "bulkVolumeID": 2,
+          "createTime": "2015-05-07T14:52:17Z",
+          "elapsedTime": 44,
+          "format": "native",
+          "key": "eaffb0526d4fb47107061f09bfc9a806",
+          "percentComplete": 8,
+          "remainingTime": 506,
+          "script": "bv_internal.py",
+          "snapshotID": 509,
+          "srcVolumeID": 3,
+          "status": "running",
+          "type": "read"
+       }
+     ]
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

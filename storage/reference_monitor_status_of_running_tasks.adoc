@@ -1,0 +1,19 @@
+---
+permalink: storage/reference_monitor_status_of_running_tasks.html 
+sidebar: sidebar 
+keywords: running tasks, view progress of 
+summary: En la interfaz web, puede consultar el progreso y el estado de finalización de las tareas en ejecución que se reportan mediante los métodos API ListSyncJobs y ListBulkVolumeJobs.  Puedes acceder a la página Tareas en ejecución desde la pestaña Informes de la interfaz de usuario de Element. 
+---
+= Ver el estado de las tareas en ejecución
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En la interfaz web, puede consultar el progreso y el estado de finalización de las tareas en ejecución que se reportan mediante los métodos API ListSyncJobs y ListBulkVolumeJobs.  Puedes acceder a la página Tareas en ejecución desde la pestaña Informes de la interfaz de usuario de Element.
+
+Si hay una gran cantidad de tareas, el sistema podría ponerlas en cola y ejecutarlas por lotes.  La página Tareas en ejecución muestra los servicios que se están sincronizando actualmente.  Cuando una tarea finaliza, se reemplaza por la siguiente tarea de sincronización en cola.  Es posible que las tareas de sincronización sigan apareciendo en la página de Tareas en ejecución hasta que no haya más tareas por completar.
+
+
+NOTE: Puedes ver los datos de sincronización de replicación para los volúmenes que se están replicando en la página Tareas en ejecución del clúster que contiene el volumen de destino.

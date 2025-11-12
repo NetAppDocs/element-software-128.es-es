@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_clusterstructure.html 
+sidebar: sidebar 
+keywords: objects,cluster,structure,clusterStructure,object 
+summary: El objeto clusterStructure contiene información de copia de seguridad de la configuración del clúster creada por el método GetClusterStructure.  Puede utilizar el método SetClusterStructure para restaurar esta información en un clúster de almacenamiento que esté reconstruyendo. 
+---
+= Estructura del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto clusterStructure contiene información de copia de seguridad de la configuración del clúster creada por el método GetClusterStructure.  Puede utilizar el método SetClusterStructure para restaurar esta información en un clúster de almacenamiento que esté reconstruyendo.
+
+
+
+== miembros del objeto
+
+Este objeto contiene la información de retorno combinada de los siguientes métodos:
+
+* xref:reference_element_api_getclusterinfo.adoc[Obtener información del clúster]
+* xref:reference_element_api_listaccounts.adoc[Lista de cuentas]
+* xref:reference_element_api_listinitiators.adoc[Iniciadores de listas]
+* xref:reference_element_api_listvolumes.adoc[Lista de volúmenes](con includeVirtualVolumes=false)
+* xref:reference_element_api_listvolumeaccessgroups.adoc[Listar grupos de acceso de volumen]
+* xref:reference_element_api_liststoragecontainers.adoc[Listar contenedores de almacenamiento]
+* xref:reference_element_api_listqospolicies.adoc[Lista de políticas de QoS]
+* xref:reference_element_api_getsnmpinfo.adoc[Obtener información SNMP]
+* xref:reference_element_api_getntpinfo.adoc[Obtener información NTP]
+* xref:reference_element_api_listvirtualnetworks.adoc[Lista de redes virtuales]
+* xref:reference_element_api_listclusteradmins.adoc[Lista de administradores de clúster]
+* xref:reference_element_api_listschedules.adoc[Listas de horarios]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[ListSnapMirrorEndpoints]
+* xref:reference_element_api_getfeaturestatus.adoc[Obtener estado de la función]
+* xref:reference_element_api_getldapconfiguration.adoc[Obtener configuración LDAP]
+* xref:reference_element_api_getremotelogginghosts.adoc[Obtener hosts de registro remoto]
+* xref:reference_element_api_getdefaultqos.adoc[Obtener QoS predeterminado]
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[Obtener asignaciones de LUN de acceso al volumen]
+
+
+
+
+== Encuentra más información
+
+* xref:reference_element_api_getclusterstructure.adoc[ObtenerEstructuraDeClúster]
+* xref:reference_element_api_setclusterstructure.adoc[Establecer estructura de clúster]
+

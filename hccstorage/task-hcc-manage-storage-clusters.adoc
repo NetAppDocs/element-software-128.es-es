@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-storage-clusters.html 
+summary: Puede agregar, eliminar, cambiar, habilitar y deshabilitar el modo de mantenimiento para clústeres de almacenamiento mediante la interfaz de usuario de NetApp Hybrid Control. 
+keywords: netapp, element, storage cluster, hybrid cloud control, hcc, maintenance mode, enable, disable 
+---
+= Agregue y administre clústeres de almacenamiento mediante NetApp Hybrid Cloud Control.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede agregar clústeres de almacenamiento al inventario de activos del nodo de administración para que puedan administrarse mediante NetApp Hybrid Cloud Control (HCC).  El primer clúster de almacenamiento que se agrega durante la configuración del sistema es el predeterminado.link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["clúster de almacenamiento autorizado"] , pero se pueden agregar clústeres adicionales mediante la interfaz de usuario de HCC.
+
+Después de agregar un clúster de almacenamiento, puede supervisar el rendimiento del clúster, cambiar las credenciales del clúster de almacenamiento para el activo administrado o eliminar un clúster de almacenamiento del inventario de activos del nodo de administración si ya no es necesario administrarlo mediante HCC.
+
+.Lo que necesitarás
+* *Permisos de administrador del clúster*: Usted tiene permisos como administrador en el clúster.link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["clúster de almacenamiento autorizado"] .  El clúster autoritativo es el primer clúster que se agrega al inventario de nodos de administración durante la configuración del sistema.
+* *Software Element*: Su versión de clúster de almacenamiento ejecuta el software NetApp Element 11.3 o posterior.
+* *Nodo de administración*: Ha implementado un nodo de administración que ejecuta la versión 11.3 o posterior.
+* *Servicios de gestión*: Ha actualizado su paquete de servicios de gestión a la versión 2.17 o posterior.
+
+
+.Opciones
+* <<Agregar un clúster de almacenamiento>>
+* <<Confirmar el estado del clúster de almacenamiento>>
+* <<Editar credenciales del clúster de almacenamiento>>
+* <<Eliminar un clúster de almacenamiento>>
+* <<Activar y desactivar el modo de mantenimiento>>
+
+
+
+
+== Agregar un clúster de almacenamiento
+
+Puede agregar un clúster de almacenamiento al inventario de activos del nodo de administración mediante NetApp Hybrid Cloud Control.  Esto le permite administrar y monitorear el clúster utilizando la interfaz de usuario de HCC.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador autorizado del clúster de almacenamiento.
+. Desde el Panel de control, seleccione el menú de opciones en la parte superior derecha y seleccione *Configurar*.
+. En el panel *Clústeres de almacenamiento*, seleccione *Detalles del clúster de almacenamiento*.
+. Seleccione *Agregar clúster de almacenamiento*.
+. Introduzca la siguiente información:
++
+** dirección IP virtual de administración de clúster de almacenamiento
++
+
+NOTE: Solo se pueden agregar clústeres de almacenamiento remoto que actualmente no estén administrados por un nodo de administración.
+
+** Nombre de usuario y contraseña del clúster de almacenamiento
+
+
+. Seleccione *Agregar*.
++
+
+NOTE: Después de agregar el clúster de almacenamiento, el inventario del clúster puede tardar hasta 2 minutos en actualizarse y mostrar la nueva incorporación.  Es posible que necesites actualizar la página en tu navegador para ver los cambios.
+
+
+
+
+
+== Confirmar el estado del clúster de almacenamiento
+
+Puede supervisar el estado de conexión de los recursos de los clústeres de almacenamiento mediante la interfaz de usuario de NetApp Hybrid Cloud Control.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador autorizado del clúster de almacenamiento.
+. Desde el Panel de control, seleccione el menú de opciones en la parte superior derecha y seleccione *Configurar*.
+. Revisa el estado de los clústeres de almacenamiento en el inventario.
+. Desde el panel *Clústeres de almacenamiento*, seleccione *Detalles del clúster de almacenamiento* para obtener información adicional.
+
+
+
+
+== Editar credenciales del clúster de almacenamiento
+
+Puede editar el nombre de usuario y la contraseña del administrador del clúster de almacenamiento mediante la interfaz de usuario de NetApp Hybrid Cloud Control.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador autorizado del clúster de almacenamiento.
+. Desde el Panel de control, seleccione el menú de opciones en la parte superior derecha y seleccione *Configurar*.
+. En el panel *Clústeres de almacenamiento*, seleccione *Detalles del clúster de almacenamiento*.
+. Seleccione el menú *Acciones* para el clúster y seleccione *Editar credenciales del clúster*.
+. Actualice el nombre de usuario y la contraseña del clúster de almacenamiento.
+. Seleccione *Guardar*.
+
+
+
+
+== Eliminar un clúster de almacenamiento
+
+Al eliminar un clúster de almacenamiento de NetApp Hybrid Cloud Control, el clúster se elimina del inventario de nodos de administración.  Después de eliminar un clúster de almacenamiento, HCC ya no podrá administrarlo y solo podrá acceder a él navegando directamente a su dirección IP de administración.
+
+
+IMPORTANT: No se puede eliminar el clúster autoritativo del inventario.  Para determinar el clúster autorizado, vaya a *Administración de usuarios > Usuarios*.  El grupo autorizado se encuentra junto al encabezado *Usuarios*.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador autorizado del clúster de almacenamiento.
+. Desde el Panel de control, seleccione el menú de opciones en la parte superior derecha y seleccione *Configurar*.
+. En el panel *Clústeres de almacenamiento*, seleccione *Detalles del clúster de almacenamiento*.
+. Seleccione el menú *Acciones* para el clúster y seleccione *Eliminar clúster de almacenamiento*.
++
+
+CAUTION: Seleccionar *Sí* a continuación elimina el clúster de la instalación.
+
+. Seleccione *Sí*.
+
+
+
+
+== Activar y desactivar el modo de mantenimiento
+
+Si necesita desconectar un nodo de almacenamiento para realizar tareas de mantenimiento, como actualizaciones de software o reparaciones del host, puede minimizar el impacto de E/S en el resto del clúster de almacenamiento mediante<<enable_main_mode,habilitación>> Modo de mantenimiento para ese nodo.  Cuando tú<<disable_main_mode,desactivar>> En el modo de mantenimiento, el nodo se supervisa para garantizar que se cumplan ciertos criterios antes de que el nodo pueda salir del modo de mantenimiento.
+
+.Lo que necesitarás
+* *Software Element*: Su versión de clúster de almacenamiento ejecuta el software NetApp Element 12.2 o posterior.
+* *Nodo de administración*: Ha implementado un nodo de administración que ejecuta la versión 12.2 o posterior.
+* *Servicios de gestión*: Ha actualizado su paquete de servicios de gestión a la versión 2.19 o posterior.
+* Tienes acceso para iniciar sesión a nivel de administrador.
+
+
+
+
+=== [[enable_main_mode]]Activar modo de mantenimiento
+
+Puede utilizar el siguiente procedimiento para habilitar el modo de mantenimiento para un nodo de clúster de almacenamiento.
+
+
+NOTE: Solo un nodo puede estar en modo de mantenimiento a la vez.
+
+.Pasos
+. Abra la dirección IP del nodo de administración en un navegador web. Por ejemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento all-flash SolidFire .
++
+
+NOTE: Las opciones de la función de modo de mantenimiento están deshabilitadas en el nivel de solo lectura.
+
+. En el cuadro azul de navegación izquierdo, seleccione la instalación SolidFire all-flash.
+. En el panel de navegación izquierdo, seleccione *Nodos*.
+. Para ver la información del inventario de almacenamiento, seleccione *Almacenamiento*.
+. Habilitar el modo de mantenimiento en un nodo de almacenamiento:
++
+[NOTE]
+====
+La tabla de nodos de almacenamiento se actualiza automáticamente cada dos minutos para las acciones no iniciadas por el usuario.  Antes de realizar cualquier acción, para asegurarse de tener el estado más actualizado, puede actualizar la tabla de nodos utilizando el icono de actualización situado en la parte superior derecha de la tabla de nodos.
+
+image:hcc_enable_maintenance_mode.PNG["Habilitar el modo de mantenimiento"]
+
+====
++
+.. En *Acciones*, seleccione *Habilitar modo de mantenimiento*.
++
+Mientras el *Modo de mantenimiento* está habilitado, las acciones del modo de mantenimiento no están disponibles para el nodo seleccionado ni para los demás nodos del mismo clúster.
+
++
+Una vez completado el *Modo de mantenimiento*, la columna *Estado del nodo* muestra un icono de llave inglesa y el texto "*Modo de mantenimiento*" para el nodo que se encuentra en modo de mantenimiento.
+
+
+
+
+
+
+
+=== [[disable_main_mode]]Desactivar modo de mantenimiento
+
+Una vez que un nodo se ha puesto correctamente en modo de mantenimiento, la acción *Deshabilitar modo de mantenimiento* estará disponible para este nodo.  Las acciones en los demás nodos no estarán disponibles hasta que el modo de mantenimiento se desactive correctamente en el nodo que se está sometiendo a mantenimiento.
+
+.Pasos
+. Para el nodo en modo de mantenimiento, en *Acciones*, seleccione *Desactivar modo de mantenimiento*.
++
+Mientras el *Modo de mantenimiento* esté desactivado, las acciones del modo de mantenimiento no estarán disponibles para el nodo seleccionado ni para los demás nodos del mismo clúster.
+
++
+Una vez finalizado el *Modo de mantenimiento desactivado*, la columna *Estado del nodo* muestra *Activo*.
+
++
+
+NOTE: Cuando un nodo está en modo de mantenimiento, no acepta nuevos datos.  Como resultado, puede llevar más tiempo desactivar el modo de mantenimiento porque el nodo debe sincronizar sus datos antes de poder salir del modo de mantenimiento.  Cuanto más tiempo permanezca en modo de mantenimiento, más tiempo puede tardar en desactivarse dicho modo.
+
+
+
+
+
+=== Solución de problemas
+
+Si se producen errores al activar o desactivar el modo de mantenimiento, aparecerá un mensaje de error en la parte superior de la tabla de nodos.  Para obtener más información sobre el error, puede seleccionar el enlace *Mostrar detalles* que se proporciona en el banner para ver qué devuelve la API.
+
+[discrete]
+== Encuentra más información
+
+* link:../mnode/task_mnode_manage_storage_cluster_assets.html["Crear y administrar activos de clúster de almacenamiento"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

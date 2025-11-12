@@ -1,0 +1,232 @@
+---
+permalink: api/reference_element_api_node.html 
+sidebar: sidebar 
+keywords: object,objects,node 
+summary: El objeto nodo contiene información sobre cada nodo del clúster.  Puede recuperar esta información utilizando los métodos ListActiveNodes y ListAllNodes. 
+---
+= nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto nodo contiene información sobre cada nodo del clúster.  Puedes recuperar esta información utilizando el `ListActiveNodes` y `ListAllNodes` métodos.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de servicio asociado
+ a| 
+El ID del servicio Fibre Channel para el nodo.  "0" si el nodo no es un nodo Fibre Channel.
+ a| 
+entero
+
+
+
+ a| 
+ID de servicio maestro asociado
+ a| 
+ID de servicio maestro para el nodo.
+ a| 
+entero
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+nombre del chasis
+ a| 
+Identifica de forma única un chasis; idéntico para todos los nodos en un mismo chasis.
+ a| 
+cadena
+
+
+
+ a| 
+cip
+ a| 
+La dirección IP del clúster asignada al nodo.
+ a| 
+cadena
+
+
+
+ a| 
+cipi
+ a| 
+Interfaz de red utilizada para la comunicación del clúster.
+ a| 
+cadena
+
+
+
+ a| 
+nombre de dominio de protección personalizado
+ a| 
+Identifica de forma única un dominio de protección personalizado.  Este nombre es idéntico para todos los nodos de almacenamiento dentro de todos los chasis en un dominio de protección personalizado determinado.
+ a| 
+cadena
+
+
+
+ a| 
+Grupo de puertos de destino de canal de fibra
+ a| 
+El grupo objetivo asociado a este nodo.  "nulo" si el nodo no es un nodo Fibre Channel.
+ a| 
+entero
+
+
+
+ a| 
+Modo de mantenimiento
+ a| 
+Indica en qué modo se encuentra un nodo para su mantenimiento.
+ a| 
+n / A
+
+
+
+ a| 
+mip
+ a| 
+La dirección IP utilizada para la gestión de nodos.
+ a| 
+cadena
+
+
+
+ a| 
+mipi
+ a| 
+La interfaz de red utilizada para la gestión de nodos.
+ a| 
+cadena
+
+
+
+ a| 
+nombre
+ a| 
+Nombre de host del nodo.
+ a| 
+cadena
+
+
+
+ a| 
+ID de nodo
+ a| 
+NodeID para este nodo.
+ a| 
+entero
+
+
+
+ a| 
+nodoSlot
+ a| 
+Para las plataformas HCI, la letra correspondiente a la ranura del chasis en la que se encuentra este nodo ("A", "B", "C" o "D").  Para las plataformas de almacenamiento, este valor es nulo.
+ a| 
+cadena
+
+
+
+ a| 
+Información de la plataforma
+ a| 
+Información de hardware del nodo.  Miembros:
+
+* Tipo de chasis: La plataforma de hardware del nodo.
+* cpuModel: El modelo de CPU de la plataforma de hardware.
+* nodeMemoryGB: Cantidad de memoria instalada en la plataforma física en GB.
+* nodeType: El nombre del modelo de nodo.
+* platformConfigVersion: La versión del software configurada para el hardware de este nodo.
+
+ a| 
+Objeto JSON
+
+
+
+ a| 
+role
+ a| 
+El rol del nodo en el clúster. Valores posibles:
+
+* Gestión
+* Almacenamiento
+* Calcular
+* Testigo
+
+ a| 
+
+
+
+ a| 
+sorbo
+ a| 
+La dirección IP de almacenamiento asignada al nodo.
+ a| 
+cadena
+
+
+
+ a| 
+sipi
+ a| 
+La interfaz de red utilizada para el tráfico de almacenamiento.
+ a| 
+cadena
+
+
+
+ a| 
+Versión del software
+ a| 
+Devuelve la versión actual del software Element que se ejecuta en el nodo.
+ a| 
+cadena
+
+
+
+ a| 
+UUID
+ a| 
+El identificador único universal asociado a este nodo.
+ a| 
+cadena
+
+
+
+ a| 
+redes virtuales
+ a| 
+Objeto que contiene direcciones IP e identificadores de red virtual.
+ a| 
+xref:reference_element_api_virtualnetwork.adoc[red virtual]formación
+
+|===
+
+
+== Encuentra más información
+
+* xref:reference_element_api_listactivenodes.adoc[Lista de nodos activos]
+* xref:reference_element_api_listallnodes.adoc[Lista todos los nodos]
+

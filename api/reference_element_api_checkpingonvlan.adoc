@@ -1,0 +1,244 @@
+---
+permalink: api/reference_element_api_checkpingonvlan.html 
+sidebar: sidebar 
+keywords: VLAN,pre-deployment,network,validation,validate,validating,check,checking,CheckPingOnVlan 
+summary: Puede utilizar el método CheckPingOnVlan para probar la conectividad de red en una VLAN temporal al realizar la validación de red previa a la implementación.  CheckPingOnVlan crea una interfaz VLAN temporal, envía paquetes ICMP a todos los nodos del clúster de almacenamiento utilizando la interfaz VLAN y, a continuación, elimina la interfaz. 
+---
+= ComprobarPingEnVlan
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `CheckPingOnVlan` Método para probar la conectividad de red en una VLAN temporal al realizar la validación de red previa al despliegue. `CheckPingOnVlan` Crea una interfaz VLAN temporal, envía paquetes ICMP a todos los nodos del clúster de almacenamiento utilizando la interfaz VLAN y, a continuación, elimina la interfaz.
+
+
+
+== Parámetros
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+intentos
+ a| 
+Especifica el número de veces que el sistema debe repetir el ping de prueba.
+ a| 
+entero
+ a| 
+5
+ a| 
+No
+
+
+
+ a| 
+hosts
+ a| 
+Especifica una lista de direcciones o nombres de host de dispositivos a los que hacer ping, separados por comas.
+ a| 
+cadena
+ a| 
+Los nodos del clúster
+ a| 
+No
+
+
+
+ a| 
+interfaz
+ a| 
+La interfaz existente (base) desde la cual se deben enviar los pings. Valores posibles:
+
+* Bond10G: Enviar pings desde la interfaz Bond10G.
+* Bond1G: Enviar pings desde la interfaz Bond1G.
+
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+tamaño del paquete
+ a| 
+Especifica el número de bytes que se enviarán en el paquete ICMP que se envía a cada IP.  El número de bytes debe ser inferior al MTU máximo especificado en la configuración de red.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+Tiempo de espera de ping (milisegundos)
+ a| 
+Especifica el número de milisegundos que se deben esperar para cada respuesta de ping individual.
+ a| 
+entero
+ a| 
+500 ms
+ a| 
+No
+
+
+
+ a| 
+prohibir la fragmentación
+ a| 
+Habilita la bandera DF (No Fragmentar) para los paquetes ICMP.
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+sourceAddressV4
+ a| 
+La dirección IPv4 de origen que se utilizará en los paquetes ping ICMP.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+sourceAddressV6
+ a| 
+La dirección IPv6 de origen que se utilizará en los paquetes ping ICMP.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+tiempo de espera total en segundos
+ a| 
+Especifica el tiempo en segundos que el ping debe esperar una respuesta del sistema antes de realizar el siguiente intento de ping o finalizar el proceso.
+ a| 
+entero
+ a| 
+5
+ a| 
+No
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+El ID de VLAN que se utilizará al enviar los paquetes ping.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+resultado
+ a| 
+Lista de cada IP con la que el nodo pudo comunicarse y estadísticas de respuesta de ping.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+    "method": "CheckPingOnVlan",
+    "params": {
+        "interface": "Bond10G",
+        "virtualNetworkTag": 4001,
+        "sourceAddressV4": "192.168.41.4",
+        "hosts": "192.168.41.2"
+},
+"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "192.168.41.2": {
+      "individualResponseCodes": [
+        "Success",
+        "Success",
+        "Success",
+        "Success",
+        "Success"
+      ],
+      "individualResponseTimes": [
+        "00:00:00.000373",
+        "00:00:00.000098",
+        "00:00:00.000097",
+        "00:00:00.000074",
+        "00:00:00.000075"
+      ],
+      "individualStatus": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "interface": "Bond10G",
+      "responseTime": "00:00:00.000143",
+      "sourceAddressV4": "192.168.41.4",
+      "successful": true,
+      "virtualNetworkTag": 4001
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+11,1

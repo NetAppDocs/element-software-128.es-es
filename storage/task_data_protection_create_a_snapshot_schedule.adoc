@@ -1,0 +1,47 @@
+---
+permalink: storage/task_data_protection_create_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, create, volumes, recurring schedule 
+summary: Puede programar la toma de instantáneas de uno o varios volúmenes para que se realicen automáticamente a intervalos específicos. 
+---
+= Crea un cronograma de instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede programar la toma de instantáneas de uno o varios volúmenes para que se realicen automáticamente a intervalos específicos.
+
+Al configurar una programación de instantáneas, puede elegir intervalos de tiempo basados en días de la semana o días del mes.  También puedes crear una programación recurrente y especificar los días, horas y minutos antes de que se produzca la siguiente instantánea.
+
+Si programas una instantánea para que se ejecute en un período de tiempo que no sea divisible por 5 minutos, la instantánea se ejecutará en el siguiente período de tiempo que sea divisible por 5 minutos.  Por ejemplo, si programa una instantánea para que se ejecute a las 12:42:00 UTC, se ejecutará a las 12:45:00 UTC.  No se puede programar una instantánea para que se ejecute a intervalos inferiores a 5 minutos.
+
+A partir de Element 12.5, puede habilitar la creación serial y seleccionar conservar las instantáneas en base a las primeras en entrar, primeras en salir (FIFO) desde la interfaz de usuario.
+
+* La opción *Habilitar creación serial* especifica que solo se replica una instantánea a la vez.  La creación de una nueva instantánea falla cuando la replicación de una instantánea anterior aún está en curso.  Si la casilla de verificación no está seleccionada, se permite la creación de una instantánea cuando otra replicación de instantánea aún está en curso.
+* La opción *FIFO* añade la capacidad de conservar un número constante de las últimas instantáneas.  Cuando se selecciona la casilla de verificación, las instantáneas se conservan en orden FIFO (primero en entrar, primero en salir).  Una vez que la cola de instantáneas FIFO alcanza su profundidad máxima, la instantánea FIFO más antigua se descarta cuando se inserta una nueva.
+
+
+.Pasos
+. Seleccione *Protección de datos* > *Programaciones*.
+. Seleccione *Crear horario*.
+. En el campo *CSV de ID de volumen*, introduzca un único ID de volumen o una lista de ID de volumen separados por comas para incluir en la operación de instantánea.
+. Introduzca un nuevo nombre para el horario.
+. Seleccione un tipo de horario y configúrelo a partir de las opciones proporcionadas.
+. *Opcional:* Seleccione *Programación recurrente* para repetir la programación de instantáneas indefinidamente.
+. *Opcional:* Introduzca un nombre para la nueva instantánea en el campo *Nombre de la nueva instantánea*.
++
+Si deja el campo en blanco, el sistema utilizará la fecha y hora de creación de la instantánea como nombre.
+
+. *Opcional:* Seleccione la casilla de verificación *Incluir instantáneas en la replicación cuando se emparejan* para garantizar que las instantáneas se capturen en la replicación cuando se empareje el volumen principal.
+. *Opcional:* Seleccione la casilla de verificación *Habilitar creación serial* para garantizar que solo se replique una instantánea a la vez.
+. Para configurar el período de retención de la instantánea, seleccione una de las siguientes opciones:
++
+** *Opcional:* Seleccione la casilla de verificación *FIFO (Primero en entrar, primero en salir)* para conservar un número constante de las instantáneas más recientes.
+** Seleccione *Conservar para siempre* para guardar la instantánea en el sistema indefinidamente.
+** Seleccione *Establecer período de retención* y utilice los controles numéricos de fecha para elegir el período de tiempo durante el cual el sistema conservará la instantánea.
+
+
+. Seleccione *Crear horario*.
+

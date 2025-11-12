@@ -1,0 +1,92 @@
+= 
+:allow-uri-read: 
+
+
+.Antes de empezar
+* Algunas funciones de Active IQ, por ejemplo, la calidad de servicio (QoS), requieren Element 11.3 o posterior para funcionar correctamente.  Para confirmar que tiene la capacidad de utilizar todas las funciones de Active IQ , NetApp recomienda lo siguiente:
++
+** Su clúster de almacenamiento ejecuta el software NetApp Element 11.3 o posterior.
+** Has implementado un nodo de administración que ejecuta la versión 11.3 o posterior.
+
+
+* Tienes acceso a internet.  El servicio de recopilación Active IQ no se puede utilizar desde sitios web oscuros que no tengan conectividad externa.
+
+
+.Pasos
+. Obtenga el ID del recurso base para la instalación:
++
+.. Abra la interfaz de usuario de la API REST del servicio de inventario en el nodo de administración:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Seleccione *Autorizar* y complete lo siguiente:
++
+... Introduzca el nombre de usuario y la contraseña del clúster.
+... Introduzca el ID del cliente como `mnode-client` .
+... Seleccione *Autorizar* para iniciar una sesión.
+... Cerrar la ventana.
+
+
+.. Desde la interfaz de usuario de la API REST, seleccione *GET /installations*.
+.. Seleccione *Probarlo*.
+.. Seleccione *Ejecutar*.
+.. Del cuerpo de la respuesta con código 200, copie el `id` para la instalación.
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: Su instalación tiene una configuración de activos base que se creó durante la instalación o actualización.
+
+
+
+. Activar telemetría:
++
+.. Acceda a la interfaz de usuario de la API del servicio mnode en el nodo de administración introduciendo la dirección IP del nodo de administración seguida de `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Seleccione *Autorizar* o cualquier icono de candado y complete lo siguiente:
++
+... Introduzca el nombre de usuario y la contraseña del clúster.
+... Introduzca el ID del cliente como `mnode-client` .
+... Seleccione *Autorizar* para iniciar una sesión.
+... Cerrar la ventana.
+
+
+.. Configurar el recurso base:
++
+... Seleccione *PUT /assets/{asset_id}*.
+... Seleccione *Probarlo*.
+... Introduzca lo siguiente en la carga útil JSON:
++
+[listing]
+----
+{
+"telemetry_active": true
+"config": {}
+}
+----
+... Introduzca el ID base del paso anterior en *asset_ID*.
+... Seleccione *Ejecutar*.
++
+El servicio Active IQ se reinicia automáticamente siempre que se modifican los activos.  La modificación de los recursos produce una breve demora antes de que se apliquen los ajustes.
+
+
+
+
+
+

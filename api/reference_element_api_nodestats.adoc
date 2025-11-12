@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: El objeto nodeStats contiene mediciones de actividad de alto nivel para un nodo.  Puedes utilizar los métodos de la API GetNodeStats y ListNodeStats para obtener algunos o todos los objetos nodeStats. 
+---
+= estadísticas del nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto nodeStats contiene mediciones de actividad de alto nivel para un nodo.  Puedes usar el `GetNodeStats` y `ListNodeStats` Métodos de la API para obtener algunos o todos los objetos nodeStats.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+contar
+ a| 
+El número total de muestras en el objeto nodeStats.
+ a| 
+entero
+
+
+
+ a| 
+UPC
+ a| 
+Uso de CPU, en %.
+ a| 
+entero
+
+
+
+ a| 
+CPU total
+ a| 
+Valor de utilización de la CPU que aumenta de forma monótona.
+ a| 
+entero
+
+
+
+ a| 
+cBytesEn
+ a| 
+Bytes de entrada en la interfaz del clúster.
+ a| 
+entero
+
+
+
+ a| 
+cBytesOut
+ a| 
+Salida de bytes en la interfaz del clúster.
+ a| 
+entero
+
+
+
+ a| 
+sBytesEn
+ a| 
+Bytes de entrada en la interfaz de almacenamiento.
+ a| 
+entero
+
+
+
+ a| 
+sBytesOut
+ a| 
+Bytes de salida en la interfaz de almacenamiento.
+ a| 
+entero
+
+
+
+ a| 
+mBytesEn
+ a| 
+Bytes de entrada en la interfaz de gestión.
+ a| 
+entero
+
+
+
+ a| 
+mBytesOut
+ a| 
+Salida de bytes en la interfaz de gestión.
+ a| 
+entero
+
+
+
+ a| 
+Clúster de utilización de red
+ a| 
+Utilización de la interfaz de red (en %) para la interfaz de red del clúster.
+ a| 
+entero
+
+
+
+ a| 
+Utilización de la red Almacenamiento
+ a| 
+Utilización de la interfaz de red (en %) para la interfaz de red de almacenamiento.
+ a| 
+entero
+
+
+
+ a| 
+nodoCalor
+ a| 
+Información sobre la utilización del nodo.  Disponible a partir del Elemento 12.8.  Miembros:
+
+* primaryTotalHeat: IOPS totales del nodo primario / IOPS configuradas del nodo, promediadas durante 24 horas
+* recentPrimaryTotalHeat: IOPS totales del nodo primario / IOPS configuradas del nodo, promediadas durante una hora.
+* recentTotalHeat: IOPS totales del nodo / IOPS configuradas del nodo, promedio durante una hora.
+* totalHeat: IOPS totales del nodo / IOPS configuradas del nodo, promedio durante 24 horas
+
+ a| 
+Objeto JSON
+
+
+
+ a| 
+Latencia de lectura (USec) Total
+ a| 
+Valor creciente de forma monótona del tiempo total empleado en realizar operaciones de lectura en el nodo.
+ a| 
+entero
+
+
+
+ a| 
+operaciones de lectura
+ a| 
+Valor creciente de forma monótona del total de operaciones de lectura en un nodo.
+ a| 
+entero
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+Datos del histograma que ilustran la carga del servicio de segmentación a lo largo del tiempo.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+marca de tiempo
+ a| 
+La hora actual en formato UTC+0.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+memoria utilizada
+ a| 
+Uso total de memoria en bytes.
+ a| 
+entero
+
+
+
+ a| 
+Latencia de escritura (USec) total
+ a| 
+Valor creciente de forma monótona del tiempo total empleado en realizar operaciones de escritura en el nodo.
+ a| 
+entero
+
+
+
+ a| 
+operaciones de escritura
+ a| 
+Valor creciente de forma monótona del total de operaciones de escritura en un nodo.
+ a| 
+entero
+
+|===
+
+
+== Encuentra más información
+
+* xref:reference_element_api_getnodestats.adoc[Obtener estadísticas del nodo]
+* xref:reference_element_api_listnodestats.adoc[Estadísticas de nodo de lista]
+

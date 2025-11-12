@@ -1,0 +1,44 @@
+---
+permalink: storage/task_troubleshoot_power_down_a_cluster.html 
+sidebar: sidebar 
+keywords: cluster, power down, mvip 
+summary: Puede apagar todo un clúster después de haberse puesto en contacto con el soporte de NetApp y haber completado los pasos preliminares. 
+---
+= Apagar un grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Realice el siguiente procedimiento para apagar un clúster completo.
+
+.Pasos
+. (Opcional) Comuníquese con el soporte de NetApp para obtener ayuda para completar los pasos preliminares.
+. Verifique que todas las operaciones de E/S se hayan detenido.
+. Desconectar todas las sesiones iSCSI:
++
+.. Navegue hasta la dirección IP virtual de administración (MVIP) en el clúster para abrir la interfaz de usuario de Element.
+.. Observe los nodos que aparecen en la lista de nodos.
+.. Ejecute el método de la API Shutdown con la opción de detención especificada en cada ID de nodo del clúster.
+
+
+
+
+[NOTE]
+====
+Al reiniciar el clúster, debe seguir ciertos pasos para verificar que todos los nodos se conecten:
+
+. Verifique que toda la gravedad crítica y `volumesOffline` Se han resuelto los fallos del clúster.
+. Espere de 10 a 15 minutos para que el grupo se asiente.
+. Comience a iniciar los hosts para acceder a los datos.
+
+
+Si desea disponer de más tiempo al encender los nodos y verificar que estén en buen estado después del mantenimiento, póngase en contacto con el soporte técnico para obtener ayuda para retrasar la sincronización de datos y evitar la sincronización innecesaria de contenedores.
+
+====
+
+
+== Encuentra más información
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/How_to_gracefully_shut_down_and_power_on_a_NetApp_Solidfire_HCI_storage_cluster["Cómo apagar y encender correctamente un clúster de almacenamiento NetApp Solidfire/HCI"^]

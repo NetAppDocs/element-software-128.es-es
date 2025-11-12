@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_deletekeyproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key provider,deleting,delete 
+summary: 'Puede utilizar el método DeleteKeyProviderKmip para eliminar el proveedor de claves inactivo especificado del protocolo de interoperabilidad de administración de claves (KMIP).' 
+---
+= EliminarKeyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `DeleteKeyProviderKmip` Método para eliminar el proveedor de claves inactivo especificado del Protocolo de Interoperabilidad de Gestión de Claves (KMIP).
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID del proveedor de clave
+ a| 
+El ID del proveedor de claves que se va a eliminar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.  La operación de eliminación se considera exitosa siempre y cuando no haya ningún error.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "DeleteKeyProviderKmip",
+  "params": {
+    "keyProviderID": "1"
+    },
+"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== Nueva versión
+
+11,7

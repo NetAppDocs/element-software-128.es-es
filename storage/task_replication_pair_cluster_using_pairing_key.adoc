@@ -1,0 +1,46 @@
+---
+permalink: storage/task_replication_pair_cluster_using_pairing_key.html 
+sidebar: sidebar 
+keywords: remote replication, pairing key, pairing clusters 
+summary: Si tiene acceso de administrador de clúster a un clúster local pero no al clúster remoto, puede emparejar los clústeres utilizando una clave de emparejamiento.  Se genera una clave de emparejamiento en un clúster local y luego se envía de forma segura a un administrador de clúster en un sitio remoto para establecer una conexión y completar el emparejamiento del clúster para la replicación en tiempo real. 
+---
+= Agrupar grupos mediante una clave de emparejamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si tiene acceso de administrador de clúster a un clúster local pero no al clúster remoto, puede emparejar los clústeres utilizando una clave de emparejamiento.  Se genera una clave de emparejamiento en un clúster local y luego se envía de forma segura a un administrador de clúster en un sitio remoto para establecer una conexión y completar el emparejamiento del clúster para la replicación en tiempo real.
+
+. En el clúster local, seleccione *Protección de datos* > *Pares de clústeres*.
+. Haga clic en *Par de clústeres*.
+. Haga clic en *Iniciar emparejamiento* y haga clic en *No* para indicar que no tiene acceso al clúster remoto.
+. Haz clic en *Generar clave*.
++
+
+NOTE: Esta acción genera una clave de texto para el emparejamiento y crea un par de clúster no configurado en el clúster local.  Si no completa el procedimiento, deberá eliminar manualmente el par de clústeres.
+
+. Copie la clave de emparejamiento del clúster al portapapeles.
+. Proporcione la clave de emparejamiento al administrador del clúster en el sitio remoto del clúster.
++
+
+NOTE: La clave de emparejamiento del clúster contiene una versión de MVIP, nombre de usuario, contraseña e información de la base de datos para permitir conexiones de volumen para la replicación remota.  Esta clave debe tratarse de forma segura y no almacenarse de manera que permita el acceso accidental o no seguro al nombre de usuario o la contraseña.
+
++
+
+IMPORTANT: No modifique ninguno de los caracteres de la clave de emparejamiento.  La clave pierde validez si se modifica.
+
+. En el clúster remoto, seleccione *Protección de datos* > *Pares de clústeres*.
+. Haga clic en *Par de clústeres*.
+. Haga clic en *Completar emparejamiento* e ingrese la clave de emparejamiento en el campo *Clave de emparejamiento* (se recomienda pegar).
+. Haga clic en *Completar emparejamiento*.
+
+
+
+
+== Encuentra más información
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Agrupamiento de pares mediante MVIP]
+* https://www.youtube.com/watch?v=1ljHAd1byC8&feature=youtu.be["Emparejamiento de clústeres mediante una clave de emparejamiento de clústeres (vídeo)"]
+

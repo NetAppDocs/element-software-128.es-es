@@ -1,0 +1,38 @@
+---
+permalink: api/reference_element_api_cluster_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: cluster,pairing,pair,order,operations,clusters 
+summary: Debe establecer una conexión entre un par de clústeres de almacenamiento que ejecutan el software Element antes de poder utilizar la replicación remota. 
+---
+= orden de operaciones de emparejamiento de clústeres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe establecer una conexión entre un par de clústeres de almacenamiento que ejecutan el software Element antes de poder utilizar la replicación remota.
+
+Utilice el siguiente conjunto de métodos de la API para establecer una conexión de clúster:
+
+* xref:reference_element_api_startclusterpairing.adoc[Iniciar emparejamiento de clústeres]:
++
+Este método de la API crea y devuelve una clave de emparejamiento que se utiliza para establecer un par de clústeres.  La clave está codificada y contiene información que se utiliza para establecer comunicaciones entre clústeres.  Un único clúster puede emparejarse con hasta cuatro clústeres más.  Sin embargo, se debe generar una nueva clave para cada par de clústeres.  Elxref:reference_element_api_startclusterpairing.adoc[Iniciar emparejamiento de clústeres] Este método genera una nueva clave cada vez que se llama.  Utilice cada clave única con elxref:reference_element_api_completeclusterpairing.adoc[Emparejamiento de clústeres completo] método para emparejar cada clúster adicional.
+
++
+
+NOTE: Por motivos de seguridad, la clave de emparejamiento no debe enviarse a otros usuarios por correo electrónico.  La clave contiene un nombre de usuario y una contraseña.
+
+* xref:reference_element_api_completeclusterpairing.adoc[Emparejamiento de clústeres completo]:
++
+Este método utiliza la clave de emparejamiento creada con elxref:reference_element_api_startclusterpairing.adoc[Iniciar emparejamiento de clústeres] Método API para crear un par de clústeres.  Emitir elxref:reference_element_api_completeclusterpairing.adoc[Emparejamiento de clústeres completo] Método API con el parámetro clusterPairingKey al destino.  El clúster de origen es el clúster que creó la clave.
+
+
+
+
+
+== Encuentra más información
+
+* xref:reference_element_api_startclusterpairing.adoc[Iniciar emparejamiento de clústeres]
+* xref:reference_element_api_completeclusterpairing.adoc[Emparejamiento de clústeres completo]
+

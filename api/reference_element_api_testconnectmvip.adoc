@@ -1,0 +1,146 @@
+---
+permalink: api/reference_element_api_testconnectmvip.html 
+sidebar: sidebar 
+keywords: management,connection,test,testing,mvip,testconnectmvip 
+summary: Puede utilizar el método TestConnectMvip para probar la conexión de administración al clúster de almacenamiento.  La prueba envía un ping al MVIP y ejecuta un método API simple para verificar la conectividad. 
+---
+= TestConnectMvip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `TestConnectMvip` Método para probar la conexión de administración con el clúster de almacenamiento.  La prueba envía un ping al MVIP y ejecuta un método API simple para verificar la conectividad.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+| MVIP | Puede pasar este valor para probar la conexión de administración de un MVIP diferente.  No es necesario utilizar este valor al probar la conexión con el clúster de destino. | cadena | Ninguno | No 
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+| detalles  a| 
+Información sobre la operación de prueba (objeto JSON):
+
+* `connected`: Indica si la prueba pudo conectarse al MVIP (booleano)
+* `mvip`: El MVIP probado contra (cadena)
+* `pingBytes`Detalles de las pruebas de ping con 56 bytes y 1500 bytes (objeto)
++
+** `56`Resultados de la prueba de ping de 56 bytes (objeto JSON):
++
+*** `individualResponseTimes`: Lista de tiempos de respuesta de cada nodo del conjunto (matriz de cadenas)
+*** `individualStatus`: Lista del estado de ping de cada nodo del conjunto (matriz booleana)
+*** `responseTime`: Tiempo promedio de respuesta al ping (cadena)
+*** `successful`: Indica si la prueba de ping fue exitosa (booleano)
+
+
+** `1500`Resultados de la prueba de ping de 1500 bytes (objeto JSON):
++
+*** `individualResponseTimes`: Lista de tiempos de respuesta de cada nodo del conjunto (matriz de cadenas)
+*** `individualStatus`: Lista del estado de ping de cada nodo del conjunto (matriz booleana)
+*** `responseTime`: Tiempo promedio de respuesta al ping (cadena)
+*** `successful`: Indica si la prueba de ping fue exitosa (booleano)
+
+
+** `duration`: Duración del tiempo necesario para ejecutar la prueba (cadena de texto)
+** `result`Resultado de la prueba en su conjunto (cadena de texto)
+
+
+
+| Objeto JSON 
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "TestConnectMvip",
+   "params": {
+       "mvip" : "172.27.62.50"
+       },
+    "id":1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": {
+      "connected": true,
+      "mvip": "172.27.62.50",
+      "pingBytes": {
+        "1500": {
+          "individualResponseTimes": [
+            "00:00:00.000250",
+            "00:00:00.000206",
+            "00:00:00.000200",
+            "00:00:00.000199",
+            "00:00:00.000199"
+         ],
+          "individualStatus": [
+             true,
+             true,
+             true,
+             true,
+             true
+         ],
+         "responseTime": "00:00:00.000211",
+         "successful": true
+       },
+       "56": {
+          "individualResponseTimes": [
+            "00:00:00.000217",
+            "00:00:00.000122",
+            "00:00:00.000117",
+            "00:00:00.000119",
+            "00:00:00.000121"
+         ],
+         "individualStatus": [
+            true,
+            true,
+            true,
+            true,
+            true
+         ],
+         "responseTime": "00:00:00.000139",
+         "successful": true
+        }
+      }
+    },
+    "duration": "00:00:00.271244",
+    "result": "Passed"
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

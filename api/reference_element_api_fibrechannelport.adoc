@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_fibrechannelport.html 
+sidebar: sidebar 
+keywords: object,objects,fibreChannelPort 
+summary: El objeto fiberChannelPort contiene información sobre puertos individuales en un nodo, o para un nodo completo en el clúster.  Puede recuperar esta información utilizando el método ListNodeFibreChannelPortInfo. 
+---
+= Puerto de canal de fibra
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto fiberChannelPort contiene información sobre puertos individuales en un nodo, o para un nodo completo en el clúster.  Puedes recuperar esta información utilizando el `ListNodeFibreChannelPortInfo` método.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+firmware
+ a| 
+La versión del firmware instalada en el puerto Fibre Channel.
+ a| 
+entero
+
+
+
+ a| 
+Puerto hba
+ a| 
+El identificador del puerto del adaptador de bus de host (HBA) individual.
+ a| 
+entero
+
+
+
+ a| 
+modelo
+ a| 
+Modelo del HBA en el puerto.
+ a| 
+cadena
+
+
+
+ a| 
+nPortID
+ a| 
+El identificador único del nodo del puerto.
+ a| 
+cadena
+
+
+
+ a| 
+ranura PCI
+ a| 
+La ranura que contiene la tarjeta PCI en el chasis del nodo Fibre Channel.
+ a| 
+entero
+
+
+
+ a| 
+de serie
+ a| 
+El número de serie del puerto Fibre Channel.
+ a| 
+cadena
+
+
+
+ a| 
+velocidad
+ a| 
+La velocidad del HBA en el puerto.
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+Valores posibles:
+
+* Desconocido
+* No presente
+* En línea
+* Sin conexión
+* Obstruido
+* Eludido
+* Diagnóstico
+* Enlace descendente
+* Error
+* Bucle de retorno
+* Eliminado
+
+ a| 
+cadena
+
+
+
+ a| 
+interruptorWwn
+ a| 
+Nombre mundial del puerto del conmutador Fibre Channel.
+ a| 
+cadena
+
+
+
+ a| 
+wwnn
+ a| 
+Nombre del nodo HBA a nivel mundial.
+ a| 
+cadena
+
+
+
+ a| 
+wwwpn
+ a| 
+Nombre de puerto mundial asignado al puerto físico del HBA.
+ a| 
+cadena
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listnodefibrechannelportinfo.adoc[Información del puerto del canal de fibra del nodo de lista]

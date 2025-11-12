@@ -1,0 +1,38 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html 
+sidebar: sidebar 
+keywords: ntp, broadcasts, server, config, server list, broadcast client 
+summary: 'Al utilizar el modo de difusión, puede indicar a cada nodo de un clúster que escuche en la red los mensajes de difusión del Protocolo de tiempo de red (NTP) de un servidor en particular.' 
+---
+= Configure el clúster para que escuche las transmisiones NTP.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Al utilizar el modo de difusión, puede indicar a cada nodo de un clúster que escuche en la red los mensajes de difusión del Protocolo de tiempo de red (NTP) procedentes de un servidor determinado.
+
+El protocolo NTP se utiliza para sincronizar los relojes a través de una red.  La conexión a un servidor NTP interno o externo debe formar parte de la configuración inicial del clúster.
+
+.Lo que necesitarás
+* Para configurar este ajuste, debe tener privilegios de administrador de clúster.
+* Debe configurar un servidor NTP en su red como servidor de difusión.
+
+
+.Pasos
+. Haz clic en *Clúster* > *Configuración*.
+. Introduzca en la lista de servidores el servidor o servidores NTP que utilizan el modo de difusión.
+. En Configuración del protocolo de tiempo de red, seleccione *Sí* para usar un cliente de difusión.
+. Para configurar el cliente de difusión, en el campo *Servidor*, introduzca el servidor NTP que configuró en modo de difusión.
+. Haz clic en *Guardar cambios*.
+
+
+
+
+== Encuentra más información
+
+* link:../storage/task_system_manage_cluster_ntp_configure.html["Configure los servidores del Protocolo de Tiempo de Red (NTP) para que el clúster los consulte."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

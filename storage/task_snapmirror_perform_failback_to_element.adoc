@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_perform_failback_to_element.html 
+sidebar: sidebar 
+keywords: failback, perform a failbacl, Element, snapmirror 
+summary: Una vez mitigado el problema en el lado primario, debe volver a sincronizar el volumen de origen original y recurrir al software NetApp Element .  Los pasos a seguir varían dependiendo de si el volumen de origen original aún existe o si necesita recurrir a un volumen recién creado. 
+---
+= Aprenda cómo realizar una recuperación ante fallos a Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una vez mitigado el problema en el lado primario, debe volver a sincronizar el volumen de origen original y recurrir al software NetApp Element .  Los pasos a seguir varían dependiendo de si el volumen de origen original aún existe o si necesita recurrir a un volumen recién creado.
+
+
+
+== escenarios de recuperación ante fallos de SnapMirror
+
+La funcionalidad de recuperación ante desastres de SnapMirror se ilustra en dos escenarios de recuperación tras fallo.  Esto presupone que la relación original ha fracasado (se ha roto).
+
+Los pasos de los procedimientos correspondientes se añaden como referencia.
+
+
+NOTE: En los ejemplos aquí presentes, R1 = la relación original en la que el clúster que ejecuta el software NetApp Element es el volumen de origen original (Element) y ONTAP es el volumen de destino original (ONTAP).  R2 y R3 representan las relaciones inversas creadas a través de la operación de resincronización inversa.
+
+La siguiente imagen muestra el escenario de recuperación ante fallos cuando el volumen de origen aún existe:
+
+image::../media/snapmirror_element_failback1.gif[Imagen del escenario de recuperación ante fallos cuando el volumen de origen aún existe]
+
+La siguiente imagen muestra el escenario de recuperación ante fallos cuando el volumen de origen ya no existe:
+
+image::../media/snapmirror_element_failback2.png[Imagen del escenario de recuperación ante fallos cuando el volumen de origen ya no existe.]
+
+
+
+== Encuentra más información
+
+* xref:task_snapmirror_perform_failback_when_source_volume_exists.adoc[Realizar una recuperación tras fallo cuando el volumen de origen aún exista]
+* xref:task_snapmirror_performing_failback_when_source_volume_no_longer_exists.adoc[Realizar una recuperación tras fallo cuando el volumen de origen ya no exista]
+* xref:concept_snapmirror_failback_scenarios.adoc[escenarios de recuperación ante fallos de SnapMirror]
+

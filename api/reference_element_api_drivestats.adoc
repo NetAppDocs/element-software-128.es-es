@@ -1,0 +1,254 @@
+---
+permalink: api/reference_element_api_drivestats.html 
+sidebar: sidebar 
+keywords: object,objects,driveStats 
+summary: El objeto driveStats contiene mediciones de actividad de alto nivel para una sola unidad.  Puede recuperar información de medición con el método API GetDriveStats. 
+---
+= Estadísticas de la unidad
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto driveStats contiene mediciones de actividad de alto nivel para una sola unidad.  Puede recuperar información de medición con el método API. `GetDriveStats` .
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+sesiones activas
+ a| 
+Número de sesiones iSCSI que utilizan actualmente esta unidad (solo se muestra para unidades de metadatos).
+ a| 
+entero
+
+
+
+ a| 
+driveID
+ a| 
+Identificador único de la unidad en el clúster.
+ a| 
+entero
+
+
+
+ a| 
+recuento de dados fallidos
+ a| 
+Número de elementos de hardware de la unidad que fallaron.
+ a| 
+entero
+
+
+
+ a| 
+iosEnProgreso
+ a| 
+Número de operaciones de entrada/salida en curso en esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+porcentaje de vida restante
+ a| 
+Indicador de desgaste del disco duro.
+ a| 
+entero
+
+
+
+ a| 
+bytes leídos de por vida
+ a| 
+Total de bytes leídos de esta unidad durante su vida útil.
+ a| 
+entero
+
+
+
+ a| 
+escritura de bytes de por vida
+ a| 
+Total de bytes escritos en esta unidad durante su vida útil.
+ a| 
+entero
+
+
+
+ a| 
+horas de encendido
+ a| 
+Número de horas que esta unidad ha estado encendida.
+ a| 
+entero
+
+
+
+ a| 
+lecturas
+ a| 
+Número de llamadas a read() por segundo a esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+bytes leídos
+ a| 
+Total de bytes leídos de la unidad debido a operaciones del cliente.
+ a| 
+entero
+
+
+
+ a| 
+lecturasCombinadas
+ a| 
+El número de llamadas read() a sectores adyacentes que podrían combinarse en una lectura mayor.
+ a| 
+entero
+
+
+
+ a| 
+leer Msec
+ a| 
+El número de milisegundos empleados en la lectura.
+ a| 
+entero
+
+
+
+ a| 
+operaciones de lectura
+ a| 
+Total de operaciones de lectura en la unidad debido a operaciones del cliente.
+ a| 
+entero
+
+
+
+ a| 
+sectores reasignados
+ a| 
+Número de sectores defectuosos reemplazados en esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+porcentaje de capacidad de reserva
+ a| 
+La capacidad de reserva disponible del variador.
+ a| 
+entero
+
+
+
+ a| 
+marca de tiempo
+ a| 
+La hora actual en formato UTC+0.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+capacidad total
+ a| 
+Capacidad total de la unidad, en bytes.
+ a| 
+entero
+
+
+
+ a| 
+Errores incorregibles
+ a| 
+Valor de Errores Incorregibles Reportados del sistema de monitoreo SMART (Tecnología de Automonitoreo, Análisis e Informe) en la unidad.
+ a| 
+entero
+
+
+
+ a| 
+capacidad utilizada
+ a| 
+Capacidad utilizada de la unidad, en bytes.
+ a| 
+entero
+
+
+
+ a| 
+memoria utilizada
+ a| 
+Cantidad de memoria utilizada actualmente por el nodo que aloja esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+escribe
+ a| 
+Número de llamadas a write() por segundo a esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+escribirBytes
+ a| 
+Total de bytes escritos en la unidad debido a la actividad del cliente.
+ a| 
+entero
+
+
+
+ a| 
+escribeCombinado
+ a| 
+El número de llamadas write() a sectores adyacentes que podrían combinarse en una escritura mayor.
+ a| 
+entero
+
+
+
+ a| 
+Escribir Msec
+ a| 
+El número de milisegundos empleados en la escritura.
+ a| 
+entero
+
+
+
+ a| 
+operaciones de escritura
+ a| 
+Operaciones de escritura totales en la unidad debido a la actividad del cliente.
+ a| 
+entero
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_getdrivestats.adoc[GetDriveStats]

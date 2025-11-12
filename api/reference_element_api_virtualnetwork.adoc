@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_virtualnetwork.html 
+sidebar: sidebar 
+keywords: object,objects,virtualNetwork 
+summary: El objeto virtualNetwork contiene información sobre una red virtual específica.  Puede utilizar el método de la API ListVirtualNetworks para recuperar una lista de esta información para todas las redes virtuales del sistema. 
+---
+= red virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto virtualNetwork contiene información sobre una red virtual específica.  Puedes usar el `ListVirtualNetworks` Método API para recuperar una lista de esta información para todas las redes virtuales del sistema.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+bloques de direcciones
+ a| 
+El rango de bloques de direcciones actualmente asignados a la red virtual.  Miembros:
+
+* disponible: Cadena binaria de "1" y "0". "1" indica que la dirección IP está disponible y "0" indica que la IP no está disponible.  La cadena se lee de derecha a izquierda, siendo el dígito situado más a la derecha la primera dirección IP de la lista de bloques de direcciones.
+* Tamaño: El tamaño de este bloque de direcciones.
+* inicio: La primera dirección IP del bloque.
+
+ a| 
+matriz de objetos JSON
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+nombre
+ a| 
+El nombre asignado a la red virtual.
+ a| 
+cadena
+
+
+
+ a| 
+máscara de red
+ a| 
+La dirección IP de la máscara de red para la red virtual.
+ a| 
+cadena
+
+
+
+ a| 
+svip
+ a| 
+La dirección IP de almacenamiento para la red virtual.
+ a| 
+cadena
+
+
+
+ a| 
+puerta
+ a| 
+La puerta de enlace utilizada para la red virtual.
+ a| 
+cadena
+
+
+
+ a| 
+ID de red virtual
+ a| 
+El identificador único de una red virtual.
+ a| 
+entero
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+El identificador de etiqueta VLAN.
+ a| 
+entero
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listvirtualnetworks.adoc[Lista de redes virtuales]

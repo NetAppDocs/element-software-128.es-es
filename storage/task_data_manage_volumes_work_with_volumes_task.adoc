@@ -1,0 +1,31 @@
+---
+permalink: storage/task_data_manage_volumes_work_with_volumes_task.html 
+sidebar: sidebar 
+keywords: volumes, work, storage, iscsi, fc, cluster data management, overview of functions 
+summary: El sistema SolidFire aprovisiona almacenamiento mediante volúmenes.  Los volúmenes son dispositivos de bloque a los que acceden a través de la red los clientes iSCSI o Fibre Channel.  Desde la página Volúmenes en la pestaña Administración, puede crear, modificar, clonar y eliminar volúmenes en un nodo.  También puede consultar estadísticas sobre el ancho de banda del volumen y el uso de E/S. 
+---
+= Trabajar con volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El sistema SolidFire aprovisiona almacenamiento mediante volúmenes.  Los volúmenes son dispositivos de bloque a los que acceden a través de la red los clientes iSCSI o Fibre Channel.  Desde la página Volúmenes en la pestaña Administración, puede crear, modificar, clonar y eliminar volúmenes en un nodo.  También puede consultar estadísticas sobre el ancho de banda del volumen y el uso de E/S.
+
+
+
+== Encuentra más información
+
+* link:concept_data_manage_volumes_quality_of_service_policies.html["Políticas de gestión de la calidad del servicio"]
+* link:task_data_manage_volumes.html#create-a-volume["Crear un volumen"]
+* link:task_data_manage_volumes.html#view-volume-details["Consulte los detalles de rendimiento de volumen individual."]
+* link:task_data_manage_volumes.html#edit-active-volumes["Editar volúmenes activos"]
+* link:task_data_manage_volumes.html#delete-a-volume["Eliminar un volumen"]
+* link:task_data_manage_volumes.html#restore-a-deleted-volume["Restaurar un volumen eliminado"]
+* link:task_data_manage_volumes.html#purge-a-volume["Purgar un volumen"]
+* link:task_data_manage_volumes.html#clone-a-volume["Clonar un volumen"]
+* link:task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html["Asignar LUN a volúmenes Fibre Channel"]
+* link:task_data_manage_volumes_apply_a_qos_policy.html["Aplicar una política de QoS a los volúmenes"]
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["Eliminar la asociación de política QoS de un volumen"]
+

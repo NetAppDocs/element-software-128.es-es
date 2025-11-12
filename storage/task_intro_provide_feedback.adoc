@@ -1,0 +1,30 @@
+---
+permalink: storage/task_intro_provide_feedback.html 
+sidebar: sidebar 
+keywords: feedback, web user interface, UI issues, feedback form, relevant information, screenshots 
+summary: Puedes ayudar a mejorar la interfaz de usuario web del software Element y solucionar cualquier problema de la interfaz utilizando el formulario de comentarios que está accesible en toda la interfaz. 
+---
+= Enviar comentarios
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes ayudar a mejorar la interfaz de usuario web del software Element y solucionar cualquier problema de la interfaz utilizando el formulario de comentarios que está accesible en toda la interfaz.
+
+. Desde cualquier página de la interfaz de usuario de Element, haga clic en el botón *Comentarios*.
+. Introduzca la información pertinente en los campos Resumen y Descripción.
+. Adjunta cualquier captura de pantalla que pueda ser útil.
+. Introduzca un nombre y una dirección de correo electrónico.
+. Seleccione la casilla de verificación para incluir datos sobre su entorno actual.
+. Haga clic en *Enviar*.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

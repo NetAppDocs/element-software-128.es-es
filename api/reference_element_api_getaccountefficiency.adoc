@@ -1,0 +1,131 @@
+---
+permalink: api/reference_element_api_getaccountefficiency.html 
+sidebar: sidebar 
+keywords: accounts,account,efficiency,get,getting,GetAccountEfficiency 
+summary: Puede utilizar GetAccountEfficiency para obtener estadísticas de eficiencia sobre una cuenta de volumen.  Este método devuelve información de eficiencia únicamente para la cuenta que se proporciona como parámetro. 
+---
+= Obtén la eficiencia de la cuenta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `GetAccountEfficiency` para obtener estadísticas de eficiencia sobre una cuenta de volumen.  Este método devuelve información de eficiencia únicamente para la cuenta que se proporciona como parámetro.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de cuenta
+ a| 
+Especifica la cuenta de volumen para la que se devuelven las estadísticas de eficiencia.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+compresión
+ a| 
+Cantidad de espacio ahorrado mediante la compresión de datos para todos los volúmenes de la cuenta.  Se expresa como una relación donde un valor de "1" significa que los datos se han almacenado sin compresión.
+ a| 
+flotar
+
+
+
+ a| 
+deduplicación
+ a| 
+La cantidad de espacio ahorrado al no duplicar los datos de todos los volúmenes de la cuenta.  Expresado como una proporción.
+ a| 
+flotar
+
+
+
+ a| 
+volúmenes faltantes
+ a| 
+Los volúmenes de los que no se pudieron obtener datos de eficiencia.  La falta de volúmenes puede deberse a que el ciclo de recolección de basura (GC) tenga menos de una hora de antigüedad, a una pérdida temporal de conectividad de red o a servicios reiniciados desde el ciclo de GC.
+ a| 
+matriz de enteros
+
+
+
+ a| 
+aprovisionamiento ligero
+ a| 
+La proporción de espacio utilizado con respecto a la cantidad de espacio asignado para almacenar datos.  Expresado como una proporción.
+ a| 
+flotar
+
+
+
+ a| 
+marca de tiempo
+ a| 
+Último momento en que se recopilaron datos de eficiencia después de la recolección de basura (GC), en formato UTC+0.
+ a| 
+cadena de fecha ISO 8601
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetAccountEfficiency",
+   "params": {
+     "accountID": 3
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.020468042933262,
+       "deduplication": 2.042488619119879,
+       "missingVolumes": [],
+       "thinProvisioning": 1.010087163391013,
+       "timestamp": "2014-03-10T14:06:02Z"
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

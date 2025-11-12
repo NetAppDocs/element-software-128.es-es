@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_protocolendpoint.html 
+sidebar: sidebar 
+keywords: object,objects,protocolEndpoint 
+summary: El objeto protocolEndpoint contiene los atributos de un punto final de protocolo.  Puede recuperar esta información para todos los puntos de conexión del protocolo en el clúster utilizando el método de la API ListProtocolEndpoints. 
+---
+= punto final del protocolo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto protocolEndpoint contiene los atributos de un punto final de protocolo.  Puede recuperar esta información para todos los puntos finales del protocolo en el clúster utilizando `ListProtocolEndpoints` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de proveedor principal
+ a| 
+El ID del objeto proveedor del punto final del protocolo principal para el punto final del protocolo.
+ a| 
+entero
+
+
+
+ a| 
+ID de punto final del protocolo
+ a| 
+El identificador único del punto final del protocolo.
+ a| 
+UUID
+
+
+
+ a| 
+estado del punto final del protocolo
+ a| 
+Estado del punto final del protocolo. Valores posibles:
+
+* Activo: El punto final del protocolo está en uso.
+* Inicio: El punto final del protocolo se está iniciando.
+* Conmutación por error: El extremo del protocolo ha conmutado por error.
+* Reservado: El punto final del protocolo está reservado.
+
+ a| 
+cadena
+
+
+
+ a| 
+Tipo de proveedor
+ a| 
+El tipo de proveedor del punto final del protocolo. Valores posibles:
+
+* Primario
+* Secundario
+
+ a| 
+cadena
+
+
+
+ a| 
+scsiNAADeviceID
+ a| 
+El identificador de dispositivo SCSI único a nivel mundial para el punto final del protocolo en formato extendido registrado IEEE NAA.
+ a| 
+cadena
+
+
+
+ a| 
+ID de proveedor secundario
+ a| 
+El ID del objeto proveedor del punto final del protocolo secundario para el punto final del protocolo.
+ a| 
+entero
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listprotocolendpoints.adoc[ListProtocolEndpoints]

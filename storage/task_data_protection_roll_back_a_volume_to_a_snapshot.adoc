@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_roll_back_a_volume_to_a_snapshot.html 
+sidebar: sidebar 
+keywords: volume to snapshot roll back, snapshot roll back, revert changes 
+summary: Puedes restaurar un volumen a una instantánea anterior en cualquier momento.  Esto revierte cualquier cambio realizado en el volumen desde que se creó la instantánea. 
+---
+= Revierte un volumen a una instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes restaurar un volumen a una instantánea anterior en cualquier momento.  Esto revierte cualquier cambio realizado en el volumen desde que se creó la instantánea.
+
+.Pasos
+. Haz clic en *Protección de datos* > *Instantáneas*.
+. Haga clic en el icono *Acciones* de la instantánea que desea utilizar para la reversión de volumen.
+. En el menú resultante, seleccione *Revertir volumen a instantánea*.
+. *Opcional:* Para guardar el estado actual del volumen antes de volver a la instantánea:
++
+.. En el cuadro de diálogo *Revertir a instantánea*, seleccione *Guardar el estado actual del volumen como una instantánea*.
+.. Introduzca un nombre para la nueva instantánea.
+
+
+. Haga clic en *Revertir instantánea*.
+

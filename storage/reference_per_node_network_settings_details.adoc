@@ -1,0 +1,93 @@
+---
+permalink: storage/reference_per_node_network_settings_details.html 
+sidebar: sidebar 
+keywords: network settings, per-node UI, storage node, ui 
+summary: Puede cambiar la configuración de red del nodo de almacenamiento para asignarle un nuevo conjunto de atributos de red. 
+---
+= Detalles de la configuración de red desde la interfaz de usuario de cada nodo.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede cambiar la configuración de red del nodo de almacenamiento para asignarle un nuevo conjunto de atributos de red.
+
+Puedes ver la configuración de red de un nodo de almacenamiento en la página *Configuración de red* cuando inicies sesión en el nodo. (`https://<node_IP>:442/hcc/node/network-settings`). Puede seleccionar la configuración *Bond1G* (gestión) o *Bond10G* (almacenamiento). La siguiente lista describe la configuración que puede modificar cuando un nodo de almacenamiento se encuentra en estado Disponible, Pendiente o Activo:
+
+* *Método*
++
+El método utilizado para configurar la interfaz.  Métodos posibles:
+
++
+** loopback: Se utiliza para definir la interfaz loopback IPv4.
+** manual: Se utiliza para definir interfaces para las que no se realiza ninguna configuración por defecto.
+** dhcp: Se utiliza para obtener una dirección IP mediante DHCP.
+** estático: Se utiliza para definir interfaces Ethernet con direcciones IPv4 asignadas estáticamente.
+
+
+* *Velocidad de enlace*
++
+La velocidad negociada por la NIC virtual.
+
+* *Dirección IPv4*
++
+La dirección IPv4 para la red eth0.
+
+* *Máscara de subred IPv4*
++
+Subdivisiones de direcciones de la red IPv4.
+
+* *Dirección de puerta de enlace IPv4*
++
+Dirección de red del router para enviar paquetes fuera de la red local.
+
+* *Dirección IPv6*
++
+La dirección IPv6 para la red eth0.
+
+* *Dirección de puerta de enlace IPv6*
++
+Dirección de red del router para enviar paquetes fuera de la red local.
+
+* *MTU*
++
+Tamaño máximo de paquete que un protocolo de red puede transmitir.  Debe ser mayor o igual a 1500.  Si agrega una segunda NIC de almacenamiento, el valor debería ser 9000.
+
+* *Servidores DNS*
++
+Interfaz de red utilizada para la comunicación del clúster.
+
+* *Dominios de búsqueda*
++
+Busque direcciones MAC adicionales disponibles para el sistema.
+
+* *Modo de vínculo*
++
+Puede ser uno de los siguientes modos:
+
++
+** ActivoPasivo (predeterminado)
+** ALBA
+** LACP
+
+
+* *Estado*
++
+Valores posibles:
+
++
+** En funcionamiento
+** Abajo
+** Arriba
+
+
+* *Etiqueta de red virtual*
++
+Etiqueta asignada al crear la red virtual.
+
+* *Rutas*
++
+Rutas estáticas a hosts o redes específicas a través de la interfaz asociada que las rutas están configuradas para usar.
+
+

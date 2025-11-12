@@ -1,0 +1,122 @@
+---
+permalink: api/reference_element_api_listprotocolendpoints.html 
+sidebar: sidebar 
+keywords: protocol,endpoints,endpoint,list,listing,listprotocolendpoints 
+summary: Puede utilizar el método ListProtocolEndpoints para recuperar información sobre todos los puntos de conexión del protocolo en el clúster.  Los puntos finales del protocolo controlan el acceso a sus contenedores de almacenamiento de volúmenes virtuales asociados. 
+---
+= ListProtocolEndpoints
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ListProtocolEndpoints` Método para recuperar información sobre todos los puntos finales del protocolo en el clúster.  Los puntos finales del protocolo controlan el acceso a sus contenedores de almacenamiento de volúmenes virtuales asociados.
+
+
+
+== Parámetros
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final del protocolo
+ a| 
+Una lista de identificadores de puntos finales del protocolo para los que se desea recuperar información.  Si se omite este parámetro, el método devuelve información sobre todos los puntos finales del protocolo.
+ a| 
+matriz UUID del punto de conexión del protocolo
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+puntos finales del protocolo
+ a| 
+Lista de objetos que contienen información sobre cada punto final del protocolo en el sistema.
+ a| 
+xref:reference_element_api_protocolendpoint.adoc[punto final del protocolo]formación
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "ListProtocolEndpoints",
+  "params": {}
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "protocolEndpoints": [
+      {
+        "primaryProviderID": 1,
+        "protocolEndpointID": "1387e257-d2e3-4446-be6d-39db71583e7b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000016970687200000000",
+        "secondaryProviderID": 2
+      },
+      {
+        "primaryProviderID": 2,
+        "protocolEndpointID": "1f16ed86-3f31-4c76-b004-a1251187700b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000026970687200000000",
+        "secondaryProviderID": 3
+      },
+      {
+        "primaryProviderID": 4,
+        "protocolEndpointID": "c6458dfe-9803-4350-bb4e-68a3feb7e830",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000046970687200000000",
+        "secondaryProviderID": 1
+      },
+      {
+        "primaryProviderID": 3,
+        "protocolEndpointID": "f3e7911d-0e86-4776-97db-7468c272213f",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000036970687200000000",
+        "secondaryProviderID": 4
+      }
+    ]
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

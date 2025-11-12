@@ -1,0 +1,134 @@
+---
+permalink: storage/task_data_manage_accounts_work_with_accounts_task.html 
+sidebar: sidebar 
+keywords: element, solidfire, accounts, create, delete, change, chap, view, edit 
+summary: En los sistemas de almacenamiento SolidFire , los inquilinos pueden usar cuentas para permitir que los clientes se conecten a volúmenes en un nodo.  Una cuenta contiene la autenticación CHAP necesaria para acceder a los volúmenes que le han sido asignados.  Cuando se crea un volumen, este se asigna a una cuenta específica. 
+---
+= Trabajar con cuentas que utilizan CHAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En los sistemas de almacenamiento SolidFire , los inquilinos pueden usar cuentas para permitir que los clientes se conecten a volúmenes en un clúster.  Una cuenta contiene el protocolo de autenticación Challenge-Handshake Authentication Protocol (CHAP) necesario para acceder a los volúmenes que le han sido asignados.  Cuando se crea un volumen, este se asigna a una cuenta específica.
+
+Una cuenta puede tener asignados hasta dos mil volúmenes, pero un volumen solo puede pertenecer a una cuenta.
+
+
+
+== algoritmos CHAP
+
+A partir del Elemento 12.7, se admiten los algoritmos CHAP seguros compatibles con FIPS SHA1, SHA-256 y SHA3-256.  Cuando un iniciador iSCSI de host crea una sesión iSCSI con un destino iSCSI de Element, solicita una lista de algoritmos CHAP para usar.  El destino iSCSI de Element elige el primer algoritmo que admite de la lista solicitada por el iniciador iSCSI del host.  Para confirmar que el destino iSCSI de Element elige el algoritmo más seguro, debe configurar el iniciador iSCSI del host para que envíe una lista de algoritmos ordenados desde el más seguro, por ejemplo, SHA3-256, hasta el menos seguro, por ejemplo, SHA1 o MD5.  Cuando el iniciador iSCSI del host no solicita algoritmos SHA, el destino iSCSI de Element elige MD5, suponiendo que la lista de algoritmos propuestos por el host contiene MD5.  Es posible que deba actualizar la configuración del iniciador iSCSI del host para habilitar la compatibilidad con los algoritmos de seguridad.
+
+Durante una actualización a Element 12.7 o posterior, si ya ha actualizado la configuración del iniciador iSCSI del host para enviar una solicitud de sesión con una lista que incluye algoritmos SHA, a medida que se reinician los nodos de almacenamiento, se activan los nuevos algoritmos seguros y se establecen sesiones iSCSI nuevas o reconectadas utilizando el protocolo más seguro.  Todas las sesiones iSCSI existentes pasarán de MD5 a SHA durante la actualización.  Si no actualiza la configuración del iniciador iSCSI del host para solicitar SHA, las sesiones iSCSI existentes seguirán utilizando MD5.  Posteriormente, después de actualizar los algoritmos CHAP del iniciador iSCSI del host, las sesiones iSCSI deberían pasar gradualmente de MD5 a SHA con el tiempo, en función de las actividades de mantenimiento que resulten en reconexiones de sesiones iSCSI.
+
+Por ejemplo, el iniciador iSCSI de host predeterminado en Red Hat Enterprise Linux (RHEL) 8.3 tiene el `node.session.auth.chap_algs = SHA3-256,SHA256,SHA1,MD5` Se ha comentado la configuración, lo que provoca que el iniciador iSCSI solo utilice MD5.  Descomentar esta configuración en el host y reiniciar el iniciador iSCSI activa las sesiones iSCSI desde ese host para que comiencen a usar SHA3-256.
+
+Si es necesario, puede utilizar el https://docs.netapp.com/us-en/element-software/api/reference_element_api_listiscsisessions.html["Lista de sesiones ISCSIS"] Método API para ver los algoritmos CHAP que se utilizan en cada sesión.
+
+
+
+== Crea una cuenta
+
+Es posible crear una cuenta para permitir el acceso a los volúmenes.
+
+Cada nombre de cuenta en el sistema debe ser único.
+
+. Seleccione *Administración* > *Cuentas*.
+. Haz clic en *Crear cuenta*.
+. Introduce un *Nombre de usuario*.
+. En la sección *Configuración CHAP*, introduzca la siguiente información:
++
+
+NOTE: Deje los campos de credenciales en blanco para generar automáticamente cualquiera de las contraseñas.
+
++
+** *Secreto del iniciador* para la autenticación de sesión de nodo CHAP.
+** *Secreto de destino* para la autenticación de sesión de nodo CHAP.
+
+
+. Haz clic en *Crear cuenta*.
+
+
+
+
+== Ver detalles de la cuenta
+
+Puede visualizar la actividad de rendimiento de cuentas individuales en formato gráfico.
+
+La información del gráfico proporciona información sobre las operaciones de entrada/salida y el rendimiento de la cuenta.  Los niveles de actividad promedio y máximo se muestran en incrementos de períodos de reporte de 10 segundos.  Estas estadísticas incluyen la actividad de todos los volúmenes asignados a la cuenta.
+
+. Seleccione *Administración* > *Cuentas*.
+. Haz clic en el icono de Acciones para una cuenta.
+. Haga clic en *Ver detalles*.
+
+
+Aquí tenéis algunos detalles:
+
+* *Estado*: El estado de la cuenta. Valores posibles:
++
+** activa: Una cuenta activa.
+** bloqueado: Una cuenta bloqueada.
+** Eliminada: Una cuenta que ha sido borrada y purgada.
+
+
+* *Volúmenes activos*: El número de volúmenes activos asignados a la cuenta.
+* *Compresión*: La puntuación de eficiencia de compresión para los volúmenes asignados a la cuenta.
+* *Desduplicación*: La puntuación de eficiencia de deduplicación para los volúmenes asignados a la cuenta.
+* *Aprovisionamiento ligero*: La puntuación de eficiencia del aprovisionamiento ligero para los volúmenes asignados a la cuenta.
+* *Eficiencia general*: La puntuación de eficiencia general para los volúmenes asignados a la cuenta.
+
+
+
+
+== Editar una cuenta
+
+Puedes editar una cuenta para cambiar el estado, cambiar las claves CHAP o modificar el nombre de la cuenta.
+
+Modificar la configuración CHAP en una cuenta o eliminar iniciadores o volúmenes de un grupo de acceso puede provocar que los iniciadores pierdan el acceso a los volúmenes de forma inesperada.  Para verificar que el acceso al volumen no se pierda inesperadamente, cierre siempre las sesiones iSCSI que se verán afectadas por un cambio de cuenta o de grupo de acceso, y verifique que los iniciadores puedan volver a conectarse a los volúmenes después de que se hayan completado los cambios en la configuración del iniciador y la configuración del clúster.
+
+
+IMPORTANT: Los volúmenes persistentes asociados a los servicios de administración se asignan a una nueva cuenta que se crea durante la instalación o actualización.  Si utiliza volúmenes persistentes, no modifique ni elimine la cuenta asociada.
+
+. Seleccione *Administración* > *Cuentas*.
+. Haz clic en el icono de Acciones para una cuenta.
+. En el menú que aparece, seleccione *Editar*.
+. *Opcional:* Edita el *Nombre de usuario*.
+. *Opcional:* Haga clic en la lista desplegable *Estado* y seleccione un estado diferente.
++
+
+IMPORTANT: Al cambiar el estado a *bloqueado*, se terminan todas las conexiones iSCSI a la cuenta y esta deja de ser accesible.  Los volúmenes asociados a la cuenta se mantienen; sin embargo, no son detectables mediante iSCSI.
+
+. *Opcional:* En *Configuración CHAP*, edite las credenciales *Secreto del iniciador* y *Secreto del destino* utilizadas para la autenticación de la sesión del nodo.
++
+
+NOTE: Si no modifica las credenciales de *Configuración CHAP*, estas permanecerán sin cambios.  Si dejas en blanco los campos de credenciales, el sistema generará nuevas contraseñas.
+
+. Haz clic en *Guardar cambios*.
+
+
+
+
+== Eliminar una cuenta
+
+Puedes eliminar una cuenta cuando ya no sea necesaria.
+
+Elimine y purgue cualquier volumen asociado con la cuenta antes de eliminar la cuenta.
+
+
+IMPORTANT: Los volúmenes persistentes asociados a los servicios de administración se asignan a una nueva cuenta que se crea durante la instalación o actualización.  Si utiliza volúmenes persistentes, no modifique ni elimine la cuenta asociada.
+
+. Seleccione *Administración* > *Cuentas*.
+. Haz clic en el icono de Acciones de la cuenta que deseas eliminar.
+. En el menú que aparece, seleccione *Eliminar*.
+. Confirma la acción.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

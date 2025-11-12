@@ -1,0 +1,36 @@
+---
+permalink: storage/task_data_protection_restore_volume_from_backup_on_openstack_swift.html 
+sidebar: sidebar 
+keywords: volume restore, openstack swift object store 
+summary: Puede restaurar un volumen desde una copia de seguridad en un almacén de objetos OpenStack Swift. 
+---
+= Restaurar un volumen desde una copia de seguridad en un almacén de objetos OpenStack Swift
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede restaurar un volumen desde una copia de seguridad en un almacén de objetos OpenStack Swift.
+
+. Haz clic en *Informes* > *Registro de eventos*.
+. Localice el evento de copia de seguridad que creó la copia de seguridad que necesita restaurar.
+. En la columna *Detalles* del evento, haga clic en *Mostrar detalles*.
+. Copie la información del manifiesto al portapapeles.
+. Haz clic en *Administración* > *Volúmenes*.
+. Haz clic en el icono Acciones del volumen que deseas restaurar.
+. En el menú que aparece, haga clic en *Restaurar desde*.
+. En el cuadro de diálogo *Restauración integrada*, en *Restaurar desde*, seleccione *Swift*.
+. Seleccione la opción que coincida con la copia de seguridad en *Formato de datos*:
++
+** *Nativo*: Un formato comprimido legible únicamente por los sistemas de almacenamiento SolidFire .
+** *Sin comprimir*: Un formato sin comprimir compatible con otros sistemas.
+
+
+. Introduzca una URL para acceder al almacén de objetos en el campo *URL*.
+. Introduzca un nombre de usuario para la cuenta en el campo *Nombre de usuario*.
+. Introduzca la clave de autenticación de la cuenta en el campo *Clave de autenticación*.
+. Introduzca el nombre del contenedor en el que se almacena la copia de seguridad en el campo *Contenedor*.
+. Pegue la información del manifiesto en el campo *Manifiesto*.
+. Haz clic en *Comenzar a escribir*.
+

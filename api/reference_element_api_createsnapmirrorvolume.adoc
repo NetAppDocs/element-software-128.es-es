@@ -1,0 +1,134 @@
+---
+permalink: api/reference_element_api_createsnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoints,create,creating,volume,volumes,CreateSnapMirrorVolume 
+summary: La interfaz web de Element utiliza el método CreateSnapMirrorVolume para crear un volumen en el sistema ONTAP remoto. 
+---
+= CrearVolumenSnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz web de Element utiliza `CreateSnapMirrorVolume` Método para crear un volumen en el sistema ONTAP remoto.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+El ID del punto final del sistema de almacenamiento ONTAP remoto que se comunica con el clúster de almacenamiento Element.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+vserver
+ a| 
+El nombre del servidor virtual.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nombre
+ a| 
+Nombre del volumen ONTAP de destino.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+tipo
+ a| 
+El tipo de volumen. Valores posibles:
+
+* rw: Volumen de lectura y escritura
+* ls: Volumen de reparto de carga
+* dp: Volumen de protección de datos
+
+
+Si no se proporciona ningún tipo, el tipo predeterminado es dp.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+agregar
+ a| 
+El agregado ONTAP contenedor en el que se creará el volumen.  Puede utilizar ListSnapMirrorAggregates para obtener información sobre los agregados ONTAP disponibles.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+tamaño
+ a| 
+El tamaño del volumen en bytes.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorVolume
+ a| 
+Información sobre un volumen de SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolume.adoc[snapMirrorVolume]
+
+|===
+
+
+== Nueva versión
+
+10,1

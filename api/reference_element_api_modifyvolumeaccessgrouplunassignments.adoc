@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_modifyvolumeaccessgrouplunassignments.html 
+sidebar: sidebar 
+keywords: volumes,volume,defining,define,modify,modifying,edit,editing,change,changing,modifyvolumeaccessgrouplunassignments,access,group,lun,assignment 
+summary: Puede utilizar el método ModifyVolumeAccessGroupLunAssignments para definir asignaciones LUN personalizadas para volúmenes específicos. 
+---
+= Modificar asignaciones de Lun de grupo de acceso a volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyVolumeAccessGroupLunAssignments` Método para definir asignaciones LUN personalizadas para volúmenes específicos.
+
+Este método solo modifica los valores LUN establecidos en el parámetro lunAssignments del grupo de acceso al volumen.  Todas las demás asignaciones de LUN permanecen sin cambios.
+
+Los valores de asignación de LUN deben ser únicos para los volúmenes en un grupo de acceso a volúmenes.  No se pueden definir valores LUN duplicados dentro de un grupo de acceso a volúmenes.  Sin embargo, puede volver a utilizar los mismos valores de LUN en diferentes grupos de acceso a volúmenes.
+
+
+NOTE: Los valores LUN válidos son de 0 a 16383.  El sistema genera una excepción si se introduce un valor LUN fuera de este rango.  Ninguna de las asignaciones LUN especificadas se modifica si hay una excepción.
+
+PRECAUCIÓN:
+
+Si se modifica la asignación de LUN para un volumen con E/S activa, la E/S puede verse interrumpida.  Debe modificar la configuración del servidor antes de cambiar las asignaciones de LUN de volumen.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de grupo de acceso al volumen
+ a| 
+ID de grupo de acceso a volumen único para el cual se modificarán las asignaciones de LUN.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+Tareas del mediodía
+ a| 
+Los identificadores de volumen con nuevos valores LUN asignados.
+ a| 
+matriz de enteros
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+Asignaciones de grupo de acceso de volumen
+ a| 
+Un objeto que contiene detalles de las asignaciones LUN del grupo de acceso a volúmenes modificado.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ModifyVolumeAccessGroupLunAssignments",
+   "params": {
+       "volumeAccessGroupID" : 218,
+       "lunAssignments" : [
+           {"volumeID" : 832, "lun" : 0},
+           {"volumeID" : 834, "lun" : 1}
+        ]
+    },
+    "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroupLunAssignments": {
+      "deletedLunAssignments": [],
+      "lunAssignments": [
+        {
+          "lun": 0,
+          "volumeID": 832
+        },
+        {
+          "lun": 1,
+          "volumeID": 834
+        }
+      ],
+      "volumeAccessGroupID": 218
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

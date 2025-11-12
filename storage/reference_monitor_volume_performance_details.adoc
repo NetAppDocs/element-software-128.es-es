@@ -1,0 +1,91 @@
+---
+permalink: storage/reference_monitor_volume_performance_details.html 
+sidebar: sidebar 
+keywords: volume performance 
+summary: Puede consultar las estadísticas de rendimiento de los volúmenes en la página Rendimiento del volumen de la pestaña Informes en la interfaz de usuario de Element. 
+---
+= Detalles del rendimiento del volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede consultar las estadísticas de rendimiento de los volúmenes en la página Rendimiento del volumen de la pestaña Informes en la interfaz de usuario de Element.
+
+La siguiente lista describe los detalles que están a su disposición:
+
+* *IDENTIFICACIÓN*
++
+El identificador generado por el sistema para el volumen.
+
+* *Nombre*
++
+El nombre que se le dio al volumen cuando fue creado.
+
+* *Cuenta*
++
+El nombre de la cuenta asignada al volumen.
+
+* *Grupos de acceso*
++
+El nombre del grupo o grupos de acceso al volumen al que pertenece el volumen.
+
+* *Utilización del volumen*
++
+Un valor porcentual que describe cuánto volumen está utilizando el cliente.
+
++
+Valores posibles:
+
++
+** 0 = El cliente no usa el volumen
+** 100 = El cliente está utilizando el máximo
+** >100 = El cliente está utilizando la ráfaga.
+
+
+* *Total de IOPS*
++
+El número total de IOPS (lectura y escritura) que se están ejecutando actualmente en el volumen.
+
+* *Leer IOPS*
++
+El número total de IOPS de lectura que se están ejecutando actualmente en el volumen.
+
+* *Escribir IOPS*
++
+El número total de IOPS de escritura que se están ejecutando actualmente en el volumen.
+
+* *Rendimiento total*
++
+Cantidad total de operaciones de lectura y escritura que se están ejecutando actualmente en el volumen.
+
+* *Rendimiento de lectura*
++
+Cantidad total de operaciones de lectura que se están ejecutando actualmente en el volumen.
+
+* *Rendimiento de escritura*
++
+Cantidad total de operaciones de escritura que se están ejecutando actualmente en el volumen.
+
+* *Latencia total*
++
+El tiempo promedio, en microsegundos, para completar las operaciones de lectura y escritura en un volumen.
+
+* *Latencia de lectura*
++
+Tiempo promedio, en microsegundos, para completar las operaciones de lectura del volumen en los últimos 500 milisegundos.
+
+* *Latencia de escritura*
++
+Tiempo promedio, en microsegundos, para completar las operaciones de escritura en un volumen en los últimos 500 milisegundos.
+
+* *Profundidad de la cola*
++
+Número de operaciones de lectura y escritura pendientes en el volumen.
+
+* *Tamaño promedio de E/S*
++
+Tamaño promedio en bytes de las operaciones de E/S recientes en el volumen en los últimos 500 milisegundos.
+
+

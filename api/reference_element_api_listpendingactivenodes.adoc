@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_listpendingactivenodes.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,pending,active,node,nodes,listpendingactivenodes 
+summary: Puede utilizar el método ListPendingActiveNodes para listar los nodos del clúster que se encuentran en el estado PendingActive, entre los estados pendiente y activo.  Los nodos en este estado están siendo devueltos a la imagen de fábrica. 
+---
+= Lista de nodos activos pendientes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ListPendingActiveNodes` Método para listar los nodos del clúster que se encuentran en el estado PendingActive, entre los estados pendiente y activo.  Los nodos en este estado están siendo devueltos a la imagen de fábrica.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+nodos activos pendientes
+ a| 
+Lista de objetos que detalla información sobre todos los nodos PendingActive del sistema.
+ a| 
+xref:reference_element_api_pendingactivenode.adoc[nodo activo pendiente]formación
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ListPendingActiveNodes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  id: null,
+  result: {
+    pendingActiveNodes: [
+    {
+      activeNodeKey: "5rPHP3lTAO",
+      assignedNodeID: 5,
+      asyncHandle: 2,
+      cip: "10.10.5.106",
+      mip: "192.168.133.106",
+      pendingNodeID: 1,
+      platformInfo: {
+        chassisType: "R620",
+        cpuModel: "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+        nodeMemoryGB: 72,
+        nodeType: "SF3010"
+      },
+     sip: "10.10.5.106",
+     softwareVersion: "9.0.0.1077"
+    }
+    ]
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_nodes.html 
+sidebar: sidebar 
+keywords: troubleshoot, nodes removing 
+summary: Puedes eliminar nodos de un clúster para realizar mantenimiento o reemplazo.  Debe utilizar la interfaz de usuario o la API de NetApp Element para eliminar nodos antes de desconectarlos. 
+---
+= Solucionar problemas de nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes eliminar nodos de un clúster para realizar mantenimiento o reemplazo.  Debe utilizar la interfaz de usuario o la API de NetApp Element para eliminar nodos antes de desconectarlos.
+
+A continuación se ofrece una descripción general del procedimiento para eliminar nodos de almacenamiento:
+
+* Asegúrese de que el clúster tenga capacidad suficiente para crear una copia de los datos en el nodo.
+* Elimine las unidades del clúster utilizando la interfaz de usuario o el método API RemoveDrives.
++
+Esto provoca que el sistema migre datos desde las unidades del nodo a otras unidades del clúster.  El tiempo que tarda este proceso depende de la cantidad de datos que deban migrarse.
+
+* Elimine el nodo del clúster.
+
+
+Tenga en cuenta las siguientes consideraciones antes de apagar o encender un nodo:
+
+* Apagar nodos y clústeres conlleva riesgos si no se realiza correctamente.
++
+El apagado de un nodo debe realizarse bajo la dirección del soporte de NetApp .
+
+* Si un nodo ha estado inactivo durante más de 5,5 minutos bajo cualquier tipo de condición de apagado, la protección de datos Double Helix comienza la tarea de escribir bloques replicados individuales en otro nodo para replicar los datos.  En este caso, póngase en contacto con el soporte de NetApp para obtener ayuda con el análisis del nodo que ha fallado.
+* Para reiniciar o apagar un nodo de forma segura, puede utilizar el comando de la API Shutdown.
+* Si un nodo está inactivo o apagado, debe ponerse en contacto con el soporte de NetApp antes de volver a conectarlo.
+* Una vez que un nodo vuelve a estar en línea, debe volver a agregar las unidades al clúster, dependiendo del tiempo que haya estado fuera de servicio.
+
+
+
+
+== Para más información
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2844772["Sustitución de un chasis SolidFire averiado"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2846861["Sustitución de un nodo de la serie H600S averiado"]

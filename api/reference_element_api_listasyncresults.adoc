@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_listasyncresults.html 
+sidebar: sidebar 
+keywords: async,asynchronous,result,results,get,list,listing,listasyncresults 
+summary: Puedes usar ListAsyncResults para listar los resultados de todos los métodos asíncronos que se están ejecutando actualmente y los que han finalizado en el sistema.  Consultar resultados asíncronos con ListAsyncResults no provoca que caduquen los asyncHandles completados; puede usar GetAsyncResult para consultar cualquiera de los asyncHandles devueltos por ListAsyncResults. 
+---
+= ListAsyncResults
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `ListAsyncResults` para listar los resultados de todos los métodos asíncronos que se están ejecutando actualmente y los que han finalizado en el sistema.  Consultar resultados asíncronos con `ListAsyncResults` no provoca que caduquen los asyncHandles completados; puede usar `GetAsyncResult` para consultar cualquiera de los asyncHandles devueltos por `ListAsyncResults` .
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+tipos de resultados asíncronos
+ a| 
+Una lista opcional de tipos de resultados.  Puedes utilizar esta lista para restringir los resultados únicamente a estos tipos de operaciones. Valores posibles:
+
+* DriveAdd: Operaciones que implican que el sistema agregue una unidad al clúster.
+* BulkVolume: Operaciones de copia entre volúmenes, como copias de seguridad o restauraciones.
+* Clonar: Operaciones de clonación de volúmenes.
+* Extracción de unidad: Operaciones que implican que el sistema copie datos de una unidad como preparación para su extracción del clúster.
+* RtfiPendingNode: Operaciones que implican la instalación por parte del sistema de software compatible en un nodo antes de agregarlo al clúster.
+
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+manejadores asíncronos
+ a| 
+Una matriz de resultados de métodos asíncronos serializados.
+ a| 
+matriz de objetos JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ListAsyncResults",
+   "params": {
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "asyncHandles": [
+       {
+         "asyncResultID": 47,
+         "completed": true,
+         "createTime": "2016-01-01T22:29:19Z",
+         "data": {
+           "cloneID": 26,
+           "message": "Clone complete.",
+           "volumeID": 48
+         },
+         "lastUpdateTime": "2016-01-01T22:45:43Z",
+         "resultType": "Clone",
+         "success": true
+      },
+      ...]
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_getasyncresult.adoc[ObtenerResultadoAsíncrono]

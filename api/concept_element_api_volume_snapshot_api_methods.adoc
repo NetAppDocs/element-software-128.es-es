@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_volume_snapshot_api_methods.html 
+sidebar: sidebar 
+keywords: volume,snapshot,API,method 
+summary: Los métodos de la API de instantáneas de volumen del software Element le permiten administrar instantáneas de volumen.  Puede crear, modificar, clonar y eliminar instantáneas de volumen utilizando los métodos de la API de instantáneas de volumen. 
+---
+= Métodos de la API de instantáneas de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los métodos de la API de instantáneas de volumen del software Element le permiten administrar instantáneas de volumen.  Puede crear, modificar, clonar y eliminar instantáneas de volumen utilizando los métodos de la API de instantáneas de volumen.
+
+* xref:concept_element_api_snapshots_overview.adoc[Resumen de instantáneas]
+* xref:reference_element_api_creategroupsnapshot.adoc[CrearInstantáneaDeGrupo]
+* xref:reference_element_api_createschedule.adoc[Crear horario]
+* xref:reference_element_api_createsnapshot.adoc[Crear instantánea]
+* xref:reference_element_api_deletegroupsnapshot.adoc[Eliminar instantánea de grupo]
+* xref:reference_element_api_deletesnapshot.adoc[Eliminar instantánea]
+* xref:reference_element_api_getschedule.adoc[Obtener horario]
+* xref:reference_element_api_listgroupsnapshots.adoc[Lista de instantáneas de grupo]
+* xref:reference_element_api_listschedules.adoc[Listas de horarios]
+* xref:reference_element_api_listsnapshots.adoc[Instantáneas de la lista]
+* xref:reference_element_api_modifygroupsnapshot.adoc[Modificar instantánea de grupo]
+* xref:reference_element_api_modifyschedule.adoc[Modificar horario]
+* xref:reference_element_api_modifysnapshot.adoc[Modificar instantánea]
+* xref:reference_element_api_rollbacktogroupsnapshot.adoc[Revertir a instantánea de grupo]
+* xref:reference_element_api_rollbacktosnapshot.adoc[Revertir a instantánea]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

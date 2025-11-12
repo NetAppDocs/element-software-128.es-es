@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_system_manage_key_external_key_management_api_commands.html 
+sidebar: sidebar 
+keywords: ekm, api commands, key providers 
+summary: Lista de todas las API disponibles para gestionar y configurar EKM. 
+---
+= Comandos de la API de administración de claves externas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lista de todas las API disponibles para gestionar y configurar EKM.
+
+Se utiliza para establecer una relación de confianza entre el clúster y los servidores externos propiedad del cliente:
+
+* Crear par de claves públicas y privadas
+* Solicitud de firma de certificado de cliente
+
+
+Se utiliza para definir los detalles específicos de los servidores externos propiedad del cliente:
+
+* CrearKeyServerKmip
+* ModificarKeyServerKmip
+* EliminarKeyServerKmip
+* ObtenerKeyServerKmip
+* Lista de servidores clave Kmip
+* Servidor de claves de prueba Kmip
+
+
+Se utiliza para crear y mantener proveedores de claves que gestionan servidores de claves externos:
+
+* CrearKeyProviderKmip
+* EliminarKeyProviderKmip
+* Agregar servidor de claves al proveedor Kmip
+* Eliminar servidor de claves del proveedor Kmip
+* ObtenerProveedorDeClavesKmip
+* Proveedores de claves de lista Kmip
+* Clave maestra de cifrado de software en reposo
+* TestKeyProviderKmip
+
+
+Para obtener información sobre los métodos de la API, consulte link:../api/concept_element_api_about_the_api.html["Información de referencia de la API"].

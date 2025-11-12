@@ -1,0 +1,161 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-qos-policies.html 
+summary: Puede configurar y modificar las políticas de QoS para aplicarlas a los volúmenes de su clúster de almacenamiento. 
+keywords: netapp, qos policy, quality of service, qos policies, volumes, element 
+---
+= Crear y gestionar políticas de QoS de volumen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una política de QoS (Calidad de Servicio) le permite crear y guardar una configuración de calidad de servicio estandarizada que se puede aplicar a muchos volúmenes.  El clúster seleccionado debe ser Element 10.0 o posterior para utilizar las políticas de QoS; de lo contrario, las funciones de política de QoS no estarán disponibles.
+
+
+NOTE: Consulte el contenido de Conceptos de almacenamiento all-flash de SolidFire para obtener más información sobre su uso.link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-policies["Políticas de QoS"] en lugar de volumen individuallink:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["Calidad de servicio"] .
+
+Con NetApp Hybrid Cloud Control, puede crear y administrar políticas de QoS realizando las siguientes tareas:
+
+* <<Crea una política de QoS>>
+* <<Aplicar una política de QoS a un volumen>>
+* <<Cambiar la asignación de política QoS de un volumen>>
+* <<Editar una política de QoS>>
+* <<Eliminar una política de QoS>>
+
+
+
+
+== Crea una política de QoS
+
+Puede crear políticas de QoS y aplicarlas a volúmenes que deban tener un rendimiento equivalente.
+
+
+NOTE: Si está utilizando políticas de QoS, no utilice QoS personalizada en un volumen.  La QoS personalizada anulará y ajustará los valores de la política de QoS para la configuración de QoS de volumen.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el menú de su clúster de almacenamiento.
+. Seleccione *Almacenamiento > Volúmenes*.
+. Seleccione la pestaña *Políticas de QoS*.
+. Seleccione *Crear política*.
+. Ingrese el *Nombre de la póliza*.
++
+
+TIP: Utilice las mejores prácticas de nomenclatura descriptiva.  Esto es especialmente importante si se utilizan varios clústeres o servidores vCenter en su entorno.
+
+. Introduzca los valores mínimos de IOPS, máximos de IOPS y de ráfaga de IOPS.
+. Seleccione *Crear política QoS*.
++
+Se genera un ID de sistema para la política y esta aparece en la página de Políticas QoS con sus valores QoS asignados.
+
+
+
+
+
+== Aplicar una política de QoS a un volumen
+
+Puede asignar una política QoS existente a un volumen utilizando NetApp Hybrid Cloud Control.
+
+.Lo que necesitarás
+La política de QoS que desea asignar ha sido<<Crea una política de QoS,creado>> .
+
+.Acerca de esta tarea
+Esta tarea describe cómo asignar una política QoS a un volumen individual cambiando su configuración.  La última versión de NetApp Hybrid Cloud Control no dispone de una opción de asignación masiva para más de un volumen.  Hasta que se incluya la funcionalidad de asignación masiva en una versión futura, puede utilizar la interfaz web de Element o la interfaz de usuario del complemento de vCenter para asignar políticas de QoS de forma masiva.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el menú de su clúster de almacenamiento.
+. Seleccione *Almacenamiento > Volúmenes*.
+. Seleccione el menú *Acciones* situado junto al volumen que desea modificar.
+. En el menú que aparece, seleccione *Editar*.
+. En el cuadro de diálogo, habilite *Asignar política QoS* y seleccione la política QoS de la lista desplegable que desea aplicar al volumen seleccionado.
++
+
+NOTE: La asignación de QoS anulará cualquier valor de QoS de volumen individual que se haya aplicado previamente.
+
+. Seleccione *Guardar*.
+
+
+
+
+== Cambiar la asignación de política QoS de un volumen
+
+Puede eliminar la asignación de una política QoS de un volumen o seleccionar una política QoS diferente o una QoS personalizada.
+
+.Lo que necesitarás
+El volumen que desea modificar es<<Aplicar una política de QoS a un volumen,asignado>> una política de QoS.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el menú de su clúster de almacenamiento.
+. Seleccione *Almacenamiento > Volúmenes*.
+. Seleccione el menú *Acciones* situado junto al volumen que desea modificar.
+. En el menú que aparece, seleccione *Editar*.
+. En el cuadro de diálogo, realice una de las siguientes acciones:
++
+** Deshabilite *Asignar política de QoS* y modifique los valores de *IOPS mínimas*, *IOPS máximas* e *IOPS de ráfaga* para la QoS de volumen individual.
++
+
+NOTE: Cuando las políticas de QoS están deshabilitadas, el volumen utiliza los valores de IOPS de QoS predeterminados a menos que se modifiquen de otro modo.
+
+** Seleccione una política QoS diferente de la lista desplegable para aplicarla al volumen seleccionado.
+
+
+. Seleccione *Guardar*.
+
+
+
+
+== Editar una política de QoS
+
+Puede cambiar el nombre de una política QoS existente o editar los valores asociados a la política.  Modificar los valores de rendimiento de la política de QoS afecta a la QoS de todos los volúmenes asociados a dicha política.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el menú de su clúster de almacenamiento.
+. Seleccione *Almacenamiento > Volúmenes*.
+. Seleccione la pestaña *Políticas de QoS*.
+. Seleccione el menú *Acciones* situado junto a la política de QoS que desea modificar.
+. Seleccione *Editar*.
+. En el cuadro de diálogo *Editar política de QoS*, cambie uno o más de los siguientes elementos:
++
+** *Nombre*: El nombre definido por el usuario para la política de QoS.
+** *IOPS mínimas*: El número mínimo de IOPS garantizado para el volumen.  Valor predeterminado = 50.
+** *IOPS máx.*: El número máximo de IOPS permitido para el volumen.  Valor predeterminado = 15.000.
+** *IOPS de ráfaga*: El número máximo de IOPS permitidos durante un corto período de tiempo para el volumen.  Valor predeterminado = 15.000.
+
+
+. Seleccione *Guardar*.
++
+
+TIP: Puede seleccionar el enlace en la columna *Volúmenes activos* de una póliza para mostrar una lista filtrada de los volúmenes asignados a esa póliza.
+
+
+
+
+
+== Eliminar una política de QoS
+
+Puede eliminar una política QoS si ya no es necesaria.  Cuando se elimina una política de QoS, todos los volúmenes asignados a dicha política mantienen los valores de QoS definidos previamente por la política, pero como QoS de volumen individual.  Se elimina cualquier asociación con la política QoS eliminada.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el menú de su clúster de almacenamiento.
+. Seleccione *Almacenamiento > Volúmenes*.
+. Seleccione la pestaña *Políticas de QoS*.
+. Seleccione el menú *Acciones* situado junto a la política de QoS que desea modificar.
+. Seleccione *Eliminar*.
+. Confirma la acción.
+
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"^]
+

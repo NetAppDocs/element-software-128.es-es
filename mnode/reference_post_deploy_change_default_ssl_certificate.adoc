@@ -1,0 +1,42 @@
+---
+permalink: mnode/reference_change_mnode_default_ssl_certificate.html 
+sidebar: sidebar 
+keywords: ssl certificate, SSL, private key, self-signed, cluster, nodes, user-defined certificate, API, change default certificate, certificate, Element API, mnode 
+summary: Puede cambiar el certificado SSL y la clave privada predeterminados del nodo de almacenamiento en el clúster mediante la API de NetApp Element . 
+---
+= Cambiar el certificado SSL predeterminado del nodo de administración
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede cambiar el certificado SSL y la clave privada predeterminados del nodo de administración mediante la API de NetApp Element .
+
+Cuando configura un nodo de administración, se crea un certificado Secure Sockets Layer (SSL) autofirmado único y una clave privada que se utiliza para toda la comunicación HTTPS a través de la interfaz de usuario de Element, la interfaz de usuario por nodo o las API.  El software Element admite certificados autofirmados, así como certificados emitidos y verificados por una Autoridad de Certificación (CA) de confianza.
+
+Puede utilizar los siguientes métodos de la API para obtener más información sobre el certificado SSL predeterminado y realizar cambios.
+
+* *Obtener certificado SSL del nodo*
++
+Puedes usar ellink:../api/reference_element_api_getnodesslcertificate.html["Método GetNodeSSLCertificate"] Para recuperar información sobre el certificado SSL actualmente instalado, incluyendo todos los detalles del certificado.
+
+* *Configurar certificado SSL del nodo*
++
+Puedes usar ellink:../api/reference_element_api_setnodesslcertificate.html["Método SetNodeSSLCertificate"] para configurar los certificados SSL del clúster y por nodo con el certificado y la clave privada que usted proporcione.  El sistema valida el certificado y la clave privada para evitar que se aplique un certificado no válido.
+
+* *Eliminar certificado SSL del nodo*
++
+Estelink:../api/reference_element_api_removenodesslcertificate.html["Método RemoveNodeSSLCertificate"] Elimina el certificado SSL y la clave privada actualmente instalados.  A continuación, el clúster genera un nuevo certificado autofirmado y una clave privada.
+
+
+
+
+
+== Encuentra más información
+
+* link:../storage/reference_post_deploy_change_default_ssl_certificate.html["Cambiar el certificado SSL predeterminado del software Element"]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_are_the_requirements_around_setting_custom_SSL_certificates_in_Element_Software%3F["¿Cuáles son los requisitos para configurar certificados SSL personalizados en Element Software?"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

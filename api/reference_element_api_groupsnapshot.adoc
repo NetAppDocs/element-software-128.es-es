@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_groupsnapshot.html 
+sidebar: sidebar 
+keywords: object,objects,groupSnapshot 
+summary: El objeto groupSnapshot contiene información sobre una instantánea para un grupo de volúmenes.  Puede utilizar el método de la API ListGroupSnapshots para recuperar información de instantáneas de grupo. 
+---
+= Instantánea de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto groupSnapshot contiene información sobre una instantánea para un grupo de volúmenes.  Puedes usar el `ListGroupSnapshots` Método API para recuperar información de instantáneas de grupo.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+crearTiempo
+ a| 
+Fecha y hora en formato UTC+0 en las que se creó la instantánea del grupo.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+habilitar la replicación remota
+ a| 
+Identifica si la instantánea está habilitada para la replicación remota.
+ a| 
+booleano
+
+
+
+ a| 
+ID de instantánea del grupo
+ a| 
+El identificador único de la instantánea del grupo.
+ a| 
+entero
+
+
+
+ a| 
+ID de instantánea de grupo
+ a| 
+El UUID de la instantánea del grupo.
+ a| 
+cadena
+
+
+
+ a| 
+miembros
+ a| 
+Una matriz de objetos que contiene información sobre cada miembro de la instantánea del grupo.
+ a| 
+xref:reference_element_api_snapshot.adoc[instantánea]formación
+
+
+
+ a| 
+nombre
+ a| 
+El nombre de la instantánea del grupo o, si no se proporcionó ninguna, la fecha y hora en formato UTC en que se creó la instantánea.
+ a| 
+cadena de texto o cadena de fecha ISO 8601
+
+
+
+ a| 
+estados remotos
+ a| 
+Una matriz que contiene el identificador universal y el estado de replicación de cada instantánea remota en el clúster de destino, tal como se ve desde el clúster de origen.
+ a| 
+xref:reference_element_api_remoteclustersnapshotstatus.adoc[Estado de instantánea del clúster remoto]formación
+
+
+
+ a| 
+estado
+ a| 
+Estado actual de la instantánea. Valores posibles:
+
+* Desconocido: Se produjo un error al obtener el estado de la instantánea.
+* Preparando: Esta instantánea se está preparando para su uso y aún no se puede escribir en ella.
+* Sincronización remota: Esta instantánea se está replicando desde un clúster remoto.
+* Listo: Esta instantánea ha finalizado su preparación o replicación y ahora se puede utilizar.
+* Activa: Esta instantánea corresponde a la rama activa.
+* Clonación: Esta instantánea está involucrada en una operación CopyVolume.
+
+ a| 
+cadena
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listgroupsnapshots.adoc[Lista de instantáneas de grupo]

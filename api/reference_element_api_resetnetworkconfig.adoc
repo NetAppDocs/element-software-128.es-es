@@ -1,0 +1,52 @@
+---
+permalink: api/reference_element_api_resetnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,reset,restetting,factory,default,resetnetworkconfig 
+summary: Puede utilizar el método ResetNetworkConfig para ayudar a resolver problemas de configuración de red para un nodo individual.  Este método restablece la configuración de red de un nodo individual a los ajustes predeterminados de fábrica. 
+---
+= Restablecer configuración de red
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ResetNetworkConfig` Método para ayudar a resolver problemas de configuración de red para un nodo individual.  Este método restablece la configuración de red de un nodo individual a los ajustes predeterminados de fábrica.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ResetNetworkConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método no devuelve ninguna respuesta.
+
+
+
+== Nueva versión
+
+11,0

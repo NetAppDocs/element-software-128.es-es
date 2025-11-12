@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_storagecontainer.html 
+sidebar: sidebar 
+keywords: object,objects,storagecontainer 
+summary: El objeto storageContainer contiene los atributos de un contenedor de almacenamiento de volumen virtual.  Puede recuperar esta información para cada contenedor de almacenamiento del clúster utilizando el método API ListStorageContainers. 
+---
+= contenedor de almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto storageContainer contiene los atributos de un contenedor de almacenamiento de volumen virtual.  Puede recuperar esta información para cada contenedor de almacenamiento del clúster utilizando `ListStorageContainers` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de cuenta
+ a| 
+El ID de la cuenta del sistema de almacenamiento asociada al contenedor de almacenamiento.
+ a| 
+entero
+
+
+
+ a| 
+iniciadorSecreto
+ a| 
+La clave secreta de autenticación CHAP para el iniciador asociado con el contenedor de almacenamiento.
+ a| 
+cadena
+
+
+
+ a| 
+nombre
+ a| 
+El nombre del contenedor de almacenamiento.
+ a| 
+cadena
+
+
+
+ a| 
+tipo de punto final del protocolo
+ a| 
+Tipo de punto final del protocolo del contenedor de almacenamiento.  SCSI es el único valor válido.
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+Estado del contenedor de almacenamiento. Valores posibles:
+
+* Activo: El contenedor de almacenamiento está en uso.
+* Bloqueado: El contenedor de almacenamiento está bloqueado.
+
+ a| 
+cadena
+
+
+
+ a| 
+ID del contenedor de almacenamiento
+ a| 
+El identificador único del contenedor de almacenamiento.
+ a| 
+UUID
+
+
+
+ a| 
+secreto del objetivo
+ a| 
+La clave secreta de autenticación CHAP para el objetivo asociado al contenedor de almacenamiento.
+ a| 
+cadena
+
+
+
+ a| 
+volúmenes virtuales
+ a| 
+Una lista de los identificadores de los volúmenes virtuales asociados al contenedor de almacenamiento.
+ a| 
+matriz UUID
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_liststoragecontainers.adoc[Listar contenedores de almacenamiento]

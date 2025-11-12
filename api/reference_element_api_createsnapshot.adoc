@@ -1,0 +1,236 @@
+---
+permalink: api/reference_element_api_createsnapshot.html 
+sidebar: sidebar 
+keywords: volume,volumes,create,creating,snapshot,snapshots,CreateSnapshot 
+summary: Puede utilizar CreateSnapshot para crear una copia puntual de un volumen.  Puede crear una instantánea desde cualquier volumen o desde una instantánea existente. 
+---
+= Crear instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `CreateSnapshot` para crear una copia puntual de un volumen.  Puede crear una instantánea desde cualquier volumen o desde una instantánea existente.
+
+Si no proporciona un SnapshotID con este método de API, se creará una instantánea a partir de la rama activa del volumen.  Si el volumen desde el que se crea la instantánea se está replicando en un clúster remoto, la instantánea también se puede replicar en el mismo destino.  Utilice el parámetro enableRemoteReplication para habilitar la replicación de instantáneas.
+
+
+NOTE: Puede crear instantáneas si la plenitud del clúster se encuentra en la etapa 1, 2 o 3.  No se pueden crear instantáneas cuando la capacidad del clúster alcanza la etapa 4 o 5.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+`attributes`
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`enableRemoteReplication`
+ a| 
+Especifica si la instantánea se replicará en el almacenamiento remoto o no. Valores posibles:
+
+* `true`La instantánea se replicará en el almacenamiento remoto.
+* `false`La instantánea no se replicará en el almacenamiento remoto.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+| `ensureSerialCreation`  a| 
+Especifica que no se debe crear la instantánea si hay una replicación de instantánea anterior en curso.  Los valores posibles son:
+
+* `true`Esto garantiza que solo se replique una instantánea a la vez.  La creación de una nueva instantánea fallará si la replicación de una instantánea anterior aún está en curso.
+* `false`: Por defecto.  Se permite la creación de esta instantánea si otra replicación de instantánea aún está en curso.
+
+| booleano | `false` | No 
+
+
+| tiempo de expiración  a| 
+Especifique el tiempo después del cual se puede eliminar la instantánea.  No se puede utilizar con `retention` .  Si no se especifica ni expirationTime ni retention, la instantánea no caducará.  El formato de hora es una cadena de fecha ISO 8601 para la expiración basada en el tiempo; de lo contrario, no expirará.  Un valor de `null` hace que la instantánea se conserve de forma permanente.  Un valor de `fifo` hace que la instantánea se conserve según el principio de primero en entrar, primero en salir (FIFO), en relación con otras instantáneas FIFO en el volumen.  La API fallará si no hay espacio FIFO disponible.
+| cadena | Ninguno | No 
+
+
+ a| 
+`name`
+ a| 
+El nombre de la instantánea.  Si no se introduce ningún nombre, se utiliza la fecha y hora en que se tomó la fotografía.  La longitud máxima permitida para el nombre es de 255 caracteres.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`retention`
+ a| 
+Este parámetro es igual que el `expirationTime` parámetro, excepto que el formato de hora es HH:mm:ss.  Si ninguno de los dos `expirationTime` ni `retention` Si se especifican, la instantánea no caducará.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+La etiqueta utilizada por el software SnapMirror para especificar la política de retención de instantáneas en un punto final de SnapMirror .
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`snapshotID`
+ a| 
+Identificador único de la instantánea a partir de la cual se crea la nueva instantánea.  El snapshotID proporcionado debe ser una instantánea del volumen dado.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`volumeID`
+ a| 
+Identificador único de la imagen de volumen desde la cual copiar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+suma de comprobación
+ a| 
+Una cadena que representa los dígitos correctos en la instantánea almacenada.  Esta suma de comprobación se puede utilizar posteriormente para comparar otras instantáneas y detectar errores en los datos.
+ a| 
+cadena
+
+
+
+ a| 
+ID de instantánea
+ a| 
+Identificador único de la nueva instantánea.
+ a| 
+ID de instantánea
+
+
+
+ a| 
+instantánea
+ a| 
+Un objeto que contiene información sobre la instantánea recién creada.
+ a| 
+xref:reference_element_api_snapshot.adoc[instantánea]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "CreateSnapshot",
+   "params": {
+      "volumeID": 1
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "checksum": "0x0",
+      "snapshot": {
+        "attributes": {},
+        "checksum": "0x0",
+        "createTime": "2016-04-04T17:14:03Z",
+        "enableRemoteReplication": false,
+        "expirationReason": "None",
+        "expirationTime": null,
+        "groupID": 0,
+        "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+        "name": "2016-04-04T17:14:03Z",
+        "snapshotID": 3110,
+        "snapshotUUID": "6f773939-c239-44ca-9415-1567eae79646",
+        "status": "done",
+        "totalSize": 5000658944,
+        "virtualVolumeID": null,
+        "volumeID": 1
+      },
+        "snapshotID": 3110
+  }
+}
+----
+
+
+== Excepción
+
+Se muestra una excepción xNotPrimary cuando `CreateSnapshot` Se llama a la API y no se puede crear la instantánea. Este es el comportamiento esperado.  Inténtalo de nuevo `CreateSnapshot` Llamada a la API.
+
+
+
+== Nueva versión
+
+9,6

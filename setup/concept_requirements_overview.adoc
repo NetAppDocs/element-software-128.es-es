@@ -1,0 +1,26 @@
+---
+permalink: setup/concept_requirements_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: Antes de comenzar, debes revisar los requisitos previos. 
+---
+= Requisitos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de comenzar, debe revisar los requisitos previos para implementar el software NetApp Element , incluidos los requisitos de red y de puertos.
+
+* link:../storage/concept_prereq_networking.html["Requisitos de red"]
+* link:../storage/concept_prereq_switch_configuration_for_solidfire_clusters.html["Configuración del interruptor"]
+* link:../storage/reference_prereq_network_port_requirements.html["Requisitos del puerto de red"]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

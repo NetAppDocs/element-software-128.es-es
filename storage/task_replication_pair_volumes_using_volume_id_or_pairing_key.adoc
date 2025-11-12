@@ -1,0 +1,34 @@
+---
+permalink: storage/task_replication_pair_volumes_using_volume_id_or_pairing_key.html 
+sidebar: sidebar 
+keywords: volume pairings, pairing key, volume id, replication 
+summary: El proceso de emparejamiento consiste en emparejar dos volúmenes utilizando un ID de volumen o una clave de emparejamiento. 
+---
+= Empareje los volúmenes utilizando un ID de volumen o una clave de emparejamiento.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El proceso de emparejamiento consiste en emparejar dos volúmenes utilizando un ID de volumen o una clave de emparejamiento.
+
+. Emparejar volúmenes seleccionando uno de los siguientes métodos:
++
+** Uso de un ID de volumen: Utilice este método si tiene acceso de administrador de clúster a ambos clústeres en los que se van a emparejar los volúmenes. Este método utiliza el ID del volumen en el clúster remoto para iniciar una conexión.
+** Uso de una clave de emparejamiento: utilice este método si solo tiene acceso de administrador de clúster al clúster de origen.  Este método genera una clave de emparejamiento que se puede usar en el clúster remoto para completar el par de volúmenes.
++
+
+NOTE: La clave de emparejamiento de volúmenes contiene una versión cifrada de la información del volumen y podría contener información confidencial.  Solo comparta esta clave de forma segura.
+
+
+
+
+
+
+
+== Encuentra más información
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[Emparejar volúmenes utilizando un ID de volumen]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[Emparejar volúmenes mediante una clave de emparejamiento]
+

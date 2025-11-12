@@ -1,0 +1,51 @@
+---
+permalink: storage/concept_data_manage_vol_access_group_work_with_volume_access_groups_and_initiators.html 
+sidebar: sidebar 
+keywords: volume access groups, initiators, working with, chap, fc, iscsi 
+summary: Puede utilizar iniciadores iSCSI o iniciadores Fibre Channel para acceder a los volúmenes definidos dentro de los grupos de acceso a volúmenes. 
+---
+= Trabajar con grupos de acceso por volumen e iniciadores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar iniciadores iSCSI o iniciadores Fibre Channel para acceder a los volúmenes definidos dentro de los grupos de acceso a volúmenes.
+
+Puede crear grupos de acceso asignando IQN de iniciador iSCSI o WWPN de Fibre Channel en una colección de volúmenes.  Cada IQN que agregue a un grupo de acceso puede acceder a cada volumen del grupo sin necesidad de autenticación CHAP.
+
+Existen dos tipos de métodos de autenticación CHAP:
+
+* Autenticación CHAP a nivel de cuenta: Puede asignar la autenticación CHAP a la cuenta.
+* Autenticación CHAP a nivel de iniciador: Puede asignar un destino CHAP y secretos únicos para iniciadores específicos sin estar limitado a un único CHAP en una sola cuenta.  Esta autenticación CHAP a nivel de iniciador reemplaza las credenciales a nivel de cuenta.
+
+
+Opcionalmente, con CHAP por iniciador, puede exigir la autorización del iniciador y la autenticación CHAP por iniciador.  Estas opciones pueden definirse para cada iniciador y un grupo de acceso puede contener una combinación de iniciadores con diferentes opciones.
+
+Cada WWPN que agregue a un grupo de acceso habilita el acceso a la red Fibre Channel a los volúmenes del grupo de acceso.
+
+
+NOTE: Los grupos de acceso por volumen tienen los siguientes límites:
+
+* Se permite un máximo de 64 IQN o WWPN en un grupo de acceso.
+* Un grupo de acceso puede estar compuesto por un máximo de 2000 volúmenes.
+* Un IQN o WWPN solo puede pertenecer a un grupo de acceso.
+* Un único volumen puede pertenecer a un máximo de cuatro grupos de acceso.
+
+
+
+
+== Encuentra más información
+
+* xref:task_data_manage_vol_access_group_create_a_volume_access_group.adoc[Crear un grupo de acceso por volumen]
+* xref:task_data_manage_vol_access_group_add_volumes.adoc[Agregar volúmenes a un grupo de acceso]
+* xref:task_data_manage_vol_access_group_remove_volumes.adoc[Eliminar volúmenes de un grupo de acceso]
+* xref:task_data_manage_vol_access_group_create_an_initiator.adoc[Crear un iniciador]
+* xref:task_data_manage_vol_access_group_edit_an_initiator.adoc[Editar un iniciador]
+* xref:task_data_manage_vol_access_group_add_a_single_initiator.adoc[Agregar un único iniciador a un grupo de acceso a volumen]
+* xref:task_data_manage_vol_access_group_add_multiple_initiators.adoc[Agregue varios iniciadores a un grupo de acceso por volumen.]
+* xref:task_data_manage_vol_access_group_remove_initiators_from_an_access_group.adoc[Eliminar iniciadores de un grupo de acceso]
+* xref:task_data_manage_vol_access_group_delete.adoc[Eliminar un grupo de acceso]
+* xref:task_data_manage_vol_access_group_delete_an_initiator.adoc[Eliminar un iniciador]
+

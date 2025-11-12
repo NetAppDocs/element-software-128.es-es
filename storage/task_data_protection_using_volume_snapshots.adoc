@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_protection_using_volume_snapshots.html 
+sidebar: sidebar 
+keywords: data protection, volume snapshots, roll back volume, replicate snapshots 
+summary: Una instantánea de volumen es una copia de un volumen en un momento dado.  Puedes tomar una instantánea de un volumen y usarla más tarde si necesitas restaurar un volumen al estado en el que se encontraba en el momento en que se creó la instantánea. 
+---
+= Utilice instantáneas de volumen para la protección de datos.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una instantánea de volumen es una copia de un volumen en un momento dado.  Puedes tomar una instantánea de un volumen y usarla más tarde si necesitas restaurar un volumen al estado en el que se encontraba en el momento en que se creó la instantánea.
+
+Las instantáneas son similares a los clones de volumen.  Sin embargo, las instantáneas son simplemente réplicas de los metadatos del volumen, por lo que no se pueden montar ni escribir en ellas.  La creación de una instantánea de volumen también requiere una cantidad mínima de recursos del sistema y espacio, lo que hace que la creación de instantáneas sea más rápida que la clonación.
+
+Puede tomar una instantánea de un volumen individual o de un conjunto de volúmenes.
+
+Opcionalmente, replique las instantáneas en un clúster remoto y utilícelas como copia de seguridad del volumen.  Esto le permite revertir un volumen a un punto específico en el tiempo mediante el uso de la instantánea replicada.  Como alternativa, puede crear un clon de un volumen a partir de una instantánea replicada.
+
+
+
+== Encuentra más información
+
+* xref:task_data_protection_use_individual_volume_snapshots.adoc[Utilice instantáneas de volumen individuales para la protección de datos.]
+* xref:task_data_protection_use_group_snapshots_for_data_protection.adoc[Utilizar instantáneas de grupo para la tarea de protección de datos]
+* xref:task_data_protection_schedule_a_snapshot_task.adoc[Programar una instantánea]
+

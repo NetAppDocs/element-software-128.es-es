@@ -1,0 +1,29 @@
+---
+permalink: storage/task_system_manage_cluster_set_the_cluster_full_threshold.html 
+sidebar: sidebar 
+keywords: cluster fullness, setting threshold, metadata, warning 
+summary: Puedes cambiar el nivel en el que el sistema genera una advertencia de llenado del clúster de bloques siguiendo los pasos que se indican a continuación.  Además, puede utilizar el método de la API ModifyClusterFullThreshold para cambiar el nivel en el que el sistema genera una advertencia de bloqueo o de metadatos. 
+---
+= Establezca el umbral completo del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes cambiar el nivel en el que el sistema genera una advertencia de llenado del clúster de bloques siguiendo los pasos que se indican a continuación.  Además, puede utilizar el método de la API ModifyClusterFullThreshold para cambiar el nivel en el que el sistema genera una advertencia de bloqueo o de metadatos.
+
+.Lo que necesitarás
+Debe tener privilegios de administrador de clúster.
+
+.Pasos
+. Haz clic en *Clúster* > *Configuración*.
+. En la sección Configuración completa del clúster, ingrese un porcentaje en *Generar una alerta de advertencia cuando quede un _% de capacidad antes de que Helix no pueda recuperarse de una falla de nodo*.
+. Haz clic en *Guardar cambios*.
+
+
+
+
+== Encuentra más información
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["¿Cómo se calculan los umbrales de blockSpace para Element?"^]

@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_removenodes.html 
+sidebar: sidebar 
+keywords: node,nodes,cluster,remove,removing,removenodes 
+summary: Puede utilizar RemoveNodes para eliminar uno o más nodos que ya no deberían participar en el clúster. 
+---
+= Eliminar nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `RemoveNodes` eliminar uno o más nodos que ya no deberían participar en el clúster.
+
+Antes de eliminar un nodo, debe extraer todas las unidades que contiene utilizando el `RemoveDrives` método.  No puedes eliminar un nodo hasta que `RemoveDrives` El proceso ha finalizado y todos los datos se han migrado fuera del nodo.  Después de eliminar un nodo, este se registra automáticamente como nodo pendiente.  Puedes volver a agregar el nodo o desactivarlo (desactivar el nodo lo elimina de la lista de nodos pendientes).
+
+
+
+== eliminación del nodo maestro del clúster
+
+Si usted usa `RemoveNodes` Para eliminar el nodo maestro del clúster, el método podría agotar el tiempo de espera antes de devolver una respuesta.  Si la llamada al método no logra eliminar el nodo, vuelva a realizar la llamada al método.  Tenga en cuenta que si va a eliminar el nodo maestro del clúster junto con otros nodos, deberá utilizar una llamada independiente para eliminar el nodo maestro del clúster por sí solo.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ignorarEnsembleToleranceChange
+ a| 
+Ignorar los cambios en la tolerancia a fallos de nodos del conjunto al eliminar nodos.
+
+Si el clúster de almacenamiento utiliza esquemas de protección de datos que toleran fallos de múltiples nodos y la eliminación de nodos disminuiría la tolerancia a fallos de nodos del conjunto, la eliminación del nodo normalmente falla con un error.  Puede establecer este parámetro en verdadero para deshabilitar la comprobación de tolerancia del conjunto y así lograr que la eliminación del nodo se realice correctamente.
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+nodos
+ a| 
+Lista de NodeIDs para los nodos que se eliminarán.
+ a| 
+matriz de enteros
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "RemoveNodes",
+   "params": {
+     "nodes"  : [3,4,5]
+   },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id" : 1
+  "result" : {},
+}
+----
+
+
+== Nueva versión
+
+9,6

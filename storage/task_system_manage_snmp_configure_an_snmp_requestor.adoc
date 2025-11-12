@@ -1,0 +1,35 @@
+---
+permalink: storage/task_system_manage_snmp_configure_an_snmp_requestor.html 
+sidebar: sidebar 
+keywords: SNMP requestor, config, enable, disable, snmp requests 
+summary: Cuando SNMP versión 2 está habilitada, puede habilitar o deshabilitar un solicitante y configurar los solicitantes para que reciban solicitudes SNMP autorizadas. 
+---
+= Configurar un solicitante SNMP
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando SNMP versión 2 está habilitada, puede habilitar o deshabilitar un solicitante y configurar los solicitantes para que reciban solicitudes SNMP autorizadas.
+
+. Menú de clic: Clúster[SNMP].
+. En *Configuración general de SNMP*, haga clic en *Sí* para habilitar SNMP.
+. De la lista *Versión*, seleccione *Versión 2*.
+. En la sección *Solicitantes*, ingrese la *Cadena de comunidad* y la información de *Red*.
++
+
+NOTE: Por defecto, la cadena de comunidad es pública y la red es localhost.  Puedes cambiar esta configuración predeterminada.
+
+. *Opcional:* Para agregar otro solicitante, haga clic en *Agregar un solicitante* e ingrese la *Cadena de comunidad* y la información de *Red*.
+. Haz clic en *Guardar cambios*.
+
+
+
+
+== Encuentra más información
+
+* xref:task_system_manage_snmp_configure_snmp_traps.adoc[Configurar traps SNMP]
+* xref:task_system_manage_snmp_view_managed_object_data.adoc[Visualización de datos de objetos gestionados mediante archivos de la base de información de gestión.]
+

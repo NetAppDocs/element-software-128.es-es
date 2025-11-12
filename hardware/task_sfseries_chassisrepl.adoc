@@ -1,0 +1,128 @@
+---
+permalink: hardware/task_sfseries_chassisrepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, chassis replacement, sf-series nodes 
+summary: 'Es posible que necesite reemplazar el chasis si falla el ventilador, la unidad central de procesamiento (CPU) o el módulo de memoria en línea dual (DIMM), o para solucionar problemas de sobrecalentamiento o problemas con el proceso de arranque.  Los fallos de clúster en la interfaz de usuario (IU) del software NetApp Element y la luz ámbar parpadeante en la parte frontal del chasis son indicios de una posible necesidad de sustitución del chasis.  Debe ponerse en contacto con el soporte de NetApp antes de continuar.' 
+---
+= Reemplazar un chasis
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible que necesite reemplazar el chasis si falla el ventilador, la unidad central de procesamiento (CPU) o el módulo de memoria en línea dual (DIMM), o para solucionar problemas de sobrecalentamiento o problemas con el proceso de arranque.  Los fallos de clúster en la interfaz de usuario (IU) del software NetApp Element y la luz ámbar parpadeante en la parte frontal del chasis son indicios de una posible necesidad de sustitución del chasis.  Debe ponerse en contacto con el soporte de NetApp antes de continuar.
+
+.Lo que necesitarás
+* Usted se ha puesto en contacto con el soporte de NetApp .
++
+Si va a solicitar un repuesto, debe tener un caso abierto con el soporte de NetApp .
+
+* Usted ha obtenido el chasis de repuesto.
+* Llevas una pulsera antiestática (ESD) o has tomado otra protección antiestática.
+* Si necesita realizar el proceso de Restauración de Imagen de Fábrica (RTFI), ya ha obtenido la llave USB.
++
+El soporte de NetApp le ayudará a decidir si necesita RTFI. Ver https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["Este artículo de la base de conocimientos (se requiere iniciar sesión)"] .
+
+* Tienes un teclado y un monitor.
+
+
+.Acerca de esta tarea
+Las instrucciones de este documento se aplican si dispone de un chasis de una unidad de rack (1U) con cualquiera de los siguientes nodos:
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+Dependiendo de la versión de su software Element, los siguientes nodos no son compatibles:
+
+* Comenzando con los nodos de almacenamiento Element 12.8, SF4805, SF9605, SF19210 y SF38410.
+* Comenzando con los nodos de almacenamiento Element 12.7, SF2405 y SF9608 y los nodos FC FC0025 y SF-FCN-01.
+* A partir de los nodos de almacenamiento Element 12.0, SF3010, SF6010 y SF9010.
+
+
+====
+.Pasos
+. Localice la etiqueta de servicio del chasis averiado y verifique que el número de serie coincida con el número del caso que abrió con el soporte de NetApp cuando solicitó el reemplazo.
++
+La etiqueta de servicio se encuentra en la parte delantera del chasis.
+
++
+La siguiente figura es un ejemplo de la etiqueta de servicio:
+
++
+image::../media/sf_series_chassis_service_tag.gif[Esta figura muestra la etiqueta de servicio en un chasis SolidFire .]
+
++
+
+NOTE: La figura anterior es un ejemplo.  La ubicación exacta de la etiqueta de servicio puede variar según el modelo de su hardware.
+
+. Conecta el teclado y el monitor a la parte posterior del chasis averiado.
+. Verifique la información del chasis con el soporte de NetApp .
+. Apague el chasis.
+. Etiqueta las unidades en la parte frontal del chasis y los cables en la parte posterior.
++
+
+NOTE: Los nodos Fibre Channel no tienen unidades en la parte frontal.
+
+. Retire las fuentes de alimentación y los cables.
+. Retire las unidades con cuidado y colóquelas sobre una superficie antiestática y nivelada.
++
+
+NOTE: Si tiene un nodo Fibre Channel, puede omitir este paso.
+
+. Retire el chasis presionando el pestillo o desenroscando el tornillo de mariposa, según el modelo de su hardware.
++
+Deberá empaquetar y devolver el chasis defectuoso a NetApp.
+
+. *Opcional*: Retire los rieles e instale los nuevos rieles que se enviaron con su chasis de reemplazo.
++
+Puedes optar por reutilizar los rieles existentes.  Si va a reutilizar los rieles existentes, puede omitir este paso.
+
+. Deslice el chasis de repuesto sobre los rieles.
+. Para los nodos de almacenamiento, inserte las unidades del chasis averiado en el chasis de reemplazo.
++
+
+NOTE: Debes insertar las unidades en las mismas ranuras en las que estaban en el chasis averiado.
+
+. Instale las fuentes de alimentación.
+. Inserte los cables de alimentación y los cables 1GbE y 10GbE en sus puertos originales.
++
+Los transceptores conectables de factor de forma pequeño (SFP) podrían insertarse en los puertos 10GbE del chasis de reemplazo.  Debes quitarlos antes de conectar los puertos 10GbE.
+
+. Si ha determinado que no necesita realizar el proceso RTFI en el nodo, arranque el nodo y espere hasta que aparezca la interfaz de usuario de terminal (TUI).  Pase al paso 16 y permita que el clúster vuelva a crear la imagen del nodo automáticamente cuando lo agregue mediante la interfaz de usuario.
+. *Opcional*: Si el soporte de NetApp recomienda reinstalar la imagen del nodo con una llave USB, realice los siguientes subpasos:
++
+.. Alimentación en el chasis.  Se inicia con la imagen de clave RTFI.
+.. En la primera solicitud, escriba *Y* para crear una imagen del nodo de almacenamiento.
+.. En la segunda solicitud, escriba *N* para realizar comprobaciones del estado del hardware.
++
+Si el script RTFI detecta un problema con un componente de hardware, muestra un error en la consola.  Si ve algún error, póngase en contacto con el soporte de NetApp .  Una vez finalizado el proceso RTFI, el nodo se apaga.
+
+.. Retire la llave USB de la ranura USB.
+.. Inicie el nodo recién configurado y espere a que aparezca la interfaz de usuario de texto (TUI).
+
+
+. Configure la información de red y clúster desde la interfaz de usuario de texto (TUI).
++
+Puede ponerse en contacto con el soporte de NetApp para obtener ayuda.
+
+. Agregue el nuevo nodo al clúster utilizando la interfaz de usuario del clúster.
+. Empaqueta y devuelve el chasis averiado.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

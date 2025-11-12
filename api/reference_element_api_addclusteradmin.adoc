@@ -1,0 +1,157 @@
+---
+permalink: api/reference_element_api_addclusteradmin.html 
+sidebar: sidebar 
+keywords: addclusteradmin,cluster,admin,administrator,adding,add 
+summary: Puede utilizar el método AddClusterAdmin para agregar una nueva cuenta de administrador de clúster.  Un administrador de clúster puede gestionar el clúster a través de la API y las herramientas de gestión.  Los administradores de clúster son completamente independientes y no guardan relación con las cuentas de inquilino estándar. 
+---
+= Agregar administrador de clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `AddClusterAdmin` Método para agregar una nueva cuenta de administrador de clúster.  Un administrador de clúster puede gestionar el clúster a través de la API y las herramientas de gestión.  Los administradores de clúster son completamente independientes y no guardan relación con las cuentas de inquilino estándar.
+
+Cada administrador de clúster puede estar restringido a un subconjunto de la API.  Debe utilizar varias cuentas de administrador de clúster para diferentes usuarios y aplicaciones.  Como buena práctica, otorgue a cada administrador del clúster los permisos mínimos necesarios; esto reduce el impacto potencial de una vulneración de las credenciales.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+acceso
+ a| 
+Controla qué métodos puede usar el administrador del clúster.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+aceptar el EULA
+ a| 
+Acepte el Acuerdo de Licencia de Usuario Final.  Establézcalo en verdadero para agregar una cuenta de administrador de clúster al sistema.  Si se omite o se establece en falso, la llamada al método falla.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre/valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+contraseña
+ a| 
+Contraseña utilizada para autenticar al administrador de este clúster.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nombre de usuario
+ a| 
+Nombre de usuario único para este administrador de clúster.  Debe tener entre 1 y 1024 caracteres de longitud.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de administrador del clúster
+ a| 
+ID de administrador de clúster para el administrador de clúster recién creado.
+ a| 
+entero
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "AddClusterAdmin",
+  "params": {
+    "username": "joeadmin",
+    "password": "68!5Aru268)$",
+    "attributes": {},
+    "acceptEula": true,
+    "access": ["volumes", "reporting", "read"]
+  },
+  "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id":1,
+  "result" : {
+    "clusterAdminID": 2
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_app_b_access_control.adoc[Control de acceso]

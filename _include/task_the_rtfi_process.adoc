@@ -1,0 +1,99 @@
+= Realizar el proceso RTFI
+:allow-uri-read: 
+
+
+Puede iniciar el proceso de Restauración de la Imagen de Fábrica (RTFI) interactuando con el nodo a través de mensajes de consola de texto que aparecen antes de que arranque el sistema.
+
+
+WARNING: El proceso RTFI destruye los datos y borra de forma segura todos los datos y detalles de configuración del nodo e instala un nuevo sistema operativo.  Verifique que el nodo utilizado para el proceso RTFI no esté activo como parte de un clúster.
+
+image::../media/rtfi_warning.PNG[Advertencia de SolidFire antes de continuar]
+
+El proceso RTFI realiza las siguientes operaciones de alto nivel:
+
+. Inicia la instalación tras la confirmación del usuario y valida la imagen.
+. Desbloquea todas las unidades en un nodo.
+. Valida y actualiza el firmware.
+. Comprueba el hardware.
+. Prueba el hardware.
+. Borra de forma segura todas las unidades seleccionadas.
+. Divide la unidad raíz y crea sistemas de archivos.
+. Monta y descomprime la imagen.
+. Configura el nombre del host, la red (Protocolo de configuración dinámica del host), la configuración predeterminada del clúster y el cargador de arranque GRUB.
+. Detiene todos los servicios, recopila registros y reinicia.
+
+
+Para configurar su nodo después de que el proceso RTFI se complete correctamente, consulte la https://docs.netapp.com/us-en/element-software/index.html["Documentación para su versión del software Element"^] .  Después de que un nodo completa con éxito el proceso RTFI, pasa al estado _disponible_ (no configurado) de forma predeterminada.
+
+
+
+== Realizar el proceso RTFI
+
+Utilice el siguiente procedimiento para restaurar el software Element en su nodo SolidFire .
+
+Para obtener información sobre cómo crear una llave USB o utilizar el BMC para realizar el proceso RTFI, consultexref:task_rtfi_deployment_and_install_options.adoc[Opciones de instalación y despliegue de RTFI] .
+
+.Antes de empezar
+Verifique que cumple con los siguientes requisitos:
+
+* Tienes acceso a una consola para el nodo SolidFire .
+* El nodo en el que está realizando el proceso RTFI está encendido y conectado a una red.
+* El nodo en el que está realizando el proceso RTFI no forma parte de un clúster activo.
+* Tienes acceso a un medio de instalación de arranque que contiene la imagen de la versión del software Element correspondiente a tu configuración.
+
+
+Póngase en contacto con el soporte de NetApp si tiene alguna duda antes de realizar el proceso RTFI.
+
+.Pasos
+. Conecte un monitor y un teclado a la parte posterior del nodo, o conéctese a la interfaz de usuario IP de BMC y abra la consola *iKVM/HTML5* desde la pestaña *Control remoto* en la interfaz de usuario.
+. Inserte una llave USB con una imagen apropiada en una de las dos ranuras USB de la parte posterior del nodo.
+. Encienda o reinicie el nodo.  Durante el arranque, seleccione Dispositivo de arranque pulsando *F11*:
++
+
+NOTE: Debe seleccionar *F11* varias veces en rápida sucesión porque la pantalla del dispositivo de arranque pasa rápidamente.
+
+. En el menú de selección de dispositivo de arranque, resalte la opción USB.
++
+Las opciones que aparecen dependen de la marca del USB que estés utilizando.
+
++
+[NOTE]
+====
+Si no aparece ningún dispositivo USB en la lista, acceda a la BIOS, verifique que el USB esté incluido en el orden de arranque, reinicie y vuelva a intentarlo.
+
+Si eso no resuelve el problema, acceda a la BIOS, vaya a la pestaña *Guardar y salir*, seleccione *Restaurar valores predeterminados optimizados*, acepte y guarde la configuración y reinicie.
+
+====
+. Aparece una lista de las imágenes que se encuentran en el dispositivo USB seleccionado.  Seleccione la versión deseada y pulse Intro para iniciar el proceso RTFI.
++
+Aparecen el nombre y el número de versión del software RTFI Image Element.
+
+. En la solicitud inicial, se le notifica que el proceso eliminará todos los datos del nodo y que esos datos no se podrán recuperar una vez que comience el proceso.  Ingrese *Sí* para comenzar.
++
+
+WARNING: Una vez iniciado el proceso, todos los datos y detalles de configuración se borran permanentemente del nodo.  Si decide no continuar, se le redirige a laxref:task_rtfi_options_menu.html[Menú de opciones RTFI] .
+
++
+
+NOTE: Si desea ver la consola durante el proceso RTFI, puede presionar las teclas *ALT+F8* para alternar al modo detallado de la consola.  Presione *ALT+F7* para regresar a la interfaz gráfica principal.
+
+. Ingrese *No* cuando se le solicite realizar pruebas de hardware exhaustivas, a menos que tenga motivos para sospechar una falla de hardware o que el Soporte de NetApp le indique que realice las pruebas.
++
+Un mensaje indica que el proceso RTFI ha finalizado y el sistema se apaga.
+
+. Si es necesario, retire todos los medios de instalación de arranque después de apagar el nodo.
++
+El nodo ya está listo para encenderse y configurarse.  Ver el https://docs.netapp.com/us-en/element-software/setup/concept_setup_overview.html["Documentación de almacenamiento de configuración del software Element"^] para configurar el nodo de almacenamiento.
+
++
+Si recibió un mensaje de error durante el proceso RTFI, consultexref:task_rtfi_options_menu.html[Menú de opciones RTFI] .
+
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

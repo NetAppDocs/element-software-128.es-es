@@ -1,0 +1,553 @@
+---
+permalink: storage/reference_prereq_network_port_requirements.html 
+sidebar: sidebar 
+keywords: network port requirements, TCP ports, firewall, utilities, URL, access attempt, ICMP, MIP, SIP, MVIP, SVIP 
+summary: Es posible que necesite permitir los siguientes puertos TCP a través del firewall perimetral de su centro de datos para poder administrar el sistema de forma remota y permitir que los clientes fuera de su centro de datos se conecten a los recursos.  Es posible que algunos de estos puertos no sean necesarios, dependiendo de cómo utilice el sistema. 
+---
+= Requisitos del puerto de red
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible que necesite permitir los siguientes puertos TCP y UDP a través del firewall perimetral de su centro de datos para poder administrar el sistema de forma remota y permitir que los clientes fuera de su centro de datos se conecten a los recursos.  Es posible que algunos de estos puertos no sean necesarios, dependiendo de cómo utilice el sistema.
+
+Todos los puertos son TCP a menos que se indique lo contrario, y todos los puertos TCP deben admitir comunicación de enlace de tres vías entre el servidor de soporte de NetApp , el nodo de administración y los nodos que ejecutan el software Element.  Por ejemplo, el host en un nodo de administración de origen se comunica con el host en un clúster de almacenamiento MVIP de destino a través del puerto TCP 443, y el host de destino se comunica de vuelta al host de origen a través de cualquier puerto.
+
+
+TIP: Habilite ICMP entre el nodo de administración, los nodos que ejecutan el software Element y el MVIP del clúster.
+
+En la tabla se utilizan las siguientes abreviaturas:
+
+* MIP: Dirección IP de gestión, una dirección por nodo
+* SIP: Dirección IP de almacenamiento, una dirección por nodo
+* MVIP: Dirección IP virtual de administración
+* SVIP: Dirección IP virtual de almacenamiento
+
+
+[cols="25,25,15,35"]
+|===
+| Fuente | Destino | Puerto | Descripción 
+
+
+ a| 
+clientes iSCSI
+ a| 
+MVIP de clúster de almacenamiento
+ a| 
+443
+ a| 
+(Opcional) Acceso a la interfaz de usuario y a la API
+
+
+
+ a| 
+clientes iSCSI
+ a| 
+Clúster de almacenamiento SVIP
+ a| 
+3260
+ a| 
+Comunicaciones iSCSI del cliente
+
+
+
+ a| 
+clientes iSCSI
+ a| 
+Nodo de almacenamiento SIP
+ a| 
+3260
+ a| 
+Comunicaciones iSCSI del cliente
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+`sfsupport.solidfire.com`
+ a| 
+22
+ a| 
+Túnel SSH inverso para acceso de soporte
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+22
+ a| 
+Acceso SSH para soporte
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+servidores DNS
+ a| 
+53 TCP/UDP
+ a| 
+Búsqueda de DNS
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+442
+ a| 
+Acceso mediante interfaz de usuario y API a las actualizaciones de software del nodo de almacenamiento y del elemento
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+MVIP de clúster de almacenamiento
+ a| 
+442
+ a| 
+Acceso mediante interfaz de usuario y API a las actualizaciones de software del nodo de almacenamiento y del elemento
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+`monitoring.solidfire.com`
+ a| 
+443
+ a| 
+El clúster de almacenamiento informa a Active IQ.
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+MVIP de clúster de almacenamiento
+ a| 
+443
+ a| 
+Acceso mediante interfaz de usuario y API a las actualizaciones de software del nodo de almacenamiento y del elemento
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+repo.netapp.com
+ a| 
+443
+ a| 
+Proporciona acceso a los componentes necesarios para instalar/actualizar la implementación local.
+
+
+
+| Nodo de gestión | Nodo de almacenamiento BMC/IPMI | 623 UDP | Puerto RMCP.  Esto es necesario para gestionar sistemas habilitados para IPMI. 
+
+
+ a| 
+Nodo de gestión
+ a| 
+Nodo testigo
+ a| 
+9442
+ a| 
+Servicio API de configuración por nodo
+
+
+
+ a| 
+Nodo de gestión
+ a| 
+Servidor vCenter
+ a| 
+9443
+ a| 
+Registro del complemento de vCenter.  El puerto puede cerrarse una vez finalizado el registro.
+
+
+
+ a| 
+Servidor SNMP
+ a| 
+MVIP de clúster de almacenamiento
+ a| 
+161 UDP
+ a| 
+sondeo SNMP
+
+
+
+ a| 
+Servidor SNMP
+| Nodo de almacenamiento MIP  a| 
+161 UDP
+ a| 
+sondeo SNMP
+
+
+
+| Nodo de almacenamiento BMC/IPMI | Nodo de gestión | 623 UDP | Puerto RMCP.  Esto es necesario para gestionar sistemas habilitados para IPMI. 
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+servidores DNS
+ a| 
+53 TCP/UDP
+ a| 
+Búsqueda de DNS
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Nodo de gestión
+ a| 
+80
+ a| 
+Actualizaciones de software de Element
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Punto de conexión S3/Swift
+ a| 
+80
+ a| 
+(Opcional) Comunicación HTTP con el punto de conexión S3/Swift para copias de seguridad y recuperación
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Servidor NTP
+ a| 
+123 UDP
+ a| 
+NTP
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Nodo de gestión
+ a| 
+162 UDP
+ a| 
+(Opcional) Trampas SNMP
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Servidor SNMP
+ a| 
+162 UDP
+ a| 
+(Opcional) Trampas SNMP
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Servidor LDAP
+ a| 
+389 TCP/UDP
+ a| 
+(Opcional) Búsqueda LDAP
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Nodo de gestión
+ a| 
+443
+ a| 
+Actualizaciones de almacenamiento de elementos
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+MVIP de clúster de almacenamiento remoto
+ a| 
+443
+ a| 
+Comunicación de emparejamiento de clústeres de replicación remota
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Nodo de almacenamiento remoto MIP
+ a| 
+443
+ a| 
+Comunicación de emparejamiento de clústeres de replicación remota
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Punto de conexión S3/Swift
+ a| 
+443
+ a| 
+(Opcional) Comunicación HTTPS con el punto de conexión S3/Swift para copias de seguridad y recuperación
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Nodo de gestión
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Reenvío de Syslog
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Servidor de syslog
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Reenvío de Syslog
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Servidor LDAPS
+ a| 
+636 TCP/UDP
+ a| 
+Búsqueda de LDAPS
+
+
+
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+Nodo de almacenamiento remoto MIP
+ a| 
+2181
+ a| 
+Comunicación entre clústeres para replicación remota
+
+
+
+ a| 
+Nodo de almacenamiento SIP
+ a| 
+Nodo de almacenamiento remoto SIP
+ a| 
+2181
+ a| 
+Comunicación entre clústeres para replicación remota
+
+
+
+ a| 
+Nodo de almacenamiento SIP
+ a| 
+Nodo de almacenamiento SIP
+ a| 
+3260
+ a| 
+iSCSI internodo
+
+
+
+ a| 
+Nodo de almacenamiento SIP
+ a| 
+Nodo de almacenamiento remoto SIP
+ a| 
+4000 al 4020
+ a| 
+Transferencia de datos de nodo a nodo mediante replicación remota
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+Nodo de gestión
+ a| 
+442
+ a| 
+Acceso mediante interfaz de usuario HTTPS al nodo de administración
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+442
+ a| 
+Interfaz de usuario HTTPS y acceso a la API del nodo de almacenamiento
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+Nodo de gestión
+ a| 
+443
+ a| 
+Interfaz de usuario HTTPS y acceso a la API del nodo de administración
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+MVIP de clúster de almacenamiento
+ a| 
+443
+ a| 
+Interfaz de usuario HTTPS y acceso a la API del clúster de almacenamiento
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+Controlador de gestión de placa base (BMC)/Interfaz de gestión de plataforma inteligente (IPMI) de las series H410 y H600 del nodo de almacenamiento
+ a| 
+443
+ a| 
+Interfaz de usuario y acceso API HTTPS para el control remoto del nodo
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+Nodo de almacenamiento MIP
+ a| 
+443
+ a| 
+Creación de clústeres de almacenamiento HTTPS, acceso a la interfaz de usuario del clúster de almacenamiento tras la implementación
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+Nodo de almacenamiento BMC/IPMI serie H410 y H600
+ a| 
+623 UDP
+ a| 
+Puerto del protocolo de control de gestión remota.  Esto es necesario para gestionar sistemas habilitados para IPMI.
+
+
+
+ a| 
+PC del administrador del sistema
+ a| 
+Nodo testigo
+ a| 
+8080
+ a| 
+Interfaz web por nodo de Witness Node
+
+
+
+ a| 
+Servidor vCenter
+ a| 
+MVIP de clúster de almacenamiento
+ a| 
+443
+ a| 
+Acceso a la API del complemento de vCenter
+
+
+
+ a| 
+Servidor vCenter
+ a| 
+Conexión remota
+ a| 
+8333
+ a| 
+Servicio de complementos remotos de vCenter
+
+
+
+ a| 
+Servidor vCenter
+ a| 
+Nodo de gestión
+ a| 
+8443
+ a| 
+(Opcional) Servicio QoSSIOC del complemento vCenter.
+
+
+
+ a| 
+Servidor vCenter
+ a| 
+MVIP de clúster de almacenamiento
+ a| 
+8444
+ a| 
+Acceso del proveedor vCenter VASA (solo VVols)
+
+
+
+ a| 
+Servidor vCenter
+ a| 
+Nodo de gestión
+ a| 
+9443
+ a| 
+Registro del complemento de vCenter.  El puerto puede cerrarse una vez finalizado el registro.
+
+|===
+
+
+== Para más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

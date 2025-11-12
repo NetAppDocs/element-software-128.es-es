@@ -1,0 +1,96 @@
+---
+permalink: api/reference_element_api_keyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,keys 
+summary: 'El objeto keyServerKmip describe un servidor de claves del Protocolo de Interoperabilidad de Gestión de Claves (KMIP), que es una ubicación para recuperar claves de autenticación para su uso con funciones de clúster como el cifrado en reposo.' 
+---
+= servidor de clavesKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto keyServerKmip describe un servidor de claves del Protocolo de Interoperabilidad de Gestión de Claves (KMIP), que es una ubicación para recuperar claves de autenticación para su uso con funciones de clúster como el cifrado en reposo.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID del proveedor de clave
+ a| 
+Si este servidor de claves KMIP está asignado a un proveedor, este miembro contiene el ID del proveedor de claves KMIP al que está asignado.  De lo contrario, este miembro es nulo.
+ a| 
+entero
+
+
+
+ a| 
+ID del servidor de claves
+ a| 
+El identificador del servidor de claves KMIP.  Este es un valor único asignado por el clúster durante la creación del servidor de claves.  Este valor no se puede cambiar.
+ a| 
+entero
+
+
+
+ a| 
+kmipAssignedProviderIsActive
+ a| 
+Si este servidor de claves KMIP está asignado a un proveedor (keyProviderID no es nulo), este miembro indica si ese proveedor está activo (proporcionando claves que están actualmente en uso).  De lo contrario, este miembro es nulo.
+ a| 
+booleano
+
+
+
+ a| 
+Certificado kmipCa
+ a| 
+El certificado de clave pública de la CA raíz del servidor de claves externo.  Esto se utiliza para verificar el certificado presentado por el servidor de claves externo en la comunicación TLS.  Para los clústeres de servidores clave donde los servidores individuales utilizan diferentes CA, este miembro contiene una cadena concatenada de los certificados raíz de todas las CA.
+ a| 
+cadena
+
+
+
+ a| 
+Certificado de cliente kmip
+ a| 
+Un certificado X.509 PKCS#10 codificado en Base64 en formato PEM utilizado por el cliente KMIP de almacenamiento Element.
+ a| 
+cadena
+
+
+
+ a| 
+Nombres de host del servidor de claves kmip
+ a| 
+Los nombres de host o direcciones IP asociados con este servidor de claves KMIP.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+kmipKeyServerName
+ a| 
+El nombre del servidor de claves KMIP.  Este nombre se utiliza únicamente con fines ilustrativos y no necesita ser único.
+ a| 
+cadena
+
+
+
+ a| 
+kmipKeyServerPort
+ a| 
+El número de puerto asociado con este servidor de claves KMIP (normalmente 5696).
+ a| 
+entero
+
+|===

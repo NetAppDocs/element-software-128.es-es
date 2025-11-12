@@ -1,0 +1,29 @@
+---
+permalink: storage/task_replication_pair_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, cluster, cluster pair 
+summary: Una vez que haya establecido una conexión entre clústeres en un par de clústeres, puede emparejar un volumen de un clúster con un volumen del otro clúster del par.  Cuando se establece una relación de emparejamiento de volúmenes, debe identificar cuál es el volumen de destino de la replicación. 
+---
+= Volúmenes de pares
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una vez que haya establecido una conexión entre clústeres en un par de clústeres, puede emparejar un volumen de un clúster con un volumen del otro clúster del par.  Cuando se establece una relación de emparejamiento de volúmenes, debe identificar cuál es el volumen de destino de la replicación.
+
+Puede emparejar dos volúmenes para la replicación en tiempo real que estén almacenados en diferentes clústeres de almacenamiento en un par de clústeres conectados.  Después de emparejar dos clústeres, puede configurar los volúmenes activos de un clúster para que se repliquen continuamente en un segundo clúster, lo que proporciona protección continua de datos (CDP).  También puede asignar cualquiera de los volúmenes como origen o destino de la replicación.
+
+Las relaciones de volumen son siempre uno a uno.  Una vez que un volumen forma parte de un emparejamiento con un volumen en otro clúster, no se puede volver a emparejar con ningún otro volumen.
+
+.Lo que necesitarás
+* Has establecido una conexión entre clústeres en un par de clústeres.
+* Usted tiene privilegios de administrador de clúster en uno o ambos clústeres que están emparejados.
+
+
+.Pasos
+. xref:task_replication_create_a_target_volume_with_read_write_access.adoc[Cree un volumen de destino con acceso de lectura o escritura.]
+. xref:task_replication_pair_volumes_using_volume_id_or_pairing_key.adoc[Empareje los volúmenes utilizando un ID de volumen o una clave de emparejamiento.]
+. xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Asignar una fuente y un destino de replicación a los volúmenes emparejados.]
+

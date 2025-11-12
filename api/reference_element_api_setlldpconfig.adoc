@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setlldpconfig.html 
+sidebar: sidebar 
+keywords: lldp,config,configure,set,setting,setlldpconfig 
+summary: 'Puede utilizar el método SetLldpConfig para configurar los ajustes del protocolo de descubrimiento de capa de enlace (LLDP) para un clúster de almacenamiento.' 
+---
+= ConfigurarLldp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `SetLldpConfig` Método para configurar los ajustes del Protocolo de descubrimiento de capa de enlace (LLDP) para un clúster de almacenamiento.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+habilitarOtrosProtocolos
+ a| 
+Habilitar el uso automático de otros protocolos de detección: CDP, FDP, EDP y SONMP.
+ a| 
+booleano
+ a| 
+verdadero
+ a| 
+No
+
+
+
+ a| 
+enableMed
+ a| 
+Habilitar la detección de puntos finales multimedia (LLDP-MED).
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+habilitarLldp
+ a| 
+Habilitar o deshabilitar LLDP.
+ a| 
+booleano
+ a| 
+verdadero
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+lldpConfig
+ a| 
+Información sobre la configuración LLDP actual del clúster de almacenamiento, incluyendo los ajustes recientemente modificados.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 3920,
+  "method":"SetLldpConfig",
+    "params": {
+        "lldpConfig": {
+            "enableMed": true
+        }
+    }
+  }
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 3920,
+  "result": {
+    "lldpConfig": {
+        "enableLldp": true,
+        "enableMed": true,
+        "enableOtherProtocols": true
+     }
+  }
+}
+----

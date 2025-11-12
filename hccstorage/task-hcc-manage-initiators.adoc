@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-initiators.html 
+summary: Aprenda cómo agregar, crear y administrar iniciadores que permitan la comunicación entre clientes externos y volúmenes de almacenamiento de Element. 
+keywords: netapp, initiator, storage, element, access group 
+---
+= Crear y gestionar iniciadores
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usarlink:../concepts/concept_solidfire_concepts_initiators.html["iniciadores"] para el acceso a volúmenes basado en CHAP en lugar de en cuentas.  Puede crear y eliminar iniciadores, y asignarles alias descriptivos para simplificar la administración y el acceso por volumen.  Cuando se agrega un iniciador a un grupo de acceso a volúmenes, ese iniciador habilita el acceso a todos los volúmenes del grupo.
+
+.Lo que necesitarás
+* Usted dispone de credenciales de administrador de clúster.
+* Has actualizado tus servicios de gestión al menos a la versión 2.17.  La gestión del iniciador de NetApp Hybrid Cloud Control no está disponible en versiones anteriores del paquete de servicios.
+
+
+.Opciones
+* <<Crear un iniciador>>
+* <<Agregar iniciadores a un grupo de acceso por volumen>>
+* <<Cambiar un alias de iniciador>>
+* <<Eliminar iniciadores>>
+
+
+
+
+== Crear un iniciador
+
+Puede crear iniciadores iSCSI o Fibre Channel y, opcionalmente, asignarles alias.
+
+.Acerca de esta tarea
+El formato aceptado para un IQN iniciador es `iqn.yyyy-mm` donde y y m son dígitos seguidos de texto que solo debe contener dígitos, caracteres alfabéticos en minúscula y un punto.(`.` ), colon(`:` ) o guion(`-` ).  Un ejemplo del formato es el siguiente:
+
+[listing]
+----
+iqn.2010-01.com.solidfire:c2r9.fc0.2100000e1e09bb8b
+----
+El formato aceptado para un WWPN de iniciador de Fibre Channel es `:Aa:bB:CC:dd:11:22:33:44` o `AabBCCdd11223344` .  Un ejemplo del formato es el siguiente:
+
+[listing]
+----
+5f:47:ac:c0:5c:74:d4:02
+----
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el nombre de su clúster de almacenamiento en el menú de navegación izquierdo.
+. Seleccione *Volúmenes*.
+. Seleccione la pestaña *Iniciadores*.
+. Seleccione el botón *Crear iniciadores*.
++
+|===
+| Opción | Pasos 
+
+
+| Crea uno o más iniciadores  a| 
+.. Introduzca el IQN o WWPN del iniciador en el campo *IQN/WWPN*.
+.. Introduzca un nombre amigable para el iniciador en el campo *Alias*.
+.. (Opcional) Seleccione *Agregar iniciador* para abrir nuevos campos de iniciador o utilice la opción de creación masiva.
+.. Seleccione *Crear iniciadores*.
+
+
+
+
+| Iniciadores de creación masiva  a| 
+.. Seleccione *Agregar IQN/WWPN en bloque*.
+.. Introduzca una lista de IQN o WWPN en el cuadro de texto.  Cada IQN o WWPN debe estar separado por comas o espacios o en su propia línea.
+.. Seleccione *Agregar IQN/WWPN*.
+.. (Opcional) Agregue alias únicos a cada iniciador.
+.. Elimine de la lista cualquier iniciador que ya exista en la instalación.
+.. Seleccione *Crear iniciadores*.
+
+
+|===
+
+
+
+
+== Agregar iniciadores a un grupo de acceso por volumen
+
+Puede agregar iniciadores a un grupo de acceso a volumen.  Cuando se agrega un iniciador a un grupo de acceso a volúmenes, el iniciador habilita el acceso a todos los volúmenes de ese grupo de acceso a volúmenes.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el nombre de su clúster de almacenamiento en el menú de navegación izquierdo.
+. Seleccione *Volúmenes*.
+. Seleccione la pestaña *Iniciadores*.
+. Seleccione uno o más iniciadores que desee agregar.
+. Seleccione *Acciones > Agregar al grupo de acceso*.
+. Seleccione el grupo de acceso.
+. Confirma los cambios seleccionando *Añadir iniciador*.
+
+
+
+
+== Cambiar un alias de iniciador
+
+Puedes cambiar el alias de un iniciador existente o agregar un alias si aún no existe.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el nombre de su clúster de almacenamiento en el menú de navegación izquierdo.
+. Seleccione *Volúmenes*.
+. Seleccione la pestaña *Iniciadores*.
+. En la columna *Acciones*, expanda el menú de opciones para el iniciador.
+. Seleccione *Editar*.
+. Realiza los cambios necesarios en el alias o añade un nuevo alias.
+. Seleccione *Guardar*.
+
+
+
+
+== Eliminar iniciadores
+
+Puedes eliminar uno o más iniciadores.  Cuando se elimina un iniciador, el sistema lo quita de cualquier grupo de acceso a volúmenes asociado.  Las conexiones que utilizan el iniciador permanecen válidas hasta que se restablece la conexión.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el panel de control, expanda el nombre de su clúster de almacenamiento en el menú de navegación izquierdo.
+. Seleccione *Volúmenes*.
+. Seleccione la pestaña *Iniciadores*.
+. Eliminar uno o más iniciadores:
++
+.. Seleccione uno o más iniciadores que desee eliminar.
+.. Seleccione *Acciones > Eliminar*.
+.. Confirme la operación de eliminación y seleccione *Sí*.
+
+
+
+
+[discrete]
+== Encuentra más información
+
+* link:../concepts/concept_solidfire_concepts_initiators.html["Aprende sobre los iniciadores"]
+* link:../concepts/concept_solidfire_concepts_volume_access_groups.html["Obtenga información sobre los grupos de acceso por volumen."]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

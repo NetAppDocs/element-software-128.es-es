@@ -1,0 +1,74 @@
+---
+permalink: storage/task_replication_pair_volumes_using_a_pairing_key.html 
+sidebar: sidebar 
+keywords: volume pairings, pairing key, replication 
+summary: Si no dispone de credenciales de administrador de clúster para un clúster remoto, puede emparejar un volumen con otro volumen en un clúster remoto mediante una clave de emparejamiento. 
+---
+= Emparejar volúmenes mediante una clave de emparejamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si solo tiene acceso de administrador de clúster al clúster de origen (no tiene credenciales de administrador de clúster para un clúster remoto), puede emparejar un volumen con otro volumen en un clúster remoto mediante una clave de emparejamiento.
+
+.Lo que necesitarás
+* Asegúrese de que los clústeres que contienen los volúmenes estén emparejados.
+* Asegúrese de que exista un volumen en el clúster remoto para utilizarlo para el emparejamiento.
++
+
+NOTE: Puede asignar un origen y un destino de replicación después del proceso de emparejamiento.  Una fuente o destino de replicación puede ser cualquiera de los volúmenes de un par de volúmenes.  Debe crear un volumen de destino que no contenga datos y tenga las características exactas del volumen de origen, como el tamaño, la configuración del tamaño de bloque para los volúmenes (ya sea 512e o 4k) y la configuración de QoS.  Si asigna un volumen existente como destino de replicación, los datos de ese volumen se sobrescribirán.  El volumen objetivo puede ser mayor o igual en tamaño que el volumen de origen, pero no puede ser menor.
+
+
+
+.Pasos
+. Seleccione *Administración* > *Volúmenes*.
+. Haz clic en el icono *Acciones* del volumen que quieras emparejar.
+. Haga clic en *Emparejar*.
+. En el cuadro de diálogo *Emparejar volumen*, seleccione *Iniciar emparejamiento*.
+. Seleccione *No tengo* para indicar que no tiene acceso al clúster remoto.
+. Seleccione un *Modo de replicación* de la lista:
++
+** *Tiempo real (asíncrono)*: Las escrituras se confirman al cliente después de que se hayan confirmado en el clúster de origen.
+** *En tiempo real (síncrono)*: Las escrituras se confirman al cliente después de que se hayan confirmado tanto en el clúster de origen como en el de destino.
+** *Solo instantáneas*: Solo se replican las instantáneas creadas en el clúster de origen.  Las escrituras activas desde el volumen de origen no se replican.
+
+
+. Haz clic en *Generar clave*.
++
+
+NOTE: Esta acción genera una clave de texto para el emparejamiento y crea un par de volúmenes no configurados en el clúster local.  Si no completa el procedimiento, deberá eliminar manualmente el par de volúmenes.
+
+. Copia la clave de emparejamiento al portapapeles de tu ordenador.
+. Proporcione la clave de emparejamiento al administrador del clúster en el sitio del clúster remoto.
++
+
+NOTE: La clave de emparejamiento de volumen debe tratarse de forma segura y no utilizarse de manera que permita un acceso accidental o no seguro.
+
++
+
+IMPORTANT: No modifique ninguno de los caracteres de la clave de emparejamiento.  La clave pierde validez si se modifica.
+
+. En la interfaz de usuario de Element del clúster remoto, seleccione *Administración* > *Volúmenes*.
+. Haz clic en el icono de Acciones del volumen que deseas emparejar.
+. Haga clic en *Emparejar*.
+. En el cuadro de diálogo *Emparejar volumen*, seleccione *Completar emparejamiento*.
+. Pegue la clave de emparejamiento del otro grupo en el cuadro *Clave de emparejamiento*.
+. Haga clic en *Completar emparejamiento*.
++
+Una vez confirmado el emparejamiento, los dos grupos inician el proceso de conexión de los volúmenes para el emparejamiento.  Durante el proceso de emparejamiento, puede ver mensajes en la columna *Estado del volumen* de la ventana *Pares de volúmenes*.  El par de pantallas de volumen `PausedMisconfigured` hasta que se asignen el origen y el destino del par de volúmenes.
+
++
+Una vez completado correctamente el emparejamiento, se recomienda actualizar la tabla Volúmenes para eliminar la opción *Emparejar* de la lista *Acciones* del volumen emparejado.  Si no actualiza la tabla, la opción *Par* seguirá disponible para su selección.  Si vuelve a seleccionar la opción *Emparejar*, se abrirá una nueva pestaña y, dado que el volumen ya está emparejado, el sistema informará de un `StartVolumePairing Failed: xVolumeAlreadyPaired` Mensaje de error en la ventana *Emparejar volumen* de la página de la interfaz de usuario de Element.
+
+
+
+
+
+== Encuentra más información
+
+* xref:reference_replication_volume_pairing_messages.adoc[Mensajes de emparejamiento de volumen]
+* xref:reference_replication_volume_pairing_warnings.adoc[Advertencias de emparejamiento de volumen]
+* xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Asignar una fuente y un destino de replicación a los volúmenes emparejados.]
+

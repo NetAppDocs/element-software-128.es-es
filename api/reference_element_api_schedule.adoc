@@ -1,0 +1,233 @@
+---
+permalink: api/reference_element_api_schedule.html 
+sidebar: sidebar 
+keywords: object,objects,schedule 
+summary: El objeto de programación contiene información sobre una programación creada para realizar de forma autónoma una instantánea de un volumen.  Puede recuperar información de programación para todas las programaciones con el método API ListSchedules. 
+---
+= cronograma
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de programación contiene información sobre una programación creada para realizar de forma autónoma una instantánea de un volumen.  Puedes recuperar información de horarios para todos los horarios con el `ListSchedules` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+atributos
+ a| 
+Indica la frecuencia con la que se produce el evento programado. Valores posibles:
+
+* Día de la semana
+* Día del mes
+* Intervalo de tiempo
+
+ a| 
+Objeto JSON
+
+
+
+ a| 
+tieneError
+ a| 
+Indica si el cronograma tiene errores o no. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+horas
+ a| 
+Muestra las horas que transcurrirán antes de que se cree la siguiente instantánea.  Los valores posibles son de 0 a 24.
+ a| 
+entero
+
+
+
+ a| 
+último estado de ejecución
+ a| 
+Indica el estado de la última instantánea programada. Valores posibles:
+
+* Éxito
+* Con errores
+
+ a| 
+cadena
+
+
+
+ a| 
+último tiempo de ejecución
+ a| 
+Indica la última hora de inicio del horario.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+minutos
+ a| 
+Muestra los minutos que transcurrirán antes de que se cree la siguiente instantánea.  Los valores posibles son de 0 a 59.
+ a| 
+entero
+
+
+
+ a| 
+días del mes
+ a| 
+Indica los días del mes en que se tomará la instantánea.
+ a| 
+formación
+
+
+
+ a| 
+pausa
+ a| 
+Indica si la programación está en pausa o no. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+periódico
+ a| 
+Indica si la programación es recurrente o no. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+ejecutarSiguienteIntervalo
+ a| 
+Indica si la programación se ejecutará o no la próxima vez que el programador esté activo.  Cuando es verdadero, la programación se ejecutará la próxima vez que el programador esté activo y luego este valor se restablecerá a falso. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+ID de programación
+ a| 
+El identificador único del horario.
+ a| 
+entero
+
+
+
+ a| 
+Información del horario
+ a| 
+Incluye el nombre único asignado a la programación, el período de retención de la instantánea creada y el ID del volumen desde el cual se creó la instantánea.  Valores válidos:
+
+* `enableRemoteReplication`Indica si la instantánea debe incluirse en la replicación remota.  (booleano)
+* `ensureSerialCreation`: Especifica si se debe permitir la creación de una nueva instantánea si hay una replicación de instantánea anterior en curso.  (booleano)
+* `name`Nombre de la instantánea que se utilizará.  (cadena)
+* `retention`: El tiempo durante el cual se conserva la instantánea.  Dependiendo de la hora, se muestra en uno de los siguientes formatos:
++
+** `fifo`La instantánea se conserva según el principio de primero en entrar, primero en salir (FIFO).  Si está vacía, la instantánea se conserva indefinidamente.  (cadena)
+** HH:mm:ss
+
+
+* `volumeID`: El identificador del volumen que se incluirá en la instantánea.  (entero)
+* `volumes`: Una lista de identificadores de volumen que se incluirán en la instantánea del grupo.  (matriz de enteros)
+
+ a| 
+Objeto JSON
+
+
+
+ a| 
+nombre del horario
+ a| 
+El nombre único asignado al horario.
+ a| 
+cadena
+
+
+
+ a| 
+Tipo de horario
+ a| 
+Por el momento, solo se admiten los tipos de instantáneas programadas.
+ a| 
+cadena
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+La etiqueta snapMirrorLabel que se aplicará a la instantánea o instantánea de grupo creada, contenida en scheduleInfo.  Si no se establece, este valor es nulo.
+ a| 
+cadena
+
+
+
+ a| 
+fecha de inicio
+ a| 
+Indica la fecha en que comenzó o comenzará el horario por primera vez; con formato de hora UTC.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+para ser eliminado
+ a| 
+Indica si la programación está marcada para su eliminación. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+días laborables
+ a| 
+Indica los días de la semana en que se tomará la instantánea.
+ a| 
+formación
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listschedules.adoc[Listas de horarios]

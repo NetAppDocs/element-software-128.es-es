@@ -1,0 +1,71 @@
+---
+permalink: storage/concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: element, terms of use, banner, config, edit, terms of use, disable, enable 
+summary: Puedes habilitar, editar o configurar un banner que contenga un mensaje para el usuario. 
+---
+= Gestionar el banner de Condiciones de uso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes habilitar, editar o configurar un banner que contenga un mensaje para el usuario.
+
+.Opciones
+<<Habilita el banner de Condiciones de uso>> <<Edita el banner de Condiciones de uso>> <<Desactivar el banner de Condiciones de uso>>
+
+
+
+== Habilita el banner de Condiciones de uso
+
+Puedes habilitar un banner de Condiciones de uso que aparezca cuando un usuario inicie sesión en la interfaz de usuario de Element.  Cuando el usuario haga clic en el banner, aparecerá un cuadro de diálogo de texto con el mensaje que ha configurado para el clúster.  El banner puede eliminarse en cualquier momento.
+
+Debe tener privilegios de administrador de clúster para habilitar la funcionalidad de Términos de uso.
+
+. Haz clic en *Usuarios* > *Condiciones de uso*.
+. En el formulario *Condiciones de uso*, introduzca el texto que se mostrará en el cuadro de diálogo de Condiciones de uso.
++
+
+NOTE: No exceda los 4096 caracteres.
+
+. Haga clic en *Habilitar*.
+
+
+
+
+== Edita el banner de Condiciones de uso
+
+Puedes editar el texto que ve un usuario cuando selecciona el banner de inicio de sesión de los Términos de uso.
+
+.Lo que necesitarás
+* Para configurar las Condiciones de uso, debe tener privilegios de administrador de clúster.
+* Asegúrese de que la función de Condiciones de uso esté habilitada.
+
+
+.Pasos
+. Haz clic en *Usuarios* > *Condiciones de uso*.
+. En el cuadro de diálogo *Condiciones de uso*, edite el texto que desea que aparezca.
++
+
+NOTE: No exceda los 4096 caracteres.
+
+. Haz clic en *Guardar cambios*.
+
+
+
+
+== Desactivar el banner de Condiciones de uso
+
+Puedes desactivar el banner de Condiciones de uso.  Con el banner desactivado, ya no se le solicita al usuario que acepte los términos de uso al utilizar la interfaz de usuario de Element.
+
+.Lo que necesitarás
+* Para configurar las Condiciones de uso, debe tener privilegios de administrador de clúster.
+* Asegúrese de que las Condiciones de uso estén habilitadas.
+
+
+.Pasos
+. Haz clic en *Usuarios* > *Condiciones de uso*.
+. Haga clic en *Desactivar*.
+

@@ -1,0 +1,149 @@
+---
+permalink: api/reference_element_api_modifyqospolicy.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,qos,policy,policies,modifyqospolicy 
+summary: Puede utilizar el método ModifyQoSPolicy para modificar una política QoS existente en el sistema. 
+---
+= Modificar la política de QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyQoSPolicy` Método para modificar una política QoS existente en el sistema.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de política de qos
+ a| 
+El ID de la política que se va a modificar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nombre
+ a| 
+Si se proporciona, el nombre de la política de QoS (por ejemplo, oro, platino, plata) se cambia a este valor.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+QoS
+ a| 
+Si se proporcionan, los ajustes de QoS para esta política se cambiarán a estos ajustes.  Puede proporcionar valores QoS parciales y cambiar solo algunas de las configuraciones QoS.
+ a| 
+Objeto QoS
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+Política de calidad de servicio
+ a| 
+Detalles de la política de QoS recientemente modificada.
+ a| 
+xref:reference_element_api_qospolicy.adoc[Política de QoS]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1950,
+  "method": "ModifyQoSPolicy",
+  "params": {
+    "qosPolicyID": 2,
+    "qos": {
+      "minIOPS": 51,
+      "maxIOPS": 15002,
+      "burstIOPS": 15002
+    }
+  }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1950,
+  "result": {
+    "qosPolicy": {
+      "name": "bronze",
+      "qos": {
+        "burstIOPS": 15002,
+        "burstTime": 60,
+        "curve": {
+          "4096": 100,
+          "8192": 160,
+          "16384": 270,
+          "32768": 500,
+          "65536": 1000,
+          "131072": 1950,
+          "262144": 3900,
+          "524288": 7600,
+          "1048576": 15000
+        },
+        "maxIOPS": 15002,
+        "minIOPS": 51
+      },
+      "qosPolicyID": 2,
+      "volumeIDs": [
+        2
+      ]
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+10,0

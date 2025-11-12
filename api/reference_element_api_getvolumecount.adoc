@@ -1,0 +1,74 @@
+---
+permalink: api/reference_element_api_getvolumecount.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,count,measurements,getvolumecount 
+summary: Puede utilizar el método GetVolumeCount para obtener el número de volúmenes que hay actualmente en el sistema. 
+---
+= Obtener recuento de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetVolumeCount` Método para obtener el número de volúmenes que se encuentran actualmente en el sistema.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+contar
+ a| 
+Número de volúmenes actualmente en el sistema.
+ a| 
+entero
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "GetVolumeCount",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "count": 7
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

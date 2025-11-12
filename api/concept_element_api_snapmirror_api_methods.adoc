@@ -1,0 +1,53 @@
+---
+permalink: api/concept_element_api_snapmirror_api_methods.html 
+sidebar: sidebar 
+keywords: SnapMirror,API,method 
+summary: Los métodos de la API SnapMirror son utilizados por la interfaz web de Element para administrar las instantáneas replicadas con sistemas ONTAP remotos.  Estos métodos están destinados únicamente para su uso por la interfaz web de Element.  Si necesita acceso a la API de la funcionalidad de SnapMirror , utilice las API de ONTAP .  No se proporcionan ejemplos de solicitud y retorno para los métodos de la API de SnapMirror . 
+---
+= Métodos de la API de SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los métodos de la API SnapMirror son utilizados por la interfaz web de Element para administrar las instantáneas replicadas con sistemas ONTAP remotos.  Estos métodos están destinados únicamente para su uso por la interfaz web de Element.  Si necesita acceso a la API de la funcionalidad de SnapMirror , utilice las API de ONTAP .  No se proporcionan ejemplos de solicitud y retorno para los métodos de la API de SnapMirror .
+
+* xref:reference_element_api_abortsnapmirrorrelationship.adoc[Abortar SnapMirrorRelationship]
+* xref:reference_element_api_breaksnapmirrorrelationship.adoc[Relación BreakSnapMirror]
+* xref:reference_element_api_breaksnapmirrorvolume.adoc[BreakSnapMirrorVolume]
+* xref:reference_element_api_createsnapmirrorendpoint.adoc[Crear punto final de SnapMirror]
+* xref:reference_element_api_createsnapmirrorendpoint_unmanaged.adoc[CrearPuntoFinalDeSnapMirrorNoAdministrado]
+* xref:reference_element_api_createsnapmirrorrelationship.adoc[CrearRelaciónSnapMirror]
+* xref:reference_element_api_createsnapmirrorvolume.adoc[CrearVolumenSnapMirror]
+* xref:reference_element_api_deletesnapmirrorendpoints.adoc[Eliminar puntos finales de SnapMirror]
+* xref:reference_element_api_deletesnapmirrorrelationships.adoc[EliminarRelacionesDeSnapMirror]
+* xref:reference_element_api_getontapversioninfo.adoc[Información de la versión de GetOntap]
+* xref:reference_element_api_getsnapmirrorclusteridentity.adoc[ObtenerIdentidadDeClústerDeSnapMirror]
+* xref:reference_element_api_initializesnapmirrorrelationship.adoc[InicializarRelaciónSnapMirror]
+* xref:reference_element_api_listsnapmirroraggregates.adoc[Agregados de ListSnapMirror]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[ListSnapMirrorEndpoints]
+* xref:reference_element_api_listsnapmirrorluns.adoc[ListSnapMirrorLuns]
+* xref:reference_element_api_listsnapmirrornetworkinterfaces.adoc[ListSnapMirrorNetworkInterfaces]
+* xref:reference_element_api_listsnapmirrornodes.adoc[Nodos de espejo de ListSnap]
+* xref:reference_element_api_listsnapmirrorpolicies.adoc[Políticas de espejo de ListSnap]
+* xref:reference_element_api_listsnapmirrorschedules.adoc[Lista de horarios de reflejo de ajuste]
+* xref:reference_element_api_listsnapmirrorrelationships.adoc[Relaciones de espejo de ajuste de lista]
+* xref:reference_element_api_listsnapmirrorvolumes.adoc[ListSnapMirrorVolumes]
+* xref:reference_element_api_listsnapmirrorvservers.adoc[Lista de servidores virtuales de SnapMirror]
+* xref:reference_element_api_modifysnapmirrorendpoint.adoc[Modificar el punto final de SnapMirror]
+* xref:reference_element_api_modifysnapmirrorendpoint_unmanaged.adoc[ModificarSnapMirrorEndpoint (no administrado)]
+* xref:reference_element_api_modifysnapmirrorrelationship.adoc[Modificar relación de SnapMirror]
+* xref:reference_element_api_updatesnapmirrorrelationship.adoc[ActualizarRelaciónSnapMirror]
+* xref:reference_element_api_quiescesnapmirrorrelationship.adoc[Relación de espejo de QuiesceSnap]
+* xref:reference_element_api_resumesnapmirrorrelationship.adoc[Relación de ResumeSnapMirror]
+* xref:reference_element_api_resyncsnapmirrorrelationship.adoc[ResincronizarSnapMirrorRelationship]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

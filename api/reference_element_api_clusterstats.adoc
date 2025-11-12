@@ -1,0 +1,293 @@
+---
+permalink: api/reference_element_api_clusterstats.html 
+sidebar: sidebar 
+keywords: objects,clusterStats 
+summary: El objeto clusterStats contiene datos estadísticos para un clúster.  Muchas de las estadísticas relacionadas con el volumen que contiene el objeto son promedios de todos los volúmenes del clúster.  Puede utilizar el método GetClusterStats para recuperar esta información para un clúster. 
+---
+= estadísticas del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto clusterStats contiene datos estadísticos para un clúster.  Muchas de las estadísticas relacionadas con el volumen que contiene el objeto son promedios de todos los volúmenes del clúster.  Puede utilizar el método GetClusterStats para recuperar esta información para un clúster.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Cálculo | Tipo 
+
+
+ a| 
+IOPS reales
+ a| 
+IOPS reales actuales para todo el clúster en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Tamaño promedio de IOPS
+ a| 
+Tamaño promedio en bytes de las operaciones de E/S recientes en el clúster en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+profundidad de la cola de clientes
+ a| 
+Número de operaciones de lectura y escritura pendientes en el clúster.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+Utilización del clúster
+ a| 
+Porcentaje de IOPS máximas del clúster que se están utilizando actualmente.  Esto se calcula como clusterUtilization = normalizedIOPS / maxIOPS (de GetClusterCapacity).
+ a| 
+N/A
+ a| 
+flotar
+
+
+
+ a| 
+latenciaUSeg
+ a| 
+Tiempo promedio, en microsegundos, para completar operaciones en un clúster en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+IOPS normalizadas
+ a| 
+Número promedio de IOPS para todo el clúster en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+bytes leídos
+ a| 
+El total acumulado de bytes leídos del clúster desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+readBytesLastSample
+ a| 
+Número total de bytes leídos del clúster durante el último período de muestreo.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Latencia de lectura (segundos)
+ a| 
+Tiempo promedio, en microsegundos, para completar las operaciones de lectura al clúster en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Latencia de lectura (USec) Total
+ a| 
+El tiempo total empleado en realizar operaciones de lectura desde la creación del clúster.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+operaciones de lectura
+ a| 
+El total acumulado de operaciones de lectura en el clúster desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+readOpsLastSample
+ a| 
+El número total de operaciones de lectura durante el último período de muestra.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+período de muestra MSeg
+ a| 
+Duración del período de muestreo, en milisegundos.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+serviciosCount
+ a| 
+El número de servicios que se ejecutan en el clúster.  Si es igual a servicesTotal, esto indica que se recopilaron estadísticas válidas de todos los nodos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Servicios Total
+ a| 
+El número total de servicios que se espera que se ejecuten en el clúster.
+ a| 
+N/A
+ a| 
+entero
+
+
+
+ a| 
+marca de tiempo
+ a| 
+La hora actual en formato UTC+0.
+ a| 
+N/A
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+lecturas no alineadas
+ a| 
+El total acumulado de operaciones de lectura no alineadas en un clúster desde la creación del clúster.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+escrituras no alineadas
+ a| 
+El total acumulado de operaciones de escritura no alineadas en un clúster desde la creación del clúster.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+escribirBytes
+ a| 
+El total acumulado de bytes escritos en el clúster desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+writeBytesLastSample
+ a| 
+El número total de bytes escritos en el clúster durante el último período de muestreo.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+Latencia de escritura (segundos)
+ a| 
+Tiempo promedio, en microsegundos, para completar las operaciones de escritura en un clúster en los últimos 500 milisegundos.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+
+
+ a| 
+Latencia de escritura (USec) total
+ a| 
+El tiempo total empleado en realizar operaciones de escritura desde la creación del clúster.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+operaciones de escritura
+ a| 
+El total acumulado de operaciones de escritura en el clúster desde su creación.
+ a| 
+Aumento monótono
+ a| 
+entero
+
+
+
+ a| 
+writeOpsLastSample
+ a| 
+El número total de operaciones de escritura durante el último período de muestra.
+ a| 
+Punto en el tiempo
+ a| 
+entero
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_getclusterstats.adoc[Obtener estadísticas del clúster]

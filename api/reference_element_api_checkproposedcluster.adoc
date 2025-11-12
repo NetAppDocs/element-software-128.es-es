@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_checkproposedcluster.html 
+sidebar: sidebar 
+keywords: cluster,creation,check,proposed,checking,nodes,node,before,CheckProposedCluster 
+summary: Puede utilizar el método CheckProposedCluster para probar un conjunto de nodos de almacenamiento antes de crear un clúster de almacenamiento con ellos para identificar posibles errores o fallos que podrían producirse al intentarlo, como capacidades de nodos mixtas desequilibradas o tipos de nodos que no son compatibles con clústeres de almacenamiento de dos nodos. 
+---
+= VerificarClústerPropuesto
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `CheckProposedCluster` Método para probar un conjunto de nodos de almacenamiento antes de crear un clúster de almacenamiento con ellos para identificar posibles errores o fallos que pudieran producirse al intentarlo, como capacidades de nodos mixtas desequilibradas o tipos de nodos que no son compatibles con clústeres de almacenamiento de dos nodos.
+
+
+
+== Parámetros
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+nodos
+ a| 
+Una lista de las direcciones IP de almacenamiento del conjunto inicial de nodos de almacenamiento que componen el clúster de almacenamiento.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+fuerza
+ a| 
+Establézcalo en verdadero para que se ejecute en todos los nodos de almacenamiento del clúster de almacenamiento.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+Cluster propuesto válido
+ a| 
+Indica si los nodos de almacenamiento propuestos conformarían o no un clúster de almacenamiento válido. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+Errores de clúster propuestos
+ a| 
+Errores que se producirían si se creara un clúster de almacenamiento utilizando los nodos de almacenamiento propuestos.
+ a| 
+matriz de cadenas
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+	"method": "CheckProposedCluster",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== Nueva versión
+
+11,0

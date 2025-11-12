@@ -1,0 +1,347 @@
+---
+permalink: api/reference_element_api_modifyvolume.html 
+sidebar: sidebar 
+keywords: volumes,volume,modifying,modify,change,changing,edit,editing,modifyvolume,settings 
+summary: Puede utilizar el método ModifyVolume para modificar la configuración de un volumen existente.  Puede realizar modificaciones en un volumen a la vez y los cambios se aplicarán de inmediato. 
+---
+= Modificar volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyVolume` Método para modificar la configuración de un volumen existente.  Puede realizar modificaciones en un volumen a la vez y los cambios se aplicarán de inmediato.
+
+Si no especificas valores de QoS al modificar un volumen, estos permanecerán iguales que antes de la modificación.  Puede recuperar los valores QoS predeterminados para un volumen recién creado ejecutando el siguiente comando. `GetDefaultQoS` método.
+
+Cuando necesite aumentar el tamaño de un volumen que se está replicando, hágalo en el siguiente orden para evitar errores de replicación:
+
+. Aumentar el tamaño del volumen con acceso de destino de replicación.
+. Aumente el tamaño de la fuente o del volumen con acceso de lectura/escritura.
+
+
+Asegúrese de que tanto el volumen de destino como el de origen tengan el mismo tamaño.
+
+
+NOTE: Si cambia el estado de acceso a bloqueado o replicationTarget, se terminarán todas las conexiones iSCSI existentes.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de volumen
+ a| 
+El ID del volumen que se va a modificar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+acceso
+ a| 
+Se permitió el acceso al volumen. Valores posibles:
+
+* `readOnly`Solo se permiten operaciones de lectura.
+* `readWrite`Se permiten lecturas y escrituras.
+* `locked`No se permiten lecturas ni escrituras.  Si no se especifica, el valor de acceso no cambia.
+* `replicationTarget`Identificar un volumen como el volumen objetivo para un conjunto de volúmenes emparejados.  Si el volumen no está emparejado, el estado de acceso queda bloqueado.  Si no se especifica un valor, el valor de acceso no cambia.
+* `snapMirrorTarget`Identificar un volumen como volumen de destino para la replicación de SnapMirror .
+
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ID de cuenta
+ a| 
+El ID de cuenta al que se reasigna el volumen.  Si no se especifica ninguno, se utiliza el nombre de cuenta anterior.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+asociarseConQoSPolicy
+ a| 
+Asocie el volumen con la política QoS especificada. Valores posibles:
+
+* `true`Asocie el volumen con la política QoS especificada en el parámetro QoSPolicyID.
+* `false`No asocie el volumen con la política QoS especificada en el parámetro QoSPolicyID.  Cuando es falso, se elimina cualquier asociación de política existente, independientemente de si se especifica una política QoS en el parámetro QoSPolicy.
+
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+crearTiempo
+ a| 
+Una cadena de fecha ISO 8601 para establecer como la nueva fecha de creación del volumen.  Requerido si setCreateTime está establecido en verdadero.
+ a| 
+Cadena ISO 8601
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+dontMoveforIopsRebalance
+ a| 
+Evitar que un volumen se mueva al equilibrar la carga con IOPS reales.  Esta configuración está disponible a partir de Element 12.8 y solo es efectiva cuandolink:reference_element_api_enablefeature.html["Balanceo de carga de volumen en IOPS reales"] está habilitado. Valores posibles:
+
+* `true`El volumen no realiza el balanceo de carga en función de las IOPS reales.
+* `false`El volumen realiza el balanceo de carga en función de las IOPS reales.
+
+
+*Nota*: El equilibrio para alta disponibilidad (fallo de nodo) tiene prioridad sobre `VolumeLoadBalanceOnActualIOPS` y `dontMoveforIopsRebalance` .
+| booleano | FALSO | No 
+
+
+ a| 
+habilitarSnapMirrorReplication
+ a| 
+Determina si el volumen se puede utilizar para la replicación con puntos de conexión SnapMirror . Valores posibles:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+| fifoSize | Especifica el número máximo de instantáneas First-In-First-Out (FIFO) admitidas por el volumen.  Tenga en cuenta que tanto las instantáneas FIFO como las no FIFO utilizan el mismo conjunto de ranuras de instantáneas disponibles en un volumen.  Utilice esta opción para limitar el consumo de instantáneas FIFO de las ranuras de instantáneas disponibles.  Tenga en cuenta que no puede modificar este valor para que sea menor que el recuento actual de instantáneas FIFO. | entero | Ninguno | No 
+
+
+| tamaño mínimo de Fifo | Especifica el número de ranuras de instantáneas que están reservadas únicamente para instantáneas First-In-First-Out (FIFO).  Dado que las instantáneas FIFO y no FIFO comparten el mismo grupo, el parámetro minFifoSize reduce el número total de instantáneas no FIFO posibles en la misma cantidad.  Tenga en cuenta que no puede modificar este valor de manera que entre en conflicto con el recuento actual de instantáneas no FIFO. | entero | Ninguno | No 
+
+
+ a| 
+modo
+ a| 
+Modo de replicación de volumen. Valores posibles:
+
+* `asynch`: Espera a que el sistema confirme que los datos están almacenados en la fuente antes de escribirlos en el destino.
+* `sync`No espera la confirmación de transmisión de datos desde la fuente para comenzar a escribir datos en el destino.
+
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+QoS
+ a| 
+Los nuevos ajustes de calidad de servicio para este volumen.  Si no se especifica, la configuración de QoS no se modifica. Valores posibles:
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+ a| 
+xref:reference_element_api_qos.adoc[Calidad de servicio]
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ID de política de qos
+ a| 
+El ID de la política cuya configuración QoS se debe aplicar a los volúmenes especificados.  Este parámetro es mutuamente excluyente con el parámetro qos.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+establecerHoraDeCreación
+ a| 
+Establézcalo en verdadero para cambiar la fecha registrada de creación del volumen.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+tamaño total
+ a| 
+El nuevo tamaño del volumen en bytes.  1000000000 es igual a 1 GB.  El tamaño se redondea al megabyte más cercano.  Este parámetro solo puede utilizarse para aumentar el tamaño de un volumen.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+volume
+ a| 
+Objeto que contiene información sobre el volumen recientemente modificado.
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "ModifyVolume",
+  "params": {
+     "volumeID": 319,
+     "access": "readWrite",
+     "dontMoveForIopsRebalance": false
+     },
+     "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+      "volume": {
+          "access": "readWrite",
+          "accountID":22,
+          "attributes": {},
+          "blockSize": 4096,
+          "createTime": "2024-04-01T19:39:40Z",
+          "currentProtectionScheme": "doubleHelix",
+          "deleteTime": "",
+          "dontMoveForIopsRebalance": false,
+          "enable512e": false,
+          "enableSnapMirrorReplication": false,
+          "fifoSize": 24,
+          "iqn": "iqn.2010-01.com.solidfire:3eeu.suite40.319",
+          "lastAccessTime": "2024-04-02T12:41:34Z",
+          "lastAccessTimeIO": "2024-04-01T20:41:19Z",
+          "minFifoSize": 0,
+          "name": "suite40",
+          "previousProtectionScheme": null,
+          "purgeTime": "",
+          "qos": {
+              "burstIOPS": 27000,
+              "burstTime": 60,
+              "curve": {
+                  "1048576": 15000,
+                  "131072": 1950,
+                  "16384": 270,
+                  "262144": 3900,
+                  "32768": 500, "4096": 100,
+                  "524288": 7600,
+                  "65536": 1000,
+                  "8192": 160
+              },
+              "maxIOPS": 27000,
+              "minIOPS": 500
+          },
+          "qosPolicyID": null,
+          "scsiEUIDeviceID": "336565750000013ff47acc0100000000",
+          "scsiNAADeviceID": "6f47acc100000000336565750000013f",
+          "sliceCount": 1,
+          "status": "active",
+          "totalSize": 1000000716800,
+          "virtualVolumeID": null,
+          "volumeAccessGroups": [
+          22
+          ],
+          "volumeConsistencyGroupUUID": "3003109e-6e75-444c-8cee-470d641a09c3",
+          "volumeID": 319,
+          "volumePairs": [],
+          "volumeUUID": "78203136-b0eb-454b-9f67-2c867ec7d7bb"
+      }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_getdefaultqos.adoc[Obtener QoS predeterminado]

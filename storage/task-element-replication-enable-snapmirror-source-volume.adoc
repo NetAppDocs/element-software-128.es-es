@@ -1,0 +1,32 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-source-volume.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, source, volume 
+summary: Debe habilitar SnapMirror en el volumen de origen Element antes de poder crear una relación de replicación.  Esta tarea solo se puede realizar en la interfaz web del software Element o utilizando los métodos de la API. 
+---
+= Habilite SnapMirror en el volumen de origen Element.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe habilitar SnapMirror en el volumen de origen Element antes de poder crear una relación de replicación.  Esta tarea solo se puede realizar en la interfaz web del software Element o utilizandolink:../api/reference_element_api_modifyvolume.html["Modificar volumen"] ylink:../api/reference_element_api_modifyvolumes.html["Modificar volúmenes"] Métodos de la API.
+
+.Antes de empezar
+* Debes haber habilitado SnapMirror en el clúster Element.
+* El tamaño del bloque de volumen debe ser de 512 bytes.
+* El volumen no debe participar en la replicación remota de Element.
+* El tipo de acceso al volumen no debe ser "`Objetivo de replicación`".
+
+
+.Acerca de esta tarea
+El procedimiento que se describe a continuación presupone que el volumen ya existe.  También puedes habilitar SnapMirror al crear o clonar un volumen.
+
+.Pasos
+. Seleccione *Administración* > *Volúmenes*.
+. Seleccione elimage:../media/action-icon.gif["Icono de acciones"] botón para el volumen.
+. En el menú desplegable, seleccione *Editar*.
+. En el cuadro de diálogo *Editar volumen*, seleccione *Habilitar SnapMirror*.
+. Seleccione *Guardar cambios*.
+

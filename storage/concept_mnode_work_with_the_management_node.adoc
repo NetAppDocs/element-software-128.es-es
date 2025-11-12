@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_mnode_work_with_the_management_node.html 
+sidebar: sidebar 
+keywords: management node,mNode 
+summary: 'Puede utilizar el nodo de administración (mNode) para actualizar los servicios del sistema, administrar los activos y la configuración del clúster, ejecutar pruebas y utilidades del sistema, configurar Active IQ para la supervisión del sistema y habilitar el acceso al soporte de NetApp para la resolución de problemas.' 
+---
+= Trabajar con el nodo de gestión
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar el nodo de administración (mNode) para actualizar los servicios del sistema, administrar los activos y la configuración del clúster, ejecutar pruebas y utilidades del sistema, configurar Active IQ para la supervisión del sistema y habilitar el acceso al soporte de NetApp para la resolución de problemas.
+
+
+NOTE: Como práctica recomendada, asocie solo un nodo de administración con una instancia de VMware vCenter y evite definir los mismos recursos de almacenamiento y computación o instancias de vCenter en varios nodos de administración.
+
+Verlink:../mnode/task_mnode_work_overview.html["Documentación del nodo de gestión"] Para más información.

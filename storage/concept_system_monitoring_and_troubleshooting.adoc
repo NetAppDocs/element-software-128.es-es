@@ -1,0 +1,36 @@
+---
+permalink: storage/concept_system_monitoring_and_troubleshooting.html 
+sidebar: sidebar 
+keywords: trouble, troubleshoot, monitor, element, alert, event 
+summary: Debe supervisar el sistema con fines de diagnóstico y para obtener información sobre las tendencias de rendimiento y los estados de las diversas operaciones del sistema.  Es posible que necesite reemplazar nodos o SSD por motivos de mantenimiento. 
+---
+= Soluciona los problemas de tu sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe supervisar el sistema con fines de diagnóstico y para obtener información sobre las tendencias de rendimiento y los estados de las diversas operaciones del sistema.  Es posible que necesite reemplazar nodos o SSD por motivos de mantenimiento.
+
+* link:task_monitor_information_about_system_events.html["Ver información sobre eventos del sistema"]
+* link:reference_monitor_status_of_running_tasks.html["Ver el estado de las tareas en ejecución"]
+* link:task_monitor_system_alerts.html["Ver alertas del sistema"]
+* link:task_monitor_node_performance_activity.html["Ver actividad de rendimiento del nodo"]
+* link:task_monitor_volume_performance.html["Rendimiento del volumen de visualización"]
+* link:task_monitor_iscsi_sessions.html["Ver sesiones iSCSI"]
+* link:task_monitor_fibre_channel_sessions.html["Ver sesiones de Fibre Channel"]
+* link:concept_troubleshoot_drives.html["Solucionar problemas de las unidades"]
+* link:concept_remove_nodes_from_cluster.html["Solucionar problemas de nodos"]
+* link:concept_per_node_work_with_utilities.html["Trabajar con utilidades por nodo para nodos de almacenamiento"]
+* link:concept_mnode_work_with_the_management_node.html["Trabajar con el nodo de gestión"]
+* link:concept_monitor_understand_cluster_fullness_levels.html["Comprender los niveles de plenitud del clúster"]
+
+
+
+
+== Para más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

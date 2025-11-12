@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrorschedules.html 
+sidebar: sidebar 
+keywords: snapmirror,schedule,schedules,list,listing,listsnapmirrorschedules,ontap 
+summary: La interfaz web del software Element utiliza el método ListSnapMirrorSchedules para obtener una lista de las programaciones disponibles en un clúster ONTAP remoto. 
+---
+= Lista de horarios de reflejo de ajuste
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz web del software Element utiliza `ListSnapMirrorSchedules` Método para obtener una lista de las programaciones disponibles en un clúster ONTAP remoto.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+Si se proporciona, el sistema muestra las programaciones del punto de conexión con el ID de punto de conexión SnapMirror especificado.  Si no se proporciona, el sistema muestra las programaciones de todos los puntos de conexión SnapMirror conocidos.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorSchedules
+ a| 
+Una lista de las programaciones de SnapMirror en el clúster ONTAP remoto.
+ a| 
+xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[snapMirrorJobScheduleCronInfo]formación
+
+|===
+
+
+== Nueva versión
+
+10,1

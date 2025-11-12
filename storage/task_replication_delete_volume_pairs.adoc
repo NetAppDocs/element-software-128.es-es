@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_pairs.html 
+sidebar: sidebar 
+keywords: volume pairs, delete 
+summary: Puede eliminar un par de volúmenes si desea eliminar la asociación entre dos volúmenes. 
+---
+= Eliminar pares de volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede eliminar un par de volúmenes si desea eliminar la asociación entre dos volúmenes.
+
+. Seleccione *Protección de datos* > *Pares de volúmenes*.
+. Haz clic en el icono Acciones del par de volúmenes que deseas eliminar.
+. Haga clic en *Eliminar*.
+. Confirma el mensaje.
+

@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_removekeyserverfromproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,unassigning,removing,remove,unassign,removekeyserverfromproviderkmip 
+summary: 'Puede utilizar el método RemoveKeyServerFromProviderKmip para desasignar el servidor de claves del protocolo de interoperabilidad de administración de claves (KMIP) especificado del proveedor al que estaba asignado.  Puedes desasignar un servidor de claves de su proveedor a menos que sea el último y su proveedor esté activo (proporcionando claves que se están utilizando actualmente).  Si el servidor de claves especificado no está asignado a un proveedor, no se realiza ninguna acción y no se devuelve ningún error.' 
+---
+= Eliminar servidor de claves del proveedor Kmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `RemoveKeyServerFromProviderKmip` método para desasignar el servidor de claves del Protocolo de Interoperabilidad de Gestión de Claves (KMIP) especificado del proveedor al que estaba asignado.  Puedes desasignar un servidor de claves de su proveedor a menos que sea el último y su proveedor esté activo (proporcionando claves que se están utilizando actualmente).  Si el servidor de claves especificado no está asignado a un proveedor, no se realiza ninguna acción y no se devuelve ningún error.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID del servidor de claves
+ a| 
+El ID del servidor de claves KMIP que se va a desasignar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.  La eliminación se considera exitosa siempre que no se devuelva ningún error.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "RemoveKeyServerFromProviderKmip",
+  "params": {
+    "keyServerID": 1
+   },
+"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+    }
+}
+----
+
+
+== Nueva versión
+
+11,7

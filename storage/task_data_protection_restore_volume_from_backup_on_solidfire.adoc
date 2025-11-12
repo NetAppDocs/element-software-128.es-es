@@ -1,0 +1,40 @@
+---
+permalink: storage/task_data_protection_restore_volume_from_backup_on_solidfire.html 
+sidebar: sidebar 
+keywords: volume restore, solidfire storage cluster 
+summary: Puede restaurar un volumen desde una copia de seguridad en un clúster de almacenamiento SolidFire . 
+---
+= Restaurar un volumen desde una copia de seguridad en un clúster de almacenamiento SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede restaurar un volumen desde una copia de seguridad en un clúster de almacenamiento SolidFire .
+
+Al realizar copias de seguridad o restauraciones de un clúster a otro, el sistema genera una clave que se utilizará para la autenticación entre los clústeres.  Esta clave de escritura de volumen masivo permite que el clúster de origen se autentique con el clúster de destino, proporcionando un nivel de seguridad al escribir en el volumen de destino.  Como parte del proceso de copia de seguridad o restauración, debe generar una clave de escritura de volumen masivo desde el volumen de destino antes de iniciar la operación.
+
+. En el clúster de destino, haga clic en *Administración* > *Volúmenes*.
+. Haz clic en el icono Acciones del volumen que deseas restaurar.
+. En el menú que aparece, haga clic en *Restaurar desde*.
+. En el cuadro de diálogo *Restauración integrada*, en *Restaurar desde*, seleccione * SolidFire*.
+. Seleccione la opción que coincida con la copia de seguridad en *Formato de datos*:
++
+** *Nativo*: Un formato comprimido legible únicamente por los sistemas de almacenamiento SolidFire .
+** *Sin comprimir*: Un formato sin comprimir compatible con otros sistemas.
+
+
+. Haz clic en *Generar clave*.
+. Copie la información de la *Clave de escritura de volumen masivo* al portapapeles.
+. En el clúster de origen, haga clic en *Administración* > *Volúmenes*.
+. Haz clic en el icono Acciones del volumen que deseas usar para la restauración.
+. En el menú resultante, haga clic en *Realizar copia de seguridad en*.
+. En el cuadro de diálogo *Copia de seguridad integrada*, seleccione * SolidFire* en *Realizar copia de seguridad en*.
+. Seleccione la opción que coincida con la copia de seguridad en *Formato de datos*.
+. Introduzca la dirección IP virtual de gestión del clúster del volumen de destino en el campo *MVIP de clúster remoto*.
+. Introduzca el nombre de usuario del clúster remoto en el campo *Nombre de usuario del clúster remoto*.
+. Introduzca la contraseña del clúster remoto en el campo *Contraseña del clúster remoto*.
+. Pegue la clave desde su portapapeles en el campo *Clave de escritura de volumen masivo*.
+. Haz clic en *Iniciar lectura*.
+

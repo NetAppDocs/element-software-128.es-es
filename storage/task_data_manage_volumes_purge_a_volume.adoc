@@ -1,0 +1,51 @@
+---
+permalink: storage/task_data_manage_volumes_purge_a_volume.html 
+sidebar: sidebar 
+keywords: volumes, purge a volume 
+summary: Cuando se purga un volumen, se elimina permanentemente del sistema. Se pierden todos los datos del volumen. 
+---
+= Purgar un volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando se purga un volumen, se elimina permanentemente del sistema. Se pierden todos los datos del volumen.
+
+El sistema elimina automáticamente los volúmenes borrados ocho horas después de su eliminación.  Sin embargo, si desea purgar un volumen antes de la hora programada, puede hacerlo.
+
+
+NOTE: Si se elimina una gran cantidad de volúmenes a la vez, o si cada uno de los volúmenes que se eliminan tiene muchas instantáneas asociadas, el proceso de eliminación podría fallar y devolver el error "xDBConnectionLoss", que aparecería en el registro de la API en la interfaz web de Element.  Si esto ocurre, vuelva a intentar la purga con volúmenes más reducidos.
+
+. Seleccione *Administración* > *Volúmenes*.
+. Haz clic en el botón *Eliminado*.
+. Realice los pasos para purgar un solo volumen o varios volúmenes.
++
+|===
+
+
+| Opción | Pasos 
+
+
+ a| 
+Purgar un solo volumen
+ a| 
+.. Haz clic en el icono Acciones del volumen que deseas purgar.
+.. Haga clic en *Purgar*.
+.. Confirma la acción.
+
+
+
+
+ a| 
+Purgar varios volúmenes
+ a| 
+.. Seleccione los volúmenes que desea purgar.
+.. Haz clic en *Acciones en lote*.
+.. En el menú que aparece, seleccione *Purgar*.
+.. Confirma la acción.
+
+
+|===
+

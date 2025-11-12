@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_modifystoragecontainer.html 
+sidebar: sidebar 
+keywords: virtual,volume,storage,container,vvol,modify,modifying,change,changing,edit,editing 
+summary: Puede utilizar el método ModifyStorageContainer para realizar cambios en un contenedor de almacenamiento de volumen virtual existente. 
+---
+= ModificarContenedorDeAlmacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyStorageContainer` Método para realizar cambios en un contenedor de almacenamiento de volumen virtual existente.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID del contenedor de almacenamiento
+ a| 
+El identificador único del contenedor de almacenamiento de volumen virtual que se va a modificar.
+ a| 
+UUID
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+iniciadorSecreto
+ a| 
+El nuevo secreto para la autenticación CHAP para el iniciador.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+secreto del objetivo
+ a| 
+El nuevo secreto para la autenticación CHAP para el objetivo.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+contenedor de almacenamiento
+ a| 
+Información sobre el contenedor de almacenamiento recién creado.
+ a| 
+xref:reference_element_api_storagecontainer.adoc[contenedor de almacenamiento]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "ModifyStorageContainer",
+    "params": {
+      "storageContainerID": "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1",
+      "targetSecret": "O,IM;tOQdn9$JJ*8"
+    },
+    "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "storageContainer": {
+      "accountID": 8,
+      "initiatorSecret": "T$|5TO>2IY5sk4@k",
+      "name": "doctest1",
+      "protocolEndpointType": "SCSI",
+      "status": "active",
+      "storageContainerID": "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1",
+      "targetSecret": "O,IM;tOQdn9$JJ*8"
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

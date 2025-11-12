@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_snapmirrorclusteridentity.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorClusterIdentity 
+summary: El objeto snapMirrorClusterIdentity contiene información de identificación sobre el clúster ONTAP remoto en una relación SnapMirror . 
+---
+= snapMirrorClusterIdentity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto snapMirrorClusterIdentity contiene información de identificación sobre el clúster ONTAP remoto en una relación SnapMirror .
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+El identificador del sistema ONTAP de destino.
+ a| 
+entero
+
+
+
+ a| 
+nombre del clúster
+ a| 
+El nombre del clúster ONTAP de destino.
+ a| 
+cadena
+
+
+
+ a| 
+clusterUUID
+ a| 
+El identificador único universal de 128 bits del clúster ONTAP de destino.
+ a| 
+cadena
+
+
+
+ a| 
+número de serie del clúster
+ a| 
+El número de serie del clúster ONTAP de destino.
+ a| 
+cadena
+
+|===

@@ -1,0 +1,86 @@
+---
+permalink: api/reference_element_api_initializesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: snapmirror,relationship,relationships,initialize,initializing,initializesnapmirrorrelationship 
+summary: La interfaz web del software Element utiliza el método InitializeSnapMirrorRelationship para inicializar el volumen de destino en una relación SnapMirror realizando una transferencia de línea base inicial entre clústeres. 
+---
+= InicializarRelaciónSnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz web del software Element utiliza `InitializeSnapMirrorRelationship` Método para inicializar el volumen de destino en una relación SnapMirror mediante la realización de una transferencia de línea base inicial entre clústeres.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+El identificador del sistema ONTAP remoto.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+volumen de destino
+ a| 
+El volumen de destino en la relación SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+tasa de transferencia máxima
+ a| 
+Especifica la velocidad máxima de transferencia de datos entre los volúmenes en kilobytes por segundo.  El valor predeterminado, 0, es ilimitado y permite que la relación SnapMirror utilice completamente el ancho de banda de red disponible.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorRelationship
+ a| 
+Información sobre la relación SnapMirror inicializada.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]
+
+|===
+
+
+== Nueva versión
+
+10,1

@@ -1,0 +1,67 @@
+---
+permalink: storage/task_per_node_run_system_tests.html 
+sidebar: sidebar 
+keywords: storage nodes, running system tests,s ystem tests, network settings, testing changes 
+summary: Puedes probar los cambios en la configuración de red después de confirmarlos en la configuración de red.  Puedes ejecutar las pruebas para asegurarte de que el nodo de almacenamiento es estable y se puede poner en línea sin problemas. 
+---
+= Ejecute pruebas del sistema utilizando la interfaz de usuario por nodo.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes probar los cambios en la configuración de red después de confirmarlos en la configuración de red.  Puedes ejecutar las pruebas para asegurarte de que el nodo de almacenamiento es estable y se puede poner en línea sin problemas.
+
+Has iniciado sesión en la interfaz de usuario por nodo para el nodo de almacenamiento.
+
+. Haz clic en *Pruebas del sistema*.
+. Haz clic en *Ejecutar prueba* junto a la prueba que deseas ejecutar o selecciona *Ejecutar todas las pruebas*.
++
+
+NOTE: La ejecución de todas las operaciones de prueba puede consumir mucho tiempo y solo debe realizarse bajo la dirección del Soporte de NetApp .
+
++
+** *Prueba de conjunto conectado*
++
+Prueba y verifica la conectividad a un conjunto de bases de datos.  Por defecto, la prueba utiliza el conjunto para el clúster con el que está asociado el nodo.  Alternativamente, puede proporcionar un conjunto diferente para probar la conectividad.
+
+** *Prueba Connect Mvip*
++
+Hace ping a la dirección IP virtual de administración (MVIP) especificada y luego ejecuta una llamada API simple a la MVIP para verificar la conectividad.  Por defecto, la prueba utiliza el MVIP para el clúster con el que está asociado el nodo.
+
+** *Prueba Connect Svip*
++
+Hace ping a la dirección IP virtual de almacenamiento (SVIP) especificada utilizando paquetes del Protocolo de mensajes de control de Internet (ICMP) que coinciden con el tamaño de la Unidad de transmisión máxima (MTU) configurado en el adaptador de red.  Luego se conecta al SVIP como un iniciador iSCSI.  Por defecto, la prueba utiliza la SVIP del clúster con el que está asociado el nodo.
+
+** *Configuración de hardware de prueba*
++
+Comprueba que todas las configuraciones de hardware sean correctas, valida que las versiones de firmware sean correctas y confirma que todas las unidades estén instaladas y funcionando correctamente.  Esto es lo mismo que las pruebas de fábrica.
+
++
+
+NOTE: Esta prueba consume muchos recursos y solo debe ejecutarse si lo solicita el soporte de NetApp .
+
+** *Prueba de conectividad local*
++
+Prueba la conectividad con todos los demás nodos del clúster haciendo ping a la IP del clúster (CIP) en cada nodo.  Esta prueba solo se mostrará en un nodo si este forma parte de un clúster activo.
+
+** *Prueba de localización de clúster*
++
+Valida que el nodo pueda localizar el clúster especificado en la configuración del clúster.
+
+** *Configuración de red de prueba*
++
+Verifica que la configuración de red configurada coincida con la configuración de red que se está utilizando en el sistema.  Esta prueba no está diseñada para detectar fallos de hardware cuando un nodo participa activamente en un clúster.
+
+** *Prueba de ping*
++
+Envía un ping a una lista específica de hosts o, si no se especifica ninguna, crea dinámicamente una lista de todos los nodos registrados en el clúster y envía un ping a cada uno para comprobar la conectividad simple.
+
+** *Prueba de conectividad remota*
++
+Prueba la conectividad a todos los nodos en clústeres emparejados remotamente haciendo ping a la IP del clúster (CIP) en cada nodo.  Esta prueba solo se mostrará en un nodo si este forma parte de un clúster activo.
+
+
+
+

@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_modifybackuptarget.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,backup,target,modifybackuptarget 
+summary: Puede utilizar el método ModifyBackupTarget para cambiar los atributos de un destino de copia de seguridad. 
+---
+= Modificar destino de copia de seguridad
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyBackupTarget` Método para cambiar los atributos de un destino de copia de seguridad.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de destino de respaldo
+ a| 
+Identificador único del objetivo a modificar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+nombre
+ a| 
+Nuevo nombre para el destino de la copia de seguridad.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ModifyBackupTarget",
+   "params": {
+      "backupTargetID" : 1,
+      "name": "yourtargetS3"
+      "attributes" : {
+          "size" : 500,
+      }
+   },
+  "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+
+
+== Nueva versión
+
+9,6

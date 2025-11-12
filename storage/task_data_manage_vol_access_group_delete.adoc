@@ -1,0 +1,21 @@
+---
+permalink: storage/task_data_manage_vol_access_group_delete.html 
+sidebar: sidebar 
+keywords: access group, delete 
+summary: Puede eliminar un grupo de acceso cuando ya no sea necesario.  No es necesario eliminar los ID de iniciador ni los ID de volumen del grupo de acceso a volúmenes antes de eliminar el grupo.  Una vez eliminado el grupo de acceso, se interrumpe el acceso del grupo a los volúmenes. 
+---
+= Eliminar un grupo de acceso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede eliminar un grupo de acceso cuando ya no sea necesario.  No es necesario eliminar los ID de iniciador ni los ID de volumen del grupo de acceso a volúmenes antes de eliminar el grupo.  Una vez eliminado el grupo de acceso, se interrumpe el acceso del grupo a los volúmenes.
+
+. Haz clic en *Administración* > *Grupos de acceso*.
+. Haz clic en el icono *Acciones* del grupo de acceso que deseas eliminar.
+. En el menú que aparece, haga clic en *Eliminar*.
+. Para eliminar también los iniciadores asociados a este grupo de acceso, seleccione la casilla de verificación *Eliminar iniciadores en este grupo de acceso*.
+. Confirma la acción.
+

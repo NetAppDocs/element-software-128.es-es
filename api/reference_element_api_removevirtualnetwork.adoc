@@ -1,0 +1,95 @@
+---
+permalink: api/reference_element_api_removevirtualnetwork.html 
+sidebar: sidebar 
+keywords: virtual,network,networks,remove,removing,removevirtualnetwork 
+summary: Puede utilizar el método RemoveVirtualNetwork para eliminar una red virtual agregada previamente. 
+---
+= Eliminar red virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `RemoveVirtualNetwork` Método para eliminar una red virtual añadida previamente.
+
+
+NOTE: Este método requiere el virtualNetworkID o el virtualNetworkTag como parámetro, pero no ambos.
+
+
+NOTE: No se puede eliminar una red virtual si hay iniciadores asociados a ella.  Primero desvincule los iniciadores y luego elimine la red virtual.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de red virtual
+ a| 
+ID de red que identifica la red virtual que se va a eliminar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+Etiqueta de red que identifica la red virtual que se va a eliminar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "RemoveVirtualNetwork",
+  "params": {
+     "virtualNetworkID": 5
+    }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+
+
+== Nueva versión
+
+9,6

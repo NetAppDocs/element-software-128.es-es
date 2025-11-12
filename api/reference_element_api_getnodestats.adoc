@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getnodestats.html 
+sidebar: sidebar 
+keywords: node,get,getting,stats,getnodestats 
+summary: Puede utilizar el método GetNodeStats para recuperar las mediciones de actividad de alto nivel para un solo nodo. 
+---
+= Obtener estadísticas del nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetNodeStats` Método para recuperar las mediciones de actividad de alto nivel para un solo nodo.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de nodo
+ a| 
+Especifica el ID del nodo para el que se devolverán las estadísticas.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+estadísticas del nodo
+ a| 
+Información de actividad del nodo.
+ a| 
+xref:reference_element_api_nodestats.adoc[estadísticas del nodo]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetNodeStats",
+   "params": {
+     "nodeID": 5
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+     "nodeStats": {
+       "cBytesIn": 1579657943924,
+       "cBytesOut": 1683056745816,
+       "count": 119529,
+       "cpu": 0,
+       "cpuTotal": 56289,
+       "mBytesIn": 475476878,
+       "mBytesOut": 269270423,
+       "networkUtilizationCluster": 0,
+       "networkUtilizationStorage": 0,
+       "nodeHeat": {
+         "primaryTotalHeat": 0.00098,
+         "recentPrimaryTotalHeat": 0.00099,
+         "recentTotalHeat": 0.00099,
+         "totalHeat": 0.00098
+       },
+       "readLatencyUSecTotal": 10125300382,
+       "readOps": 15640075,
+       "sBytesIn": 1579657943924,
+       "sBytesOut": 1683056745816,
+       "ssLoadHistogram": {
+         "Bucket0": 4873,
+         "Bucket1To19": 6301620,
+         "Bucket20To39": 396452,
+         "Bucket40To59": 142,
+         "Bucket60To79": 0,
+         "Bucket80To100": 0
+       },
+       "timestamp": "2024-03-04T20:13:22.105428Z",
+       "usedMemory": 106335510528,
+       "writeLatencyUSecTotal": 7314512535,
+       "writeOps": 59154830
+     }
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_protection_copy_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, copy, maintain, schedule attributes 
+summary: Puede copiar una programación y mantener sus atributos actuales. 
+---
+= Copiar un cronograma de instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede copiar una programación y mantener sus atributos actuales.
+
+. Haz clic en *Protección de datos* > *Programaciones*.
+. Haz clic en el icono de Acciones del horario que quieras copiar.
+. En el menú que aparece, haga clic en *Hacer una copia*.
++
+Aparece el cuadro de diálogo *Crear horario*, que se completa con los atributos actuales del horario.
+
+. *Opcional:* Introduzca un nombre y atributos actualizados para el nuevo horario.
+. Haz clic en *Crear horario*.
+

@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_edit_snapshot_retention.html 
+sidebar: sidebar 
+keywords: snapshot retention, edit, set a retention period, edit retention period 
+summary: 'Puedes cambiar el período de retención de una instantánea para controlar cuándo o si el sistema elimina las instantáneas.  El período de retención que especifique comienza cuando ingrese el nuevo intervalo.  Al establecer un período de retención, puede seleccionar un período que comience en el momento actual (la retención no se calcula a partir del momento de creación de la instantánea).  Puedes especificar intervalos en minutos, horas y días.' 
+---
+= Editar retención de instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes cambiar el período de retención de una instantánea para controlar cuándo o si el sistema elimina las instantáneas.  El período de retención que especifique comienza cuando ingrese el nuevo intervalo.  Al establecer un período de retención, puede seleccionar un período que comience en el momento actual (la retención no se calcula a partir del momento de creación de la instantánea).  Puedes especificar intervalos en minutos, horas y días.
+
+.Pasos
+. Haz clic en *Protección de datos* > *Instantáneas*.
+. Haz clic en el icono *Acciones* de la instantánea que quieras editar.
+. En el menú que aparece, haga clic en *Editar*.
+. *Opcional:* Seleccione la casilla de verificación **Incluir instantánea en la replicación cuando se empareje** para garantizar que la instantánea se capture en la replicación cuando se empareje el volumen principal.
+. *Opcional:* Seleccione una opción de retención para la instantánea:
++
+** Haz clic en *Conservar para siempre* para guardar la instantánea en el sistema indefinidamente.
+** Haga clic en *Establecer período de retención* y utilice los controles numéricos de fecha para seleccionar el período de tiempo durante el cual el sistema conservará la instantánea.
+
+
+. Haz clic en *Guardar cambios*.
+

@@ -1,0 +1,56 @@
+---
+permalink: storage/reference_replication_volume_pairing_warnings.html 
+sidebar: sidebar 
+keywords: volume warnings, messages, replication, data protection 
+summary: 'La página "Pares de volúmenes" en la pestaña "Protección de datos" muestra estos mensajes después de emparejar volúmenes.  Estos mensajes pueden mostrarse tanto en el extremo de origen como en el de destino del par (a menos que se indique lo contrario) en la vista de lista de volúmenes replicados.' 
+---
+= Advertencias de emparejamiento de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La página "Pares de volúmenes" en la pestaña "Protección de datos" muestra estos mensajes después de emparejar volúmenes.  Estos mensajes pueden mostrarse tanto en el extremo de origen como en el de destino del par (a menos que se indique lo contrario) en la vista de lista de volúmenes replicados.
+
+* *ClústerCompleto en Pausa*
++
+Debido a que el clúster de destino está lleno, la replicación de origen y la transferencia masiva de datos no pueden continuar.  El mensaje se muestra únicamente en el extremo de origen del par.
+
+* *Pausa superada el número máximo de instantáneas*
++
+El volumen de destino ya tiene el número máximo de instantáneas y no puede replicar instantáneas adicionales.
+
+* *Pausa manual*
++
+El volumen local se ha pausado manualmente.  Debe reanudarse antes de que se reanude la replicación.
+
+* *Control remoto manual en pausa*
++
+El volumen remoto está en modo de pausa manual.  Se requiere intervención manual para reanudar la replicación del volumen remoto.
+
+* *PausadoDesconfigurado*
++
+Esperando una fuente y un objetivo activos.  Se requiere intervención manual para reanudar la replicación.
+
+* *QoS en pausa*
++
+La QoS objetivo no pudo soportar la E/S entrante.  La replicación se reanuda automáticamente.  El mensaje se muestra únicamente en el extremo de origen del par.
+
+* *Enlace lento en pausa*
++
+Se detectó un enlace lento y se detuvo la replicación.  La replicación se reanuda automáticamente.  El mensaje se muestra únicamente en el extremo de origen del par.
+
+* *Desajuste en el tamaño del volumen en pausa*
++
+El volumen de destino no tiene el mismo tamaño que el volumen de origen.
+
+* *PausadoXCopy*
++
+Se está enviando un comando SCSI XCOPY a un volumen de origen.  El comando debe completarse antes de que se pueda reanudar la replicación.  El mensaje se muestra únicamente en el extremo de origen del par.
+
+* *Detenido por mala configuración*
++
+Se ha detectado un error de configuración permanente.  El volumen remoto se ha borrado o desvinculado.  No es posible ninguna acción correctiva; debe establecerse un nuevo emparejamiento.
+
+

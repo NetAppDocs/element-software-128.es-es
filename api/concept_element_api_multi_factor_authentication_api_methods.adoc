@@ -1,0 +1,36 @@
+---
+permalink: api/concept_element_api_multi_factor_authentication_api_methods.html 
+sidebar: sidebar 
+keywords: multi-factor,MFA,idp,authentication,methods 
+summary: 'Puede utilizar la autenticación multifactor (MFA) para administrar las sesiones de usuario utilizando un proveedor de identidad (IdP) de terceros a través del lenguaje de marcado de aserción de seguridad (SAML).' 
+---
+= Métodos de la API de autenticación multifactor
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar la autenticación multifactor (MFA) para gestionar las sesiones de usuario utilizando un proveedor de identidad (IdP) de terceros a través del lenguaje de marcado de aserción de seguridad (SAML).
+
+* xref:reference_element_api_addidpclusteradmin.adoc[Agregar administrador de clúster de IDIP]
+* xref:reference_element_api_createidpconfiguration.adoc[Crear configuración de Idp]
+* xref:reference_element_api_deleteauthsession.adoc[Eliminar sesión de autenticación]
+* xref:reference_element_api_deleteauthsessionsbyclusteradmin.adoc[Eliminar sesiones de autenticación por administrador de clúster]
+* xref:reference_element_api_deleteauthsessionsbyusername.adoc[EliminarSesionesDeAutenticaciónPorNombreDeUsuario]
+* xref:reference_element_api_deleteidpconfiguration.adoc[Eliminar configuración de IDp]
+* xref:reference_element_api_disableidpauthentication.adoc[Deshabilitar la autenticación Idp]
+* xref:reference_element_api_enableidpauthentication.adoc[Habilitar autenticación Idp]
+* xref:reference_element_api_getidpauthenticationstate.adoc[Obtener estado de autenticación Idp]
+* xref:reference_element_api_listactiveauthsessions.adoc[ListarSesionesDeAutenticaciónActivas]
+* xref:reference_element_api_listidpconfigurations.adoc[Configuraciones de ListIdp]
+* xref:reference_element_api_updateidpconfiguration.adoc[Actualizar configuración de IDp]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

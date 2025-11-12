@@ -1,0 +1,57 @@
+---
+permalink: storage/concept_monitor_understand_cluster_fullness_levels.html 
+sidebar: sidebar 
+keywords: cluster fullness levels, understanding, fullness levels 
+summary: 'El clúster que ejecuta el software Element genera fallos de clúster para advertir al administrador de almacenamiento cuando el clúster se está quedando sin capacidad.  Existen tres niveles de llenado del clúster, todos los cuales se muestran en la interfaz de usuario de NetApp Element : advertencia, error y crítico.' 
+---
+= Comprender los niveles de plenitud del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El clúster que ejecuta el software Element genera fallos de clúster para advertir al administrador de almacenamiento cuando el clúster se está quedando sin capacidad.  Existen tres niveles de llenado del clúster, todos los cuales se muestran en la interfaz de usuario de NetApp Element : advertencia, error y crítico.
+
+El sistema utiliza el código de error BlockClusterFull para advertir sobre la saturación del almacenamiento de bloques del clúster.  Puede consultar los niveles de gravedad de la ocupación del clúster en la pestaña Alertas de la interfaz de usuario de Element.
+
+La siguiente lista incluye información sobre los niveles de gravedad de BlockClusterFull:
+
+* *Advertencia*
++
+Se trata de una advertencia configurable por el cliente que aparece cuando la capacidad de bloques del clúster se acerca al nivel de gravedad del error.  Por defecto, este nivel está establecido en un tres por ciento por debajo del nivel de error y se puede ajustar a través de la interfaz de usuario y la API de Element.  Debes añadir más capacidad o liberar capacidad lo antes posible.
+
+* *Error*
++
+Cuando el clúster se encuentra en este estado, si se pierde un nodo, no habrá suficiente capacidad en el clúster para reconstruir la protección de datos Double Helix.  La creación de nuevos volúmenes, clones y snapshots está bloqueada mientras el clúster se encuentra en este estado.  Este no es un estado seguro ni recomendable para ningún clúster. Debe agregar más capacidad o liberar capacidad de inmediato.
+
+* *Crítico*
++
+Este error crítico se ha producido porque el clúster está consumido al 100 por ciento.  Se encuentra en estado de solo lectura y no se pueden establecer nuevas conexiones iSCSI al clúster.  Cuando se llega a esta etapa, debe liberar o agregar más capacidad de inmediato.
+
+
+
+El sistema utiliza el código de error MetadataClusterFull para advertir sobre la falta de espacio de almacenamiento para los metadatos del clúster.  Puede consultar el nivel de almacenamiento de metadatos del clúster en la sección Capacidad del clúster de la página Resumen de la pestaña Informes en la interfaz de usuario de Element.
+
+La siguiente lista incluye información sobre los niveles de gravedad de MetadataClusterFull:
+
+* *Advertencia*
++
+Se trata de una advertencia configurable por el cliente que aparece cuando la capacidad de metadatos del clúster se acerca al nivel de gravedad del error.  Por defecto, este nivel está establecido en un tres por ciento por debajo del nivel de error y se puede ajustar a través de la API de Element.  Debes añadir más capacidad o liberar capacidad lo antes posible.
+
+* *Error*
++
+Cuando el clúster se encuentra en este estado, si se pierde un nodo, no habrá suficiente capacidad en el clúster para reconstruir la protección de datos Double Helix.  La creación de nuevos volúmenes, clones y snapshots está bloqueada mientras el clúster se encuentra en este estado.  Este no es un estado seguro ni recomendable para ningún clúster. Debe agregar más capacidad o liberar capacidad de inmediato.
+
+* *Crítico*
++
+Este error crítico se ha producido porque el clúster está consumido al 100 por ciento.  Se encuentra en estado de solo lectura y no se pueden establecer nuevas conexiones iSCSI al clúster.  Cuando se llega a esta etapa, debe liberar o agregar más capacidad de inmediato.
+
+
+
+
+NOTE: Lo siguiente se aplica a los umbrales de clústeres de dos nodos:
+
+* El error de integridad de metadatos es un 20% inferior al crítico.
+* El error de llenado de bloque se produce cuando 1 bloque de capacidad (incluida la capacidad no utilizada) está por debajo del nivel crítico; es decir, cuando la capacidad equivale a dos bloques de capacidad por debajo del nivel crítico.
+

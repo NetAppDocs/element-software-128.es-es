@@ -1,0 +1,106 @@
+---
+permalink: setup/concept_setup_configure_a_storage_node.html 
+sidebar: sidebar 
+keywords: configuring node,configure storage node,configuring using TUI,configuring using node UI 
+summary: Debes configurar los nodos individuales antes de poder agregarlos a un clúster.  Después de instalar y cablear un nodo en una unidad de rack y encenderlo, puede configurar los ajustes de red del nodo utilizando la interfaz de usuario por nodo o la interfaz de usuario del terminal del nodo. 
+---
+= Configurar un nodo de almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debes configurar los nodos individuales antes de poder agregarlos a un clúster.  Después de instalar y cablear un nodo en una unidad de rack y encenderlo, puede configurar los ajustes de red del nodo utilizando la interfaz de usuario por nodo o la interfaz de usuario del terminal del nodo (TUI).  Asegúrese de tener la información de configuración de red necesaria para el nodo antes de continuar.
+
+Existen dos opciones para configurar los nodos de almacenamiento:
+
+* <<Configure un nodo de almacenamiento mediante la interfaz de usuario específica para cada nodo.,Interfaz de usuario por nodo>>Utilice la interfaz de usuario por nodo. (`https://<node_management_IP>:442`) para configurar los ajustes de red del nodo.
+* <<Configure un nodo de almacenamiento mediante la interfaz de usuario de texto (TUI).,TUI>>Utilice la interfaz de usuario del terminal del nodo (TUI) para configurar el nodo.
+
+
+No se puede agregar un nodo con direcciones IP asignadas por DHCP a un clúster.  Puede utilizar la dirección IP DHCP para configurar inicialmente el nodo en la interfaz de usuario (UI), la interfaz de usuario de texto (TUI) o la API de cada nodo.  Durante esta configuración inicial, puede agregar información de dirección IP estática para poder agregar el nodo a un clúster.
+
+Tras la configuración inicial, puede acceder al nodo utilizando la dirección IP de gestión del nodo.  Luego puedes cambiar la configuración del nodo, agregarlo a un clúster o usar el nodo para crear un clúster.  También puede configurar un nuevo nodo utilizando los métodos de la API del software Element.
+
+
+NOTE: A partir de la versión 11.0 de Element, los nodos se pueden configurar con direcciones IPv4, IPv6 o ambas para su red de administración.  Esto se aplica tanto a los nodos de almacenamiento como a los nodos de administración, excepto al nodo de administración 11.3 y posteriores, que no admiten IPv6.  Al crear un clúster, solo se puede usar una única dirección IPv4 o IPv6 para MVIP y el tipo de dirección correspondiente debe configurarse en todos los nodos.
+
+
+
+== Configure un nodo de almacenamiento mediante la interfaz de usuario específica para cada nodo.
+
+Puede configurar los nodos utilizando la interfaz de usuario de cada nodo.
+
+.Acerca de esta tarea
+* Puedes configurar el nodo para que tenga una dirección IPv4 o IPv6.
+* Necesitas la dirección DHCP que se muestra en la interfaz de usuario para acceder a un nodo.  No se pueden usar direcciones DHCP para agregar un nodo a un clúster.
++
+
+IMPORTANT: Debe configurar las interfaces de administración (Bond1G) y almacenamiento (Bond10G) para subredes separadas.  Las interfaces Bond1G y Bond10G configuradas para la misma subred causan problemas de enrutamiento cuando el tráfico de almacenamiento se envía a través de la interfaz Bond1G.  Si necesita utilizar la misma subred para el tráfico de administración y almacenamiento, configure manualmente el tráfico de administración para que utilice la interfaz Bond10G.  Puedes hacerlo para cada nodo utilizando la página *Configuración del clúster* de la interfaz de usuario por nodo.
+
+
+
+.Pasos
+. En una ventana del navegador, introduzca la dirección IP DHCP de un nodo.
++
+Debes añadir la extensión `:442` para acceder al nodo; por ejemplo, `https://172.25.103.6:442`.
+
++
+La pestaña *Configuración de red* se abre con la sección *Bond1G*.
+
+. Introduzca la configuración de la red de gestión 1G.
+. Haga clic en *Aplicar cambios*.
+. Haz clic en *Bond10G* para mostrar la configuración de la red de almacenamiento de 10G.
+. Introduzca la configuración de la red de almacenamiento de 10G.
+. Haga clic en *Aplicar cambios*.
+. Haz clic en *Configuración del clúster*.
+. Introduzca el nombre de host para la red de 10G.
+. Introduzca el nombre del clúster.
++
+
+IMPORTANT: Este nombre debe añadirse a la configuración de todos los nodos antes de poder crear un clúster.  Todos los nodos de un clúster deben tener nombres de clúster idénticos.  Los nombres de los clústeres distinguen entre mayúsculas y minúsculas.
+
+. Haga clic en *Aplicar cambios*.
+
+
+
+
+== Configure un nodo de almacenamiento mediante la interfaz de usuario de texto (TUI).
+
+Puede utilizar la interfaz de usuario de terminal (TUI) para realizar la configuración inicial de los nuevos nodos.
+
+Debe configurar las interfaces Bond1G (Administración) y Bond10G (Almacenamiento) para subredes separadas.  Las interfaces Bond1G y Bond10G configuradas para la misma subred provocan problemas de enrutamiento cuando el tráfico de almacenamiento se envía a través de la interfaz Bond1G.  Si necesita utilizar la misma subred para el tráfico de administración y almacenamiento, configure manualmente el tráfico de administración para que utilice la interfaz Bond10G.  Puedes hacerlo para cada nodo utilizando la página *Cluster* > *Nodos* de la interfaz de usuario de Element.
+
+.Pasos
+. Conecta un teclado y un monitor al nodo y luego enciende el nodo.
++
+El menú principal de NetApp Storage de la interfaz de usuario de texto aparece en el terminal tty1.
+
++
+
+NOTE: Si el nodo no puede conectarse con su servidor de configuración, la interfaz de usuario mostrará un mensaje de error.  Comprueba la conexión del servidor de configuración o la conexión de red para resolver el error.
+
+. Seleccione *Red* > *Configuración de red*.
++
+
+TIP: Para navegar por el menú, pulse las teclas de flecha arriba o abajo.  Para desplazarse a otro botón o a los campos desde los botones, pulse *Tab*.  Para navegar entre los campos, utilice las teclas de flecha arriba o abajo.
+
+. Seleccione *Bond1G (Administración)* o *Bond10G (Almacenamiento)* para configurar los ajustes de red de 1G y 10G para el nodo.
+. Para los campos Modo de enlace y Estado, pulse *Tab* para seleccionar el botón Ayuda e identificar las opciones disponibles.
++
+Todos los nodos de un clúster deben tener nombres de clúster idénticos.  Los nombres de los clústeres distinguen entre mayúsculas y minúsculas.  Si hay un servidor DHCP funcionando en la red con direcciones IP disponibles, la dirección 1GbE aparece en el campo Dirección.
+
+. Presione *Tab* para seleccionar el botón *Aceptar* y guardar los cambios.
++
+El nodo se coloca en estado pendiente y se puede agregar a un clúster existente o a un nuevo clúster.
+
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

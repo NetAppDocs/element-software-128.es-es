@@ -1,0 +1,8 @@
+---
+section: try
+title: Pruébalo
+url: "/try/task_try_overview.html"
+entries:
+- title: Pruebe las funciones de almacenamiento utilizando el nodo de demostración
+    de Element
+  url: "/try/task_use_demonode.html"

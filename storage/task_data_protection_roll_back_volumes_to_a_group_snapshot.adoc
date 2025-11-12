@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_roll_back_volumes_to_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: volumes, rollback, group snapshot, purge 
+summary: Puede revertir un grupo de volúmenes en cualquier momento a una instantánea de grupo. 
+---
+= Revertir volúmenes a una instantánea de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede revertir un grupo de volúmenes en cualquier momento a una instantánea de grupo.
+
+Cuando se revierte un grupo de volúmenes, todos los volúmenes del grupo se restauran al estado en el que se encontraban en el momento en que se creó la instantánea del grupo.  La reversión también restaura los tamaños de volumen al tamaño registrado en la instantánea original.  Si el sistema ha eliminado un volumen, todas las instantáneas de ese volumen también se eliminaron en el momento de la eliminación; el sistema no restaura ninguna instantánea de volumen eliminada.
+
+. Haz clic en *Protección de datos* > *Instantáneas de grupo*.
+. Haga clic en el icono Acciones de la instantánea de grupo que desea utilizar para la reversión de volumen.
+. En el menú resultante, seleccione *Revertir volúmenes a instantánea de grupo*.
+. *Opcional*: Para guardar el estado actual de los volúmenes antes de volver a la instantánea:
++
+.. En el cuadro de diálogo *Revertir a instantánea*, seleccione *Guardar el estado actual de los volúmenes como una instantánea de grupo*.
+.. Introduzca un nombre para la nueva instantánea.
+
+
+. Haga clic en *Revertir instantánea de grupo*.
+

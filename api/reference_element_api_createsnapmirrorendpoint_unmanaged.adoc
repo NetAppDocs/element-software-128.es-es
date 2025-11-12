@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_createsnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoint,unmanaged,create,creating,CreateSnapMirrorEndpointUnmanaged 
+summary: El sistema de almacenamiento de software Element utiliza el método CreateSnapMirrorEndpointUnmanaged para permitir que los puntos de conexión SnapMirror remotos y no administrados se comuniquen con un clúster de almacenamiento Element.  Los puntos de conexión no administrados no se pueden gestionar mediante las API de Element SnapMirror .  Deben gestionarse con el software de gestión ONTAP o con API. 
+---
+= CrearPuntoFinalDeSnapMirrorNoAdministrado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El sistema de almacenamiento de software Element utiliza el `CreateSnapMirrorEndpointUnmanaged` Método para permitir que los puntos de conexión SnapMirror remotos y no administrados se comuniquen con un clúster de almacenamiento Element.  Los puntos de conexión no administrados no se pueden gestionar mediante las API de Element SnapMirror .  Deben gestionarse con el software de gestión ONTAP o con API.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+nombre del clúster
+ a| 
+El nombre del punto final.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+direcciones ip
+ a| 
+La lista de direcciones IP para un clúster de sistemas de almacenamiento ONTAP que deben comunicarse con este clúster de almacenamiento Element.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+El nuevo punto de conexión SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== Nueva versión
+
+10,3

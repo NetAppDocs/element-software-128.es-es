@@ -1,0 +1,251 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_prechecks.html 
+summary: Como parte de una actualización del sistema de almacenamiento NetApp SolidFire , es necesario ejecutar comprobaciones de estado del software NetApp Element . 
+keywords: netapp, storage prechecks, element upgrade, sfupgradecheck 
+---
+= Ejecute las comprobaciones de estado del almacenamiento de Element antes de actualizar el almacenamiento.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe ejecutar comprobaciones de estado antes de actualizar el almacenamiento de Element para garantizar que todos los nodos de almacenamiento de su clúster estén listos para la próxima actualización del almacenamiento de Element.
+
+.Lo que necesitarás
+* *Servicios de administración*: Ha actualizado al último paquete de servicios de administración (2.10.27 o posterior).
++
+
+IMPORTANT: Debe actualizar al paquete de servicios de administración más reciente antes de actualizar su software Element.
+
+* *Nodo de administración*: Estás ejecutando el nodo de administración 11.3 o posterior.
+* *Software Element*: Su versión de clúster ejecuta el software NetApp Element 11.3 o posterior.
+* *Acuerdo de licencia de usuario final (EULA)*: A partir de los servicios de administración 2.20.69, debe aceptar y guardar el EULA antes de utilizar la interfaz de usuario o la API de NetApp Hybrid Cloud Control para ejecutar comprobaciones del estado del almacenamiento de Element:
++
+.. Abra la dirección IP del nodo de administración en un navegador web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento.
+.. Seleccione *Actualizar*, situado en la parte superior derecha de la interfaz.
+.. Aparece el EULA.  Desplácese hacia abajo, seleccione *Acepto las actualizaciones actuales y futuras* y seleccione *Guardar*.
+
+
+
+
+.opciones de chequeo de salud
+Puede ejecutar comprobaciones de estado utilizando la interfaz de usuario de NetApp Hybrid Cloud Control o la API de NetApp Hybrid Cloud Control:
+
+* <<Utilice NetApp Hybrid Cloud Control para ejecutar comprobaciones del estado del almacenamiento de Element antes de actualizar el almacenamiento.>>(Método preferido)
+
+
+También puede obtener más información sobre las comprobaciones del estado del almacenamiento que realiza el servicio:
+
+* <<Comprobaciones del estado del almacenamiento realizadas por el servicio>>
+
+
+
+
+== Utilice NetApp Hybrid Cloud Control para ejecutar comprobaciones del estado del almacenamiento de Element antes de actualizar el almacenamiento.
+
+Con NetApp Hybrid Cloud Control, puede verificar que un clúster de almacenamiento esté listo para ser actualizado.
+
+.Pasos
+. Abra la dirección IP del nodo de administración en un navegador web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento.
+. Seleccione *Actualizar*, situado en la parte superior derecha de la interfaz.
+. En la página *Actualizaciones*, seleccione la pestaña *Almacenamiento*.
+. Seleccione la revisión de saludimage:hcc_healthcheck_icon.png["icono"] para el clúster que desea comprobar para determinar si está listo para la actualización.
+. En la página *Comprobación del estado del almacenamiento*, seleccione *Ejecutar comprobación del estado*.
+. Si hay algún problema, haga lo siguiente:
++
+.. Consulte el artículo de la base de conocimientos específico que se indica para cada problema o realice la solución indicada.
+.. Si se especifica un KB, complete el proceso descrito en el artículo KB correspondiente.
+.. Una vez resueltos los problemas del clúster, seleccione *Volver a ejecutar la comprobación de estado*.
+
+
+
+
+Una vez finalizada la comprobación de estado sin errores, el clúster de almacenamiento estará listo para actualizarse.  Consulte la actualización del nodo de almacenamiento.link:task_hcc_upgrade_element_software.html["instrucciones"] para continuar.
+
+
+
+== Utilice la API para ejecutar comprobaciones del estado del almacenamiento de Element antes de actualizar el almacenamiento.
+
+Puede utilizar la API REST para verificar que un clúster de almacenamiento esté listo para ser actualizado.  La comprobación del estado verifica que no existan obstáculos para la actualización, como nodos pendientes, problemas de espacio en disco y fallos del clúster.
+
+.Pasos
+. Localice el ID del clúster de almacenamiento:
++
+.. Abra la interfaz de usuario de la API REST del nodo de administración en el nodo de administración:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Seleccione *Autorizar* y complete lo siguiente:
++
+... Introduzca el nombre de usuario y la contraseña del clúster.
+... Introduzca el ID del cliente como `mnode-client` si el valor no está ya asignado.
+... Seleccione *Autorizar* para iniciar una sesión.
+... Cierre la ventana de autorización.
+
+
+.. Desde la interfaz de usuario de la API REST, seleccione `GET /assets` .
+.. Seleccione *Probarlo*.
+.. Seleccione *Ejecutar*.
+.. De la respuesta, copie el `"id"` desde `"storage"` Sección del clúster que pretende comprobar para verificar su preparación para la actualización.
++
+
+NOTE: No utilice el `"parent"` El valor en esta sección se debe a que se trata del ID del nodo de administración, no del ID del clúster de almacenamiento.
+
++
+[listing, subs="+quotes"]
+----
+"config": {},
+"credentialid": "12bbb2b2-f1be-123b-1234-12c3d4bc123e",
+"host_name": "SF_DEMO",
+*"id": "12cc3a45-e6e7-8d91-a2bb-0bdb3456b789",*
+"ip": "10.123.12.12",
+"parent": "d123ec42-456e-8912-ad3e-4bd56f4a789a",
+"sshcredentialid": null,
+"ssl_certificate": null
+----
+
+
+. Ejecutar comprobaciones de estado en el clúster de almacenamiento:
++
+.. Abra la interfaz de usuario de la API REST de almacenamiento en el nodo de administración:
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. Seleccione *Autorizar* y complete lo siguiente:
++
+... Introduzca el nombre de usuario y la contraseña del clúster.
+... Introduzca el ID del cliente como `mnode-client` si el valor no está ya asignado.
+... Seleccione *Autorizar* para iniciar una sesión.
+... Cierre la ventana de autorización.
+
+
+.. Seleccione *POST /health-checks*.
+.. Seleccione *Probarlo*.
+.. En el campo de parámetros, ingrese el ID del clúster de almacenamiento obtenido en el paso 1.
++
+[listing]
+----
+{
+  "config": {},
+  "storageId": "123a45b6-1a2b-12a3-1234-1a2b34c567d8"
+}
+----
+.. Seleccione *Ejecutar* para realizar una comprobación de estado en el clúster de almacenamiento especificado.
++
+La respuesta debe indicar el estado como `initializing` :
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://10.117.149.231/storage/1/health-checks",
+    "log": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc/log",
+    "self": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc"
+  },
+  "config": {},
+  "dateCompleted": null,
+  "dateCreated": "2020-02-21T22:11:15.476937+00:00",
+  "healthCheckId": "358f073f-896e-4751-ab7b-ccbb5f61f9fc",
+  "state": "initializing",
+  "status": null,
+  "storageId": "c6d124b2-396a-4417-8a47-df10d647f4ab",
+  "taskId": "73f4df64-bda5-42c1-9074-b4e7843dbb77"
+}
+----
+.. Copia el `healthCheckID` Eso forma parte de la respuesta.
+
+
+. Verifique los resultados de los controles de salud:
++
+.. Seleccione *GET /health-checks/{healthCheckId}*.
+.. Seleccione *Probarlo*.
+.. Introduzca el ID de comprobación de estado en el campo de parámetros.
+.. Seleccione *Ejecutar*.
+.. Desplácese hasta el final del cuerpo de la respuesta.
++
+Si todas las comprobaciones de estado son correctas, el resultado es similar al siguiente ejemplo:
+
++
+[listing]
+----
+"message": "All checks completed successfully.",
+"percent": 100,
+"timestamp": "2020-03-06T00:03:16.321621Z"
+----
+
+
+. Si el `message` El error indica que hubo problemas con el estado del clúster; haga lo siguiente:
++
+.. Seleccione *GET /health-checks/{healthCheckId}/log*
+.. Seleccione *Probarlo*.
+.. Introduzca el ID de comprobación de estado en el campo de parámetros.
+.. Seleccione *Ejecutar*.
+.. Revise cualquier error específico y obtenga los enlaces a los artículos de la base de conocimientos correspondientes.
+.. Consulte el artículo de la base de conocimientos específico que se indica para cada problema o realice la solución indicada.
+.. Si se especifica un KB, complete el proceso descrito en el artículo KB correspondiente.
+.. Después de haber resuelto los problemas del clúster, ejecute *GET /health-checks/{healthCheckId}/log* nuevamente.
+
+
+
+
+
+
+== Comprobaciones del estado del almacenamiento realizadas por el servicio
+
+Las comprobaciones del estado del almacenamiento realizan las siguientes comprobaciones por clúster.
+
+|===
+| Nombre de la verificación | Nodo/Clúster | Descripción 
+
+
+| comprobar_resultados_asíncronos | Grupo | Verifica que el número de resultados asíncronos en la base de datos esté por debajo de un umbral. 
+
+
+| comprobar_fallos_del_clúster | Grupo | Verifica que no haya fallos de clúster que bloqueen la actualización (tal como se define en la fuente de elementos). 
+
+
+| comprobar_velocidad_de_carga | Node | Mide la velocidad de carga entre el nodo de almacenamiento y el nodo de gestión. 
+
+
+| comprobación de velocidad de conexión | Node | Verifica que los nodos tengan conectividad con el nodo de administración que proporciona los paquetes de actualización y estima la velocidad de conexión. 
+
+
+| comprobar_núcleos | Node | Comprueba si hay volcados de memoria del kernel y archivos core en el nodo.  La comprobación falla si se ha producido algún fallo en un período de tiempo reciente (umbral de 7 días). 
+
+
+| comprobar_espacio_disco_raíz | Node | Verifica que el sistema de archivos raíz tenga suficiente espacio libre para realizar una actualización. 
+
+
+| check_var_log_disk_space | Node | Verifica que `/var/log` El espacio libre cumple con un determinado umbral de porcentaje de espacio libre.  Si no lo hace, la comprobación rotará y eliminará los registros más antiguos para que queden por debajo del umbral.  La comprobación falla si no consigue crear suficiente espacio libre. 
+
+
+| comprobar_nodos_pendientes | Grupo | Verifica que no haya nodos pendientes en el clúster. 
+|===
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

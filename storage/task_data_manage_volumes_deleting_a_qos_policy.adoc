@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_manage_volumes_deleting_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, delete, volumes 
+summary: Puede eliminar una política QoS si ya no es necesaria.  Cuando se elimina una política de QoS, todos los volúmenes asociados a la política mantienen la configuración de QoS pero dejan de estar asociados a la política. 
+---
+= Eliminar una política de QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede eliminar una política QoS si ya no es necesaria.  Cuando se elimina una política de QoS, todos los volúmenes asociados a la política mantienen la configuración de QoS pero dejan de estar asociados a la política.
+
+
+NOTE: Si en cambio intenta desvincular un volumen de una política QoS, puede cambiar la configuración QoS de ese volumen a personalizada.
+
+. Seleccione *Administración* > *Políticas de QoS*.
+. Haz clic en el icono Acciones de la política QoS que deseas eliminar.
+. En el menú que aparece, seleccione *Eliminar*.
+. Confirma la acción.
+
+
+
+
+== Encuentra más información
+
+xref:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.adoc[Eliminar la asociación de política QoS de un volumen]

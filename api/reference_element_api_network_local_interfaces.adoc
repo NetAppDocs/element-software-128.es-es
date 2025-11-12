@@ -1,0 +1,175 @@
+---
+permalink: api/reference_element_api_network_local_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'El objeto de red \(interfaces locales\) contiene información de configuración para las interfaces de red locales, como la interfaz de bucle invertido, en un nodo de almacenamiento.  Puede utilizar los métodos GetConfig y GetNetworkConfig para obtener esta información para un nodo de almacenamiento.' 
+---
+= red (interfaces locales)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de red (interfaces locales) contiene información de configuración para las interfaces de red locales, como la interfaz de bucle invertido, en un nodo de almacenamiento.  Puedes usar el `GetConfig` y `GetNetworkConfig` Métodos para obtener esta información para un nodo de almacenamiento.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+familia
+ a| 
+Familia de direcciones que la interfaz está configurada para usar.  Actualmente se admite "inet" para IPv4.
+ a| 
+cadena
+
+
+
+ a| 
+dirección MAC
+ a| 
+La dirección MAC real asignada a la interfaz y observada por la red.
+ a| 
+cadena
+
+
+
+ a| 
+Dirección MAC permanente
+ a| 
+La dirección MAC inmutable asignada por el fabricante a la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+método
+ a| 
+El método utilizado para configurar la interfaz. Valores posibles:
+
+* loopback: Se utiliza para definir la interfaz loopback IPv4.
+* manual: Se utiliza para definir interfaces que no se configuran automáticamente.
+* dhcp: Se puede utilizar para obtener una dirección IP mediante DHCP.
+* estático: Se utiliza para definir interfaces Ethernet con direcciones IPv4 asignadas estáticamente.
+
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+El estado de la interfaz. Valores posibles:
+
+* Abajo: La interfaz está inactiva.
+* Arriba: La interfaz está lista, pero no tiene enlace.
+* En funcionamiento: La interfaz está lista y se ha establecido una conexión.
+
+ a| 
+cadena
+
+
+
+ a| 
+En funcionamiento
+ a| 
+Indica si la interfaz está lista y tiene un enlace.
+ a| 
+booleano
+
+|===
+
+
+== Modificabilidad de los miembros y estados de los nodos
+
+Esta tabla indica si los parámetros del objeto pueden modificarse o no en cada estado posible del nodo.
+
+|===
+
+
+| Nombre del parámetro | Estado disponible | Estado pendiente | Estado activo 
+
+
+ a| 
+familia
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+dirección MAC
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+Dirección MAC permanente
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+método
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+estado
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+En funcionamiento
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+|===
+
+
+== Encuentra más información
+
+* xref:reference_element_api_getconfig.adoc[Obtener configuración]
+* xref:reference_element_api_getnetworkconfig.adoc[Obtener configuración de red]
+

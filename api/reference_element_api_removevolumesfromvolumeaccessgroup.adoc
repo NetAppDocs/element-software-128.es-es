@@ -1,0 +1,121 @@
+---
+permalink: api/reference_element_api_removevolumesfromvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: remove,removing,volume,volumes,access,group,removevolumesfromvolumeaccessgroup 
+summary: Puede utilizar el método RemoveVolumesFromVolumeAccessGroup para eliminar volúmenes de un grupo de acceso a volúmenes específico. 
+---
+= Eliminar volúmenes del grupo de acceso a volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `RemoveVolumesFromVolumeAccessGroup` Método para eliminar volúmenes de un grupo de acceso a volúmenes específico.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de grupo de acceso al volumen
+ a| 
+ID del grupo de acceso al volumen del que se eliminarán los volúmenes.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+volúmenes
+ a| 
+IDs de volumen de los volúmenes que se eliminarán del grupo de acceso a volúmenes.
+ a| 
+matriz de enteros
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+volumeAccessGroup
+ a| 
+Un objeto que contiene información sobre el grupo de acceso a volúmenes recientemente modificado.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[volumeAccessGroup]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "RemoveVolumesFromVolumeAccessGroup",
+   "params": {
+      "volumeAccessGroupID": 96,
+      "volumes": [1,2]
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        346
+      ],
+      "initiatorIDs": [
+        116,
+        117
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian:01:181324777",
+        "iqn.1993-08.org.debian:01:181324888"
+      ],
+      "name": "northbanktest",
+      "volumeAccessGroupID": 96,
+      "volumes": []
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,47 @@
+---
+permalink: storage/task_system_manage_fips_identify_nodes_ready_for_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2 
+summary: Debe comprobar si todos los nodos del clúster de almacenamiento están preparados para admitir unidades FIPS utilizando el método de la API GetFipsReport del software NetApp Element . 
+---
+= Identificar si los nodos están listos para la función de controladores FIPS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe comprobar si todos los nodos del clúster de almacenamiento están preparados para admitir unidades FIPS utilizando el método de la API GetFipsReport del software NetApp Element .
+
+El informe resultante muestra uno de los siguientes estados:
+
+* Ninguno: El nodo no es compatible con la función de unidades FIPS.
+* Parcial: El nodo es compatible con FIPS, pero no todas las unidades son compatibles con FIPS.
+* Listo: El nodo es compatible con FIPS y todas las unidades son unidades FIPS o no hay unidades presentes.
+
+
+.Pasos
+. Utilizando la API de Element, compruebe si los nodos y las unidades del clúster de almacenamiento son compatibles con unidades FIPS introduciendo el siguiente comando:
++
+`GetFipsReport`
+
+. Revise los resultados y observe si algún nodo no mostró el estado "Listo".
+. Para cualquier nodo que no muestre el estado Listo, compruebe si la unidad es compatible con la función de unidades FIPS:
++
+** Utilizando la API de Element, ingrese: `GetHardwareList`
+** Tenga en cuenta el valor de *DriveEncryptionCapabilityType*.  Si es "fips", el hardware puede admitir la función de controladores FIPS.
++
+Ver detalles sobre `GetFipsReport` o `ListDriveHardware` en el link:../api/concept_element_api_about_the_api.html["Referencia de la API de elementos"].
+
+
+
+. Si la unidad no admite la función de unidades FIPS, reemplace el hardware con hardware FIPS (ya sea el nodo o las unidades).
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_enableidpauthentication.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,enable 
+summary: Puede utilizar el método EnableIdpAuthentication para habilitar la compatibilidad con la autenticación mediante IdP de terceros para el clúster.  Una vez habilitada la autenticación IdP, los administradores de LDAP y del clúster ya no pueden acceder al clúster a través de las interfaces de usuario compatibles y cualquier sesión autenticada activa se invalida o desconecta.  Solo los usuarios autenticados por proveedores de identidad de terceros pueden acceder al clúster a través de las interfaces de usuario compatibles. 
+---
+= Habilitar autenticación Idp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `EnableIdpAuthentication` método para habilitar el soporte para la autenticación utilizando IdP de terceros para el clúster.  Una vez habilitada la autenticación IdP, los administradores de LDAP y del clúster ya no pueden acceder al clúster a través de las interfaces de usuario compatibles y cualquier sesión autenticada activa se invalida o desconecta.  Solo los usuarios autenticados por proveedores de identidad de terceros pueden acceder al clúster a través de las interfaces de usuario compatibles.
+
+
+
+== Parámetros
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+idpConfigurationID
+ a| 
+UUID para la configuración del IdP de terceros.  Si solo existe una configuración de IdP, entonces la configuración predeterminada es habilitar esa configuración.  Si solo tiene una única IdpConfiguration, no es necesario proporcionar el parámetro idpConfigurationID.
+ a| 
+UUID
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "EnableIdpAuthentication",
+  "params": {
+    "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+  }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+"result": {}
+}
+----
+
+
+== Nueva versión
+
+12,0

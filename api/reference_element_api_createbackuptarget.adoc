@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_createbackuptarget.html 
+sidebar: sidebar 
+keywords: create,creating,backup,target,CreateBackupTarget 
+summary: Puede utilizar CreateBackupTarget para crear y almacenar información de destino de copia de seguridad, de modo que no tenga que volver a introducirla cada vez que se cree una copia de seguridad. 
+---
+= Crear destino de copia de seguridad
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `CreateBackupTarget` para crear y almacenar información sobre el destino de las copias de seguridad, de modo que no tenga que volver a introducirla cada vez que se cree una copia de seguridad.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+nombre
+ a| 
+Nombre del destino de la copia de seguridad.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+Sí (pero puede estar vacío)
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de destino de respaldo
+ a| 
+Se ha asignado un identificador único al nuevo destino de la copia de seguridad.
+ a| 
+entero
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "CreateBackupTarget",
+   "params": {
+      "name": "mytargetbackup"
+   },
+"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+      "backupTargetID": 1
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: 'El objeto de cuenta contiene información sobre una cuenta.  Este objeto incluye únicamente información "configurada" sobre la cuenta, no información de tiempo de ejecución ni de uso.' 
+---
+= cuenta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El `account` El objeto contiene información sobre una cuenta.  Este objeto incluye únicamente información "configurada" sobre la cuenta, no información de tiempo de ejecución ni de uso.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+`accountID`
+ a| 
+El identificador único de la cuenta.
+ a| 
+entero
+
+
+
+ a| 
+`attributes`
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+`enableChap`
+ a| 
+Especifica si las credenciales de la cuenta CHAP pueden ser utilizadas por un iniciador para acceder a los volúmenes.
+ a| 
+booleano
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+El secreto del iniciador CHAP.
+ a| 
+cadena
+
+
+
+ a| 
+`status`
+ a| 
+Estado actual de la cuenta. Valores posibles:
+
+* activa: Una cuenta activa.
+* bloqueado: Una cuenta bloqueada.
+* Eliminada: Una cuenta que ha sido borrada y purgada.
+
+ a| 
+cadena
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+El identificador único del contenedor de almacenamiento de volumen virtual asociado a esta cuenta.
+ a| 
+UUID
+
+
+
+ a| 
+`targetSecret`
+ a| 
+El secreto CHAP objetivo.
+ a| 
+cadena
+
+
+
+ a| 
+`username`
+ a| 
+El nombre de usuario de la cuenta.
+ a| 
+cadena
+
+
+
+ a| 
+`volumes`
+ a| 
+Lista de identificadores de volumen para los volúmenes que pertenecen a esta cuenta.
+ a| 
+matriz de enteros
+
+|===
+
+
+== Encuentra más información
+
+* xref:reference_element_api_addaccount.adoc[Agregar cuenta]
+* xref:reference_element_api_getaccountbyid.adoc[ObtenerCuentaPorID]
+* xref:reference_element_api_getaccountbyname.adoc[ObtenerCuentaPorNombre]
+* xref:reference_element_api_listaccounts.adoc[Lista de cuentas]
+

@@ -1,0 +1,212 @@
+---
+permalink: api/reference_element_api_modifyvirtualnetwork.html 
+sidebar: sidebar 
+keywords: virtual,network,modify,modifying,change,changing,edit,editing,modifyvirtualnetwork 
+summary: Puede utilizar el método ModifyVirtualNetwork para cambiar los atributos de una red virtual existente. 
+---
+= Modificar red virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyVirtualNetwork` Método para cambiar los atributos de una red virtual existente.
+
+Este método le permite agregar o eliminar bloques de direcciones, cambiar la máscara de red o modificar el nombre o la descripción de la red virtual.  También puede utilizarlo para habilitar o deshabilitar espacios de nombres, así como para agregar o eliminar una puerta de enlace si los espacios de nombres están habilitados en la red virtual.
+
+
+NOTE: Este método requiere el virtualNetworkID o el virtualNetworkTag como parámetro, pero no ambos.
+
+PRECAUCIÓN:
+
+Habilitar o deshabilitar la funcionalidad de VLAN de almacenamiento enrutable para una red virtual existente mediante el cambio del parámetro de espacio de nombres interrumpe cualquier tráfico manejado por la red virtual.  Lo mejor es cambiar el parámetro de espacio de nombres durante una ventana de mantenimiento programada.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de red virtual
+ a| 
+Identificador único de la red virtual que se va a modificar.  Este es el ID de red virtual asignado por el clúster.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+La etiqueta de red que identifica la red virtual que se va a modificar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+bloques de direcciones
+ a| 
+El nuevo bloque de direcciones que se debe configurar para esta red virtual.  Esto podría incluir nuevos bloques de direcciones para agregar al objeto existente u omitir bloques de direcciones no utilizados que deban eliminarse.  Como alternativa, puede ampliar o reducir el tamaño de los bloques de direcciones existentes.  Solo se puede aumentar el tamaño de los bloques de direcciones iniciales para un objeto de red virtual; nunca se puede disminuir.  Miembros requeridos para este objeto:
+
+* inicio: El inicio del rango de direcciones IP.  (cadena)
+* tamaño: El número de direcciones IP que se incluirán en el bloque.  (entero)
+
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+puerta
+ a| 
+La dirección IP de una puerta de enlace de la red virtual.  Este parámetro solo es válido si el parámetro de espacio de nombres está establecido en verdadero.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+nombre
+ a| 
+El nuevo nombre de la red virtual.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+espacio de nombres
+ a| 
+Cuando se establece en verdadero, habilita la funcionalidad de VLAN de almacenamiento enrutable recreando la red virtual y configurando un espacio de nombres para contenerla.  Cuando se establece en falso, deshabilita la funcionalidad VRF para la red virtual.  Cambiar este valor interrumpe el tráfico que circula por esta red virtual.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+máscara de red
+ a| 
+Nueva máscara de red para esta red virtual.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+svip
+ a| 
+La dirección IP virtual de almacenamiento para esta red virtual.  La SVIP de una red virtual no se puede cambiar.  Debe crear una nueva red virtual para utilizar una dirección SVIP diferente.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "ModifyVirtualNetwork",
+  "params": {
+    "virtualNetworkID": 2,
+    "name": "ESX-VLAN-3112",
+    "addressBlocks": [
+     {
+      "start": "10.1.112.1",
+      "size": 20
+     },
+     {
+      "start": "10.1.112.100",
+      "size": 20
+     }
+   ],
+    "netmask": "255.255.255.0",
+    "gateway": "10.0.1.254",
+    "svip": "10.1.112.200",
+    "attributes": {}
+  },
+  "id":1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

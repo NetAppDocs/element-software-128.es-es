@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getbackuptarget.html 
+sidebar: sidebar 
+keywords: backup,target,targets,get,getting,GetBackupTarget 
+summary: Puede utilizar el método GetBackupTarget para obtener información sobre un destino de copia de seguridad específico que haya creado. 
+---
+= ObtenerObjetivoDeCopiaDeSeguridad
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetBackupTarget` Método para obtener información sobre un destino de copia de seguridad específico que haya creado.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ID de destino de respaldo
+ a| 
+Identificador único asignado al destino de la copia de seguridad.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+nombre
+ a| 
+Nombre del destino de la copia de seguridad.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+destino de respaldo
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "GetBackupTarget",
+  "params": {
+      "backupTargetID": 1
+  }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "backupTarget": {
+     "attributes" : {
+        "size" : 100
+     },
+     "backupTargetID" : 1,
+     "name" : "mytargetbackup"
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

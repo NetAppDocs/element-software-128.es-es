@@ -1,0 +1,343 @@
+---
+permalink: storage/task_data_manage_volumes.html 
+sidebar: sidebar 
+keywords: element, solidfire, volume, create, edit, delete, purge, restore, clone, iscsi, fc clients 
+summary: El sistema SolidFire aprovisiona almacenamiento mediante volúmenes.  Los volúmenes son dispositivos de bloque a los que acceden a través de la red los clientes iSCSI o Fibre Channel. 
+---
+= Administrar volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El sistema SolidFire aprovisiona almacenamiento mediante volúmenes.  Los volúmenes son dispositivos de bloque a los que acceden a través de la red los clientes iSCSI o Fibre Channel.
+
+Desde la página Volúmenes en la pestaña Administración, puede crear, modificar, clonar y eliminar volúmenes en un nodo.
+
+
+
+== Crear un volumen
+
+Puede crear un volumen y asociar ese volumen a una cuenta determinada.  Cada volumen debe estar asociado a una cuenta.  Esta asociación otorga a la cuenta acceso al volumen a través de los iniciadores iSCSI utilizando las credenciales CHAP.
+
+Puede especificar la configuración de QoS para un volumen durante su creación.
+
+. Seleccione *Administración* > *Volúmenes*.
+. Haz clic en *Crear volumen*.
+. En el cuadro de diálogo *Crear un nuevo volumen*, introduzca el *Nombre del volumen*.
+. Introduzca el tamaño total del volumen.
++
+
+NOTE: La selección de tamaño de volumen predeterminada está en GB.  Puede crear volúmenes utilizando tamaños medidos en GB o GiB:
+
++
+** 1 GB = 1 000 000 000 bytes
+** 1 GiB = 1 073 741 824 bytes
+
+
+. Seleccione un *Tamaño de bloque* para el volumen.
+. Haz clic en la lista desplegable *Cuenta* y selecciona la cuenta que debería tener acceso al volumen.
++
+Si no existe una cuenta, haga clic en el enlace *Crear cuenta*, ingrese un nuevo nombre de cuenta y haga clic en *Crear*.  La cuenta se crea y se asocia con el nuevo volumen.
+
++
+
+NOTE: Si hay más de 50 cuentas, la lista no aparece.  Empieza a escribir y la función de autocompletar te mostrará los valores posibles para que elijas.
+
+. Para configurar la *Calidad del Servicio*, realice una de las siguientes acciones:
++
+.. En *Política*, puede seleccionar una política QoS existente, si está disponible.
+.. En *Configuración personalizada*, establezca valores mínimos, máximos y de ráfaga personalizados para IOPS o utilice los valores QoS predeterminados.
++
+Los volúmenes que tienen un valor de IOPS máximo o de ráfaga superior a 20 000 IOPS podrían requerir una gran profundidad de cola o varias sesiones para alcanzar este nivel de IOPS en un solo volumen.
+
+
+
+. Haz clic en *Crear volumen*.
+
+
+
+
+== Ver detalles del volumen
+
+. Seleccione *Administración* > *Volúmenes*.
+. Revise los detalles.
++
+** *ID*: El ID generado por el sistema para el volumen.
+** *Nombre*: El nombre que se le dio al volumen cuando fue creado.
+** *Cuenta*: El nombre de la cuenta asignada al volumen.
+** *Grupos de acceso*: El nombre del grupo o grupos de acceso al volumen al que pertenece el volumen.
+** *Acceso*: El tipo de acceso asignado al volumen cuando se creó. Valores posibles:
++
+*** Lectura/Escritura: Se aceptan todas las lecturas y escrituras.
+*** Solo lectura: Se permite toda la actividad de lectura; no se permiten escrituras.
+*** Bloqueado: Solo se permite el acceso de administrador.
+*** ReplicationTarget: Designado como volumen de destino en un par de volúmenes replicados.
+
+
+** *Usado*: El porcentaje de espacio utilizado en el volumen.
+** *Tamaño*: El tamaño total (en GB) del volumen.
+** *ID del nodo primario*: El nodo primario para este volumen.
+** *ID de nodo secundario*: La lista de nodos secundarios para este volumen.  Puede tener múltiples valores durante estados transitorios, como el cambio de nodos secundarios, pero normalmente tendrá un solo valor.
+** *Limitación de QoS*: Identifica si el volumen está siendo limitado debido a una alta carga en el nodo de almacenamiento primario.
+** *Política de QoS*: El nombre y el enlace a la política de QoS definida por el usuario.
+** *IOPS mínimas*: El número mínimo de IOPS garantizado para el volumen.
+** *IOPS máx.*: El número máximo de IOPS permitido para el volumen.
+** *IOPS de ráfaga*: El número máximo de IOPS permitidos durante un corto período de tiempo para el volumen.  Valor predeterminado = 15.000.
+** *Instantáneas*: Número de instantáneas creadas para el volumen.
+** *Atributos*: Atributos que se han asignado al volumen como un par clave/valor a través de un método de API.
+** *512e*: Indicación de si 512e está habilitado en un volumen. Valores posibles:
++
+*** Sí
+*** No
+
+
+** *Fecha de creación*: La fecha y hora en que se creó el volumen.
+
+
+
+
+
+
+== Ver detalles de cada volumen
+
+Puedes consultar las estadísticas de rendimiento de volúmenes individuales.
+
+. Seleccione *Informes* > *Rendimiento del volumen*.
+. En la lista de volúmenes, haga clic en el icono Acciones de un volumen.
+. Haga clic en *Ver detalles*.
++
+En la parte inferior de la página aparece una bandeja con información general sobre el volumen.
+
+. Para ver información más detallada sobre el volumen, haga clic en *Ver más detalles*.
++
+El sistema muestra información detallada, así como gráficos de rendimiento del volumen.
+
+
+
+
+
+== Editar volúmenes activos
+
+Puede modificar atributos de volumen como los valores QoS, el tamaño del volumen y la unidad de medida en la que se calculan los valores de bytes.  También puede modificar el acceso a la cuenta para el uso de replicación o para restringir el acceso al volumen.
+
+Puede cambiar el tamaño de un volumen cuando haya suficiente espacio en el clúster bajo las siguientes condiciones:
+
+* Condiciones normales de funcionamiento.
+* Se están reportando errores o fallos de volumen.
+* Se está clonando el volumen.
+* El volumen se está resincronizando.
+
+
+.Pasos
+. Seleccione *Administración* > *Volúmenes*.
+. En la ventana *Activa*, haga clic en el icono Acciones del volumen que desea editar.
+. Haga clic en *Editar*.
+. *Opcional:* Cambie el tamaño total del volumen.
++
+** Puedes aumentar, pero no disminuir, el tamaño del volumen.  Solo se puede cambiar el tamaño de un volumen en una sola operación de cambio de tamaño.  Las operaciones de recolección de basura y las actualizaciones de software no interrumpen la operación de cambio de tamaño.
+** Si está ajustando el tamaño del volumen para la replicación, primero debe aumentar el tamaño del volumen asignado como destino de la replicación.  Luego puedes cambiar el tamaño del volumen de origen.  El volumen objetivo puede ser mayor o igual en tamaño que el volumen de origen, pero no puede ser menor.
+
+
++
+La selección de tamaño de volumen predeterminada está en GB.  Puede crear volúmenes utilizando tamaños medidos en GB o GiB:
+
++
+** 1 GB = 1 000 000 000 bytes
+** 1 GiB = 1 073 741 824 bytes
+
+
+. *Opcional:* Seleccione un nivel de acceso a la cuenta diferente de entre los siguientes:
++
+** Solo lectura
+** Leer/Escribir
+** Bloqueado
+** Destino de replicación
+
+
+. *Opcional:* Seleccione la cuenta que debería tener acceso al volumen.
++
+Si la cuenta no existe, haga clic en el enlace *Crear cuenta*, ingrese un nuevo nombre de cuenta y haga clic en *Crear*.  La cuenta se crea y se asocia al volumen.
+
++
+
+NOTE: Si hay más de 50 cuentas, la lista no aparece.  Empieza a escribir y la función de autocompletar te mostrará los valores posibles para que elijas.
+
+. *Opcional:* Para cambiar la selección en *Calidad del servicio*, realice una de las siguientes acciones:
++
+.. En *Política*, puede seleccionar una política QoS existente, si está disponible.
+.. En *Configuración personalizada*, establezca valores mínimos, máximos y de ráfaga personalizados para IOPS o utilice los valores QoS predeterminados.
++
+
+NOTE: Si está utilizando políticas de QoS en un volumen, puede configurar una QoS personalizada para eliminar la asociación de la política de QoS con el volumen.  La QoS personalizada anulará y ajustará los valores de la política de QoS para la configuración de QoS de volumen.
+
++
+
+TIP: Cuando cambie los valores de IOPS, debe incrementarlos en decenas o centenas.  Los valores de entrada deben ser números enteros válidos.
+
++
+
+TIP: Configure volúmenes con un valor de ráfaga extremadamente alto.  Esto permite que el sistema procese cargas de trabajo secuenciales de bloques grandes ocasionales más rápidamente, al tiempo que limita las IOPS sostenidas para un volumen.
+
+
+
+. Haz clic en *Guardar cambios*.
+
+
+
+
+== Eliminar un volumen
+
+Puede eliminar uno o más volúmenes de un clúster de almacenamiento Element.
+
+El sistema no elimina inmediatamente un volumen borrado; el volumen permanece disponible durante aproximadamente ocho horas.  Si restaura un volumen antes de que el sistema lo elimine, el volumen vuelve a estar en línea y se restablecen las conexiones iSCSI.
+
+Si se elimina un volumen utilizado para crear una instantánea, sus instantáneas asociadas quedan inactivas.  Cuando se eliminan los volúmenes de origen borrados, las instantáneas inactivas asociadas también se eliminan del sistema.
+
+
+IMPORTANT: Los volúmenes persistentes asociados a los servicios de gestión se crean y se asignan a una nueva cuenta durante la instalación o actualización.  Si utiliza volúmenes persistentes, no modifique ni elimine los volúmenes ni la cuenta asociada.
+
+.Pasos
+. Seleccione *Administración* > *Volúmenes*.
+. Para eliminar un solo volumen, siga los siguientes pasos:
++
+.. Haz clic en el icono Acciones del volumen que deseas eliminar.
+.. En el menú que aparece, haga clic en *Eliminar*.
+.. Confirma la acción.
+
+
++
+El sistema mueve el volumen al área *Eliminados* en la página *Volúmenes*.
+
+. Para eliminar varios volúmenes, siga los siguientes pasos:
++
+.. En la lista de volúmenes, marque la casilla junto a los volúmenes que desee eliminar.
+.. Haz clic en *Acciones en lote*.
+.. En el menú que aparece, haga clic en *Eliminar*.
+.. Confirma la acción.
++
+El sistema mueve los volúmenes al área *Eliminados* en la página *Volúmenes*.
+
+
+
+
+
+
+
+== Restaurar un volumen eliminado
+
+Puedes restaurar un volumen en el sistema si ha sido eliminado pero aún no se ha purgado.  El sistema elimina automáticamente un volumen aproximadamente ocho horas después de haber sido borrado.  Si el sistema ha borrado el volumen, no podrá recuperarlo.
+
+. Seleccione *Administración* > *Volúmenes*.
+. Haz clic en la pestaña *Eliminados* para ver la lista de volúmenes eliminados.
+. Haz clic en el icono Acciones del volumen que deseas restaurar.
+. En el menú que aparece, haga clic en *Restaurar*.
+. Confirma la acción.
++
+El volumen se coloca en la lista de volúmenes *activos* y se restablecen las conexiones iSCSI al volumen.
+
+
+
+
+
+== Purgar un volumen
+
+Cuando se purga un volumen, se elimina permanentemente del sistema. Se pierden todos los datos del volumen.
+
+El sistema elimina automáticamente los volúmenes borrados ocho horas después de su eliminación.  Sin embargo, si desea purgar un volumen antes de la hora programada, puede hacerlo.
+
+. Seleccione *Administración* > *Volúmenes*.
+. Haz clic en el botón *Eliminado*.
+. Realice los pasos para purgar un solo volumen o varios volúmenes.
++
+[cols="25,75"]
+|===
+| Opción | Pasos 
+
+
+ a| 
+Purgar un solo volumen
+ a| 
+.. Haz clic en el icono Acciones del volumen que deseas purgar.
+.. Haga clic en *Purgar*.
+.. Confirma la acción.
+
+
+
+
+ a| 
+Purgar varios volúmenes
+ a| 
+.. Seleccione los volúmenes que desea purgar.
+.. Haz clic en *Acciones en lote*.
+.. En el menú que aparece, seleccione *Purgar*.
+.. Confirma la acción.
+
+
+|===
+
+
+
+
+== Clonar un volumen
+
+Puede crear un clon de un solo volumen o de varios volúmenes para realizar una copia de los datos en un momento dado.  Cuando se clona un volumen, el sistema crea una instantánea del volumen y luego crea una copia de los datos a los que hace referencia la instantánea.  Este es un proceso asíncrono, y el tiempo que requiere depende del tamaño del volumen que se está clonando y de la carga actual del clúster.
+
+El clúster admite hasta dos solicitudes de clonación en ejecución por volumen a la vez y hasta ocho operaciones de clonación de volumen activas a la vez.  Las solicitudes que superen estos límites se pondrán en cola para su posterior procesamiento.
+
+
+NOTE: Los sistemas operativos difieren en la forma en que tratan los volúmenes clonados.  VMware ESXi tratará un volumen clonado como una copia de volumen o un volumen de instantánea.  El volumen será un dispositivo disponible que se podrá utilizar para crear un nuevo almacén de datos.  Para obtener más información sobre el montaje de volúmenes clonados y la gestión de LUN de instantáneas, consulte la documentación de VMware sobre https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.storage.doc/GUID-EEFEB765-A41F-4B6D-917C-BB9ABB80FC80.html["Montando una copia del almacén de datos VMFS"] y https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.storage.doc/GUID-EBAB0D5A-3C77-4A9B-9884-3D4AD69E28DC.html["gestión de almacenes de datos VMFS duplicados"] .
+
+
+IMPORTANT: Antes de truncar un volumen clonado clonándolo a un tamaño menor, asegúrese de preparar las particiones para que quepan en el volumen más pequeño.
+
+.Pasos
+. Seleccione *Administración* > *Volúmenes*.
+. Para clonar un solo volumen, siga los siguientes pasos:
++
+.. En la lista de volúmenes de la página *Activos*, haga clic en el icono Acciones del volumen que desea clonar.
+.. En el menú que aparece, haga clic en *Clonar*.
+.. En la ventana *Clonar volumen*, introduzca un nombre para el volumen recién clonado.
+.. Seleccione un tamaño y una medida para el volumen utilizando el cuadro de selección y la lista *Tamaño del volumen*.
++
+
+NOTE: La selección de tamaño de volumen predeterminada está en GB.  Puede crear volúmenes utilizando tamaños medidos en GB o GiB:
+
++
+*** 1 GB = 1 000 000 000 bytes
+*** 1 GiB = 1 073 741 824 bytes
+
+
+.. Seleccione el tipo de acceso para el volumen recién clonado.
+.. Seleccione una cuenta para asociarla con el volumen recién clonado de la lista *Cuenta*.
++
+
+NOTE: Puedes crear una cuenta durante este paso si haces clic en el enlace *Crear cuenta*, introduces un nombre de cuenta y haces clic en *Crear*.  El sistema añade automáticamente la cuenta a la lista *Cuentas* después de crearla.
+
+
+
+. Para clonar varios volúmenes, siga los siguientes pasos:
++
+.. En la lista de volúmenes de la página *Activos*, marque la casilla junto a los volúmenes que desee clonar.
+.. Haz clic en *Acciones en lote*.
+.. En el menú resultante, seleccione *Clonar*.
+.. En el cuadro de diálogo *Clonar varios volúmenes*, introduzca un prefijo para los volúmenes clonados en el campo *Prefijo de nombre de volumen nuevo*.
+.. Seleccione una cuenta para asociar con los volúmenes clonados de la lista *Cuenta*.
+.. Seleccione el tipo de acceso para los volúmenes clonados.
+
+
+. Haz clic en *Iniciar clonación*.
++
+
+NOTE: Al aumentar el tamaño del volumen de un clon, se obtiene un nuevo volumen con espacio libre adicional al final del volumen.  Dependiendo del uso que le des al volumen, es posible que necesites extender particiones o crear nuevas particiones en el espacio libre para poder utilizarlo.
+
+
+
+
+
+== Para más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

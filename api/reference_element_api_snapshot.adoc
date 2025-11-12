@@ -1,0 +1,223 @@
+---
+permalink: api/reference_element_api_snapshot.html 
+sidebar: sidebar 
+keywords: object,objects,snapshot 
+summary: El objeto de instantánea contiene información sobre una instantánea realizada para un volumen.  Puede utilizar el método de la API ListSnapshots para recuperar una lista de información de instantáneas para un volumen o para todos los volúmenes.  El objeto incluye información sobre la instantánea activa, así como sobre cada instantánea creada para un volumen. 
+---
+= instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de instantánea contiene información sobre una instantánea realizada para un volumen.  Puedes usar el `ListSnapshots` Método de API para recuperar una lista de información de instantáneas para un volumen o para todos los volúmenes.  El objeto incluye información sobre la instantánea activa, así como sobre cada instantánea creada para un volumen.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+suma de comprobación
+ a| 
+Una pequeña representación en cadena de los datos en la instantánea almacenada.  Esta suma de comprobación se puede utilizar posteriormente para comparar otras instantáneas y detectar errores en los datos.
+ a| 
+cadena
+
+
+
+ a| 
+crearTiempo
+ a| 
+Hora en formato UTC+0 en la que se creó la instantánea.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+habilitar la replicación remota
+ a| 
+Identifica si la instantánea está habilitada para la replicación remota.
+ a| 
+booleano
+
+
+
+ a| 
+motivo de expiración
+ a| 
+Indica cómo se configura la expiración de la instantánea. Valores posibles:
+
+* API: El tiempo de expiración se establece mediante la API.
+* Ninguno: No se ha establecido ningún tiempo de expiración.
+* Prueba: El tiempo de expiración se ha establecido para realizar pruebas.
+* FIFO: La caducidad se produce según el principio de primero en entrar, primero en salir.
+
+ a| 
+cadena
+
+
+
+ a| 
+tiempo de expiración
+ a| 
+Hora en la que esta instantánea caducará y será eliminada del clúster.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+ID de grupo
+ a| 
+El ID del grupo si la instantánea pertenece a un grupo de instantáneas.
+ a| 
+entero
+
+
+
+ a| 
+grupo snapshotUUID
+ a| 
+Contiene información sobre cada instantánea del grupo.  Cada uno de estos miembros tendrá un parámetro UUID para el UUID de la instantánea.
+ a| 
+cadena
+
+
+
+ a| 
+tiempoDeCreaciónDeInstancia
+ a| 
+La hora en que se creó la instantánea en el clúster local.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+UUID de instantánea de instancia
+ a| 
+El identificador único universal de la instantánea en el clúster local.  Este ID no se replica en otros clústeres.
+ a| 
+cadena
+
+
+
+ a| 
+nombre
+ a| 
+El nombre único asignado a la instantánea.  Si no se especifica ningún nombre, el nombre es la marca de tiempo con formato UTC+0 del momento en que se creó la instantánea.
+ a| 
+cadena
+
+
+
+ a| 
+estados remotos
+ a| 
+Una matriz que contiene el identificador universal y el estado de replicación de cada instantánea remota en el clúster de destino, tal como se ve desde el clúster de origen.
+ a| 
+xref:reference_element_api_remoteclustersnapshotstatus.adoc[Estado de instantánea del clúster remoto]formación
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+Etiqueta utilizada por el software SnapMirror para especificar la política de retención de instantáneas en los endpoints de SnapMirror .  Si no se establece, este valor es nulo.
+ a| 
+cadena
+
+
+
+ a| 
+ID de instantánea
+ a| 
+El identificador único de una instantánea existente.
+ a| 
+cadena
+
+
+
+ a| 
+snapshotUUID
+ a| 
+El identificador único universal de una instantánea existente.  Cuando la instantánea se replica en diferentes clústeres, este ID se replica junto con ella y se utiliza para identificar la instantánea en todos los clústeres.
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+Estado actual de la instantánea. Valores posibles:
+
+* Desconocido: Se produjo un error al obtener el estado de la instantánea.
+* Preparando: Esta instantánea se está preparando para su uso y aún no se puede escribir en ella.
+* Sincronización remota: Esta instantánea se está replicando desde un clúster remoto.
+* Listo: Esta instantánea ha finalizado su preparación o replicación y ahora se puede utilizar.
+* Activa: Esta instantánea corresponde a la rama activa.
+* Clonación: Esta instantánea está involucrada en una operación CopyVolume.
+
+ a| 
+cadena
+
+
+
+ a| 
+tamaño total
+ a| 
+Tamaño total en bytes de la instantánea.
+ a| 
+entero
+
+
+
+ a| 
+ID de volumen virtual
+ a| 
+El ID del volumen virtual asociado a esta instantánea.
+ a| 
+UUID
+
+
+
+ a| 
+ID de volumen
+ a| 
+El identificador del volumen a partir del cual se creó la instantánea.
+ a| 
+entero
+
+
+
+ a| 
+nombre del volumen
+ a| 
+El nombre del volumen en el momento en que se creó la instantánea.
+ a| 
+cadena
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listsnapshots.adoc[Instantáneas de la lista]

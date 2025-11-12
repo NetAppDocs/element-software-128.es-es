@@ -1,0 +1,57 @@
+---
+permalink: storage/reference_data_protection_snapshot_schedule_details.html 
+sidebar: sidebar 
+keywords: snapshots, snapshot schedules 
+summary: En la página Protección de datos > Programaciones, puede ver la siguiente información en la lista de programaciones de instantáneas. 
+---
+= Detalles del cronograma de instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En la página Protección de datos > Programaciones, puede ver la siguiente información en la lista de programaciones de instantáneas.
+
+* *IDENTIFICACIÓN*
++
+El ID generado por el sistema para la instantánea.
+
+* *Tipo*
++
+El tipo de horario.  Actualmente, solo se admite el tipo de instantánea.
+
+* *Nombre*
++
+El nombre que se le dio al horario cuando se creó.  Los nombres de programación de instantáneas pueden tener hasta 223 caracteres de longitud y contener caracteres az, 0-9 y guion (-).
+
+* *Frecuencia*
++
+La frecuencia con la que se ejecuta la programación. La frecuencia se puede configurar en horas y minutos, semanas o meses.
+
+* *Periódico*
++
+Indicación de si la programación debe ejecutarse solo una vez o a intervalos regulares.
+
+* *Pausa manual*
++
+Indicación de si la programación se ha pausado manualmente o no.
+
+* *Identificadores de volumen*
++
+El identificador del volumen que utilizará la programación cuando se ejecute.
+
+* *Última carrera*
++
+La última vez que se ejecutó el horario.
+
+* *Estado de la última ejecución*
++
+El resultado de la última ejecución programada. Valores posibles:
+
++
+** Éxito
+** Falla
+
+
+

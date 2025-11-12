@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_add_assets.html 
+summary: Puede agregar un recurso de controlador a la configuración del nodo de administración mediante la interfaz de usuario de la API REST. 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= Agregar un activo de controlador al nodo de administración
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede agregar un recurso de controlador a la configuración del nodo de administración mediante la interfaz de usuario de la API REST.
+
+Es posible que necesites agregar un recurso si recientemente has escalado tu instalación y los nuevos recursos no se agregaron automáticamente a tu configuración.  Utilice estas API para agregar recursos que se hayan añadido recientemente a su instalación.
+
+.Lo que necesitarás
+* Su versión de clúster ejecuta el software NetApp Element 11.3 o posterior.
+* Has implementado un nodo de administración que ejecuta la versión 11.3 o posterior.
+* Has creado un nuevo rol de NetApp HCC en vCenter para limitar la vista de servicios del nodo de administración a activos exclusivos de NetApp.  Verlink:task_mnode_create_netapp_hcc_role_vcenter.html["Cree un rol de NetApp HCC en vCenter."]
+
+
+.Pasos
+. Obtenga el ID del recurso base para la instalación:
++
+.. Abra la interfaz de usuario de la API REST del servicio de inventario en el nodo de administración:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Seleccione *Autorizar* y complete lo siguiente:
++
+... Introduzca el nombre de usuario y la contraseña del clúster.
+... Introduzca el ID del cliente como `mnode-client` .
+... Seleccione *Autorizar* para iniciar una sesión.
+... Cerrar la ventana.
+
+
+.. Desde la interfaz de usuario de la API REST, seleccione *GET /installations*.
+.. Seleccione *Probarlo*.
+.. Seleccione *Ejecutar*.
+.. Del cuerpo de la respuesta con código 200, copie el `id` para la instalación.
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: Su instalación tiene una configuración de activos base que se creó durante la instalación o actualización.
+
+.. Desde la interfaz de usuario de la API REST, seleccione *GET /installations/{id}*.
+.. Seleccione *Probarlo*.
+.. Pegue el ID del activo de instalación en el campo *id*.
+.. Seleccione *Ejecutar*.
+.. A partir de la respuesta, copie y guarde el ID del controlador del clúster.(`"controllerId"` ) para su uso en un paso posterior.
+
+
+. Para agregar un subactivo de controlador a un activo base existente, seleccione:
++
+[listing]
+----
+POST /assets/{asset_id}/controllers
+----
++
+.. Abra la interfaz de usuario de la API REST del servicio mNode en el nodo de administración:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Seleccione *Autorizar* y complete lo siguiente:
++
+... Introduzca el nombre de usuario y la contraseña del clúster.
+... Introduzca el ID del cliente como `mnode-client` .
+... Seleccione *Autorizar* para iniciar una sesión.
+... Cerrar la ventana.
+
+
+.. Seleccione *POST /assets/{asset_id}/controllers*.
+.. Seleccione *Probarlo*.
+.. Introduzca el ID del activo base principal en el campo *asset_id*.
+.. Añada los valores requeridos a la carga útil.
+.. Seleccione *Ejecutar*.
+
+
+
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

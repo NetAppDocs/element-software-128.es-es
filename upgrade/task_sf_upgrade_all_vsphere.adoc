@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_sf_upgrade_all_vsphere.html 
+summary: Puede actualizar los componentes de VMware para un sistema de almacenamiento SolidFire y realizar pasos adicionales para reinstalar el complemento de vCenter. 
+keywords: netapp, solidfire, vsphere components, upgrade, vCenter, ESXi 
+---
+= Actualice sus componentes de vSphere para un sistema de almacenamiento NetApp SolidFire con el complemento Element para vCenter Server.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe completar pasos adicionales al actualizar los componentes de VMware vSphere. Estos pasos son necesarios para los sistemas con el complemento Element para vCenter Server.
+
+.Pasos
+. Para las actualizaciones de vCSA, https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#clear-qossioc-settings["claro"^] Configuración de QoSSIOC en el complemento (* Configuración de NetApp Element > Configuración de QoSSIOC*).  El campo *Estado QoSSIOC* muestra `Not Configured` una vez finalizado el proceso.
+. Para actualizaciones de vCSA y Windows, https://docs.netapp.com/us-en/vcp/task_vcp_unregister.html["dar de baja"^] el complemento del servidor vCenter con el que está asociado mediante la utilidad de registro.
+. https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-7AFB6672-0B0B-4902-B254-EE6AE81993B2.html["Actualizar vSphere, incluyendo vCenter Server, ESXi, máquinas virtuales y otros componentes de VMware."^].
++
+[IMPORTANT]
+====
+Debe actualizar a NetApp Element Plug-in para vCenter Server 5.0 o posterior para poder implementar el complemento con VMware vCenter 7.0 Update 3 sin tener que aplicar una solución alternativa.
+
+Al actualizar a VMware vCenter Server 7.0 Update 3, el complemento Element para vCenter Server 4.x no se implementa correctamente. Para resolver este problema utilizando Spring Framework 4, consulte https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["Este artículo de la base de conocimientos"^].
+
+====
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#register-the-plug-in-with-vcenter["Registro"^]El complemento Element para vCenter Server vuelve a estar disponible con vCenter.
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#add-storage-clusters-for-use-with-the-plug-in["Agregar clústeres"^]usando el complemento.
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#configure-qossioc-settings-using-the-plug-in["Configurar los ajustes de QoSSIOC"^]usando el complemento.
+. https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#enabling-qossioc-automation-on-datastores["Habilitar QoSSIOC"^]para todos los almacenes de datos controlados por el complemento.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

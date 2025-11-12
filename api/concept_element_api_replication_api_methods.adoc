@@ -1,0 +1,36 @@
+---
+permalink: api/concept_element_api_replication_api_methods.html 
+sidebar: sidebar 
+keywords: replication,api,methods 
+summary: 'Los métodos de la API de replicación le permiten conectar dos clústeres para la protección continua de datos (CDP).  Al conectar dos clústeres, los volúmenes activos dentro de un clúster se pueden replicar continuamente en un segundo clúster para proporcionar recuperación de datos.  Al emparejar volúmenes para la replicación, puede proteger sus datos de eventos que podrían hacerlos inaccesibles.' 
+---
+= Métodos de la API de replicación
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los métodos de la API de replicación le permiten conectar dos clústeres para la protección continua de datos (CDP).  Al conectar dos clústeres, los volúmenes activos dentro de un clúster se pueden replicar continuamente en un segundo clúster para proporcionar recuperación de datos.  Al emparejar volúmenes para la replicación, puede proteger sus datos de eventos que podrían hacerlos inaccesibles.
+
+* xref:reference_element_api_cluster_pairing_order_of_operations.adoc[orden de operaciones de emparejamiento de clústeres]
+* xref:reference_element_api_volume_pairing_order_of_operations.adoc[Orden de operaciones de emparejamiento de volúmenes]
+* xref:reference_element_api_supported_modes_of_replication.adoc[Modos de replicación compatibles para clústeres emparejados]
+* xref:reference_element_api_completeclusterpairing.adoc[Emparejamiento de clústeres completo]
+* xref:reference_element_api_completevolumepairing.adoc[Emparejamiento de volumen completo]
+* xref:reference_element_api_listclusterpairs.adoc[ListClusterPairs]
+* xref:reference_element_api_listactivepairedvolumes.adoc[Lista de volúmenes emparejados activos]
+* xref:reference_element_api_modifyvolumepair.adoc[Modificar par de volúmenes]
+* xref:reference_element_api_removeclusterpair.adoc[Eliminar par de clústeres]
+* xref:reference_element_api_removevolumepair.adoc[Eliminar par de volúmenes]
+* xref:reference_element_api_startclusterpairing.adoc[Iniciar emparejamiento de clústeres]
+* xref:reference_element_api_startvolumepairing.adoc[Emparejamiento de volumen inicial]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

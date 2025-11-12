@@ -1,0 +1,43 @@
+---
+permalink: storage/task_system_manage_cluster_volume_load_balancing.html 
+sidebar: sidebar 
+keywords: cluster, volume, volumes, load, balancing, actual, IOPS 
+summary: A partir de Element 12.8, puede habilitar el balanceo de carga de volumen para equilibrar los volúmenes entre los nodos en función de las IOPS reales de cada volumen en lugar de las IOPS mínimas configuradas en la política de QoS. 
+---
+= Habilitar y deshabilitar el balanceo de carga de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de Element 12.8, puede usar el balanceo de carga de volumen para equilibrar los volúmenes entre nodos según las IOPS reales de cada volumen en lugar de las IOPS mínimas configuradas en la política de QoS.  Puede activar y desactivar el balanceo de carga de volumen, que está desactivado de forma predeterminada, mediante la interfaz de usuario o la API de Element.
+
+.Pasos
+. Seleccione *Clúster* > *Configuración*.
+. En la sección Específica del clúster, cambie el estado de Balanceo de carga de volumen:
++
+[role="tabbed-block"]
+====
+.Habilitar el equilibrio de carga de volumen
+--
+Seleccione *Habilitar balanceo de carga en IOPS reales* y confirme su selección.
+
+--
+.Deshabilitar el equilibrio de carga de volumen:
+--
+Seleccione *Deshabilitar el balanceo de carga en IOPS reales* y confirme su selección.
+
+--
+====
+. Opcionalmente, seleccione *Informes* > *Resumen* para confirmar el cambio de estado de Balance en IOPS reales.  Es posible que tengas que desplazarte hacia abajo en la información de estado del clúster para ver el estado.
+
+
+
+
+== Encuentra más información
+
+* link:../api/reference_element_api_enablefeature.html["Habilite el balanceo de carga de volumen mediante la API"]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablefeature.html["Deshabilitar el balanceo de carga de volumen mediante la API"]
+* link:../hccstorage/task-hcc-qos-policies.html["Crear y gestionar políticas de QoS de volumen"]
+

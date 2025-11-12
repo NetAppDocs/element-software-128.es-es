@@ -1,0 +1,27 @@
+---
+permalink: storage/concept_system_manage_solidfire_storage_cluster_administrator_account_types.html 
+sidebar: sidebar 
+keywords: user types, account, cluster, access active nodes, per-node UI 
+summary: 'En un clúster de almacenamiento que ejecuta el software NetApp Element , pueden existir dos tipos de cuentas de administrador: la cuenta de administrador principal del clúster y una cuenta de administrador del clúster.' 
+---
+= tipos de cuentas de administrador de clúster de almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En un clúster de almacenamiento que ejecuta el software NetApp Element , pueden existir dos tipos de cuentas de administrador: la cuenta de administrador principal del clúster y una cuenta de administrador del clúster.
+
+* *Cuenta de administrador principal del clúster*
++
+Esta cuenta de administrador se crea cuando se crea el clúster.  Esta cuenta es la cuenta administrativa principal con el nivel más alto de acceso al clúster.  Esta cuenta es análoga a un usuario root en un sistema Linux.  Puedes cambiar la contraseña de esta cuenta de administrador.
+
+* *Cuenta de administrador del clúster*
++
+Puede otorgar a una cuenta de administrador de clúster un rango limitado de acceso administrativo para realizar tareas específicas dentro de un clúster.  Las credenciales asignadas a cada cuenta de administrador del clúster se utilizan para autenticar las solicitudes de API y de la interfaz de usuario de Element dentro del sistema de almacenamiento.
+
+
+
+
+NOTE: Se requiere una cuenta de administrador de clúster local (no LDAP) para acceder a los nodos activos de un clúster a través de la interfaz de usuario por nodo.  No se requieren credenciales de cuenta para acceder a un nodo que aún no forma parte de un clúster.

@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_edit_vcenter_assets.html 
+summary: Puede editar los controladores de nodos de administración de vCenter mediante la interfaz de usuario de la API REST. 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= Ver o editar los recursos del controlador existentes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede ver información sobre los controladores VMware vCenter existentes y editarlos en la configuración del nodo de administración mediante la API REST.  Los controladores son instancias de VMware vCenter registradas en el nodo de administración de su instalación de NetApp SolidFire .
+
+.Antes de empezar
+* Asegúrese de que su versión de clúster esté ejecutando el software NetApp Element 11.3 o posterior.
+* Asegúrese de haber implementado un nodo de administración que ejecute la versión 11.3 o posterior.
+
+
+
+
+== Acceda a la API REST de los servicios de gestión.
+
+.Pasos
+. Acceda a la interfaz de usuario de la API REST para los servicios de administración introduciendo la dirección IP del nodo de administración seguida de `/vcenter/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/vcenter/1/
+----
+. Seleccione *Autorizar* o cualquier icono de candado y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+
+
+
+
+== Ver información almacenada sobre los controladores existentes
+
+Puede listar los controladores de vCenter existentes que están registrados con el nodo de administración y ver la información almacenada sobre ellos mediante la API REST.
+
+.Pasos
+. Seleccione *GET /compute/controllers*.
+. Seleccione *Probarlo*.
+. Seleccione *Ejecutar*.
++
+La API devuelve una lista de todos los controladores vCenter conocidos, junto con la dirección IP, el ID del controlador, el nombre de host y el ID de usuario utilizados para comunicarse con cada controlador.
+
+. Si desea conocer el estado de conexión de un controlador específico, copie el ID del controlador desde el `id` Copia el campo de ese controlador a tu portapapeles y observa.<<Consulta el estado de un controlador existente.>> .
+
+
+
+
+== Consulta el estado de un controlador existente.
+
+Puede consultar el estado de cualquiera de los controladores vCenter existentes registrados en el nodo de administración.  La API devuelve un estado que indica si NetApp Hybrid Cloud Control puede conectarse con el controlador vCenter, así como el motivo de dicho estado.
+
+.Pasos
+. Seleccione *GET /compute/controllers/{controller_id}/status*.
+. Seleccione *Probarlo*.
+. Introduzca el ID del controlador que copió anteriormente en el `controller_id` parámetro.
+. Seleccione *Ejecutar*.
++
+La API devuelve el estado de este controlador vCenter en particular, junto con el motivo de dicho estado.
+
+
+
+
+
+== Edita las propiedades almacenadas de un controlador
+
+Puede editar el nombre de usuario o la contraseña almacenados para cualquiera de los controladores vCenter existentes registrados con el nodo de administración.  No se puede editar la dirección IP almacenada de un controlador vCenter existente.
+
+.Pasos
+. Seleccione *PUT /compute/controllers/{controller_id}*.
+. Introduzca el ID del controlador de un controlador de vCenter en el `controller_id` parámetro.
+. Seleccione *Probarlo*.
+. Modifique cualquiera de los siguientes parámetros en el campo *Cuerpo de la solicitud*:
++
+|===
+| Parámetro | Tipo | Descripción 
+
+
+| `userId` | cadena | Cambie el ID de usuario utilizado para comunicarse con el controlador de vCenter (el usuario debe tener privilegios de administrador). 
+
+
+| `password` | cadena | Cambie la contraseña utilizada para comunicarse con el controlador vCenter. 
+|===
+. Seleccione *Ejecutar*.
++
+La API devuelve información actualizada del controlador.
+
+
+
+[discrete]
+== Encuentra más información
+
+* link:task_mnode_add_assets.html["Agregar un activo de controlador al nodo de administración"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

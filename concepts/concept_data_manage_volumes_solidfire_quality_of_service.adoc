@@ -1,0 +1,107 @@
+---
+permalink: concepts/concept_data_manage_volumes_solidfire_quality_of_service.html 
+sidebar: sidebar 
+keywords: solidfire, element, qos, performance, iops 
+summary: 'Un clúster de almacenamiento SolidFire tiene la capacidad de proporcionar parámetros de Calidad de Servicio (QoS) por volumen.  Puede garantizar el rendimiento del clúster medido en entradas y salidas por segundo (IOPS) utilizando tres parámetros configurables que definen la QoS: IOPS mínimas, IOPS máximas e IOPS de ráfaga.' 
+---
+= Rendimiento y calidad del servicio
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un clúster de almacenamiento SolidFire tiene la capacidad de proporcionar parámetros de Calidad de Servicio (QoS) por volumen.  Puede garantizar el rendimiento del clúster medido en entradas y salidas por segundo (IOPS) utilizando tres parámetros configurables que definen la QoS: IOPS mínimas, IOPS máximas e IOPS de ráfaga.
+
+
+NOTE: SolidFire Active IQ cuenta con una página de recomendaciones de QoS que ofrece consejos sobre la configuración óptima y la puesta en marcha de los ajustes de QoS.
+
+
+
+== Parámetros de calidad del servicio
+
+Los parámetros IOPS se definen de las siguientes maneras:
+
+* *IOPS mínimo* - El número mínimo de entradas y salidas sostenidas por segundo (IOPS) que el clúster de almacenamiento proporciona a un volumen.  El valor de IOPS mínimo configurado para un volumen es el nivel de rendimiento garantizado para dicho volumen.  El rendimiento no baja de este nivel.
+* *IOPS máximo* - El número máximo de IOPS sostenidas que el clúster de almacenamiento proporciona a un volumen.  Cuando los niveles de IOPS del clúster son críticamente altos, este nivel de rendimiento de IOPS no se supera.
+* *IOPS de ráfaga* - El número máximo de IOPS permitido en un escenario de ráfaga corta.  Si un volumen ha estado funcionando por debajo del IOPS máximo, se acumulan créditos de ráfaga.  Cuando los niveles de rendimiento se vuelven muy altos y se llevan a niveles máximos, se permiten ráfagas cortas de IOPS en el volumen.
++
+El software Element utiliza Burst IOPS cuando un clúster se encuentra en un estado de baja utilización de IOPS del clúster.
+
++
+Un único volumen puede acumular IOPS de ráfaga y usar los créditos para realizar ráfagas por encima de sus IOPS máximas hasta su nivel de IOPS de ráfaga durante un "período de ráfaga" determinado.  Un volumen puede generar ráfagas de hasta 60 segundos si el clúster tiene la capacidad para acomodarlas.  Un volumen acumula un segundo de crédito de ráfaga (hasta un máximo de 60 segundos) por cada segundo que el volumen funcione por debajo de su límite de IOPS máximo.
+
++
+Las IOPS de ráfaga están limitadas de dos maneras:
+
++
+** Un volumen puede superar su IOPS máxima durante un número de segundos igual al número de créditos de ráfaga que haya acumulado el volumen.
+** Cuando un volumen supera su configuración de IOPS máximas, queda limitado por su configuración de IOPS de ráfaga.  Por lo tanto, las IOPS de ráfaga nunca superan la configuración de IOPS de ráfaga para el volumen.
+
+
+* *Ancho de banda máximo efectivo* - El ancho de banda máximo se calcula multiplicando el número de IOPS (según la curva QoS) por el tamaño de E/S.
++
+Ejemplo: La configuración de parámetros QoS de 100 IOPS mínimas, 1000 IOPS máximas y 1500 IOPS de ráfaga tiene los siguientes efectos en la calidad del rendimiento:
+
++
+** Las cargas de trabajo pueden alcanzar y mantener un máximo de 1000 IOPS hasta que la condición de contención de carga de trabajo por IOPS se haga evidente en el clúster.  A continuación, las IOPS se reducen de forma incremental hasta que las IOPS en todos los volúmenes se encuentran dentro de los rangos QoS designados y se alivia la contención por el rendimiento.
+** El rendimiento en todos los volúmenes se está llevando hacia el IOPS mínimo de 100.  Los niveles no bajan del valor de IOPS mínimo establecido, pero podrían mantenerse por encima de 100 IOPS cuando se alivia la contención de la carga de trabajo.
+** El rendimiento nunca es superior a 1000 IOPS, ni inferior a 100 IOPS durante un período prolongado.  Se permite un rendimiento de 1500 IOPS (IOPS de ráfaga), pero solo para aquellos volúmenes que hayan acumulado créditos de ráfaga al funcionar por debajo de las IOPS máximas y solo durante períodos cortos de tiempo.  Los niveles de ráfaga nunca se mantienen.
+
+
+
+
+
+
+== límites de valor de QoS
+
+Aquí están los posibles valores mínimos y máximos para QoS.
+
+[cols="7*"]
+|===
+| Parámetros | Valor mínimo | Por defecto | 4 KB | 5 8KB | 6 16 KB | 262 KB 
+
+
+| IOPS mínimas | 50 | 50 | 15.000 | 9.375* | 5556* | 385* 
+
+
+| IOPS máximas | 100 | 15.000 | 200.000** | 125.000 | 74.074 | 5128 
+
+
+| Burst IOPS | 100 | 15.000 | 200.000** | 125.000 | 74,074 | 5128 
+|===
+*Estas estimaciones son aproximadas.  **Los valores de IOPS máximos e IOPS de ráfaga se pueden configurar hasta en 200.000; sin embargo, esta configuración solo se permite para desbloquear efectivamente el rendimiento de un volumen.  El rendimiento máximo real de un volumen está limitado por el uso del clúster y el rendimiento por nodo.
+
+
+
+== Rendimiento de QoS
+
+La curva de rendimiento QoS muestra la relación entre el tamaño del bloque y el porcentaje de IOPS.
+
+El tamaño de bloque y el ancho de banda tienen un impacto directo en la cantidad de IOPS que una aplicación puede obtener.  El software Element tiene en cuenta los tamaños de bloque que recibe normalizando los tamaños de bloque a 4k.  En función de la carga de trabajo, el sistema podría aumentar el tamaño de los bloques. A medida que aumenta el tamaño de los bloques, el sistema incrementa el ancho de banda hasta el nivel necesario para procesar los bloques de mayor tamaño.  A medida que aumenta el ancho de banda, disminuye el número de IOPS que el sistema puede alcanzar.
+
+La curva de rendimiento QoS muestra la relación entre el aumento del tamaño de los bloques y la disminución del porcentaje de IOPS:
+
+image::../media/solidfire_qos_performance_curve.png[Describe, para QoS, la relación entre el aumento del tamaño del bloque y las IOPS.]
+
+Por ejemplo, si los tamaños de bloque son de 4k y el ancho de banda es de 4000 KBps, las IOPS son 1000.  Si el tamaño de los bloques aumenta a 8k, el ancho de banda aumenta a 5000 KBps y las IOPS disminuyen a 625.  Al tener en cuenta el tamaño del bloque, el sistema garantiza que las cargas de trabajo de menor prioridad que utilizan tamaños de bloque más grandes, como las copias de seguridad y las actividades del hipervisor, no consuman demasiado rendimiento del tráfico de mayor prioridad que utiliza tamaños de bloque más pequeños.
+
+
+
+== Políticas de QoS
+
+Una política de QoS le permite crear y guardar una configuración de calidad de servicio estandarizada que se puede aplicar a muchos volúmenes.
+
+Las políticas de QoS son las más adecuadas para entornos de servicio, por ejemplo, con servidores de bases de datos, aplicaciones o infraestructura que rara vez se reinician y necesitan un acceso constante y equitativo al almacenamiento.  La QoS de volumen individual es la mejor opción para máquinas virtuales de uso ligero, como escritorios virtuales o máquinas virtuales especializadas tipo quiosco, que pueden reiniciarse, encenderse o apagarse diariamente o varias veces al día.
+
+No se deben utilizar juntas las políticas de QoS y QoS.  Si está utilizando políticas de QoS, no utilice QoS personalizada en un volumen.  La QoS personalizada anulará y ajustará los valores de la política de QoS para la configuración de QoS de volumen.
+
+
+NOTE: El clúster seleccionado debe ser Element 10.0 o posterior para utilizar las políticas de QoS; de lo contrario, las funciones de política de QoS no estarán disponibles.
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

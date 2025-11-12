@@ -1,0 +1,147 @@
+---
+permalink: api/reference_element_api_modifyinitiators.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,initiators,initiator,attribute,attributes,modifyinitiators 
+summary: Puede utilizar el método ModifyInitiators para cambiar los atributos de uno o más iniciadores existentes. 
+---
+= ModificarIniciadores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ModifyInitiators` método para cambiar los atributos de uno o más iniciadores existentes.
+
+No se puede cambiar el nombre de un iniciador existente.  Si necesitas cambiar el nombre de un iniciador, primero bórralo con elxref:reference_element_api_deleteinitiators.adoc[EliminarIniciadores] método y crear uno nuevo con elxref:reference_element_api_createinitiators.adoc[CrearIniciadores] método.
+
+Si ModifyInitiators no logra cambiar uno de los iniciadores proporcionados en el parámetro, el método devuelve un error y no modifica ningún iniciador (no es posible la finalización parcial).
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+iniciadores
+ a| 
+Una lista de objetos que contiene las características de cada iniciador a modificar.  Objetos posibles:
+
+* `alias`: (Opcional) Un nuevo nombre descriptivo para asignar al iniciador.  (cadena)
+* `attributes`: (Opcional) Un nuevo conjunto de atributos JSON para asignar al iniciador.  (Objeto JSON)
+* `chapUsername`: (Opcional) Un nuevo nombre de usuario CHAP único para este iniciador.  (cadena)
+* `forceDuringUpgrade`: Complete la modificación del iniciador durante una actualización.
+* `initiatorID`: (Obligatorio) El ID del iniciador a modificar.  (entero)
+* `initiatorSecret`: (Opcional) Un nuevo secreto CHAP utilizado para autenticar al iniciador.  (cadena)
+* `requireChap`: (Opcional) Verdadero si CHAP es necesario para este iniciador.  (booleano)
+* `targetSecret`: (Opcional) Un nuevo secreto CHAP utilizado para autenticar el objetivo (cuando se utiliza la autenticación CHAP mutua).  (cadena)
+* `virtualNetworkIDs`: (Opcional) La lista de identificadores de red virtual asociados con este iniciador.  Si define una o más redes virtuales, este iniciador solo podrá iniciar sesión en esas redes virtuales.  Si no defines ninguna red virtual, este iniciador puede iniciar sesión en todas las redes.
+* `volumeAccessGroupID`: (Opcional) El ID del grupo de acceso al volumen al que se debe agregar el iniciador.  Si el iniciador pertenecía previamente a un grupo de acceso a volúmenes diferente, se elimina del grupo de acceso a volúmenes anterior.  Si esta clave está presente pero es nula, el iniciador se elimina de su grupo de acceso a volumen actual, pero no se coloca en ningún grupo de acceso a volumen nuevo.  (entero)
+
+ a| 
+matriz de objetos JSON
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+iniciadores
+ a| 
+Lista de objetos que describen los iniciadores recientemente modificados.
+ a| 
+xref:reference_element_api_initiator.adoc[iniciador]formación
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 6683,
+  "method": "ModifyInitiators",
+  "params": {
+    "initiators": [
+      {
+        "initiatorID": 2,
+        "alias": "alias1",
+        "volumeAccessGroupID": null
+      },
+      {
+        "initiatorID": 3,
+        "alias": "alias2",
+        "volumeAccessGroupID": 1
+      }
+    ]
+  }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 6683,
+  "result": {
+    "initiators": [
+      {
+        "alias": "alias1",
+        "attributes": {},
+        "initiatorID": 2,
+        "initiatorName": "iqn.1993-08.org.debian:01:395543635",
+        "volumeAccessGroups": []
+      },
+      {
+        "alias": "alias2",
+        "attributes": {},
+        "initiatorID": 3,
+        "initiatorName": "iqn.1993-08.org.debian:01:935573135",
+        "volumeAccessGroups": [
+          1
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+* xref:reference_element_api_createinitiators.adoc[CrearIniciadores]
+* xref:reference_element_api_deleteinitiators.adoc[EliminarIniciadores]
+

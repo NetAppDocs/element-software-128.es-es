@@ -1,0 +1,122 @@
+---
+permalink: api/reference_element_api_listprotectiondomainlevels.html 
+sidebar: sidebar 
+keywords: list,listing,protection,domain,levels,level,listprotectiondomainlevels 
+summary: Puede utilizar el método ListProtectionDomainLevels para enumerar los niveles de tolerancia y resiliencia del clúster de almacenamiento.  Los niveles de tolerancia indican la capacidad del clúster para continuar leyendo y escribiendo datos en caso de una falla, y los niveles de resiliencia indican la capacidad del clúster de almacenamiento para recuperarse automáticamente de una o más fallas. 
+---
+= Niveles de dominio de protección de listas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ListProtectionDomainLevels` Método para enumerar los niveles de tolerancia y resiliencia del clúster de almacenamiento.  Los niveles de tolerancia indican la capacidad del clúster para continuar leyendo y escribiendo datos en caso de una falla, y los niveles de resiliencia indican la capacidad del clúster de almacenamiento para recuperarse automáticamente de una o más fallas.
+
+
+
+== Parámetro
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+niveles de dominio de protección
+ a| 
+Una lista de los diferentes niveles del dominio de protección, donde cada uno proporciona información sobre la tolerancia y la resiliencia del clúster de almacenamiento.
+ a| 
+xref:reference_element_api_protectiondomainlevel.adoc[Nivel de dominio de protección]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "ListProtectionDomainLevels",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"protectionDomainLevels": [
+			{
+				"protectionDomainType": "node",
+				"resiliency": {
+					"protectionSchemeResiliencies": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"singleFailureThresholdBytesForBlockData": 0,
+					"sustainableFailuresForEnsemble": 1
+				},
+				"tolerance": {
+					"protectionSchemeTolerances": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"sustainableFailuresForEnsemble": 1
+				}
+			},
+			{
+				"protectionDomainType": "chassis",
+				"resiliency": {
+					"protectionSchemeResiliencies": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"singleFailureThresholdBytesForBlockData": 0,
+					"sustainableFailuresForEnsemble": 1
+				},
+				"tolerance": {
+					"protectionSchemeTolerances": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"sustainableFailuresForEnsemble": 1
+				}
+			}
+		]
+	}
+}
+----
+
+
+== Nueva versión
+
+11,0

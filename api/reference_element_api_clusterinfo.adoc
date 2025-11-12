@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_clusterinfo.html 
+sidebar: sidebar 
+keywords: element, api, object, objects, clusterInfo 
+summary: El objeto clusterInfo contiene información que el nodo utiliza para comunicarse con el clúster.  Puedes obtener esta información con el método API GetClusterInfo. 
+---
+= Información del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto clusterInfo contiene información que el nodo utiliza para comunicarse con el clúster.  Puedes obtener esta información con el método API GetClusterInfo.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+esquema de protección predeterminado
+ a| 
+El esquema de protección utilizado por defecto para los nuevos volúmenes, a menos que se proporcione un esquema de protección con elxref:reference_element_api_createvolume.adoc[Crear volumen] Llamada al método.  Este esquema de protección siempre debe estar incluido en el conjunto de esquemas de protección habilitados.
+ a| 
+cadena
+
+
+
+ a| 
+esquemas de protección habilitados
+ a| 
+Una lista de todos los esquemas de protección que se han habilitado en este clúster de almacenamiento.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+cifradoEnEstadoDeReposo
+ a| 
+Estado de la función de cifrado en reposo. Valores posibles:
+
+* Habilitación: Se está habilitando el cifrado en reposo.
+* Habilitado: El cifrado en reposo está habilitado.
+* Deshabilitando: Se está deshabilitando el cifrado en reposo.
+* Deshabilitado: El cifrado en reposo está deshabilitado.
+
+ a| 
+cadena
+
+
+
+ a| 
+conjunto
+ a| 
+Los nodos que participan en el clúster.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+MVIP
+ a| 
+La dirección IP flotante (virtual) del clúster en la red de administración.
+ a| 
+cadena
+
+
+
+ a| 
+Interfaz mvip
+ a| 
+La interfaz física asociada a la dirección MVIP.
+ a| 
+cadena
+
+
+
+ a| 
+ID de nodo mvip
+ a| 
+El nodo que contiene la dirección MVIP maestra.
+ a| 
+entero
+
+
+
+ a| 
+Etiqueta VLAN mvip
+ a| 
+El identificador VLAN para la dirección MVIP.
+ a| 
+cadena
+
+
+
+ a| 
+nombre
+ a| 
+El nombre único del clúster.
+ a| 
+cadena
+
+
+
+ a| 
+recuento de repeticiones
+ a| 
+El número de réplicas de cada dato que se almacenarán en el clúster.  El valor válido es "2".
+ a| 
+entero
+
+
+
+ a| 
+Cifrado de software en estado de reposo
+ a| 
+Estado de cifrado en reposo basado en software.
+ a| 
+cadena
+
+
+
+ a| 
+esquemas de protección admitidos
+ a| 
+Una lista de todos los esquemas de protección compatibles con este clúster de almacenamiento.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+svip
+ a| 
+La dirección IP flotante (virtual) para el clúster en la red de almacenamiento (iSCSI).
+ a| 
+cadena
+
+
+
+ a| 
+Interfaz svip
+ a| 
+La interfaz física asociada con la dirección SVIP maestra.
+ a| 
+cadena
+
+
+
+ a| 
+svipNodeID
+ a| 
+El nodo que contiene la dirección SVIP maestra.
+ a| 
+entero
+
+
+
+ a| 
+Etiqueta VLAN svip
+ a| 
+El identificador VLAN para la dirección SVIP maestra.
+ a| 
+cadena
+
+
+
+ a| 
+ID único
+ a| 
+El identificador único del clúster.
+ a| 
+cadena
+
+
+
+ a| 
+UUID
+ a| 
+El identificador único del clúster.
+ a| 
+UUID
+
+
+
+ a| 
+balanceo de carga de volumen en el estado de Iops reales
+ a| 
+El estado del equilibrio de segmentos se basa en las IOPS reales en lugar de la función de IOPS mínimas.  Disponible a partir del Elemento 12.8.
+ a| 
+cadena
+
+|===
+[discrete]
+== Encuentra más información
+
+* link:reference_element_api_getclusterinfo.html["Obtener información del clúster"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_snapshots_overview.html 
+sidebar: sidebar 
+keywords: snapshot,overview 
+summary: Una instantánea de volumen es una copia de un volumen en un momento dado.  Puedes usar instantáneas para restaurar un volumen al estado en el que se encontraba en el momento en que se creó la instantánea. 
+---
+= Resumen de instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una instantánea de volumen es una copia de un volumen en un momento dado.  Puedes usar instantáneas para restaurar un volumen al estado en el que se encontraba en el momento en que se creó la instantánea.
+
+Puede agrupar las instantáneas de volumen para que los volúmenes relacionados se puedan respaldar o revertir de manera coherente.  Una instantánea de grupo captura una imagen puntual de todos los archivos de corte de volumen.  Luego, puede usar la imagen para revertir un grupo de volúmenes a un estado puntual y garantizar que todos los datos sean coherentes en todos los volúmenes del grupo.
+
+Puede programar instantáneas de volumen para que se realicen de forma autónoma a intervalos definidos.  Puedes definir intervalos por tiempo, días de la semana o días del mes.  También puede utilizar instantáneas programadas para garantizar que se realicen copias de seguridad de las instantáneas en un almacenamiento remoto con fines de archivado.
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

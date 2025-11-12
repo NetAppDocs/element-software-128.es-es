@@ -1,0 +1,86 @@
+---
+permalink: api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html 
+sidebar: sidebar 
+keywords: system, api, element, security, rekey, software encryption at rest 
+summary: 'Puede utilizar el método RekeySoftwareEncryptionAtRestMasterKey para volver a generar la clave maestra de cifrado en reposo del software utilizada para cifrar las DEK (claves de cifrado de datos).' 
+---
+= Clave maestra de cifrado de software en reposo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `RekeySoftwareEncryptionAtRestMasterKey` Método para volver a generar la clave maestra de cifrado en reposo del software utilizada para cifrar las DEK (claves de cifrado de datos).  Durante la creación del clúster, el cifrado de software en reposo se configura para utilizar la gestión de claves internas (IKM).  Este método de re-clave se puede utilizar después de la creación del clúster para usar IKM o Administración de claves externas (EKM).
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada.  Si el `keyManagementType` Si no se especifica ningún parámetro, la operación de cambio de clave se realiza utilizando la configuración de gestión de claves existente.  Si el `keyManagementType` está especificado y el proveedor de claves es externo, el `keyProviderID` También debe utilizarse el parámetro.
+
+[cols="4*"]
+|===
+| Parámetro | Descripción | Tipo | Opcional 
+
+
+| tipo de gestión de claves | El tipo de gestión de claves utilizado para administrar la clave maestra.  Los valores posibles son:
+`Internal` : Recodificar utilizando la gestión interna de claves.
+`External` : Recodificar utilizando la gestión de claves externa.  Si no se especifica este parámetro, la operación de cambio de clave se realiza utilizando la configuración de gestión de claves existente. | cadena | Verdadero 
+
+
+| ID del proveedor de clave | El identificador del proveedor de claves a utilizar.  Este es un valor único que se devuelve como parte de uno de los `CreateKeyProvider` métodos.  El ID solo es necesario cuando `keyManagementType` es `External` y, por lo demás, no es válido. | entero | Verdadero 
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+[cols="4*"]
+|===
+| Parámetro | Descripción | Tipo | Opcional 
+
+
+| manejador asíncrono | Determine el estado de la operación de recodificación utilizando esto `asyncHandle` valor con `GetAsyncResult` . `GetAsyncResult` La salida incluirá un `newKey` campo que contiene información sobre la nueva clave maestra y un `keyToDecommission` campo que contiene información sobre la clave anterior. | entero | FALSO 
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+ "method": "rekeysoftwareencryptionatrestmasterkey",
+ "params": {
+   "keyManagementType": "external",
+   "keyProviderID": "<ID number>"
+ }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+    "asyncHandle": 1
+}
+----
+
+
+== Nueva versión
+
+12,3
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

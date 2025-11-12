@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-accounts.html 
+summary: Aprenda cómo crear una cuenta de usuario y asociarla a un volumen. 
+keywords: netapp, element, cluster, element, account, user, volume, hybrid cloud control, hcc 
+---
+= Cree y gestione cuentas de usuario mediante NetApp Hybrid Cloud Control.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+En los sistemas de almacenamiento basados ​​en elementos, se pueden crear usuarios de clúster autorizados para habilitar el acceso de inicio de sesión a NetApp Hybrid Cloud Control según los permisos que desee otorgar a los usuarios "Administrador" o "Solo lectura".  Además de los usuarios del clúster, también existen cuentas de volumen, que permiten a los clientes conectarse a volúmenes en un nodo de almacenamiento. 
+
+Gestiona los siguientes tipos de cuentas:
+
+* <<Gestionar cuentas de clúster autorizadas>>
+* <<Gestionar cuentas de volumen>>
+
+
+
+
+== Habilitar LDAP
+
+Para utilizar LDAP para cualquier cuenta de usuario, primero debe habilitar LDAP.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione el icono de Opciones en la parte superior derecha y seleccione *Administración de usuarios*.
+. Desde la página Usuarios, seleccione *Configurar LDAP*.
+. Define tu configuración LDAP.
+. Seleccione el tipo de autenticación: Búsqueda y enlace o Enlace directo.
+. Antes de guardar los cambios, seleccione *Probar inicio de sesión LDAP* en la parte superior de la página, ingrese el nombre de usuario y la contraseña de un usuario que sepa que existe y seleccione *Probar*.
+. Seleccione *Guardar*.
+
+
+
+
+== Gestionar cuentas de clúster autorizadas
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#authoritative-cluster-user-accounts["cuentas de usuario autorizadas"]Se gestionan desde la opción Administración de usuarios del menú superior derecho en NetApp Hybrid Cloud Control.  Este tipo de cuentas le permiten autenticarse en cualquier recurso de almacenamiento asociado con una instancia de nodos y clústeres de NetApp Hybrid Cloud Control.  Con esta cuenta, puede administrar volúmenes, cuentas, grupos de acceso y más en todos los clústeres.
+
+
+
+=== Crea una cuenta de clúster autorizada
+
+Puede crear una cuenta utilizando NetApp Hybrid Cloud Control.
+
+Esta cuenta se puede utilizar para iniciar sesión en Hybrid Cloud Control, la interfaz de usuario por nodo para el clúster y el clúster de almacenamiento en el software NetApp Element .
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione el icono de Opciones en la parte superior derecha y seleccione *Administración de usuarios*.
+. Seleccione *Crear usuario*.
+. Seleccione el tipo de autenticación: clúster o LDAP.
+. Complete una de las siguientes opciones:
++
+** Si seleccionaste LDAP, introduce el DN.
++
+
+TIP: Para usar LDAP, primero debe habilitar LDAP o LDAPS. Ver<<Habilitar LDAP>> .
+
+** Si seleccionaste Cluster como tipo de autenticación, introduce un nombre y una contraseña para la nueva cuenta.
+
+
+. Seleccione permisos de administrador o de solo lectura.
++
+
+TIP: Para ver los permisos del software NetApp Element , seleccione *Mostrar permisos heredados*.  Si selecciona un subconjunto de estos permisos, a la cuenta se le asignarán permisos de solo lectura.  Si selecciona todos los permisos heredados, a la cuenta se le asignarán permisos de administrador.
+
++
+
+TIP: Para garantizar que todos los elementos secundarios de un grupo hereden los permisos, cree un grupo administrador de organización DN en el servidor LDAP.  Todas las cuentas secundarias de ese grupo heredarán esos permisos.
+
+. Marque la casilla que indica que "He leído y acepto el Acuerdo de licencia de usuario final de NetApp ".
+. Seleccione *Crear usuario*.
+
+
+
+
+=== Editar una cuenta de clúster autorizada
+
+Puede cambiar los permisos o la contraseña de una cuenta de usuario mediante NetApp Hybrid Cloud Control.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione el icono de la esquina superior derecha y seleccione *Administración de usuarios*.
+. Opcionalmente, filtre la lista de cuentas de usuario seleccionando *Cluster*, *LDAP* o *Idp*.
++
+Si configuró usuarios en el clúster de almacenamiento con LDAP, esas cuentas mostrarán un Tipo de usuario "LDAP".  Si configuró usuarios en el clúster de almacenamiento con Idp, esas cuentas mostrarán un Tipo de usuario "Idp".
+
+. En la columna *Acciones* de la tabla, expanda el menú de la cuenta y seleccione *Editar*.
+. Realice los cambios necesarios.
+. Seleccione *Guardar*.
+. Cierre sesión en NetApp Hybrid Cloud Control.
++
+
+NOTE: La interfaz de usuario de NetApp Hybrid Cloud Control puede tardar hasta 2 minutos en actualizar el inventario.  Para actualizar manualmente el inventario, acceda al servicio de inventario de la interfaz de usuario de la API REST. `https://[management node IP]/inventory/1/` y correr `GET /installations​/{id}` para el clúster.
+
+. Inicie sesión en NetApp Hybrid Cloud Control.
+
+
+
+
+=== Eliminar una cuenta de usuario autorizada
+
+Puedes eliminar una o más cuentas cuando ya no sean necesarias.  Puedes eliminar una cuenta de usuario LDAP.
+
+No se puede eliminar la cuenta de usuario administrador principal del clúster autoritativo.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione el icono de la esquina superior derecha y seleccione *Administración de usuarios*.
+. En la columna *Acciones* de la tabla Usuarios, expanda el menú de la cuenta y seleccione *Eliminar*.
+. Confirme la eliminación seleccionando *Sí*.
+
+
+
+
+== Gestionar cuentas de volumen
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#volume-accounts["Cuentas de volumen"]se gestionan dentro de la tabla de volúmenes de control de la nube híbrida de NetApp .  Estas cuentas son específicas únicamente del clúster de almacenamiento en el que fueron creadas.  Este tipo de cuentas permite establecer permisos en volúmenes de toda la red, pero no tienen efecto fuera de esos volúmenes.
+
+Una cuenta de volumen contiene la autenticación CHAP necesaria para acceder a los volúmenes que le han sido asignados.
+
+
+
+=== Crea una cuenta de volumen
+
+Cree una cuenta específica para este volumen.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione *Almacenamiento* > *Volúmenes*.
+. Seleccione la pestaña *Cuentas*.
+. Seleccione el botón *Crear cuenta*.
+. Introduce un nombre para la nueva cuenta.
+. En la sección Configuración de CHAP, introduzca la siguiente información:
++
+** Secreto de iniciador para la autenticación de sesión de nodo CHAP
+** Secreto de destino para la autenticación de sesión de nodo CHAP
++
+
+NOTE: Para generar automáticamente cualquiera de las contraseñas, deje los campos de credenciales en blanco.
+
+
+
+. Seleccione *Crear cuenta*.
+
+
+
+
+=== Editar una cuenta de volumen
+
+Puedes modificar la información CHAP y cambiar si una cuenta está activa o bloqueada.
+
+
+IMPORTANT: Eliminar o bloquear una cuenta asociada al nodo de administración da como resultado un nodo de administración inaccesible.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione *Almacenamiento* > *Volúmenes*.
+. Seleccione la pestaña *Cuentas*.
+. En la columna *Acciones* de la tabla, expanda el menú de la cuenta y seleccione *Editar*.
+. Realice los cambios necesarios.
+. Confirme los cambios seleccionando *Sí*.
+
+
+
+
+=== Eliminar una cuenta de volumen
+
+Elimina una cuenta que ya no necesites.
+
+Antes de eliminar una cuenta de volumen, elimine y purgue primero todos los volúmenes asociados a la cuenta.
+
+
+IMPORTANT: Eliminar o bloquear una cuenta asociada al nodo de administración da como resultado un nodo de administración inaccesible.
+
+
+NOTE: Los volúmenes persistentes asociados a los servicios de gestión se asignan a una nueva cuenta durante la instalación o actualización.  Si utiliza volúmenes persistentes, no modifique ni elimine los volúmenes ni la cuenta asociada.  Si eliminas estas cuentas, podrías dejar tu nodo de administración inutilizable.
+
+.Pasos
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione *Almacenamiento* > *Volúmenes*.
+. Seleccione la pestaña *Cuentas*.
+. En la columna *Acciones* de la tabla, expanda el menú de la cuenta y seleccione *Eliminar*.
+. Confirme la eliminación seleccionando *Sí*.
+
+
+[discrete]
+== Encuentra más información
+
+* link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html["Obtén más información sobre las cuentas."]
+* link:../storage/task_data_manage_accounts_work_with_accounts_task.html["Trabajar con cuentas que utilizan CHAP"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

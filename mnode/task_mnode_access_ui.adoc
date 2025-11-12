@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_access_ui.html 
+summary: Puede acceder a la interfaz de usuario de administración o a la interfaz de usuario de la API REST. 
+keywords: netapp, mnode, management node, api, Element 
+---
+= Acceda al nodo de administración
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir de la versión 11.3 del software NetApp Element , el nodo de administración contiene dos interfaces de usuario: una interfaz de usuario para administrar servicios basados ​​en REST y una interfaz de usuario por nodo para administrar la configuración de red y clúster, así como las pruebas y utilidades del sistema operativo.
+
+Para clústeres que ejecutan la versión 11.3 o posterior del software Element, puede utilizar una de las dos interfaces siguientes:
+
+* Mediante la interfaz de usuario del nodo de administración.(`https:// [mNode IP}:442` ), puede realizar cambios en la configuración de red y clúster, ejecutar pruebas del sistema o utilizar utilidades del sistema.
+* Mediante la interfaz de usuario de la API REST integrada.(`https://[mNode IP}/mnode` ), puede ejecutar o comprender las API relacionadas con los servicios del nodo de administración, incluida la configuración del servidor proxy, las actualizaciones del nivel de servicio o la administración de activos.
+
+
+
+
+== Acceda a la interfaz de usuario de administración por nodo.
+
+Desde la interfaz de usuario de cada nodo, puede acceder a la configuración de red y clúster, y utilizar pruebas y utilidades del sistema.
+
+.Pasos
+. Acceda a la interfaz de usuario por nodo para el nodo de administración ingresando la dirección IP del nodo de administración seguida de :442.
++
+[listing]
+----
+https://[IP address]:442
+----
++
+image::mnode_per_node_442_ui.png[Interfaz de usuario por nodo de administración]
+
+. Introduzca el nombre de usuario y la contraseña del nodo de administración cuando se le solicite.
+
+
+
+
+== Acceda a la interfaz de usuario de la API REST del nodo de administración.
+
+Desde la interfaz de usuario de la API REST, puede acceder a un menú de API relacionadas con el servicio que controlan los servicios de administración en el nodo de administración.
+
+.Pasos
+. Para acceder a la interfaz de usuario de la API REST para los servicios de administración, ingrese la dirección IP del nodo de administración seguida de `/mnode` :
++
+[listing]
+----
+https://[IP address]/mnode
+----
++
+image::mnode_swagger_ui.png[Interfaz de usuario de la API REST del nodo de administración]
+
+. Seleccione *Autorizar* o cualquier icono de candado e introduzca las credenciales de administrador del clúster para obtener permisos para usar las API.
+
+
+[discrete]
+== Encuentra más información
+
+* link:task_mnode_enable_activeIQ.html["Habilitar Active IQ y la monitorización de NetApp"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

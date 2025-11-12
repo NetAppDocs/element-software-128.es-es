@@ -1,0 +1,252 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_manage_storage_cluster_assets.html 
+summary: Puede agregar, eliminar y cambiar los recursos del clúster de almacenamiento del nodo de administración mediante la interfaz de usuario de la API REST. 
+keywords: netapp, mnode, management node, rest api, Element, assets 
+---
+= Crear y administrar activos de clúster de almacenamiento
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede agregar nuevos recursos del clúster de almacenamiento al nodo de administración, editar las credenciales almacenadas para los recursos del clúster de almacenamiento conocidos y eliminar recursos del clúster de almacenamiento del nodo de administración mediante la API REST.
+
+.Lo que necesitarás
+* Asegúrese de que la versión de su clúster de almacenamiento esté ejecutando el software NetApp Element 11.3 o posterior.
+* Asegúrese de haber implementado un nodo de administración que ejecute la versión 11.3 o posterior.
+
+
+.Opciones de gestión de activos de clústeres de almacenamiento
+Elige una de las siguientes opciones:
+
+* <<Recuperar el ID de instalación y el ID de clúster de un recurso de clúster de almacenamiento>>
+* <<Agregar un nuevo recurso de clúster de almacenamiento>>
+* <<Edite las credenciales almacenadas para un activo de clúster de almacenamiento.>>
+* <<Eliminar un recurso de clúster de almacenamiento>>
+
+
+
+
+== Recuperar el ID de instalación y el ID de clúster de un recurso de clúster de almacenamiento
+
+Puede utilizar la API REST para obtener el ID de instalación y el ID del clúster de almacenamiento.  Necesita el ID de instalación para agregar un nuevo recurso de clúster de almacenamiento y el ID del clúster para modificar o eliminar un recurso de clúster de almacenamiento específico.
+
+.Pasos
+. Acceda a la interfaz de usuario de la API REST para el servicio de inventario introduciendo la dirección IP del nodo de administración seguida de `/inventory/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+. Seleccione *Autorizar* o cualquier icono de candado y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+. Seleccione *GET /installations*.
+. Seleccione *Probarlo*.
+. Seleccione *Ejecutar*.
++
+La API devuelve una lista de todas las instalaciones conocidas.
+
+. A partir del cuerpo de la respuesta con código 200, guarde el valor en el `id` campo, que puedes encontrar en la lista de instalaciones.  Este es el ID de instalación. Por ejemplo:
++
+[listing, subs="+quotes"]
+----
+"installations": [
+    {
+      *"id": "1234a678-12ab-35dc-7b4a-1234a5b6a7ba",*
+      "name": "my-sf-installation",
+      "_links": {
+        "collection": "https://localhost/inventory/1/installations",
+        "self": "https://localhost/inventory/1/installations/1234a678-12ab-35dc-7b4a-1234a5b6a7ba"
+      }
+    }
+  ]
+----
+. Acceda a la interfaz de usuario de la API REST para el servicio de almacenamiento introduciendo la dirección IP del nodo de administración seguida de `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleccione *Autorizar* o cualquier icono de candado y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+. Seleccione *GET /clusters*.
+. Seleccione *Probarlo*.
+. Introduzca el ID de instalación que guardó anteriormente en el `installationId` parámetro.
+. Seleccione *Ejecutar*.
++
+La API devuelve una lista de todos los clústeres de almacenamiento conocidos en esta instalación.
+
+. A partir del cuerpo de la respuesta con código 200, encuentre el clúster de almacenamiento correcto y guarde el valor en el clúster. `storageId` campo.  Este es el ID del clúster de almacenamiento.
+
+
+
+
+== Agregar un nuevo recurso de clúster de almacenamiento
+
+Puede utilizar la API REST para agregar uno o más activos nuevos del clúster de almacenamiento al inventario del nodo de administración.  Cuando se agrega un nuevo recurso de clúster de almacenamiento, este se registra automáticamente en el nodo de administración.
+
+.Lo que necesitarás
+* Has copiado el<<Recuperar el ID de instalación y el ID de clúster de un recurso de clúster de almacenamiento,ID del clúster de almacenamiento e ID de instalación>> para cualquier clúster de almacenamiento que desee agregar.
+* Si está agregando más de un nodo de almacenamiento, ha leído y comprendido las limitaciones delink:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["grupo autoritario"] y soporte para múltiples clústeres de almacenamiento.
++
+
+NOTE: Todos los usuarios definidos en el clúster autoritativo se definen como usuarios en todos los demás clústeres vinculados a la instancia de NetApp Hybrid Cloud Control.
+
+
+
+.Pasos
+. Acceda a la interfaz de usuario de la API REST para el servicio de almacenamiento introduciendo la dirección IP del nodo de administración seguida de `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleccione *Autorizar* o cualquier icono de candado y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+. Seleccione *POST /clusters*.
+. Seleccione *Probarlo*.
+. Introduzca la información del nuevo clúster de almacenamiento en los siguientes parámetros del campo *Cuerpo de la solicitud*:
++
+[listing]
+----
+{
+  "installationId": "a1b2c34d-e56f-1a2b-c123-1ab2cd345d6e",
+  "mvip": "10.0.0.1",
+  "password": "admin",
+  "userId": "admin"
+}
+----
++
+|===
+| Parámetro | Tipo | Descripción 
+
+
+| `installationId` | cadena | La instalación en la que se añadirá el nuevo clúster de almacenamiento.  Introduzca en este parámetro el ID de instalación que guardó anteriormente. 
+
+
+| `mvip` | cadena | La dirección IP virtual de gestión IPv4 (MVIP) del clúster de almacenamiento. 
+
+
+| `password` | cadena | La contraseña utilizada para comunicarse con el clúster de almacenamiento. 
+
+
+| `userId` | cadena | El ID de usuario utilizado para comunicarse con el clúster de almacenamiento (el usuario debe tener privilegios de administrador). 
+|===
+. Seleccione *Ejecutar*.
++
+La API devuelve un objeto que contiene información sobre el recurso de clúster de almacenamiento recién agregado, como el nombre, la versión y la información de la dirección IP.
+
+
+
+
+
+== Edite las credenciales almacenadas para un activo de clúster de almacenamiento.
+
+Puede editar las credenciales almacenadas que el nodo de administración utiliza para iniciar sesión en un clúster de almacenamiento.  El usuario que elija debe tener acceso de administrador del clúster.
+
+
+NOTE: Asegúrese de haber seguido los pasos en<<Recuperar el ID de instalación y el ID de clúster de un recurso de clúster de almacenamiento>> antes de continuar.
+
+.Pasos
+. Acceda a la interfaz de usuario de la API REST para el servicio de almacenamiento introduciendo la dirección IP del nodo de administración seguida de `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleccione *Autorizar* o cualquier icono de candado y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+. Seleccione *PUT /clusters/{storageId}*.
+. Seleccione *Probarlo*.
+. Pegue el ID del clúster de almacenamiento que copió anteriormente en el `storageId` parámetro.
+. Modifique uno o ambos de los siguientes parámetros en el campo *Cuerpo de la solicitud*:
++
+[listing]
+----
+{
+  "password": "adminadmin",
+  "userId": "admin"
+}
+----
++
+|===
+| Parámetro | Tipo | Descripción 
+
+
+| `password` | cadena | La contraseña utilizada para comunicarse con el clúster de almacenamiento. 
+
+
+| `userId` | cadena | El ID de usuario utilizado para comunicarse con el clúster de almacenamiento (el usuario debe tener privilegios de administrador). 
+|===
+. Seleccione *Ejecutar*.
+
+
+
+
+== Eliminar un recurso de clúster de almacenamiento
+
+Puede eliminar un recurso de clúster de almacenamiento si el clúster de almacenamiento ya no está en servicio.  Cuando se elimina un recurso de clúster de almacenamiento, este se anula automáticamente en el nodo de administración.
+
+
+NOTE: Asegúrese de haber seguido los pasos en<<Recuperar el ID de instalación y el ID de clúster de un recurso de clúster de almacenamiento>> antes de continuar.
+
+.Pasos
+. Acceda a la interfaz de usuario de la API REST para el servicio de almacenamiento introduciendo la dirección IP del nodo de administración seguida de `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Seleccione *Autorizar* o cualquier icono de candado y complete lo siguiente:
++
+.. Introduzca el nombre de usuario y la contraseña del clúster.
+.. Introduzca el ID del cliente como `mnode-client` .
+.. Seleccione *Autorizar* para iniciar una sesión.
+.. Cerrar la ventana.
+
+
+. Seleccione *DELETE /clusters/{storageId}*.
+. Seleccione *Probarlo*.
+. Introduzca el ID del clúster de almacenamiento que copió anteriormente en el `storageId` parámetro.
+. Seleccione *Ejecutar*.
++
+En caso de éxito, la API devuelve una respuesta vacía.
+
+
+
+[discrete]
+== Encuentra más información
+
+* link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["grupo autoritario"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

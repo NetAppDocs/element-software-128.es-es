@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listdrivehardware.html 
+sidebar: sidebar 
+keywords: drive,hardware,list,listing,listdrivehardware,drives 
+summary: Puede utilizar el método ListDriveHardware para listar todas las unidades conectadas a un nodo.  Cuando se utiliza en nodos individuales, este método devuelve información sobre el hardware de la unidad.  Cuando se utiliza en el nodo maestro del clúster MVIP, este método devuelve información de todas las unidades en todos los nodos. 
+---
+= Hardware de la unidad de lista
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ListDriveHardware` Método para listar todas las unidades conectadas a un nodo.  Cuando se utiliza en nodos individuales, este método devuelve información sobre el hardware de la unidad.  Cuando se utiliza en el nodo maestro del clúster MVIP, este método devuelve información de todas las unidades en todos los nodos.
+
+
+
+== Parámetros
+
+
+NOTE: La línea "securitySupported": true de la respuesta del método no implica que las unidades sean capaces de cifrar; solo que se puede consultar el estado de seguridad.  Si tiene un tipo de nodo con un número de modelo que termina en "-NE", los comandos para habilitar las funciones de seguridad en estas unidades fallarán.
+
+Este método tiene el siguiente parámetro:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+fuerza
+ a| 
+Establezca el valor en verdadero para ejecutar este método en todos los nodos.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+Hardware de la unidad
+ a| 
+Se devolvió la información del hardware de la unidad para el nodo.
+ a| 
+matriz de objetos JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+"method": "ListDriveHardware",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveHardware": [
+      {
+        "canonicalName": "sda",
+        "connected": true,
+        "dev": 2048,
+        "devPath": "/dev/slot0",
+        "driveEncryptionCapability": "fips",
+        "driveType": "Slice",
+        "lifeRemainingPercent": 98,
+        "lifetimeReadBytes": 0,
+        "lifetimeWriteBytes": 14012129542144,
+        "name": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "path": "/dev/sda",
+        "pathLink": "/dev/slot0",
+        "powerOnHours": 15489,
+        "product": "SAMSUNG MZ7GE240HMGR-00003",
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "scsiCompatId": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "scsiState": "Running",
+        "securityAtMaximum": false,
+        "securityEnabled": true,
+        "securityFrozen": false,
+        "securityLocked": false,
+        "securitySupported": true,
+        "serial": "S1M9NWAG501251",
+        "size": 240057409536,
+        "slot": 0,
+        "uncorrectableErrors": 0,
+        "uuid": "789aa05d-e49b-ff4f-f821-f60eed8e43bd",
+        "vendor": "Samsung",
+        "version": "EXT1303Q"
+      }
+   ]
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_enableencryptionatrest.adoc[Habilitar cifrado en reposo]

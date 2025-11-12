@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_delete_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot, delete 
+summary: Puedes eliminar una instantánea de grupo del sistema.  Al eliminar la instantánea del grupo, puede elegir si desea que se eliminen todas las instantáneas asociadas al grupo o que se conserven como instantáneas individuales. 
+---
+= Eliminar una instantánea de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes eliminar una instantánea de grupo del sistema.  Al eliminar la instantánea del grupo, puede elegir si desea que se eliminen todas las instantáneas asociadas al grupo o que se conserven como instantáneas individuales.
+
+Si elimina un volumen o una instantánea que sea miembro de una instantánea de grupo, ya no podrá revertir a la instantánea de grupo.  Sin embargo, puede revertir cada volumen individualmente.
+
+. Haz clic en *Protección de datos* > *Instantáneas de grupo*.
+. Haz clic en el icono de Acciones de la instantánea que deseas eliminar.
+. En el menú que aparece, haga clic en *Eliminar*.
+. Seleccione una de las siguientes opciones en el cuadro de diálogo de confirmación:
++
+** Haga clic en *Eliminar instantánea de grupo Y todos los miembros de la instantánea de grupo* para eliminar la instantánea de grupo y todas las instantáneas de los miembros.
+** Haz clic en *Conservar miembros de instantáneas de grupo como instantáneas individuales* para eliminar la instantánea de grupo pero conservar todas las instantáneas de los miembros.
+
+
+. Confirma la acción.
+

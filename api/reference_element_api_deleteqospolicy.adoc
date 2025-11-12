@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_deleteqospolicy.html 
+sidebar: sidebar 
+keywords: QoS,policy,policies,delete,deleting,DeleteQoSPolicy 
+summary: Puede utilizar el método DeleteQoSPolicy para eliminar una política QoS del sistema.  La configuración QoS para todos los volúmenes creados o modificados con esta política no se verá afectada. 
+---
+= Eliminar política de QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `DeleteQoSPolicy` Método para eliminar una política QoS del sistema.  La configuración QoS para todos los volúmenes creados o modificados con esta política no se verá afectada.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de política de qos
+ a| 
+El ID de la política QoS que se va a eliminar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 663,
+  "method": "DeleteQoSPolicy",
+  "params": {
+    "qosPolicyID": 4
+  }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 663,
+  "result": {}
+}
+----
+
+
+== Nueva versión
+
+9,6

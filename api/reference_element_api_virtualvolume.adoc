@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_virtualvolume.html 
+sidebar: sidebar 
+keywords: object,objects,virtualVolume 
+summary: El objeto virtualVolume contiene información de configuración sobre un volumen virtual, así como información sobre instantáneas del volumen virtual.  No incluye información sobre el tiempo de ejecución ni el uso.  Puede utilizar el método ListVirtualVolumes para recuperar esta información para un clúster. 
+---
+= volumen virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto virtualVolume contiene información de configuración sobre un volumen virtual, así como información sobre instantáneas del volumen virtual.  No incluye información sobre el tiempo de ejecución ni el uso.  Puedes usar el `ListVirtualVolumes` Método para recuperar esta información para un clúster.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+uniones
+ a| 
+Una lista de identificadores de enlace para este volumen virtual.
+ a| 
+matriz UUID
+
+
+
+ a| 
+niños
+ a| 
+Una lista de UUID de volúmenes virtuales que son hijos de este volumen virtual.
+ a| 
+matriz UUID
+
+
+
+ a| 
+descendientes
+ a| 
+Cuando se pasa recursive: true al método ListVirtualVolumes, contiene una lista de UUID de volúmenes virtuales que son descendientes de este volumen virtual.
+ a| 
+matriz UUID
+
+
+
+ a| 
+metadatos
+ a| 
+Pares clave-valor de los metadatos del volumen virtual, como el tipo de volumen virtual, el tipo de sistema operativo invitado, etc.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+ID de volumen virtual principal
+ a| 
+El ID del volumen virtual del volumen virtual principal.  Si el ID está compuesto solo por ceros, se trata de un volumen virtual independiente sin vínculo con un elemento principal.
+ a| 
+UUID
+
+
+
+ a| 
+ID de instantánea
+ a| 
+El identificador de la instantánea de volumen subyacente.  Este valor es "0" si el volumen virtual no representa una instantánea.
+ a| 
+entero
+
+
+
+ a| 
+snapshotInfo
+ a| 
+El objeto de instantánea para la instantánea asociada (nulo si no existe).
+ a| 
+xref:reference_element_api_snapshot.adoc[instantánea]
+
+
+
+ a| 
+estado
+ a| 
+Estado actual del volumen virtual. Valores posibles:
+
+* clonación: El volumen virtual se está procesando en respuesta a una operación de clonación o instantánea.
+* En espera: El volumen virtual está esperando a que se complete una operación de instantánea.
+* Listo: El volumen virtual está listo para su uso general.
+
+ a| 
+cadena
+
+
+
+ a| 
+contenedor de almacenamiento
+ a| 
+Un objeto que describe el contenedor de almacenamiento propietario de este volumen virtual.
+ a| 
+xref:reference_element_api_storagecontainer.adoc[contenedor de almacenamiento]
+
+
+
+ a| 
+ID de volumen virtual
+ a| 
+El identificador único del volumen virtual.
+ a| 
+UUID
+
+
+
+ a| 
+Tipo de volumen virtual
+ a| 
+El tipo de volumen virtual.
+ a| 
+cadena
+
+
+
+ a| 
+ID de volumen
+ a| 
+El identificador del volumen subyacente.
+ a| 
+entero
+
+
+
+ a| 
+información de volumen
+ a| 
+Cuando se pasa details: true al método ListVirtualVolumes, este miembro es un objeto que describe el volumen.
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+|===
+
+
+== Encuentra más información
+
+* xref:reference_element_api_listvirtualvolumes.adoc[Listar volúmenes virtuales]
+* xref:reference_element_api_snapshot.adoc[instantánea]
+* xref:reference_element_api_storagecontainer.adoc[contenedor de almacenamiento]
+* xref:reference_element_api_volume.adoc[volume]
+

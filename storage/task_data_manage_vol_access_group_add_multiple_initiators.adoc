@@ -1,0 +1,34 @@
+---
+permalink: storage/task_data_manage_vol_access_group_add_multiple_initiators.html 
+sidebar: sidebar 
+keywords: initiator, add to volume access group, access groups, add multiple initiators, create initiator 
+summary: Puede agregar varios iniciadores a un grupo de acceso a volúmenes existente para permitir el acceso a los volúmenes del grupo de acceso a volúmenes con o sin necesidad de autenticación CHAP. 
+---
+= Agregue varios iniciadores a un grupo de acceso por volumen.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede agregar varios iniciadores a un grupo de acceso a volúmenes existente para permitir el acceso a los volúmenes del grupo de acceso a volúmenes con o sin necesidad de autenticación CHAP.
+
+Cuando se agregan iniciadores a un grupo de acceso a volúmenes, los iniciadores tienen acceso a todos los volúmenes de ese grupo de acceso a volúmenes.
+
+
+TIP: Puede encontrar el iniciador de cada volumen haciendo clic en el icono Acciones y luego en *Ver detalles* para el volumen en la lista de volúmenes activos.
+
+Puede agregar varios iniciadores a un grupo de acceso a volúmenes existente para habilitar el acceso a los volúmenes y asignar credenciales CHAP únicas para cada iniciador dentro de ese grupo de acceso a volúmenes.  Esto le permite aplicar esta opción a los grupos de acceso por volumen que ya existen.
+
+Puede asignar atributos CHAP basados en el iniciador mediante una llamada a la API.  Para agregar un nombre de cuenta CHAP y credenciales por iniciador, debe usar la llamada a la API ModifyInitiator para eliminar y agregar el acceso y los atributos CHAP.
+
+Para más detalles, consultelink:../api/concept_element_api_about_the_api.html["Gestiona el almacenamiento con la API de Element"] .
+
+.Pasos
+. Haz clic en *Administración* > *Iniciadores*.
+. Seleccione los iniciadores que desea agregar a un grupo de acceso.
+. Haz clic en el botón *Acciones en lote*.
+. Haga clic en *Agregar al grupo de acceso por volumen*.
+. En el cuadro de diálogo Agregar a grupo de acceso por volumen, seleccione un grupo de acceso de la lista *Grupo de acceso por volumen*.
+. Haga clic en *Agregar*.
+

@@ -1,0 +1,16 @@
+---
+permalink: api/reference_trademark.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Marca
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NETAPP, el logotipo de NETAPP y las marcas enumeradas en la página de Marcas comerciales de NetApp son marcas comerciales de NetApp, Inc. Otros nombres de empresas y productos pueden ser marcas comerciales de sus respectivos propietarios.
+
+http://www.netapp.com/us/legal/netapptmlist.aspx[]

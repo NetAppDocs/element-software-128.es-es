@@ -1,0 +1,106 @@
+---
+permalink: storage/reference_intro_icon_reference.html 
+sidebar: sidebar 
+keywords: icons, element interface, actions, system resources, quick reference 
+summary: La interfaz del software NetApp Element muestra iconos que representan las acciones que puede realizar sobre los recursos del sistema. 
+---
+= Iconos en la interfaz de Elemento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz del software NetApp Element muestra iconos que representan las acciones que puede realizar sobre los recursos del sistema.
+
+La siguiente tabla proporciona una referencia rápida:
+
+|===
+
+
+| Icono | Descripción 
+
+
+ a| 
+image:../media/element_icon_action.gif["Icono de acciones en la interfaz web de Element OS"]
+ a| 
+Comportamiento
+
+
+
+ a| 
+image:../media/element_icon_backupto.gif["Icono de copia de seguridad en la interfaz web de Element OS"]
+ a| 
+Copia de seguridad a
+
+
+
+ a| 
+image:../media/element_icon_clone.gif["Icono de clonar en la interfaz web de Element OS"]
+ a| 
+Clonar o copiar
+
+
+
+ a| 
+image:../media/element_icon_delete.gif["Eliminar icono en la interfaz web de Element OS"]
+ a| 
+Eliminar o purgar
+
+
+
+ a| 
+image:../media/element_icon_edit.gif["Editar icono en la interfaz web de Element OS"]
+ a| 
+Editar
+
+
+
+ a| 
+image:../media/element_icon_filter.gif["Icono de filtro en la interfaz web de Element OS"]
+ a| 
+Filtrar
+
+
+
+ a| 
+image:../media/element_icon_pair.gif["Icono de par en la interfaz web de Element OS"]
+ a| 
+Par
+
+
+
+ a| 
+image:../media/element_icon_refresh.gif["Icono de actualización en la interfaz web de Element OS"]
+ a| 
+Refrescar
+
+
+
+ a| 
+image:../media/element_icon_restore.gif["Icono de restauración en la interfaz web de Element OS"]
+ a| 
+Restaurar
+
+
+
+ a| 
+image:../media/element_icon_restorefrom.gif["Restaurar desde el icono en la interfaz web de Element OS"]
+ a| 
+Restaurar desde
+
+
+
+ a| 
+image:../media/element_icon_rollback.gif["Icono de retroceso en la interfaz web de Element OS"]
+ a| 
+Reversión
+
+
+
+ a| 
+image:../media/element_icon_snapshot.gif["Icono de instantánea en la interfaz web de Element OS"]
+ a| 
+Snapshot
+
+|===

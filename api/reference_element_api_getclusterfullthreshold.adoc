@@ -1,0 +1,300 @@
+---
+permalink: api/reference_element_api_getclusterfullthreshold.html 
+sidebar: sidebar 
+keywords: cluster,get,getting,full,threshold,level,fullness,storage,capacity,getclusterfullthreshold 
+summary: Puede utilizar el método GetClusterFullThreshold para ver las etapas establecidas para los niveles de llenado del clúster.  Este método devuelve todas las métricas de plenitud del clúster. 
+---
+= Umbral completo del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetClusterFullThreshold` Método para visualizar las etapas establecidas para los niveles de plenitud del clúster.  Este método devuelve todas las métricas de plenitud del clúster.
+
+
+NOTE: Cuando un clúster alcanza la etapa de Error por llenado del clúster de bloques, las IOPS máximas en todos los volúmenes se reducen linealmente hasta las IOPS mínimas del volumen a medida que el clúster se acerca a la etapa Crítica.  Esto ayuda a evitar que el clúster alcance la etapa crítica de llenado del clúster de bloques.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+plenitud de bloque
+ a| 
+El nivel actual calculado de llenado de bloques del clúster.
+
+* etapa1Feliz: Sin alertas ni condiciones de error.  Corresponde al estado *Saludable* en la interfaz web.
+* stage2Aware: Sin alertas ni condiciones de error.  Corresponde al estado *Saludable* en la interfaz web.
+* Stage3Low: Su sistema no puede proporcionar protección de datos redundante ante dos fallos de nodo no simultáneos.  Corresponde al estado *Advertencia* en la interfaz web.  Puede configurar este nivel en la interfaz web (por defecto, el sistema activa esta alerta cuando la capacidad está un 3% por debajo del estado de Error).
+* Etapa 4 Crítica: El sistema no es capaz de proporcionar protección de datos redundante ante el fallo de un solo nodo.  No se pueden crear nuevos volúmenes ni clones.  Corresponde al estado *Error* en la interfaz de usuario de Element.
+* etapa5CompletamenteConsumido: Completamente consumido.  El clúster es de solo lectura y las conexiones iSCSI se mantienen, pero todas las escrituras están suspendidas.  Corresponde al estado *Crítico* en la interfaz de usuario de Element.
+
+ a| 
+cadena
+
+
+
+ a| 
+plenitud
+ a| 
+Refleja el nivel más alto de plenitud entre "plenitud de bloque" y "plenitud de metadatos".
+ a| 
+cadena
+
+
+
+ a| 
+factor de sobreaprovisionamiento de metadatos máximo
+ a| 
+Un valor representativo del número de veces que se puede sobreaprovisionar el espacio de metadatos en relación con la cantidad de espacio disponible.  Por ejemplo, si hubiera suficiente espacio de metadatos para almacenar 100 TiB de volúmenes y este número se estableciera en 5, entonces se podrían crear volúmenes por valor de 500 TiB.
+ a| 
+entero
+
+
+
+ a| 
+metadataFullness
+ a| 
+El nivel actual calculado de integridad de metadatos del clúster.
+
+* etapa1Feliz: Sin alertas ni condiciones de error.  Corresponde al estado *Saludable* en la interfaz web.
+* stage2Aware: Sin alertas ni condiciones de error.  Corresponde al estado *Saludable* en la interfaz web.
+* Stage3Low: Su sistema no puede proporcionar protección de datos redundante ante dos fallos de nodo no simultáneos.  Corresponde al estado *Advertencia* en la interfaz web.  Puede configurar este nivel en la interfaz web (por defecto, el sistema activa esta alerta cuando la capacidad está un 3% por debajo del estado de Error).
+* Etapa 4 Crítica: El sistema no es capaz de proporcionar protección de datos redundante ante el fallo de un solo nodo.  No se pueden crear nuevos volúmenes ni clones.  Corresponde al estado *Error* en la interfaz de usuario de Element.
+* etapa5CompletamenteConsumido: Completamente consumido.  El clúster es de solo lectura y las conexiones iSCSI se mantienen, pero todas las escrituras están suspendidas.  Corresponde al estado *Crítico* en la interfaz de usuario de Element.
+
+ a| 
+cadena
+
+
+
+ a| 
+porcentaje de reserva usada de la porción
+ a| 
+Condición de error.  Se activa una alerta del sistema si la utilización de la porción reservada es mayor que este valor.
+ a| 
+entero
+
+
+
+ a| 
+stage2AwareThreshold
+ a| 
+Estado de conciencia.  El valor que se establece para el nivel umbral del clúster de etapa 2.
+ a| 
+entero
+
+
+
+ a| 
+stage2BlockThresholdBytes
+ a| 
+El número de bytes que utiliza el clúster en el que se dará una condición de etapa 2.
+ a| 
+entero
+
+
+
+ a| 
+stage2MetadataThresholdBytes
+ a| 
+El número de bytes de metadatos que utiliza el clúster en el que se alcanzará una condición de llenado de etapa 2.
+ a| 
+
+
+
+ a| 
+stage3BlockThresholdBytes
+ a| 
+El número de bytes de almacenamiento que utiliza el clúster en el que se alcanzará una condición de llenado de etapa 3.
+ a| 
+entero
+
+
+
+ a| 
+stage3BlockThresholdPercent
+ a| 
+El valor porcentual establecido para la etapa 3.  Al alcanzar este porcentaje de carga, se publica una advertencia en el registro de alertas.
+ a| 
+entero
+
+
+
+ a| 
+stage3LowThreshold
+ a| 
+Condición de error.  El umbral en el que se genera una alerta del sistema debido a la baja capacidad de un clúster.
+ a| 
+entero
+
+
+
+ a| 
+stage3MetadataThresholdBytes
+ a| 
+El número de bytes de metadatos utilizados por el clúster en el que existirá una condición de llenado de etapa 3.
+ a| 
+entero
+
+
+
+ a| 
+stage3MetadataThresholdPercent
+ a| 
+Porcentaje establecido para la etapa 3 de integridad de metadatos.  Al alcanzar este porcentaje de carga, se publicará una advertencia en el registro de alertas.
+ a| 
+entero
+
+
+
+ a| 
+stage4BlockThresholdBytes
+ a| 
+El número de bytes de almacenamiento que utiliza el clúster en el que se alcanzará una condición de llenado de etapa 4.
+ a| 
+entero
+
+
+
+ a| 
+stage4CriticalThreshold
+ a| 
+Condición de error.  El umbral en el que se crea una alerta del sistema para advertir sobre una capacidad críticamente baja en un clúster.
+ a| 
+entero
+
+
+
+ a| 
+stage4MetadataThresholdBytes
+ a| 
+El número de bytes de metadatos utilizados por el clúster en el que existirá una condición de llenado de etapa 4.
+ a| 
+entero
+
+
+
+ a| 
+stage5BlockThresholdBytes
+ a| 
+El número de bytes de almacenamiento utilizados por el clúster en el que existirá una condición de llenado de etapa 5.
+ a| 
+entero
+
+
+
+ a| 
+stage5MetadataThresholdBytes
+ a| 
+El número de bytes de metadatos utilizados por el clúster en el que existirá una condición de llenado de etapa 5.
+ a| 
+entero
+
+
+
+ a| 
+sumaTotalDeBytesDelClúster
+ a| 
+La capacidad física del clúster, medida en bytes.
+ a| 
+entero
+
+
+
+ a| 
+sumaTotalMetadataClusterBytes
+ a| 
+La cantidad total de espacio que se puede utilizar para almacenar metadatos.
+ a| 
+entero
+
+
+
+ a| 
+suma de bytes del clúster usados
+ a| 
+El número de bytes de almacenamiento utilizados en el clúster.
+ a| 
+entero
+
+
+
+ a| 
+sumaUsedMetadataClusterBytes
+ a| 
+La cantidad de espacio utilizado en las unidades de volumen para almacenar metadatos.
+ a| 
+entero
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method" : "GetClusterFullThreshold",
+   "params" : {},
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+    "blockFullness":"stage1Happy",
+    "fullness":"stage3Low",
+    "maxMetadataOverProvisionFactor":5,
+    "metadataFullness":"stage3Low",
+    "sliceReserveUsedThresholdPct":5,
+    "stage2AwareThreshold":3,
+    "stage2BlockThresholdBytes":2640607661261,
+    "stage3BlockThresholdBytes":8281905846682,
+    "stage3BlockThresholdPercent":5,
+    "stage3LowThreshold":2,
+    "stage4BlockThresholdBytes":8641988709581,
+    "stage4CriticalThreshold":1,
+    "stage5BlockThresholdBytes":12002762096640,
+    "sumTotalClusterBytes":12002762096640,
+    "sumTotalMetadataClusterBytes":404849531289,
+    "sumUsedClusterBytes":45553617581,
+    "sumUsedMetadataClusterBytes":31703113728
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_modifyclusterfullthreshold.adoc[Modificar UmbralCompletoDeClúster]

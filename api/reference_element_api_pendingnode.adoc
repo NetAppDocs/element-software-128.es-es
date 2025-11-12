@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_pendingnode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingNode 
+summary: El objeto pendingNode contiene información sobre un nodo que se puede agregar a un clúster.  Utilice el método de la API ListPendingNodes para obtener una lista de esta información para todos los nodos pendientes.  Puedes agregar cualquiera de los nodos enumerados a un clúster utilizando el método de la API AddNodes. 
+---
+= nodo pendiente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto pendingNode contiene información sobre un nodo que se puede agregar a un clúster.  Utilice el `ListPendingNodes` Método API para devolver una lista de esta información para todos los nodos pendientes.  Puedes agregar cualquiera de los nodos enumerados a un clúster usando el `AddNodes` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+cipi
+ a| 
+La dirección IP del clúster asignada al nodo.
+ a| 
+cadena
+
+
+
+ a| 
+clave de nodo activo
+ a| 
+Una clave única que permite que el nodo se una al clúster automáticamente después de una instalación exitosa del software.
+ a| 
+cadena
+
+
+
+ a| 
+ID de nodo asignado
+ a| 
+El ID de nodo asignado al nodo.
+ a| 
+cadena
+
+
+
+ a| 
+manejador asíncrono
+ a| 
+El identificador del método asíncrono que puede utilizar para consultar el estado de la operación.
+ a| 
+entero
+
+
+
+ a| 
+nombre del chasis
+ a| 
+Identifica de forma única un chasis; idéntico para todos los nodos en un mismo chasis.
+ a| 
+cadena
+
+
+
+ a| 
+cip
+ a| 
+La dirección IP del clúster asignada al nodo.
+ a| 
+cadena
+
+
+
+ a| 
+mip
+ a| 
+La dirección IP de gestión asignada al nodo.
+ a| 
+cadena
+
+
+
+ a| 
+nodoSlot
+ a| 
+Para las plataformas HCI, la letra correspondiente a la ranura del chasis en la que se encuentra este nodo ("A", "B", "C" o "D").  Para las plataformas de almacenamiento, este valor es nulo.
+ a| 
+cadena
+
+
+
+ a| 
+ID de nodo activo pendiente
+ a| 
+El ID del nodo pendiente.
+ a| 
+entero
+
+
+
+ a| 
+Información de la plataforma
+ a| 
+Información de hardware del nodo.  Miembros:
+
+* Tipo de chasis: La plataforma de hardware del nodo.
+* cpuModel: El modelo de CPU de la plataforma de hardware.
+* nodeMemoryGB: Cantidad de memoria instalada en la plataforma física en GB.
+* nodeType: El nombre del modelo de nodo.
+* platformConfigVersion: La versión del software configurada para el hardware de este nodo.
+
+ a| 
+Objeto JSON
+
+
+
+ a| 
+role
+ a| 
+El rol del nodo en el clúster. Valores posibles:
+
+* Gestión
+* Almacenamiento
+* Calcular
+* Testigo
+
+ a| 
+
+
+
+ a| 
+sorbo
+ a| 
+La dirección IP de almacenamiento (iSCSI) asignada al nodo.
+ a| 
+cadena
+
+
+
+ a| 
+Versión del software
+ a| 
+La versión actual del software Element que se ejecuta en el nodo.
+ a| 
+cadena
+
+|===
+
+
+== Encuentra más información
+
+* xref:reference_element_api_addnodes.adoc[Agregar nodos]
+* xref:reference_element_api_listpendingnodes.adoc[Lista de nodos pendientes]
+

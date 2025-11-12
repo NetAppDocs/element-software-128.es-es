@@ -1,0 +1,31 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshots.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, retention, policies, group, snapshots 
+summary: Las etiquetas de SnapMirror especifican la política de retención de instantáneas en el punto final de SnapMirror .  Puedes añadir etiquetas a las instantáneas y agrupar instantáneas. 
+---
+= Agregar etiquetas de SnapMirror a las instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las etiquetas de SnapMirror especifican la política de retención de instantáneas en el punto final de SnapMirror .  Puedes añadir etiquetas a las instantáneas y agrupar instantáneas.
+
+Puede ver las etiquetas disponibles desde un cuadro de diálogo de relación SnapMirror existente o desde NetApp ONTAP System Manager.
+
+
+IMPORTANT: Al agregar una etiqueta a una instantánea de grupo, se sobrescriben las etiquetas existentes en las instantáneas individuales.
+
+.Lo que necesitarás
+* SnapMirror está habilitado en el clúster.
+* La etiqueta que desea agregar ya existe en ONTAP.
+
+
+.Pasos
+. Haz clic en *Protección de datos* > *Instantáneas* o en la página *Instantáneas de grupo*.
+. Haga clic en el icono *Acciones* de la instantánea o instantánea de grupo a la que desea agregar una etiqueta de SnapMirror .
+. En el cuadro de diálogo *Editar instantánea*, introduzca el texto en el campo *Etiqueta de SnapMirror *.  La etiqueta debe coincidir con una etiqueta de regla en la política aplicada a la relación SnapMirror .
+. Haz clic en *Guardar cambios*.
+

@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_networkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,networkInterface 
+summary: El objeto networkInterface contiene información de configuración para interfaces de red individuales en un nodo de almacenamiento. 
+---
+= Interfaz de red
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto networkInterface contiene información de configuración para interfaces de red individuales en un nodo de almacenamiento.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+DIRECCIÓN
+ a| 
+La dirección de gestión IPv4 de la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+addressV6
+ a| 
+La dirección de gestión IPv6 de la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+transmisión
+ a| 
+La dirección de difusión de la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+dirección MAC
+ a| 
+La dirección MAC de la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+mtu
+ a| 
+La Unidad Máxima de Transferencia, en bytes, de la interfaz.
+ a| 
+entero
+
+
+
+ a| 
+nombre
+ a| 
+El nombre de la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+espacio de nombres
+ a| 
+Independientemente de si a esta interfaz se le asigna o no un espacio de nombres de red virtual.
+ a| 
+booleano
+
+
+
+ a| 
+máscara de red
+ a| 
+La máscara de subred de la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+Estado operativo de la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+tipo
+ a| 
+El tipo de interfaz (maestro de enlace, esclavo de enlace, etc.).
+ a| 
+cadena
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+El ID de VLAN asignado a la interfaz en la red virtual.
+ a| 
+entero
+
+|===

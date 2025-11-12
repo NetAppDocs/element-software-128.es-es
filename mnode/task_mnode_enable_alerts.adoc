@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_alerts.html 
+summary: No puedes configurar los ajustes para monitorizar las alertas en tu sistema de almacenamiento all-flash SolidFire . 
+keywords: netapp, Element, management node, mnode, ui, alerts, alert monitoring 
+---
+= Configurar la monitorización de alertas
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Las herramientas de monitorización de alertas están configuradas para la monitorización de alertas de NetApp HCI .  Estas herramientas no están configuradas ni se utilizan para el almacenamiento all-flash SolidFire .  Al ejecutar las herramientas para estos clústeres se produce el siguiente error 405, lo cual es de esperar dada la configuración: `webUIParseError : Invalid response from server. 405`
+
+Para obtener más información sobre la configuración de la supervisión de alertas para NetApp HCI, consultelink:https://docs.netapp.com/us-en/hci/docs/task_mnode_enable_alerts.html["Configurar la monitorización de alertas"^]

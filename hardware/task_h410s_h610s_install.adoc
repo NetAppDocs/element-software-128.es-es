@@ -1,0 +1,262 @@
+---
+permalink: hardware/task_h410s_h610s_install.html 
+sidebar: sidebar 
+keywords: h410s, h610s, hardware installation, hardware maintenance 
+summary: Antes de comenzar a utilizar su sistema de almacenamiento totalmente flash, debe instalar y configurar correctamente los nodos de almacenamiento. 
+---
+= Instalar nodos de almacenamiento de la serie H
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de comenzar a utilizar su sistema de almacenamiento totalmente flash, debe instalar y configurar correctamente los nodos de almacenamiento.
+
+
+TIP: Ver ellink:../media/hseries_isi.pdf["póster"^] para una representación visual de las instrucciones.
+
+* <<Diagramas de flujo de trabajo>>
+* <<Prepárese para la instalación>>
+* <<Instala los rieles>>
+* <<Instalar y cablear los nodos>>
+* <<Configurar los nodos>>
+* <<Crear un clúster>>
+
+
+
+
+== Diagramas de flujo de trabajo
+
+Los diagramas de flujo que se muestran aquí ofrecen una visión general de alto nivel de los pasos de instalación.  Los pasos varían ligeramente dependiendo del modelo de la serie H.
+
+
+
+=== H410S
+
+image::../media/h410s_isi_workflow.png[Flujo de trabajo de instalación del H410S]
+
+
+
+=== H610S
+
+
+NOTE: Los términos "nodo" y "chasis" se utilizan indistintamente en el caso del H610S, porque el nodo y el chasis no son componentes separados, a diferencia de lo que ocurre en un chasis de 2U y cuatro nodos.
+
+image::../media/h610s_isi_workflow.png[Flujo de trabajo de instalación del H610S]
+
+
+
+== Prepárese para la instalación
+
+Para preparar la instalación, haga un inventario del hardware que se le envió y póngase en contacto con el soporte de NetApp si falta algún elemento.
+
+Asegúrese de tener los siguientes elementos en el lugar de instalación:
+
+* Espacio en rack para el sistema.
+
+
+[cols="2*"]
+|===
+| Tipo de nodo | espacio en rack 
+
+
+| nodos H410S | Dos unidades de rack (2U) 
+
+
+| nodos H610S | Una unidad de rack (1U) 
+|===
+* Cables o transceptores de conexión directa SFP28/SFP+
+* Cables CAT5e o superiores con conector RJ45
+* Un conmutador KVM (teclado, vídeo y ratón) para configurar su sistema.
+* Memoria USB (opcional)
+
+
+
+TIP: El hardware que se le envíe dependerá de lo que haya pedido.  Un nuevo pedido de 2U y cuatro nodos incluye el chasis, el bisel, el kit de rieles deslizantes, las unidades, los nodos de almacenamiento y los cables de alimentación (dos por chasis).  Si solicita nodos de almacenamiento H610S, las unidades vienen instaladas en el chasis.
+
+
+CAUTION: Al instalar el hardware, asegúrese de retirar todo el material de embalaje y el envoltorio de la unidad.  Esto evitará que los nodos se sobrecalienten y se apaguen.
+
+
+
+== Instala los rieles
+
+El pedido de hardware que se le envió incluye un juego de rieles deslizantes.  Necesitará un destornillador para completar la instalación del riel.  Los pasos de instalación varían ligeramente para cada modelo de nodo.
+
+
+TIP: Instale los soportes desde la parte inferior del rack hasta la parte superior para evitar que el equipo se vuelque.  Si su rack incluye dispositivos estabilizadores, instálelos antes de instalar el hardware.
+
+* <<H410S>>
+* <<H610S>>
+
+
+
+
+=== H410S
+
+Los nodos H410S se instalan en un chasis de la serie H de 2U y cuatro nodos, que se envía con dos juegos de adaptadores.  Si desea instalar el chasis en un rack con orificios redondos, utilice los adaptadores adecuados para un rack con orificios redondos.  Los rieles para nodos H410S se ajustan a un rack de entre 29 y 33,5 pulgadas de profundidad.  Cuando el riel está completamente contraído, mide 28 pulgadas de largo, y las secciones delantera y trasera del riel se mantienen unidas por un solo tornillo.
+
+
+CAUTION: Si instala el chasis sobre un riel completamente contraído, las secciones delantera y trasera del riel podrían separarse.
+
+.Pasos
+. Alinea la parte delantera del riel con los agujeros del poste delantero del estante.
+. Empuja los ganchos de la parte delantera del riel hacia los orificios del poste delantero del portaequipajes y luego hacia abajo, hasta que las clavijas con resorte encajen en los orificios del portaequipajes.
+. Fije el riel al estante con tornillos.  Aquí tenéis una ilustración del riel izquierdo fijado a la parte delantera del estante:
++
+image::../media/h410s_rail.gif[Instalación de rieles para 2U]
+
+. Extienda la sección trasera del riel hasta el poste trasero del portaequipajes.
+. Alinea los ganchos de la parte trasera del riel con los orificios correspondientes del poste trasero, asegurándote de que la parte delantera y la trasera del riel estén al mismo nivel.
+. Monte la parte trasera del riel en el soporte y fíjelo con tornillos.
+. Repita todos los pasos anteriores para el otro lado del estante.
+
+
+
+
+=== H610S
+
+Aquí se muestra una ilustración para la instalación de rieles para un nodo de almacenamiento H610S:
+
+image::../media/h610s_rail_isi.gif[Instalación de rieles para el nodo de almacenamiento H610S.]
+
+
+TIP: El H610S tiene rieles izquierdo y derecho.  Coloque el orificio del tornillo hacia abajo para que el tornillo de mariposa H610S pueda fijar el chasis al riel.
+
+
+
+== Instalar y cablear los nodos
+
+El nodo de almacenamiento H410S se instala en un chasis de 2U y cuatro nodos.  Para el H610S, instale el chasis/nodo directamente sobre los rieles del rack.
+
+
+CAUTION: Retire todo el material de embalaje y el envoltorio de la unidad.  Esto evita que los nodos se sobrecalienten y se apaguen.
+
+* <<H410S>>
+* <<H610S>>
+
+
+
+
+=== H410S
+
+.Pasos
+. Instale los nodos H410S en el chasis.  Aquí tenéis un ejemplo de vista trasera de un chasis con cuatro nodos instalados:
++
+image::../media/sf_isi_chassis_rear.png[Esta figura muestra la parte posterior de un 2U.]
+
++
+
+WARNING: Tenga cuidado al levantar los componentes e instalarlos en el bastidor.  Un chasis vacío de dos unidades de rack (2U) y cuatro nodos pesa 54,45 lb (24,7 kg) y un nodo pesa 8,0 lb (3,6 kg).
+
+. Instala las unidades.
++
+image::../media/hci_stor_node_ssd_bays.gif[Esta figura muestra la parte frontal del 2U.]
+
+. Conectar los nodos mediante cable.
++
+
+IMPORTANT: Si las rejillas de ventilación de la parte trasera del chasis están bloqueadas por cables o etiquetas, esto puede provocar fallos prematuros de los componentes debido al sobrecalentamiento.
+
++
+image::../media/hci_isi_storage_cabling.png[Esta figura muestra el cableado de un nodo de almacenamiento H410S.]
+
++
+** Conecte dos cables CAT5e o superiores en los puertos A y B para la conectividad de gestión.
+** Conecte dos cables o transceptores SFP28/SFP+ en los puertos C y D para la conectividad de almacenamiento.
+** (Opcional, recomendado) Conecte un cable CAT5e en el puerto IPMI para conectividad de administración fuera de banda.
+
+
+. Conecte los cables de alimentación a las dos unidades de alimentación por chasis y conéctelos a una PDU de 240 V o a una toma de corriente.
+. Encendido de los nodos.
++
+
+NOTE: El nodo tarda aproximadamente seis minutos en arrancar.
+
++
+image::../media/hci_poweron_isg.gif[Esta figura muestra los botones de encendido en los nodos de la 2U.]
+
+
+
+
+
+=== H610S
+
+.Pasos
+. Instale el chasis H610S.  Aquí se muestra una ilustración para la instalación del nodo/chasis en el rack:
++
+image::../media/h610s_chassis_isi.gif[Muestra la instalación del nodo/chasis H610S en el rack.]
+
++
+
+WARNING: Tenga cuidado al levantar los componentes e instalarlos en el bastidor.  Un chasis H610S pesa 40,5 lb (18,4 kg).
+
+. Conectar los nodos mediante cable.
++
+
+IMPORTANT: Si las rejillas de ventilación de la parte trasera del chasis están bloqueadas por cables o etiquetas, esto puede provocar fallos prematuros de los componentes debido al sobrecalentamiento.
+
++
+image::../media/h600s_isi_noderear.png[Esta figura muestra el cableado del nodo de almacenamiento H610S.]
+
++
+** Conecte el nodo a una red 10/25GbE utilizando dos cables SFP28 o SFP+.
+** Conecte el nodo a una red 1GbE utilizando dos conectores RJ45.
+** Conecte el nodo a una red 1GbE utilizando un conector RJ-45 en el puerto IPMI.
+** Conecte ambos cables de alimentación al nodo.
+
+
+. Encendido de los nodos.
++
+
+NOTE: El nodo tarda aproximadamente cinco minutos y 30 segundos en arrancar.
+
++
+image::../media/h600s_isi_nodefront.png[Esta figura muestra la parte frontal del chasis H610S con el botón de encendido resaltado.]
+
+
+
+
+
+== Configurar los nodos
+
+Una vez instalados los racks y el cableado del hardware, ya puede configurar su nuevo recurso de almacenamiento.
+
+.Pasos
+. Conecta un teclado y un monitor al nodo.
+. En la interfaz de usuario del terminal (TUI) que se muestra, configure los ajustes de red y clúster para el nodo utilizando la navegación en pantalla.
++
+
+NOTE: Debes obtener la dirección IP del nodo desde la interfaz de usuario de texto (TUI).  Esto es necesario cuando se agrega el nodo a un clúster.  Después de guardar la configuración, el nodo queda en estado pendiente y puede añadirse a un clúster.  Consulte la <insertar enlace a la sección de Configuración>.
+
+. Configure la administración fuera de banda utilizando el controlador de administración de la placa base (BMC).  Estos pasos se aplican *únicamente a los nodos H610S*.
++
+.. Utilice un navegador web y acceda a la dirección IP predeterminada de BMC : 192.168.0.120
+.. Inicia sesión usando *root* como nombre de usuario y *calvin* como contraseña.
+.. Desde la pantalla de administración del nodo, vaya a *Configuración* > *Configuración de red* y configure los parámetros de red para el puerto de administración fuera de banda.
+
+
+
+
+
+TIP: Ver https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_access_BMC_and_change_IP_address_on_H610S["Este artículo de la base de conocimientos (se requiere iniciar sesión)"] .
+
+
+
+== Crear un clúster
+
+Después de agregar el nodo de almacenamiento a su instalación y configurar el nuevo recurso de almacenamiento, estará listo para crear un nuevo clúster de almacenamiento.
+
+.Pasos
+. Desde un cliente en la misma red que el nodo recién configurado, acceda a la interfaz de usuario del software NetApp Element introduciendo la dirección IP del nodo.
+. Introduzca la información requerida en la ventana **Crear un nuevo clúster**. Ver ellink:../setup/concept_setup_overview.html["Descripción general de la configuración"^] Para más información.
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

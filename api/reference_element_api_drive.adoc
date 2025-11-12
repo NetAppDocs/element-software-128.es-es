@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_drive.html 
+sidebar: sidebar 
+keywords: objects,object,drive 
+summary: El objeto de unidad contiene información sobre las unidades individuales en los nodos activos del clúster.  Este objeto contiene detalles sobre las unidades que se han agregado como metadatos de volumen o unidades de bloque, así como sobre las unidades que aún no se han agregado y están disponibles.  Puede recuperar esta información con el método de la API ListDrives. 
+---
+= conducir
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de unidad contiene información sobre las unidades individuales en los nodos activos del clúster.  Este objeto contiene detalles sobre las unidades que se han agregado como metadatos de volumen o unidades de bloque, así como sobre las unidades que aún no se han agregado y están disponibles.  Puedes recuperar esta información con el `ListDrives` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.  Este objeto siempre es nulo y no se puede modificar.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+capacidad
+ a| 
+La capacidad total de la unidad, en bytes.
+ a| 
+entero
+
+
+
+ a| 
+ranura del chasis
+ a| 
+Para las plataformas HCI, este valor es la letra del nodo y el número de ranura en el chasis del servidor donde se encuentra esta unidad.  Para las plataformas de almacenamiento, el número de ranura es una representación en cadena del entero "ranura".
+ a| 
+cadena
+
+
+
+ a| 
+Detalle de fallo de la unidad
+ a| 
+Si el estado de una unidad es "Fallo", este campo proporciona más detalles sobre por qué se marcó la unidad como fallida.
+ a| 
+cadena
+
+
+
+ a| 
+driveID
+ a| 
+El ID de esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+motivo de fallo de seguridad de la unidad
+ a| 
+Si la activación o desactivación de la seguridad de la unidad falló, indique el motivo del fallo.  Si el valor es "ninguno", no hubo ningún fallo.
+ a| 
+cadena
+
+
+
+ a| 
+ID de clave
+ a| 
+El ID de clave utilizado por el proveedor de claves para adquirir la clave de autenticación para desbloquear esta unidad.
+ a| 
+UUID
+
+
+
+ a| 
+ID del proveedor de clave
+ a| 
+Identifica al proveedor de la clave de autenticación para desbloquear esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+ID de nodo
+ a| 
+El ID del nodo que contiene esta unidad.
+ a| 
+entero
+
+
+
+ a| 
+tamaño del archivo del segmento
+ a| 
+Tamaño del archivo de segmento de la unidad, en bytes.
+ a| 
+entero
+
+
+
+ a| 
+de serie
+ a| 
+El número de serie de la unidad.
+ a| 
+cadena
+
+
+
+ a| 
+ranura
+ a| 
+El número de ranura en el chasis del servidor donde se encuentra esta unidad, o -1 si se utiliza un dispositivo SATADimm para la unidad de metadatos interna.
+ a| 
+entero
+
+
+
+ a| 
+estado
+ a| 
+Estado de la unidad. Valores posibles:
+
+* disponible: Una unidad disponible.
+* activo: Una unidad activa.
+* Borrando: Se está realizando un borrado seguro de la unidad.  Cualquier dato que contenga esa unidad se eliminará permanentemente.
+* Falló: Una unidad que ha fallado.  Los datos que anteriormente se encontraban en la unidad se han migrado a otras unidades del clúster.
+* Extracción: Se está procediendo a extraer una unidad.  Los datos que anteriormente se encontraban en la unidad se están migrando a otras unidades del clúster.
+
+ a| 
+cadena
+
+
+
+ a| 
+tipo
+ a| 
+El tipo de transmisión. Valores posibles:
+
+* volumen: Almacena metadatos de volumen.
+* bloque: Almacena datos de bloque.
+* Desconocido: El tipo de unidad aún no está activo y está por determinar.
+
+ a| 
+cadena
+
+
+
+ a| 
+capacidad utilizable
+ a| 
+La capacidad utilizable de la unidad, en bytes.
+ a| 
+entero
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listdrives.adoc[ListDrives]

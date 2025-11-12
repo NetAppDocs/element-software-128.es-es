@@ -1,0 +1,114 @@
+---
+permalink: api/reference_element_api_listsnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoints,endpoint,list,listing,listsnapmirrorrelationships 
+summary: La interfaz web del software Element utiliza el método ListSnapMirrorRelationships para enumerar una o todas las relaciones SnapMirror en un clúster de almacenamiento Element. 
+---
+= Relaciones de espejo de ajuste de lista
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz web del software Element utiliza `ListSnapMirrorRelationships` método para listar una o todas las relaciones de SnapMirror en un clúster de almacenamiento de Element.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+Enumere únicamente las relaciones asociadas con el ID de punto final especificado.  Si no se proporciona un ID de punto de conexión, el sistema enumera las relaciones de todos los puntos de conexión SnapMirror conocidos.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+volumen de destino
+ a| 
+Enumere las relaciones asociadas con el volumen de destino especificado.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+Volumen de origen
+ a| 
+Enumera las relaciones asociadas al volumen de origen especificado.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+vserver
+ a| 
+Enumera las relaciones en el Vserver especificado.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ID de relación
+ a| 
+Enumera las relaciones asociadas con el ID de relación especificado.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorRelationships
+ a| 
+Una lista de objetos que contienen información sobre las relaciones de SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]formación
+
+|===
+
+
+== Nueva versión
+
+10,1

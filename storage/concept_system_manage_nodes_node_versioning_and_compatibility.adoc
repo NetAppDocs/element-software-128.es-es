@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_nodes_node_versioning_and_compatibility.html 
+sidebar: sidebar 
+keywords: compatibility, node version, clusters, software version, compatible versions, major, minor, micro 
+summary: La compatibilidad de los nodos se basa en la versión del software Element instalada en un nodo.  Los clústeres de almacenamiento basados en software de Element crean automáticamente una imagen de un nodo a la versión del software de Element en el clúster si el nodo y el clúster no tienen versiones compatibles. 
+---
+= Control de versiones y compatibilidad de nodos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La compatibilidad de los nodos se basa en la versión del software Element instalada en un nodo.  Los clústeres de almacenamiento basados en software de Element crean automáticamente una imagen de un nodo a la versión del software de Element en el clúster si el nodo y el clúster no tienen versiones compatibles.
+
+La siguiente lista describe los niveles de importancia de las versiones de software que componen el número de versión del software Element:
+
+* *Importante*
++
+El primer número designa una versión del software.  No se puede agregar un nodo con un número de componente principal a un clúster que contenga nodos con un número de parche principal diferente, ni se puede crear un clúster con nodos de versiones principales mixtas.
+
+* *Menor*
++
+El segundo número designa características de software menores o mejoras a características de software existentes que se han añadido a una versión principal.  Este componente se incrementa dentro de un componente de versión principal para indicar que esta versión incremental no es compatible con ninguna otra versión incremental del software Element que tenga un componente secundario diferente.  Por ejemplo, la versión 11.0 no es compatible con la 11.1, y la versión 11.1 no es compatible con la 11.2.
+
+* *Micro*
++
+El tercer número designa un parche compatible (versión incremental) para la versión del software Element representada por los componentes mayor.menor.  Por ejemplo, la versión 11.0.1 es compatible con la versión 11.0.2, y la versión 11.0.2 es compatible con la versión 11.0.3.
+
+
+
+Para garantizar la compatibilidad, los números de versión principal y secundaria deben coincidir.  Los números micro no tienen que coincidir para ser compatibles.

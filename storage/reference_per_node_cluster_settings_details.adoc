@@ -1,0 +1,74 @@
+---
+permalink: storage/reference_per_node_cluster_settings_details.html 
+sidebar: sidebar 
+keywords: nodes, changing cluster settings, per-node UI 
+summary: Puede verificar la configuración del clúster para un nodo de almacenamiento después de la configuración del clúster y modificar el nombre de host del nodo. 
+---
+= Detalles de configuración del clúster desde la interfaz de usuario por nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede verificar la configuración del clúster para un nodo de almacenamiento después de la configuración del clúster y modificar el nombre de host del nodo.
+
+La siguiente lista describe la configuración del clúster para un nodo de almacenamiento indicado en la página *Configuración del clúster* de la interfaz de usuario por nodo. (`https://<node_IP>:442/hcc/node/cluster-settings`).
+
+* *Role*
++
+Función que desempeña el nodo en el clúster. Valores posibles:
+
++
+** Almacenamiento: Nodo de almacenamiento o de canal de fibra.
+** Gestión: Nodo es un nodo de gestión.
+
+
+* *Nombre de host*
++
+Nombre del nodo.
+
+* *Grupo*
++
+Nombre del clúster.
+
+* *Membresía de grupo*
++
+Estado del nodo. Valores posibles:
+
++
+** Disponible: El nodo no tiene un nombre de clúster asociado y aún no forma parte de un clúster.
+** Pendiente: El nodo está configurado y se puede agregar a un clúster designado.  No se requiere autenticación para acceder al nodo.
+** PendienteActivo: El sistema está en proceso de instalar software compatible en el nodo.  Una vez completado, el nodo pasará al estado Activo.
+** Activo: El nodo participa en un clúster.  Se requiere autenticación para modificar el nodo.
+
+
+* *Versión*
++
+Versión del software Element que se ejecuta en el nodo.
+
+* *Conjunto*
++
+Nodos que forman parte del conjunto de la base de datos.
+
+* *ID del nodo*
++
+Se asigna un ID cuando se agrega un nodo al clúster.
+
+* *Interfaz de clúster*
++
+Interfaz de red utilizada para la comunicación del clúster.
+
+* *Interfaz de gestión*
++
+Interfaz de red de gestión.  Por defecto se utiliza Bond1G, pero también se puede usar Bond10G.
+
+* *Interfaz de almacenamiento*
++
+Interfaz de red de almacenamiento mediante Bond10G.
+
+* *Capacidad de cifrado*
++
+Indica si el nodo admite o no el cifrado de unidades.
+
+

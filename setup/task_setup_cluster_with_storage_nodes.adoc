@@ -1,0 +1,30 @@
+---
+permalink: setup/task_setup_cluster_with_storage_nodes.html 
+sidebar: sidebar 
+keywords: element, solidfire, install, setup, node, cluster 
+summary: Comprender la secuencia de configuración de un clúster con nodos de almacenamiento. 
+---
+= Configuración de un clúster con nodos de almacenamiento Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede configurar un clúster con nodos de almacenamiento y administrarlo utilizando el software Element después de instalar y cablear los nodos en una unidad de rack y encenderlos. A continuación, podrá instalar y configurar componentes adicionales en su sistema de almacenamiento.
+
+.Pasos
+. link:concept_setup_configure_a_storage_node.html["Configurar un nodo de almacenamiento"]
+. link:task_setup_create_a_storage_cluster.html["Cree un clúster de almacenamiento."]
+. link:task_post_deploy_access_the_element_software_user_interface.html["Inicie sesión en la interfaz de usuario del software Element."]
+. link:task_setup_add_drives_to_a_cluster.html["Agregar unidades al clúster"]
+. link:task_setup_determine_which_solidfire_components_to_install.html["Determina qué componentes de SolidFire debes instalar."]
+. link:task_setup_gh_redirect_set_up_a_management_node.html["Configurar un nodo de administración"]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

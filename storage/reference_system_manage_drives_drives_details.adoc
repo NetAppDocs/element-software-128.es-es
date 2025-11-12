@@ -1,0 +1,55 @@
+---
+permalink: storage/reference_system_manage_drives_drives_details.html 
+sidebar: sidebar 
+keywords: drives, details, manage, filter, cluster 
+summary: La página Unidades en la pestaña Clúster proporciona una lista de las unidades activas en el clúster.  Puede filtrar la página seleccionando entre las pestañas Activos, Disponibles, Eliminando, Borrando y Fallidos. 
+---
+= Detalles de las unidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La página Unidades en la pestaña Clúster proporciona una lista de las unidades activas en el clúster.  Puede filtrar la página seleccionando entre las pestañas Activos, Disponibles, Eliminando, Borrando y Fallidos.
+
+Cuando se inicializa un clúster por primera vez, la lista de unidades activas está vacía.  Puede agregar unidades que no estén asignadas a un clúster y que aparezcan en la pestaña Disponible después de crear un nuevo clúster SolidFire .
+
+Los siguientes elementos aparecen en la lista de unidades activas.
+
+* *Identificador de unidad*
++
+El número secuencial asignado a la unidad.
+
+* *ID del nodo*
++
+El número de nodo asignado cuando el nodo se agrega al clúster.
+
+* *Nombre del nodo*
++
+El nombre del nodo que aloja la unidad.
+
+* *Ranura*
++
+El número de ranura donde se encuentra físicamente la unidad.
+
+* *Capacidad*
++
+Tamaño de la unidad, en GB.
+
+* *De serie*
++
+El número de serie de la unidad.
+
+* *Desgaste restante*
++
+El indicador del nivel de desgaste.
+
++
+El sistema de almacenamiento informa la cantidad aproximada de desgaste disponible en cada unidad de estado sólido (SSD) para la escritura y el borrado de datos.  Una unidad que ha consumido el 5 por ciento de sus ciclos de escritura y borrado diseñados reporta un desgaste restante del 95 por ciento.  El sistema no actualiza automáticamente la información sobre el desgaste de la unidad; puede actualizar la página o cerrarla y volver a cargarla para actualizar la información.
+
+* *Tipo*
++
+El tipo de transmisión.  El tipo puede ser bloque o metadatos.
+
+

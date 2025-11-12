@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_deletekeyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,deleting,delete 
+summary: 'Puede utilizar el método DeleteKeyServerKmip para eliminar un servidor de claves del Protocolo de interoperabilidad de gestión de claves (KMIP) existente.  Puedes eliminar un servidor de claves a menos que sea el último asignado a su proveedor y que dicho proveedor esté proporcionando claves que se encuentren actualmente en uso.' 
+---
+= EliminarKeyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `DeleteKeyServerKmip` Método para eliminar un servidor de claves KMIP (Key Management Interoperability Protocol) existente.  Puedes eliminar un servidor de claves a menos que sea el último asignado a su proveedor y que dicho proveedor esté proporcionando claves que se encuentren actualmente en uso.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID del servidor de claves
+ a| 
+El ID del servidor de claves KMIP que se va a eliminar.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.  La operación de eliminación se considera exitosa si no hay errores.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "DeleteKeyServerKmip",
+  "params": {
+     "keyServerID": 15
+  },
+"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== Nueva versión
+
+11,7

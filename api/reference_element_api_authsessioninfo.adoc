@@ -1,0 +1,110 @@
+---
+permalink: api/reference_element_api_authsessioninfo.html 
+sidebar: sidebar 
+keywords: objects,object,authSessionInfo 
+summary: El objeto authSessionInfo contiene información sobre una sesión de autenticación. 
+---
+= información de sesión de autenticación
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El `authSessionInfo` El objeto contiene información sobre una sesión de autenticación.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+`accessGroupList`
+ a| 
+Lista de grupos de acceso para el usuario.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+`authMethod`
+ a| 
+El tipo de autorización que tiene el usuario administrador del clúster. Valores posibles:
+
+* LDAP - autenticado mediante LDAP.
+* Clúster: autenticación mediante un nombre de usuario y una contraseña almacenados en la base de datos del clúster.
+* IdP - autenticado a través de un proveedor de identidad de terceros.
+
+ a| 
+cadena
+
+
+
+ a| 
+`clusterAdminIDs`
+ a| 
+Lista de AdminID de clúster asociados con esta sesión.  Para las sesiones relacionadas con LDAP o un proveedor de identidad (IdP) de terceros, esta será una lista agregada de los AdminID de clúster coincidentes asociados con esta sesión.
+ a| 
+matriz de enteros
+
+
+
+ a| 
+`finalTimeout`
+ a| 
+Hora en la que la sesión deja de ser válida. Esto se establece cuando se crea la sesión y no se puede cambiar.
+ a| 
+cadena
+
+
+
+ a| 
+`idpConfigVersion`
+ a| 
+Versión de configuración del IdP cuando se creó la sesión.
+ a| 
+entero
+
+
+
+ a| 
+`lastAccessTimeout`
+ a| 
+Tiempo en el que la sesión se vuelve inválida por inactividad. Se establece un nuevo valor cuando se accede a la sesión para su uso, hasta el momento en que la sesión se vuelve inválida debido a que se alcanza el tiempo de espera final.
+ a| 
+cadena
+
+
+
+ a| 
+`sessionCreationTime`
+ a| 
+Hora en que se crea la sesión.
+ a| 
+cadena
+
+
+
+ a| 
+`sessionID`
+ a| 
+UUID para esta sesión.
+ a| 
+UUID
+
+
+
+ a| 
+`username`
+ a| 
+Nombre de usuario asociado a esta sesión.  Para las sesiones relacionadas con LDAP, este será el DN LDAP del usuario.  Para las sesiones relacionadas con un IdP de terceros, se utilizará un par nombre-valor arbitrario para auditar las operaciones dentro de la sesión.  No necesariamente coincidirá con el nombre de un administrador del clúster.  Por ejemplo, un ID de sujeto SAML, pero esto vendrá determinado por la configuración del IdP y el contenido resultante de la aserción SAML.
+ a| 
+cadena
+
+|===

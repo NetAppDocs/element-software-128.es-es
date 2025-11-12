@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_ldapconfiguration.html 
+sidebar: sidebar 
+keywords: object,objects,ldapConfiguration 
+summary: El objeto ldapConfiguration contiene información sobre la configuración LDAP en el sistema de almacenamiento.  Puede recuperar información LDAP con el método API GetLdapConfiguration. 
+---
+= Configuración LDAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto ldapConfiguration contiene información sobre la configuración LDAP en el sistema de almacenamiento.  Puedes recuperar información LDAP con el `GetLdapConfiguration` Método API.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+tipo de autenticación
+ a| 
+Identifica qué método de autenticación de usuario se debe utilizar. Valores posibles:
+
+* DirectBind
+* Buscar y enlazar
+
+ a| 
+cadena
+
+
+
+ a| 
+activado
+ a| 
+Identifica si el sistema está configurado o no para LDAP. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+El DN base del árbol para iniciar la búsqueda de grupo (el sistema realizará una búsqueda de subárbol desde aquí).
+ a| 
+cadena
+
+
+
+ a| 
+groupSearchCustomFilter
+ a| 
+El filtro de búsqueda personalizado utilizado.
+ a| 
+cadena
+
+
+
+ a| 
+tipo de búsqueda de grupo
+ a| 
+Controla el filtro de búsqueda de grupo predeterminado utilizado. Valores posibles:
+
+* NoGroups: No hay soporte para grupos.
+* Active Directory: Membresía anidada de todos los grupos de AD de un usuario.
+* MemberDN: Grupos de estilo MemberDN (de un solo nivel).
+
+ a| 
+cadena
+
+
+
+ a| 
+searchBindDN
+ a| 
+Un DN completo para iniciar sesión y realizar una búsqueda LDAP del usuario (necesita acceso de lectura al directorio LDAP).
+ a| 
+cadena
+
+
+
+ a| 
+URI del servidor
+ a| 
+Una lista de URI de servidores LDAP separadas por comas (por ejemplo, `ldap://1.2.3.4` y `ldaps://1.2.3.4:123` .)
+ a| 
+cadena
+
+
+
+ a| 
+plantilla de DN de usuario
+ a| 
+Una cadena que se utiliza para formar un DN de usuario completo.
+ a| 
+cadena
+
+
+
+ a| 
+userSearchBaseDN
+ a| 
+El DN base del árbol utilizado para iniciar la búsqueda (desde aquí se realizará una búsqueda en un subárbol).
+ a| 
+cadena
+
+
+
+ a| 
+filtro de búsqueda de usuarios
+ a| 
+El filtro LDAP utilizado.
+ a| 
+cadena
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_getldapconfiguration.adoc[Obtener configuración LDAP]

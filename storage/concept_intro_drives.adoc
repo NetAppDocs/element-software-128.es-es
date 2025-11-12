@@ -1,0 +1,30 @@
+---
+permalink: storage/concept_intro_drives.html 
+sidebar: sidebar 
+keywords: drives, physical drives, cluster data, storage node, volume metadata, block drives, clusters 
+summary: Un nodo de almacenamiento contiene una o más unidades físicas que se utilizan para almacenar una parte de los datos del clúster.  El clúster utiliza la capacidad y el rendimiento de la unidad después de que esta se haya agregado correctamente al clúster. 
+---
+= Unidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un nodo de almacenamiento contiene una o más unidades físicas que se utilizan para almacenar una parte de los datos del clúster.  El clúster utiliza la capacidad y el rendimiento de la unidad después de que esta se haya agregado correctamente al clúster.
+
+Un nodo de almacenamiento contiene dos tipos de unidades:
+
+* *Unidades de metadatos de volumen*
++
+Estas unidades almacenan información comprimida que define cada volumen, clon o instantánea dentro de un clúster.  La capacidad total de la unidad de metadatos en el sistema determina la cantidad máxima de almacenamiento que se puede aprovisionar como volúmenes.  La cantidad máxima de almacenamiento que se puede aprovisionar es independiente de la cantidad de datos que realmente se almacenan en las unidades de bloque del clúster.  Las unidades de metadatos de volumen almacenan datos de forma redundante en todo un clúster utilizando la protección de datos Double Helix.
+
++
+
+NOTE: Algunos registros de eventos del sistema y mensajes de error se refieren a las unidades de metadatos de volumen como unidades de partición.
+
+* *Unidades de bloque*
++
+Estas unidades almacenan los bloques de datos comprimidos y sin duplicados para los volúmenes de aplicaciones de servidor.  Las unidades de bloque constituyen la mayor parte de la capacidad de almacenamiento del sistema.  La mayoría de las solicitudes de lectura de datos ya almacenados en el clúster SolidFire , así como las solicitudes de escritura de datos, se producen en las unidades de bloque.  La capacidad total de las unidades de bloque del sistema determina la cantidad máxima de datos que se pueden almacenar, teniendo en cuenta los efectos de la compresión, el aprovisionamiento ligero y la deduplicación.
+
+

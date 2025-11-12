@@ -1,0 +1,272 @@
+---
+permalink: api/reference_element_api_creategroupsnapshot.html 
+sidebar: sidebar 
+keywords: volume,volumes,snapshot,snapshots,CreateGroupSnapshot,group,create,creating 
+summary: Puede utilizar CreateGroupSnapshot para crear una copia puntual de un grupo de volúmenes. 
+---
+= CrearInstantáneaDeGrupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `CreateGroupSnapshot` para crear una copia puntual de un grupo de volúmenes.
+
+Puede utilizar esta instantánea más adelante como copia de seguridad o para revertir cambios y así garantizar que los datos del grupo de volúmenes sean coherentes en el momento en que creó la instantánea.
+
+*LLENADO_DEL_CLÚSTER*
+
+
+NOTE: Puede crear instantáneas si la plenitud del clúster se encuentra en la etapa 1, 2 o 3.  No se pueden crear instantáneas cuando la capacidad del clúster alcanza la etapa 4 o 5.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+`attributes`
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`enableRemoteReplication`
+ a| 
+Especifica si la instantánea se replicará en el almacenamiento remoto o no. Valores posibles:
+
+* `true`La instantánea se replicará en el almacenamiento remoto.
+* `false`La instantánea no se replicará en el almacenamiento remoto.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+| `ensureSerialCreation`  a| 
+Especifica que no se debe crear la instantánea si hay una replicación de instantánea anterior en curso.  Los valores posibles son:
+
+* `true`Esto garantiza que solo se replique una instantánea a la vez.  La creación de una nueva instantánea fallará si la replicación de una instantánea anterior aún está en curso.
+* `false`: Por defecto.  Se permite la creación de esta instantánea si otra replicación de instantánea aún está en curso.
+
+| booleano | `false` | No 
+
+
+ a| 
+`expirationTime`
+ a| 
+Especifique el tiempo después del cual se puede eliminar la instantánea.  No se puede utilizar con `retention` .  Si ninguno de los dos `expirationTime` , o `retention` Si se especifican, la instantánea no caducará.  El formato de hora es una cadena de fecha ISO 8601 para la expiración basada en el tiempo; de lo contrario, no expirará.  Un valor de `null` hace que la instantánea se conserve de forma permanente.  Un valor de `fifo` hace que la instantánea se conserve en base al orden de llegada (FIFO), en relación con otras instantáneas FIFO en el volumen.  La API fallará si no hay espacio FIFO disponible.
+ a| 
+cadena de fecha ISO 8601
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`name`
+ a| 
+El nombre de la instantánea del grupo.  Si no se introduce ningún nombre, se utiliza la fecha y hora en que se tomó la instantánea del grupo.  La longitud máxima permitida para el nombre es de 255 caracteres.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`retention`
+ a| 
+Este parámetro es igual que el `expirationTime` parámetro, excepto que el formato de hora es HH:mm:ss.  Si ninguno de los dos `expirationTime` ni `retention` Si se especifican, la instantánea no caducará.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+La etiqueta utilizada por el software SnapMirror para especificar la política de retención de instantáneas en un punto final de SnapMirror .
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`volumes`
+ a| 
+Identificador único de la imagen de volumen desde la cual copiar.
+ a| 
+matriz volumeID
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+miembros
+ a| 
+Lista de sumas de comprobación, IDs de volumen e IDs de instantáneas para cada miembro del grupo.  Valores válidos:
+
+* Suma de comprobación: Una pequeña representación en cadena de los datos en la instantánea almacenada.  Esta suma de comprobación se puede utilizar posteriormente para comparar otras instantáneas y detectar errores en los datos.  (cadena)
+* snapshotID: Identificador único de la instantánea a partir de la cual se crea la nueva instantánea.  El ID de la instantánea debe corresponder a una instantánea del volumen dado.  (entero)
+* volumeID: El ID del volumen de origen de la instantánea.  (entero)
+
+ a| 
+matriz de objetos JSON
+
+
+
+ a| 
+ID de instantánea del grupo
+ a| 
+Identificador único de la nueva instantánea de grupo.
+ a| 
+ID de instantánea de grupo
+
+
+
+ a| 
+Instantánea de grupo
+ a| 
+Objeto que contiene información sobre la instantánea de grupo recién creada.
+ a| 
+xref:reference_element_api_groupsnapshot.adoc[Instantánea de grupo]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "CreateGroupSnapshot",
+   "params": {
+      "volumes": [1,2]
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "groupSnapshot": {
+      "attributes": {},
+      "createTime": "2016-04-04T22:43:29Z",
+      "groupSnapshotID": 45,
+      "groupSnapshotUUID": "473b78a3-ef85-4541-9438-077306b2d3ca",
+      "members": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-04T22:43:29Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 45,
+          "groupSnapshotUUID": "473b78a3-ef85-4541-9438-077306b2d3ca",
+          "name": "2016-04-04T22:43:29Z",
+          "snapshotID": 3323,
+          "snapshotUUID": "7599f200-0092-4b41-b362-c431551937d1",
+          "status": "done",
+          "totalSize": 5000658944,
+          "virtualVolumeID": null,
+          "volumeID": 1
+        },
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-04T22:43:29Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 45,
+          "groupSnapshotUUID": "473b78a3-ef85-4541-9438-077306b2d3ca",
+          "name": "2016-04-04T22:43:29Z",
+          "snapshotID": 3324,
+          "snapshotUUID": "a0776a48-4142-451f-84a6-5315dc37911b",
+          "status": "done",
+          "totalSize": 6001000448,
+          "virtualVolumeID": null,
+          "volumeID": 2
+        }
+      ],
+      "name": "2016-04-04T22:43:29Z",
+      "status": "done"
+    },
+    "groupSnapshotID": 45,
+    "members": [
+      {
+        "checksum": "0x0",
+        "snapshotID": 3323,
+        "snapshotUUID": "7599f200-0092-4b41-b362-c431551937d1",
+        "volumeID": 1
+      },
+      {
+        "checksum": "0x0",
+        "snapshotID": 3324,
+        "snapshotUUID": "a0776a48-4142-451f-84a6-5315dc37911b",
+        "volumeID": 2
+      }
+    ]
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

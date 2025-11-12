@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: El objeto bulkVolumeJob contiene información sobre operaciones de lectura o escritura de volúmenes masivos, como la clonación o la creación de instantáneas. 
+---
+= Trabajo de gran volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El `bulkVolumeJob` El objeto contiene información sobre operaciones de lectura o escritura de volúmenes masivos, como la clonación o la creación de instantáneas.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+`attributes`
+ a| 
+Atributo JSON del trabajo de volumen masivo.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+El ID del trabajo de volumen masivo interno.
+ a| 
+entero
+
+
+
+ a| 
+`createTime`
+ a| 
+Marca de tiempo creada para el trabajo de volumen masivo en formato UTC+0.
+ a| 
+cadena de fecha ISO 8601
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+El número de segundos transcurridos desde que comenzó el trabajo.
+ a| 
+cadena
+
+
+
+ a| 
+`format`
+ a| 
+El formato de la operación de volumen masivo. Valores posibles:
+
+* nativo
+* sin comprimir
+
+ a| 
+cadena
+
+
+
+ a| 
+`key`
+ a| 
+La clave única creada por la sesión de volumen masivo.
+ a| 
+cadena
+
+
+
+ a| 
+`percentComplete`
+ a| 
+Porcentaje completado reportado por la operación.
+ a| 
+entero
+
+
+
+ a| 
+`remainingTime`
+ a| 
+Tiempo restante estimado en segundos.
+ a| 
+entero
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+El ID del volumen de origen.
+ a| 
+entero
+
+
+
+ a| 
+`status`
+ a| 
+Estado de la operación. Valores posibles:
+
+* preparante
+* correr
+* completo
+* fallido
+
+ a| 
+cadena
+
+
+
+ a| 
+`script`
+ a| 
+El nombre del script, si se proporciona alguno.
+ a| 
+cadena
+
+
+
+ a| 
+`snapshotID`
+ a| 
+El ID de la instantánea si existe una instantánea en el origen del trabajo de volumen masivo.
+ a| 
+entero
+
+
+
+ a| 
+`type`
+ a| 
+El tipo de operación a granel. Valores posibles:
+
+* leer
+* escribir
+
+ a| 
+cadena
+
+|===

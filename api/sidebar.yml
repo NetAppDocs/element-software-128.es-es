@@ -1,0 +1,908 @@
+---
+section: api
+title: Gestiona el almacenamiento con la API de Element
+entries:
+- title: Software Element API
+  entries:
+  - title: Obtén más información sobre la API del software Element.
+    url: "/api/concept_element_api_about_the_api.html"
+  - title: miembros del objeto de solicitud
+    url: "/api/reference_element_api_request_object_members.html"
+  - title: miembros del objeto de respuesta
+    url: "/api/reference_element_api_response_object_members.html"
+  - title: puntos de conexión de solicitud
+    url: "/api/concept_element_api_request_endpoints.html"
+  - title: Autenticación API
+    url: "/api/concept_element_api_authentication.html"
+  - title: Métodos asíncronos
+    url: "/api/concept_element_api_asynchronous_methods.html"
+  - title: Atributos
+    url: "/api/reference_element_api_attributes.html"
+- title: objetos comunes
+  entries:
+  - title: cuenta
+    url: "/api/reference_element_api_account.html"
+  - title: información de sesión de autenticación
+    url: "/api/reference_element_api_authsessioninfo.html"
+  - title: Trabajo de gran volumen
+    url: "/api/reference_element_api_bulkvolumejob.html"
+  - title: enlace (volúmenes virtuales)
+    url: "/api/reference_element_api_binding_vvols.html"
+  - title: Detalles del certificado
+    url: "/api/reference_element_api_certificatedetails.html"
+  - title: clúster
+    url: "/api/reference_element_api_cluster.html"
+  - title: administrador del clúster
+    url: "/api/reference_element_api_clusteradmin.html"
+  - title: capacidad del clúster
+    url: "/api/reference_element_api_clustercapacity.html"
+  - title: configuración del clúster
+    url: "/api/reference_element_api_clusterconfig.html"
+  - title: Información del clúster
+    url: "/api/reference_element_api_clusterinfo.html"
+  - title: clusterPair
+    url: "/api/reference_element_api_clusterpair.html"
+  - title: estadísticas del clúster
+    url: "/api/reference_element_api_clusterstats.html"
+  - title: Estructura del clúster
+    url: "/api/reference_element_api_clusterstructure.html"
+  - title: conducir
+    url: "/api/reference_element_api_drive.html"
+  - title: Estadísticas de la unidad
+    url: "/api/reference_element_api_drivestats.html"
+  - title: error
+    url: "/api/reference_element_api_error.html"
+  - title: evento
+    url: "/api/reference_element_api_event.html"
+  - title: falla
+    url: "/api/reference_element_api_fault.html"
+  - title: Puerto de canal de fibra
+    url: "/api/reference_element_api_fibrechannelport.html"
+  - title: Informe de nodo de error de fips
+    url: "/api/reference_element_api_fipserrornodereport.html"
+  - title: Informe de nodo fips
+    url: "/api/reference_element_api_fipsnodereport.html"
+  - title: Informe fips
+    url: "/api/reference_element_api_fipsreport.html"
+  - title: Instantánea de grupo
+    url: "/api/reference_element_api_groupsnapshot.html"
+  - title: Información de hardware
+    url: "/api/reference_element_api_hardwareinfo.html"
+  - title: host (volúmenes virtuales)
+    url: "/api/reference_element_api_host.html"
+  - title: idpConfigInfo
+    url: "/api/reference_element_api_idpconfiginfo.html"
+  - title: iniciador
+    url: "/api/reference_element_api_initiator.html"
+  - title: Autenticación ISCSIA
+    url: "/api/reference_element_api_iscsiauthentication.html"
+  - title: proveedor de clavesKmip
+    url: "/api/reference_element_api_keyproviderkmip.html"
+  - title: servidor de clavesKmip
+    url: "/api/reference_element_api_keyserverkmip.html"
+  - title: Configuración LDAP
+    url: "/api/reference_element_api_ldapconfiguration.html"
+  - title: servidor de registro
+    url: "/api/reference_element_api_loggingserver.html"
+  - title: red (interfaces enlazadas)
+    url: "/api/reference_element_api_network_bonded_interfaces.html"
+  - title: red (todas las interfaces)
+    url: "/api/reference_element_api_network_all_interfaces.html"
+  - title: red (interfaces Ethernet)
+    url: "/api/reference_element_api_network_ethernet_interfaces.html"
+  - title: red (interfaces locales)
+    url: "/api/reference_element_api_network_local_interfaces.html"
+  - title: red (SNMP)
+    url: "/api/reference_element_api_network_snmp.html"
+  - title: Interfaz de red
+    url: "/api/reference_element_api_networkinterface.html"
+  - title: Estadísticas de interfaz de red
+    url: "/api/reference_element_api_networkinterfacestats.html"
+  - title: nodo
+    url: "/api/reference_element_api_node.html"
+  - title: Dominios de protección de nodos
+    url: "/api/reference_element_api_nodeprotectiondomains.html"
+  - title: estadísticas del nodo
+    url: "/api/reference_element_api_nodestats.html"
+  - title: ontapVersionInfo
+    url: "/api/reference_element_api_ontapversioninfo.html"
+  - title: nodo activo pendiente
+    url: "/api/reference_element_api_pendingactivenode.html"
+  - title: nodo pendiente
+    url: "/api/reference_element_api_pendingnode.html"
+  - title: dominio de protección
+    url: "/api/reference_element_api_protectiondomain.html"
+  - title: Nivel de dominio de protección
+    url: "/api/reference_element_api_protectiondomainlevel.html"
+  - title: Resiliencia del dominio de protección
+    url: "/api/reference_element_api_protectiondomainresiliency.html"
+  - title: protecciónDominioTolerancia
+    url: "/api/reference_element_api_protectiondomaintolerance.html"
+  - title: Resiliencia del esquema de protección
+    url: "/api/reference_element_api_protectionschemeresiliency.html"
+  - title: Tolerancia del esquema de protección
+    url: "/api/reference_element_api_protectionschemetolerance.html"
+  - title: punto final del protocolo
+    url: "/api/reference_element_api_protocolendpoint.html"
+  - title: Calidad de servicio
+    url: "/api/reference_element_api_qos.html"
+  - title: Política de QoS
+    url: "/api/reference_element_api_qospolicy.html"
+  - title: Estado de instantánea del clúster remoto
+    url: "/api/reference_element_api_remoteclustersnapshotstatus.html"
+  - title: cronograma
+    url: "/api/reference_element_api_schedule.html"
+  - title: sesión (Canal de fibra)
+    url: "/api/reference_element_api_session_fibre_channel.html"
+  - title: sesión (iSCSI)
+    url: "/api/reference_element_api_session_iscsi.html"
+  - title: snapMirrorAggregate
+    url: "/api/reference_element_api_snapmirroraggregate.html"
+  - title: snapMirrorClusterIdentity
+    url: "/api/reference_element_api_snapmirrorclusteridentity.html"
+  - title: snapMirrorEndpoint
+    url: "/api/reference_element_api_snapmirrorendpoint.html"
+  - title: snapMirrorJobScheduleCronInfo
+    url: "/api/reference_element_api_snapmirrorjobschedulecroninfo.html"
+  - title: snapMirrorLunInfo
+    url: "/api/reference_element_api_snapmirrorluninfo.html"
+  - title: snapMirrorInterfazDeRed
+    url: "/api/reference_element_api_snapmirrornetworkinterface.html"
+  - title: snapMirrorNode
+    url: "/api/reference_element_api_snapmirrornode.html"
+  - title: snapMirrorPolicy
+    url: "/api/reference_element_api_snapmirrorpolicy.html"
+  - title: Regla de política de espejo snap
+    url: "/api/reference_element_api_snapmirrorpolicyrule.html"
+  - title: snapMirrorRelationship
+    url: "/api/reference_element_api_snapmirrorrelationship.html"
+  - title: snapMirrorVolume
+    url: "/api/reference_element_api_snapmirrorvolume.html"
+  - title: snapMirrorVolumeInfo
+    url: "/api/reference_element_api_snapmirrorvolumeinfo.html"
+  - title: snapMirrorVserver
+    url: "/api/reference_element_api_snapmirrorvserver.html"
+  - title: snapMirrorVserverAggregateInfo
+    url: "/api/reference_element_api_snapmirrorvserveraggregateinfo.html"
+  - title: instantánea
+    url: "/api/reference_element_api_snapshot.html"
+  - title: Destinatario de trampa SNMP
+    url: "/api/reference_element_api_snmptraprecipient.html"
+  - title: contenedor de almacenamiento
+    url: "/api/reference_element_api_storagecontainer.html"
+  - title: trabajo de sincronización
+    url: "/api/reference_element_api_syncjob.html"
+  - title: tarea (volúmenes virtuales)
+    url: "/api/reference_element_api_task_virtual_volumes.html"
+  - title: usmUser
+    url: "/api/reference_element_api_usmuser.html"
+  - title: red virtual
+    url: "/api/reference_element_api_virtualnetwork.html"
+  - title: volumen virtual
+    url: "/api/reference_element_api_virtualvolume.html"
+  - title: volume
+    url: "/api/reference_element_api_volume.html"
+  - title: volumeAccessGroup
+    url: "/api/reference_element_api_volumeaccessgroup.html"
+  - title: volumenPar
+    url: "/api/reference_element_api_volumepair.html"
+  - title: estadísticas de volumen
+    url: "/api/reference_element_api_volumestats.html"
+- title: Métodos comunes
+  entries:
+  - title: Obtener API
+    url: "/api/reference_element_api_getapi.html"
+  - title: ObtenerResultadoAsíncrono
+    url: "/api/reference_element_api_getasyncresult.html"
+  - title: Obtener estadísticas completas
+    url: "/api/reference_element_api_getcompletestats.html"
+  - title: Obtener límites
+    url: "/api/reference_element_api_getlimits.html"
+  - title: Obtener origen
+    url: "/api/reference_element_api_getorigin.html"
+  - title: GetRawStats
+    url: "/api/reference_element_api_getrawstats.html"
+  - title: ListAsyncResults
+    url: "/api/reference_element_api_listasyncresults.html"
+- title: Métodos de la API de cuentas
+  entries:
+  - title: Agregar cuenta
+    url: "/api/reference_element_api_addaccount.html"
+  - title: ObtenerCuentaPorID
+    url: "/api/reference_element_api_getaccountbyid.html"
+  - title: ObtenerCuentaPorNombre
+    url: "/api/reference_element_api_getaccountbyname.html"
+  - title: Obtén la eficiencia de la cuenta
+    url: "/api/reference_element_api_getaccountefficiency.html"
+  - title: Lista de cuentas
+    url: "/api/reference_element_api_listaccounts.html"
+  - title: Modificar cuenta
+    url: "/api/reference_element_api_modifyaccount.html"
+  - title: Eliminar cuenta
+    url: "/api/reference_element_api_removeaccount.html"
+- title: Métodos de la API de administrador
+  entries:
+  - title: Agregar administrador de clúster
+    url: "/api/reference_element_api_addclusteradmin.html"
+  - title: ObtenerAdministradorDeClústerActual
+    url: "/api/reference_element_api_getcurrentclusteradmin.html"
+  - title: Obtener banner de inicio de sesión
+    url: "/api/reference_element_api_getloginbanner.html"
+  - title: Lista de administradores de clúster
+    url: "/api/reference_element_api_listclusteradmins.html"
+  - title: Modificar administrador de clúster
+    url: "/api/reference_element_api_modifyclusteradmin.html"
+  - title: Eliminar administrador del clúster
+    url: "/api/reference_element_api_removeclusteradmin.html"
+  - title: Establecer banner de inicio de sesión
+    url: "/api/reference_element_api_setloginbanner.html"
+- title: Métodos de la API de clúster
+  entries:
+  - title: Agregar nodos
+    url: "/api/reference_element_api_addnodes.html"
+  - title: Borrar fallos de clúster
+    url: "/api/reference_element_api_clearclusterfaults.html"
+  - title: CrearPreferenciaDeInterfazDeClúster
+    url: "/api/reference_element_api_createclusterinterfacepreference.html"
+  - title: EliminarPreferenciaDeInterfazDeClúster
+    url: "/api/reference_element_api_deleteclusterinterfacepreference.html"
+  - title: Deshabilitar función
+    url: "/api/reference_element_api_disablefeature.html"
+  - title: Habilitar función
+    url: "/api/reference_element_api_enablefeature.html"
+  - title: Obtener capacidad del clúster
+    url: "/api/reference_element_api_getclustercapacity.html"
+  - title: Umbral completo del clúster
+    url: "/api/reference_element_api_getclusterfullthreshold.html"
+  - title: Obtener información de hardware del clúster
+    url: "/api/reference_element_api_getclusterhardwareinfo.html"
+  - title: Obtener información del clúster
+    url: "/api/reference_element_api_getclusterinfo.html"
+  - title: GetClusterInterfacePreference
+    url: "/api/reference_element_api_getclusterinterfacepreference.html"
+  - title: Obtener ID de nodo maestro del clúster
+    url: "/api/reference_element_api_getclustermasternodeid.html"
+  - title: Obtener estadísticas del clúster
+    url: "/api/reference_element_api_getclusterstats.html"
+  - title: ObtenerInformación de versión del clúster
+    url: "/api/reference_element_api_getclusterversioninfo.html"
+  - title: Obtener estado de la función
+    url: "/api/reference_element_api_getfeaturestatus.html"
+  - title: Obtener información de sesión de inicio de sesión
+    url: "/api/reference_element_api_getloginsessioninfo.html"
+  - title: Información del hardware del nodo
+    url: "/api/reference_element_api_getnodehardwareinfo.html"
+  - title: Obtener estadísticas del nodo
+    url: "/api/reference_element_api_getnodestats.html"
+  - title: Lista de nodos activos
+    url: "/api/reference_element_api_listactivenodes.html"
+  - title: Lista todos los nodos
+    url: "/api/reference_element_api_listallnodes.html"
+  - title: ListClusterFaults
+    url: "/api/reference_element_api_listclusterfaults.html"
+  - title: Preferencias de interfaz de clúster de lista
+    url: "/api/reference_element_api_listclusterinterfacepreferences.html"
+  - title: Lista de eventos
+    url: "/api/reference_element_api_listevents.html"
+  - title: Estadísticas de nodo de lista
+    url: "/api/reference_element_api_listnodestats.html"
+  - title: Lista de sesiones ISCSIS
+    url: "/api/reference_element_api_listiscsisessions.html"
+  - title: Servicios de listas
+    url: "/api/reference_element_api_listservices.html"
+  - title: Lista de nodos pendientes
+    url: "/api/reference_element_api_listpendingnodes.html"
+  - title: Lista de nodos activos pendientes
+    url: "/api/reference_element_api_listpendingactivenodes.html"
+  - title: Modificar UmbralCompletoDeClúster
+    url: "/api/reference_element_api_modifyclusterfullthreshold.html"
+  - title: ModificarPreferenciaDeInterfazDeClúster
+    url: "/api/reference_element_api_modifyclusterinterfacepreference.html"
+  - title: Eliminar nodos
+    url: "/api/reference_element_api_removenodes.html"
+  - title: SetLoginSessionInfo
+    url: "/api/reference_element_api_setloginsessioninfo.html"
+  - title: Cerrar
+    url: "/api/reference_element_api_cluster_shutdown.html"
+- title: Métodos de la API de creación de clústeres
+  entries:
+  - title: VerificarClústerPropuesto
+    url: "/api/reference_element_api_checkproposedcluster.html"
+  - title: CrearClúster
+    url: "/api/reference_element_api_createcluster.html"
+  - title: Obtener configuración de Bootstrap
+    url: "/api/reference_element_api_getbootstrapconfig.html"
+- title: Métodos de la API de Drive
+  entries:
+  - title: Agregar unidades
+    url: "/api/reference_element_api_adddrives.html"
+  - title: Información sobre el hardware de la unidad
+    url: "/api/reference_element_api_getdrivehardwareinfo.html"
+  - title: GetDriveStats
+    url: "/api/reference_element_api_getdrivestats.html"
+  - title: ListDrives
+    url: "/api/reference_element_api_listdrives.html"
+  - title: ListDriveStats
+    url: "/api/reference_element_api_listdrivestats.html"
+  - title: Eliminar unidades
+    url: "/api/reference_element_api_removedrives.html"
+  - title: Unidades de borrado seguro
+    url: "/api/reference_element_api_secureerasedrives.html"
+- title: Métodos de la API de Fibre Channel
+  entries:
+  - title: Obtener asignaciones de LUN de acceso al volumen
+    url: "/api/reference_element_api_getvolumeaccessgrouplunassignments.html"
+  - title: Información del puerto del canal de fibra
+    url: "/api/reference_element_api_listfibrechannelportinfo.html"
+  - title: Lista de sesiones de FibreChannel
+    url: "/api/reference_element_api_listfibrechannelsessions.html"
+  - title: Información del puerto del canal de fibra del nodo de lista
+    url: "/api/reference_element_api_listnodefibrechannelportinfo.html"
+  - title: Modificar asignaciones de Lun de grupo de acceso a volumen
+    url: "/api/reference_element_api_modifyvolumeaccessgrouplunassignments.html"
+- title: Métodos de la API del iniciador
+  entries:
+  - title: CrearIniciadores
+    url: "/api/reference_element_api_createinitiators.html"
+  - title: EliminarIniciadores
+    url: "/api/reference_element_api_deleteinitiators.html"
+  - title: Iniciadores de listas
+    url: "/api/reference_element_api_listinitiators.html"
+  - title: ModificarIniciadores
+    url: "/api/reference_element_api_modifyinitiators.html"
+- title: Métodos de la API LDAP
+  entries:
+  - title: Agregar administrador de clúster Ldap
+    url: "/api/reference_element_api_addldapclusteradmin.html"
+  - title: Habilitar autenticación LDAP
+    url: "/api/reference_element_api_enableldapauthentication.html"
+  - title: Deshabilitar la autenticación LDAP
+    url: "/api/reference_element_api_disableldapauthentication.html"
+  - title: Obtener configuración LDAP
+    url: "/api/reference_element_api_getldapconfiguration.html"
+  - title: Prueba de autenticación LDAP
+    url: "/api/reference_element_api_testldapauthentication.html"
+- title: Métodos de la API de autenticación multifactor
+  entries:
+  - title: Agregar administrador de clúster de IDIP
+    url: "/api/reference_element_api_addidpclusteradmin.html"
+  - title: Crear configuración de Idp
+    url: "/api/reference_element_api_createidpconfiguration.html"
+  - title: Eliminar sesión de autenticación
+    url: "/api/reference_element_api_deleteauthsession.html"
+  - title: Eliminar sesiones de autenticación por administrador de clúster
+    url: "/api/reference_element_api_deleteauthsessionsbyclusteradmin.html"
+  - title: EliminarSesionesDeAutenticaciónPorNombreDeUsuario
+    url: "/api/reference_element_api_deleteauthsessionsbyusername.html"
+  - title: Eliminar configuración de IDp
+    url: "/api/reference_element_api_deleteidpconfiguration.html"
+  - title: Deshabilitar la autenticación Idp
+    url: "/api/reference_element_api_disableidpauthentication.html"
+  - title: Habilitar autenticación Idp
+    url: "/api/reference_element_api_enableidpauthentication.html"
+  - title: Obtener estado de autenticación Idp
+    url: "/api/reference_element_api_getidpauthenticationstate.html"
+  - title: ListarSesionesDeAutenticaciónActivas
+    url: "/api/reference_element_api_listactiveauthsessions.html"
+  - title: Configuraciones de ListIdp
+    url: "/api/reference_element_api_listidpconfigurations.html"
+  - title: Actualizar configuración de IDp
+    url: "/api/reference_element_api_updateidpconfiguration.html"
+- title: Métodos de la API de autenticación de sesión
+  entries:
+  - title: ListaAuthSessionsByClusterAdmin
+    url: "/api/reference_element_api_listauthsessionbyclusteradmin.html"
+  - title: Listar sesiones de autenticación por nombre de usuario
+    url: "/api/reference_element_api_listauthsessionbyusername.html"
+- title: Métodos de la API de Node
+  entries:
+  - title: ComprobarPingEnVlan
+    url: "/api/reference_element_api_checkpingonvlan.html"
+  - title: Verificar adiciones de nodos propuestas
+    url: "/api/reference_element_api_checkproposednodeadditions.html"
+  - title: Crear paquete de soporte de clúster
+    url: "/api/reference_element_api_createclustersupportbundle.html"
+  - title: Crear paquete de soporte
+    url: "/api/reference_element_api_createsupportbundle.html"
+  - title: Eliminar todos los paquetes de soporte
+    url: "/api/reference_element_api_deleteallsupportbundles.html"
+  - title: Desactivar el modo de mantenimiento
+    url: "/api/reference_element_api_disablemaintenancemode.html"
+  - title: Deshabilitar SSH
+    url: "/api/reference_element_api_disablessh.html"
+  - title: Habilitar modo de mantenimiento
+    url: "/api/reference_element_api_enablemaintenancemode.html"
+  - title: Habilitar SSH
+    url: "/api/reference_element_api_enablessh.html"
+  - title: Obtener configuración de clúster
+    url: "/api/reference_element_api_getclusterconfig.html"
+  - title: Obtener estado del clúster
+    url: "/api/reference_element_api_getclusterstate.html"
+  - title: Obtener configuración
+    url: "/api/reference_element_api_getconfig.html"
+  - title: Obtener configuración de la unidad
+    url: "/api/reference_element_api_getdriveconfig.html"
+  - title: Obtener configuración de hardware
+    url: "/api/reference_element_api_gethardwareconfig.html"
+  - title: Obtener información de hardware
+    url: "/api/reference_element_api_gethardwareinfo.html"
+  - title: GetIpmiConfig
+    url: "/api/reference_element_api_getipmiconfig.html"
+  - title: GetIpmiInfo
+    url: "/api/reference_element_api_getipmiinfo.html"
+  - title: Obtener configuración de red
+    url: "/api/reference_element_api_getnetworkconfig.html"
+  - title: ObtenerInterfazDeRed
+    url: "/api/reference_element_api_getnetworkinterface.html"
+  - title: ObtenerCifrasTlsActivasDeNodo
+    url: "/api/reference_element_api_getnodeactivetlsciphers.html"
+  - title: Informe de unidades GetNodeFips
+    url: "/api/reference_element_api_node_getnodefipsdrivesreport.html"
+  - title: Obtener certificado SSL del nodo
+    url: "/api/reference_element_api_getnodesslcertificate.html"
+  - title: ObtenerCifradosTLSCompatiblesConNodo
+    url: "/api/reference_element_api_getnodesupportedtlsciphers.html"
+  - title: Obtener información del parche
+    url: "/api/reference_element_api_getpatchinfo.html"
+  - title: ObtenerOperaciónPendiente
+    url: "/api/reference_element_api_getpendingoperation.html"
+  - title: Obtener información Ssh
+    url: "/api/reference_element_api_getsshinfo.html"
+  - title: Hardware de la unidad de lista
+    url: "/api/reference_element_api_listdrivehardware.html"
+  - title: Lista de interfaces de red
+    url: "/api/reference_element_api_listnetworkinterfaces.html"
+  - title: Listar estadísticas de interfaz de red
+    url: "/api/reference_element_api_listnetworkinterfacestats.html"
+  - title: Pruebas de lista
+    url: "/api/reference_element_api_listtests.html"
+  - title: Utilidades de lista
+    url: "/api/reference_element_api_listutilities.html"
+  - title: Eliminar certificado SSL del nodo
+    url: "/api/reference_element_api_removenodesslcertificate.html"
+  - title: Restablecer unidades
+    url: "/api/reference_element_api_resetdrives.html"
+  - title: Restablecer nodo
+    url: "/api/reference_element_api_resetnode.html"
+  - title: Restablecer nodoCifradosTlssuplementarios
+    url: "/api/reference_element_api_resetnodesupplementaltlsciphers.html"
+  - title: Reiniciar la red
+    url: "/api/reference_element_api_restartnetworking.html"
+  - title: Reiniciar servicios
+    url: "/api/reference_element_api_restartservices.html"
+  - title: ConfigurarClúster
+    url: "/api/reference_element_api_setclusterconfig.html"
+  - title: Configurar
+    url: "/api/reference_element_api_setconfig.html"
+  - title: Configurar configuración de red
+    url: "/api/reference_element_api_setnetworkconfig.html"
+  - title: SetNodeSSLCertificate
+    url: "/api/reference_element_api_setnodesslcertificate.html"
+  - title: SetNodeSupplementalTlsCiphers
+    url: "/api/reference_element_api_setnodesupplementaltlsciphers.html"
+  - title: Cerrar
+    url: "/api/reference_element_api_node_shutdown.html"
+  - title: TestConnectEnsemble
+    url: "/api/reference_element_api_testconnectensemble.html"
+  - title: TestConnectMvip
+    url: "/api/reference_element_api_testconnectmvip.html"
+  - title: TestConnectSvip
+    url: "/api/reference_element_api_testconnectsvip.html"
+  - title: Pruebas de manejo
+    url: "/api/reference_element_api_testdrives.html"
+  - title: Configuración de hardware de prueba
+    url: "/api/reference_element_api_testhardwareconfig.html"
+  - title: PruebaLocateCluster
+    url: "/api/reference_element_api_testlocatecluster.html"
+  - title: Prueba de conectividad local
+    url: "/api/reference_element_api_testlocalconnectivity.html"
+  - title: Configuración de red de prueba
+    url: "/api/reference_element_api_testnetworkconfig.html"
+  - title: Prueba de ping
+    url: "/api/reference_element_api_testping.html"
+  - title: Prueba de conectividad remota
+    url: "/api/reference_element_api_testremoteconnectivity.html"
+- title: Métodos de la API de replicación
+  entries:
+  - title: orden de operaciones de emparejamiento de clústeres
+    url: "/api/reference_element_api_cluster_pairing_order_of_operations.html"
+  - title: Orden de operaciones de emparejamiento de volúmenes
+    url: "/api/reference_element_api_volume_pairing_order_of_operations.html"
+  - title: Modos de replicación compatibles para clústeres emparejados
+    url: "/api/reference_element_api_supported_modes_of_replication.html"
+  - title: Emparejamiento de clústeres completo
+    url: "/api/reference_element_api_completeclusterpairing.html"
+  - title: Emparejamiento de volumen completo
+    url: "/api/reference_element_api_completevolumepairing.html"
+  - title: ListClusterPairs
+    url: "/api/reference_element_api_listclusterpairs.html"
+  - title: Lista de volúmenes emparejados activos
+    url: "/api/reference_element_api_listactivepairedvolumes.html"
+  - title: Modificar par de volúmenes
+    url: "/api/reference_element_api_modifyvolumepair.html"
+  - title: Eliminar par de clústeres
+    url: "/api/reference_element_api_removeclusterpair.html"
+  - title: Eliminar par de volúmenes
+    url: "/api/reference_element_api_removevolumepair.html"
+  - title: Iniciar emparejamiento de clústeres
+    url: "/api/reference_element_api_startclusterpairing.html"
+  - title: Emparejamiento de volumen inicial
+    url: "/api/reference_element_api_startvolumepairing.html"
+- title: Métodos de la API de seguridad
+  entries:
+  - title: Agregar servidor de claves al proveedor Kmip
+    url: "/api/reference_element_api_addkeyservertoproviderkmip.html"
+  - title: CrearKeyProviderKmip
+    url: "/api/reference_element_api_createkeyproviderkmip.html"
+  - title: CrearKeyServerKmip
+    url: "/api/reference_element_api_createkeyserverkmip.html"
+  - title: Crear par de claves públicas y privadas
+    url: "/api/reference_element_api_createpublicprivatekeypair.html"
+  - title: EliminarKeyProviderKmip
+    url: "/api/reference_element_api_deletekeyproviderkmip.html"
+  - title: EliminarKeyServerKmip
+    url: "/api/reference_element_api_deletekeyserverkmip.html"
+  - title: Deshabilitar el cifrado en reposo
+    url: "/api/reference_element_api_disableencryptionatrest.html"
+  - title: Habilitar cifrado en reposo
+    url: "/api/reference_element_api_enableencryptionatrest.html"
+  - title: Solicitud de firma de certificado de cliente
+    url: "/api/reference_element_api_getclientcertificatesignrequest.html"
+  - title: ObtenerProveedorDeClavesKmip
+    url: "/api/reference_element_api_getkeyproviderkmip.html"
+  - title: ObtenerKeyServerKmip
+    url: "/api/reference_element_api_getkeyserverkmip.html"
+  - title: Obtener información de cifrado de software en reposo
+    url: "/api/reference_element_api_getsoftwareencryptionatrestinfo.html"
+  - title: Proveedores de claves de lista Kmip
+    url: "/api/reference_element_api_listkeyproviderskmip.html"
+  - title: Lista de servidores clave Kmip
+    url: "/api/reference_element_api_listkeyserverskmip.html"
+  - title: ModificarKeyServerKmip
+    url: "/api/reference_element_api_modifykeyserverkmip.html"
+  - title: Clave maestra de cifrado de software en reposo
+    url: "/api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html"
+  - title: Eliminar servidor de claves del proveedor Kmip
+    url: "/api/reference_element_api_removekeyserverfromproviderkmip.html"
+  - title: Firmar claves Ssh
+    url: "/api/reference_element_api_signsshkeys.html"
+  - title: TestKeyProviderKmip
+    url: "/api/reference_element_api_testkeyproviderkmip.html"
+  - title: Servidor de claves de prueba Kmip
+    url: "/api/reference_element_api_testkeyserverkmip.html"
+- title: Métodos de la API de SnapMirror
+  entries:
+  - title: Abortar SnapMirrorRelationship
+    url: "/api/reference_element_api_abortsnapmirrorrelationship.html"
+  - title: Relación BreakSnapMirror
+    url: "/api/reference_element_api_breaksnapmirrorrelationship.html"
+  - title: BreakSnapMirrorVolume
+    url: "/api/reference_element_api_breaksnapmirrorvolume.html"
+  - title: Crear punto final de SnapMirror
+    url: "/api/reference_element_api_createsnapmirrorendpoint.html"
+  - title: CrearPuntoFinalDeSnapMirrorNoAdministrado
+    url: "/api/reference_element_api_createsnapmirrorendpoint_unmanaged.html"
+  - title: CrearRelaciónSnapMirror
+    url: "/api/reference_element_api_createsnapmirrorrelationship.html"
+  - title: CrearVolumenSnapMirror
+    url: "/api/reference_element_api_createsnapmirrorvolume.html"
+  - title: Eliminar puntos finales de SnapMirror
+    url: "/api/reference_element_api_deletesnapmirrorendpoints.html"
+  - title: EliminarRelacionesDeSnapMirror
+    url: "/api/reference_element_api_deletesnapmirrorrelationships.html"
+  - title: Información de la versión de GetOntap
+    url: "/api/reference_element_api_getontapversioninfo.html"
+  - title: ObtenerIdentidadDeClústerDeSnapMirror
+    url: "/api/reference_element_api_getsnapmirrorclusteridentity.html"
+  - title: InicializarRelaciónSnapMirror
+    url: "/api/reference_element_api_initializesnapmirrorrelationship.html"
+  - title: Agregados de ListSnapMirror
+    url: "/api/reference_element_api_listsnapmirroraggregates.html"
+  - title: ListSnapMirrorEndpoints
+    url: "/api/reference_element_api_listsnapmirrorendpoints.html"
+  - title: ListSnapMirrorLuns
+    url: "/api/reference_element_api_listsnapmirrorluns.html"
+  - title: ListSnapMirrorNetworkInterfaces
+    url: "/api/reference_element_api_listsnapmirrornetworkinterfaces.html"
+  - title: Nodos de espejo de ListSnap
+    url: "/api/reference_element_api_listsnapmirrornodes.html"
+  - title: Políticas de espejo de ListSnap
+    url: "/api/reference_element_api_listsnapmirrorpolicies.html"
+  - title: Lista de horarios de reflejo de ajuste
+    url: "/api/reference_element_api_listsnapmirrorschedules.html"
+  - title: Relaciones de espejo de ajuste de lista
+    url: "/api/reference_element_api_listsnapmirrorrelationships.html"
+  - title: ListSnapMirrorVolumes
+    url: "/api/reference_element_api_listsnapmirrorvolumes.html"
+  - title: Lista de servidores virtuales de SnapMirror
+    url: "/api/reference_element_api_listsnapmirrorvservers.html"
+  - title: Modificar el punto final de SnapMirror
+    url: "/api/reference_element_api_modifysnapmirrorendpoint.html"
+  - title: ModificarSnapMirrorEndpoint (no administrado)
+    url: "/api/reference_element_api_modifysnapmirrorendpoint_unmanaged.html"
+  - title: Modificar relación de SnapMirror
+    url: "/api/reference_element_api_modifysnapmirrorrelationship.html"
+  - title: ActualizarRelaciónSnapMirror
+    url: "/api/reference_element_api_updatesnapmirrorrelationship.html"
+  - title: Relación de espejo de QuiesceSnap
+    url: "/api/reference_element_api_quiescesnapmirrorrelationship.html"
+  - title: Relación de ResumeSnapMirror
+    url: "/api/reference_element_api_resumesnapmirrorrelationship.html"
+  - title: ResincronizarSnapMirrorRelationship
+    url: "/api/reference_element_api_resyncsnapmirrorrelationship.html"
+- title: Métodos de la API de configuración del sistema
+  entries:
+  - title: DeshabilitarBmcColdReset
+    url: "/api/reference_element_api_disablebmccoldreset.html"
+  - title: Deshabilitar ClusterSsh
+    url: "/api/reference_element_api_disableclusterssh.html"
+  - title: Deshabilitar SNMP
+    url: "/api/reference_element_api_disablesnmp.html"
+  - title: Habilitar reinicio en frío de Bmc
+    url: "/api/reference_element_api_enablebmccoldreset.html"
+  - title: Habilitar ClusterSsh
+    url: "/api/reference_element_api_enableclusterssh.html"
+  - title: Habilitar SNMP
+    url: "/api/reference_element_api_enablesnmp.html"
+  - title: ObtenerPropiedadesDeAsignaciónDeContenedor
+    url: "/api/reference_element_api_getbinassignmentproperties.html"
+  - title: Obtener información SSH del clúster
+    url: "/api/reference_element_api_getclustersshinfo.html"
+  - title: ObtenerEstructuraDeClúster
+    url: "/api/reference_element_api_getclusterstructure.html"
+  - title: Informe GetFips
+    url: "/api/reference_element_api_getfipsreport.html"
+  - title: Obtener configuración de Lldp
+    url: "/api/reference_element_api_getlldpconfig.html"
+  - title: Obtener información de Lldp
+    url: "/api/reference_element_api_getlldpinfo.html"
+  - title: Informe de unidades GetNodeFips
+    url: "/api/reference_element_api_system_configuration_getnodefipsdrivesreport.html"
+  - title: Obtener información NTP
+    url: "/api/reference_element_api_getntpinfo.html"
+  - title: Obtener información de NVRAM
+    url: "/api/reference_element_api_getnvraminfo.html"
+  - title: ObtenerDiseñoDeDominioDeProtección
+    url: "/api/reference_element_api_getprotectiondomainlayout.html"
+  - title: Obtener hosts de registro remoto
+    url: "/api/reference_element_api_getremotelogginghosts.html"
+  - title: Obtener ACL SNMP
+    url: "/api/reference_element_api_getsnmpacl.html"
+  - title: Obtener información SNMP
+    url: "/api/reference_element_api_getsnmpinfo.html"
+  - title: Obtener estado SNMP
+    url: "/api/reference_element_api_getsnmpstate.html"
+  - title: Obtener información de trampa SNMP
+    url: "/api/reference_element_api_getsnmptrapinfo.html"
+  - title: Obtener certificado SSL
+    url: "/api/reference_element_api_getsslcertificate.html"
+  - title: Niveles de dominio de protección de listas
+    url: "/api/reference_element_api_listprotectiondomainlevels.html"
+  - title: Eliminar certificado SSL
+    url: "/api/reference_element_api_removesslcertificate.html"
+  - title: Restablecer configuración de red
+    url: "/api/reference_element_api_resetnetworkconfig.html"
+  - title: Restablecer cifrados TLS suplementarios
+    url: "/api/reference_element_api_resetsupplementaltlsciphers.html"
+  - title: Establecer estructura de clúster
+    url: "/api/reference_element_api_setclusterstructure.html"
+  - title: ConfigurarLldp
+    url: "/api/reference_element_api_setlldpconfig.html"
+  - title: SetNtpInfo
+    url: "/api/reference_element_api_setntpinfo.html"
+  - title: Establecer diseño de dominio de protección
+    url: "/api/reference_element_api_setprotectiondomainlayout.html"
+  - title: Configurar hosts de registro remoto
+    url: "/api/reference_element_api_setremotelogginghosts.html"
+  - title: SetSnmpACL
+    url: "/api/reference_element_api_setsnmpacl.html"
+  - title: SetSnmpInfo
+    url: "/api/reference_element_api_setsnmpinfo.html"
+  - title: SetSnmpTrapInfo
+    url: "/api/reference_element_api_setsnmptrapinfo.html"
+  - title: Establecer certificado SSL
+    url: "/api/reference_element_api_setsslcertificate.html"
+  - title: SnmpSendTestTraps
+    url: "/api/reference_element_api_snmpsendtesttraps.html"
+  - title: Disponibilidad de direcciones de prueba
+    url: "/api/reference_element_api_testaddressavailability.html"
+- title: Métodos de API de redes multiinquilino
+  entries:
+  - title: Convenciones de nomenclatura de redes virtuales
+    url: "/api/concept_element_api_virtual_network_naming_conventions.html"
+  - title: Agregar red virtual
+    url: "/api/reference_element_api_addvirtualnetwork.html"
+  - title: Modificar red virtual
+    url: "/api/reference_element_api_modifyvirtualnetwork.html"
+  - title: Lista de redes virtuales
+    url: "/api/reference_element_api_listvirtualnetworks.html"
+  - title: Eliminar red virtual
+    url: "/api/reference_element_api_removevirtualnetwork.html"
+- title: Métodos de la API de volumen
+  entries:
+  - title: CancelarClon
+    url: "/api/reference_element_api_cancelclone.html"
+  - title: CancelarClonDeGrupo
+    url: "/api/reference_element_api_cancelgroupclone.html"
+  - title: Clonar múltiples volúmenes
+    url: "/api/reference_element_api_clonemultiplevolumes.html"
+  - title: Clonar volumen
+    url: "/api/reference_element_api_clonevolume.html"
+  - title: Volumen de copia
+    url: "/api/reference_element_api_copyvolume.html"
+  - title: Crear política de QoS
+    url: "/api/reference_element_api_createqospolicy.html"
+  - title: Crear volumen
+    url: "/api/reference_element_api_createvolume.html"
+  - title: Crear destino de copia de seguridad
+    url: "/api/reference_element_api_createbackuptarget.html"
+  - title: Eliminar política de QoS
+    url: "/api/reference_element_api_deleteqospolicy.html"
+  - title: Eliminar volumen
+    url: "/api/reference_element_api_deletevolume.html"
+  - title: Eliminar volúmenes
+    url: "/api/reference_element_api_deletevolumes.html"
+  - title: ObtenerObjetivoDeCopiaDeSeguridad
+    url: "/api/reference_element_api_getbackuptarget.html"
+  - title: Obtener estadísticas de volumen
+    url: "/api/reference_element_api_getvolumestats.html"
+  - title: Obtener QoS predeterminado
+    url: "/api/reference_element_api_getdefaultqos.html"
+  - title: Obtener política de QoS
+    url: "/api/reference_element_api_getqospolicy.html"
+  - title: Obtener recuento de volumen
+    url: "/api/reference_element_api_getvolumecount.html"
+  - title: ObtenerEficiencia de Volumen
+    url: "/api/reference_element_api_getvolumeefficiency.html"
+  - title: Listar volúmenes activos
+    url: "/api/reference_element_api_listactivevolumes.html"
+  - title: ListBackupTargets
+    url: "/api/reference_element_api_listbackuptargets.html"
+  - title: Lista de trabajos de volumen masivo
+    url: "/api/reference_element_api_listbulkvolumejobs.html"
+  - title: Lista de volúmenes eliminados
+    url: "/api/reference_element_api_listdeletedvolumes.html"
+  - title: Lista de políticas de QoS
+    url: "/api/reference_element_api_listqospolicies.html"
+  - title: ListSyncJobs
+    url: "/api/reference_element_api_listsyncjobs.html"
+  - title: ListVolumeQoSHistogramas
+    url: "/api/reference_element_api_listvolumeqoshistograms.html"
+  - title: Lista de volúmenes
+    url: "/api/reference_element_api_listvolumes.html"
+  - title: Estadísticas de volumen de lista
+    url: "/api/reference_element_api_listvolumestats.html"
+  - title: Listar volúmenes para la cuenta
+    url: "/api/reference_element_api_listvolumesforaccount.html"
+  - title: ListVolumeStatsByAccount
+    url: "/api/reference_element_api_listvolumestatsbyaccount.html"
+  - title: Lista de estadísticas de volumen por volumen virtual
+    url: "/api/reference_element_api_listvolumestatsbyvirtualvolume.html"
+  - title: Listar estadísticas de volumen por volumen
+    url: "/api/reference_element_api_listvolumestatsbyvolume.html"
+  - title: Lista de estadísticas de volumen por grupo de acceso de volumen
+    url: "/api/reference_element_api_listvolumestatsbyvolumeaccessgroup.html"
+  - title: Modificar destino de copia de seguridad
+    url: "/api/reference_element_api_modifybackuptarget.html"
+  - title: Modificar la política de QoS
+    url: "/api/reference_element_api_modifyqospolicy.html"
+  - title: Modificar volumen
+    url: "/api/reference_element_api_modifyvolume.html"
+  - title: Modificar volúmenes
+    url: "/api/reference_element_api_modifyvolumes.html"
+  - title: Purga de volumen eliminado
+    url: "/api/reference_element_api_purgedeletedvolume.html"
+  - title: Eliminar volúmenes eliminados
+    url: "/api/reference_element_api_purgedeletedvolumes.html"
+  - title: Eliminar destino de copia de seguridad
+    url: "/api/reference_element_api_removebackuptarget.html"
+  - title: Restaurar volumen eliminado
+    url: "/api/reference_element_api_restoredeletedvolume.html"
+  - title: Establecer QoS predeterminado
+    url: "/api/reference_element_api_setdefaultqos.html"
+  - title: Iniciar lectura de volumen masivo
+    url: "/api/reference_element_api_startbulkvolumeread.html"
+  - title: Iniciar escritura masiva de volumen
+    url: "/api/reference_element_api_startbulkvolumewrite.html"
+  - title: Actualizar estado del volumen masivo
+    url: "/api/reference_element_api_updatebulkvolumestatus.html"
+- title: Métodos de la API de grupos de acceso por volumen
+  entries:
+  - title: AgregarIniciadoresAlGrupoDeAccesoPorVolumen
+    url: "/api/reference_element_api_addinitiatorstovolumeaccessgroup.html"
+  - title: Agregar volúmenes al grupo de acceso a volúmenes
+    url: "/api/reference_element_api_addvolumestovolumeaccessgroup.html"
+  - title: Crear grupo de acceso a volumen
+    url: "/api/reference_element_api_createvolumeaccessgroup.html"
+  - title: Eliminar grupo de acceso al volumen
+    url: "/api/reference_element_api_deletevolumeaccessgroup.html"
+  - title: Listar grupos de acceso de volumen
+    url: "/api/reference_element_api_listvolumeaccessgroups.html"
+  - title: Eliminar volúmenes del grupo de acceso a volúmenes
+    url: "/api/reference_element_api_removevolumesfromvolumeaccessgroup.html"
+  - title: EliminarIniciadoresDelGrupoDeAccesoPorVolumen
+    url: "/api/reference_element_api_removeinitiatorsfromvolumeaccessgroup.html"
+  - title: Modificar grupo de acceso al volumen
+    url: "/api/reference_element_api_modifyvolumeaccessgroup.html"
+  - title: ObtenerEficienciaDeGrupoDeAccesoDeVolumen
+    url: "/api/reference_element_api_getvolumeaccessgroupefficiency.html"
+- title: Métodos de la API de instantáneas de volumen
+  entries:
+  - title: Resumen de instantáneas
+    url: "/api/concept_element_api_snapshots_overview.html"
+  - title: CrearInstantáneaDeGrupo
+    url: "/api/reference_element_api_creategroupsnapshot.html"
+  - title: Crear horario
+    url: "/api/reference_element_api_createschedule.html"
+  - title: Crear instantánea
+    url: "/api/reference_element_api_createsnapshot.html"
+  - title: Eliminar instantánea de grupo
+    url: "/api/reference_element_api_deletegroupsnapshot.html"
+  - title: Eliminar instantánea
+    url: "/api/reference_element_api_deletesnapshot.html"
+  - title: Obtener horario
+    url: "/api/reference_element_api_getschedule.html"
+  - title: Lista de instantáneas de grupo
+    url: "/api/reference_element_api_listgroupsnapshots.html"
+  - title: Listas de horarios
+    url: "/api/reference_element_api_listschedules.html"
+  - title: Instantáneas de la lista
+    url: "/api/reference_element_api_listsnapshots.html"
+  - title: Modificar instantánea de grupo
+    url: "/api/reference_element_api_modifygroupsnapshot.html"
+  - title: Modificar horario
+    url: "/api/reference_element_api_modifyschedule.html"
+  - title: Modificar instantánea
+    url: "/api/reference_element_api_modifysnapshot.html"
+  - title: Revertir a instantánea de grupo
+    url: "/api/reference_element_api_rollbacktogroupsnapshot.html"
+  - title: Revertir a instantánea
+    url: "/api/reference_element_api_rollbacktosnapshot.html"
+- title: Métodos de la API de volumen virtual
+  entries:
+  - title: CrearContenedorDeAlmacenamiento
+    url: "/api/reference_element_api_createstoragecontainer.html"
+  - title: Eliminar contenedores de almacenamiento
+    url: "/api/reference_element_api_deletestoragecontainers.html"
+  - title: Obtener la eficiencia del contenedor de almacenamiento
+    url: "/api/reference_element_api_getstoragecontainerefficiency.html"
+  - title: Obtener recuento de volúmenes virtuales
+    url: "/api/reference_element_api_getvirtualvolumecount.html"
+  - title: ListProtocolEndpoints
+    url: "/api/reference_element_api_listprotocolendpoints.html"
+  - title: Listar contenedores de almacenamiento
+    url: "/api/reference_element_api_liststoragecontainers.html"
+  - title: ListVirtualVolumeBindings
+    url: "/api/reference_element_api_listvirtualvolumebindings.html"
+  - title: Listar hosts de volumen virtual
+    url: "/api/reference_element_api_listvirtualvolumehosts.html"
+  - title: Listar volúmenes virtuales
+    url: "/api/reference_element_api_listvirtualvolumes.html"
+  - title: Listar tareas de volumen virtual
+    url: "/api/reference_element_api_listvirtualvolumetasks.html"
+  - title: ModificarContenedorDeAlmacenamiento
+    url: "/api/reference_element_api_modifystoragecontainer.html"
+- title: Control de acceso
+  url: "/api/reference_element_api_app_b_access_control.html"
+- title: Ejemplos de respuesta
+  entries:
+  - title: Obtener configuración
+    url: "/api/reference_element_api_response_example_getconfig.html"
+  - title: Obtener información de hardware del clúster
+    url: "/api/reference_element_api_response_example_getclusterhardwareinfo.html"
+  - title: Obtener información de Lldp
+    url: "/api/reference_element_api_response_example_getlldpinfo.html"
+  - title: Obtener configuración de red
+    url: "/api/reference_element_api_response_example_getnetworkconfig.html"
+  - title: GetNodeHardwareInfo (salida para iSCSI)
+    url: "/api/reference_element_api_response_example_getnodehardwareinfo.html"
+  - title: GetNodeHardwareInfo (salida para nodos Fibre Channel)
+    url: "/api/reference_element_api_response_example_getnodehardwareinfo_fibre_channel.html"
+  - title: Obtener información de NVRAM
+    url: "/api/reference_element_api_response_example_getnvraminfo.html"
+  - title: Lista de nodos activos
+    url: "/api/reference_element_api_response_example_listactivenodes.html"
+  - title: Listar volúmenes activos
+    url: "/api/reference_element_api_response_example_listactivevolumes.html"
+  - title: Configuración de hardware de prueba
+    url: "/api/reference_element_api_response_example_testhardwareconfig.html"

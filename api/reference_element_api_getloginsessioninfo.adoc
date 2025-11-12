@@ -1,0 +1,81 @@
+---
+permalink: api/reference_element_api_getloginsessioninfo.html 
+sidebar: sidebar 
+keywords: cluster,get,getting,login,session,info,getloginsessioninfo 
+summary: Puede utilizar el método GetLoginSessionInfo para obtener el período de tiempo durante el cual una sesión de autenticación de inicio de sesión es válida tanto para los shells de inicio de sesión como para la TUI. 
+---
+= Obtener información de sesión de inicio de sesión
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetLoginSessionInfo` Método para devolver el período de tiempo durante el cual una sesión de autenticación de inicio de sesión es válida tanto para los shells de inicio de sesión como para la TUI.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+información de sesión de inicio de sesión
+ a| 
+Un objeto que contiene el período de expiración de la autenticación.  Objetos posibles devueltos:
+
+* se acabó el tiempo:
++
+El tiempo, en minutos, en que esta sesión caducará.  Formateado en H:mm:ss.  Por ejemplo: 1:30:00, 20:00, 5:00.  Se eliminan todos los ceros y dos puntos iniciales independientemente del formato en que se haya introducido el tiempo de espera.
+
+
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "GetLoginSessionInfo",
+    "params": {},
+  "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+"id": 1,
+  "result" : {
+    "loginSessionInfo" : {
+      "timeout" : "30:00"
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

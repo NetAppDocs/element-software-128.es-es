@@ -1,0 +1,43 @@
+---
+permalink: setup/concept_setup_overview.html 
+sidebar: sidebar 
+keywords: element, solidfire, install, setup, node, cluster 
+summary: Antes de comenzar, es posible que desee comprender la secuencia de instalación y configuración del software NetApp Element . 
+---
+= Aprenda cómo configurar el almacenamiento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En este punto, ya deberías haber instalado el hardware.  El hardware también incluye el software Element.
+
+A continuación, deberá configurar el sistema de almacenamiento para su entorno.  Puede configurar un clúster con nodos de almacenamiento o nodos Fibre Channel y administrarlo mediante el software Element después de instalar y cablear los nodos en una unidad de rack y encenderlos.
+
+image::../media/sf_and_element_workflow_for_setup_shorter_workflow.png[Diagrama de flujo de trabajo de configuración]
+
+.Pasos para configurar el almacenamiento
+. Seleccione una de las siguientes opciones:
++
+** link:../setup/concept_setup_configure_a_storage_node.html["Configurar clúster con nodos de almacenamiento"]
++
+Puede configurar un clúster con nodos de almacenamiento y administrarlo utilizando el software Element después de instalar y cablear los nodos en una unidad de rack y encenderlos. A continuación, podrá instalar y configurar componentes adicionales en su sistema de almacenamiento.
+
+** link:../setup/concept_setup_fc_configure_a_fibre_channel_node.html["Configurar clúster con nodos Fibre Channel"]
++
+Puede configurar un clúster con nodos Fibre Channel y administrarlo mediante el software Element después de instalar y cablear los nodos en una unidad de rack y encenderlos. A continuación, podrá instalar y configurar componentes adicionales en su sistema de almacenamiento.
+
+
+
+. link:../setup/task_setup_determine_which_solidfire_components_to_install.html["Determina qué componentes de SolidFire debes instalar."]
+. link:../setup/task_setup_gh_redirect_set_up_a_management_node.html["Configure un nodo de administración y habilite la telemetría de Active IQ ."]
+
+
+
+
+== Encuentra más información
+
+* link:../setup/concept_setup_whats_next.html["Descubre los siguientes pasos para usar el almacenamiento"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

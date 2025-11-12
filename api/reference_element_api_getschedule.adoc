@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_getschedule.html 
+sidebar: sidebar 
+keywords: snapshot,schedule,get,getting,getschedule 
+summary: Puedes usar GetSchedule para obtener información sobre una instantánea programada. 
+---
+= Obtener horario
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `GetSchedule` para obtener información sobre una instantánea programada.
+
+Puedes ver información sobre una programación específica si hay muchas programaciones de instantáneas en el sistema.  Con este método también puede recuperar información sobre más de una programación especificando identificadores adicionales en el parámetro scheduleID.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de programación
+ a| 
+Identificador único del horario o de los horarios que se mostrarán.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+cronograma
+ a| 
+Una matriz de atributos de programación.
+ a| 
+xref:reference_element_api_schedule.adoc[cronograma]formación
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+"method": "GetSchedule",
+  "params": {
+              "scheduleID" : 2
+      },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Time Interval"
+      },
+       "hasError": false,
+       "hours": 0,
+       "lastRunStatus": "Success",
+       "lastRunTimeStarted": "2015-03-23T21:25:00Z",
+       "minutes": 2,
+       "monthdays": [],
+       "paused": false,
+       "recurring": true,
+       "runNextInterval": false,
+       "scheduleID": 2,
+       "scheduleInfo": {
+          "name": "MCA2",
+          "volumeID": "3"
+       },
+       "scheduleName": "MCAsnapshot2",
+       "scheduleType": "Snapshot",
+       "startingDate": "2015-03-23T19:28:57Z",
+       "toBeDeleted": false,
+       "weekdays": []
+      }
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

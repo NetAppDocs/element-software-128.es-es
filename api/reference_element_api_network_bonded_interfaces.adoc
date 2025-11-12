@@ -1,0 +1,609 @@
+---
+permalink: api/reference_element_api_network_bonded_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'El objeto de red \(interfaces enlazadas\) contiene información de configuración para las interfaces de red enlazadas en un nodo de almacenamiento.  Puede utilizar los métodos GetConfig y GetNetworkConfig para obtener esta información para un nodo de almacenamiento.' 
+---
+= red (interfaces enlazadas)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de red (interfaces enlazadas) contiene información de configuración para las interfaces de red enlazadas en un nodo de almacenamiento.  Puedes usar el `GetConfig` y `GetNetworkConfig` Métodos para obtener esta información para un nodo de almacenamiento.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+DIRECCIÓN
+ a| 
+La dirección IPv4 asignada a esta interfaz en el nodo.
+ a| 
+cadena
+
+
+
+ a| 
+addressV6
+ a| 
+La dirección de gestión IPv6 asignada a la interfaz Bond1G en el nodo.
+ a| 
+cadena
+
+
+
+ a| 
+retraso en la bajada de bonos
+ a| 
+Tiempo de espera, en milisegundos, antes de deshabilitar un esclavo después de que se haya detectado un fallo de enlace.
+ a| 
+cadena
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+La configuración de la dirección MAC de la interfaz de red.
+ a| 
+cadena
+
+
+
+ a| 
+bond-miimon
+ a| 
+La frecuencia, en milisegundos, con la que se inspecciona el estado del enlace MII para detectar fallos en el enlace.
+ a| 
+cadena
+
+
+
+ a| 
+modo de enlace
+ a| 
+El modo de unión. Valores posibles:
+
+* ActivoPasivo (Predeterminado)
+* ALBA
+* LACP (Recomendado)
+
+ a| 
+cadena
+
+
+
+ a| 
+reselección de bono primario
+ a| 
+Especifica cuándo se elige al esclavo de enlace primario como esclavo activo. Valores posibles:
+
+* Siempre
+* Mejor
+* Falla
+
+ a| 
+cadena
+
+
+
+ a| 
+esclavos
+ a| 
+La lista de interfaces esclavas para el enlace.
+ a| 
+cadena
+
+
+
+ a| 
+tasa de lap de bonos
+ a| 
+Cuando el modo de enlace es LACP, la tasa puede cambiar a una de las siguientes:
+
+* LACP Rápido (Predeterminado)
+* LACP lento
+
+ a| 
+cadena
+
+
+
+ a| 
+retraso de fianza
+ a| 
+El tiempo, en milisegundos, que se debe esperar antes de habilitar un esclavo después de que se detecte un enlace.
+ a| 
+cadena
+
+
+
+ a| 
+servidores de nombres dns
+ a| 
+Una lista de direcciones utilizadas para los servicios de nombres de dominio, separadas por comas o espacios.
+ a| 
+cadena
+
+
+
+ a| 
+búsqueda de DNS
+ a| 
+Una lista de dominios de búsqueda DNS separados por espacios o comas.
+ a| 
+cadena
+
+
+
+ a| 
+familia
+ a| 
+Familia de direcciones que la interfaz está configurada para usar.  Actualmente se admite "inet" para IPv4.
+ a| 
+cadena
+
+
+
+ a| 
+puerta
+ a| 
+La dirección de red del router IPv4 utilizada para enviar tráfico desde la red local.
+ a| 
+cadena
+
+
+
+ a| 
+gatewayV6
+ a| 
+La dirección de red del enrutador IPv6 utilizada para enviar tráfico desde la red local Bond1G.
+ a| 
+cadena
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+Longitud del prefijo de subred para rutas estáticas de tipo "net" para tráfico IPv6 en la red Bond1G.
+ a| 
+cadena
+
+
+
+ a| 
+dirección MAC
+ a| 
+La dirección MAC real asignada a la interfaz y observada por la red.
+ a| 
+cadena
+
+
+
+ a| 
+Dirección MAC permanente
+ a| 
+La dirección MAC inmutable asignada por el fabricante a la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+método
+ a| 
+El método utilizado para configurar la interfaz. Valores posibles:
+
+* Loopback: Se utiliza para definir la interfaz de loopback IPv4.
+* manual: Se utiliza para definir interfaces que no se configuran automáticamente.
+* dhcp: Se puede utilizar para obtener una dirección IP mediante DHCP.
+* estático: Se utiliza para definir interfaces Ethernet con direcciones IPv4 asignadas estáticamente.
+
+ a| 
+cadena
+
+
+
+ a| 
+mtu
+ a| 
+El tamaño máximo de paquete (en bytes) que la interfaz puede transmitir.  Debe ser mayor o igual a 1500; se admite hasta 9000.
+ a| 
+cadena
+
+
+
+ a| 
+máscara de red
+ a| 
+La máscara de bits que especifica la subred para la interfaz.
+ a| 
+cadena
+
+
+
+ a| 
+red
+ a| 
+Indica dónde comienza el rango de direcciones IP en función de la máscara de red.
+ a| 
+cadena
+
+
+
+ a| 
+rutas
+ a| 
+Matriz de cadenas de ruta separadas por comas para aplicar a la tabla de enrutamiento.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+estado
+ a| 
+El estado de la interfaz. Valores posibles:
+
+* Abajo: La interfaz está inactiva.
+* Arriba: La interfaz está lista, pero no tiene enlace.
+* En funcionamiento: La interfaz está lista y se ha establecido una conexión.
+
+ a| 
+cadena
+
+
+
+ a| 
+Reglas de ruta simétricas
+ a| 
+Las reglas de enrutamiento simétrico configuradas en el nodo.
+ a| 
+matriz de cadenas
+
+
+
+ a| 
+En funcionamiento
+ a| 
+Indica si la interfaz está lista y tiene un enlace.
+ a| 
+booleano
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+El identificador de red virtual de la interfaz (etiqueta VLAN).
+ a| 
+cadena
+
+|===
+
+
+== Modificabilidad de los miembros y estados de los nodos
+
+Esta tabla indica si los parámetros del objeto pueden modificarse o no en cada estado posible del nodo.
+
+|===
+
+
+| Nombre del miembro | Estado disponible | Estado pendiente | Estado activo 
+
+
+ a| 
+DIRECCIÓN
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+No
+
+
+
+ a| 
+addressV6
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+No
+
+
+
+ a| 
+retraso en la bajada de bonos
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+bond-miimon
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+modo de enlace
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+reselección de bono primario
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+esclavos
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+tasa de lap de bonos
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+retraso de fianza
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+servidores de nombres dns
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+búsqueda de DNS
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+familia
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+puerta
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+gatewayV6
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+dirección MAC
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+Dirección MAC permanente
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+método
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+mtu
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+máscara de red
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+red
+ a| 
+No
+ a| 
+No
+ a| 
+No
+
+
+
+ a| 
+rutas
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+estado
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+
+
+ a| 
+Reglas de ruta simétricas
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+En funcionamiento
+ a| 
+Configurado por el sistema
+ a| 
+N/A
+ a| 
+N/A
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+Sí
+ a| 
+Sí
+ a| 
+Sí
+
+|===
+
+
+== Encuentra más información
+
+* xref:reference_element_api_getconfig.adoc[Obtener configuración]
+* xref:reference_element_api_getnetworkconfig.adoc[Obtener configuración de red]
+

@@ -1,0 +1,201 @@
+---
+permalink: hardware/task_sfseries_driverepl.html 
+sidebar: sidebar 
+keywords: SSDs, drives, replacement, sf-series, nodes 
+summary: Puedes sustituir en caliente una unidad de estado sólido averiada por una unidad de repuesto. 
+---
+= Reemplazar las unidades de los nodos de almacenamiento de la serie SF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes sustituir en caliente una unidad de estado sólido averiada por una unidad de repuesto.
+
+.Lo que necesitarás
+* Tienes una unidad de repuesto.
+* Llevas una pulsera antiestática (ESD) o has tomado otras precauciones antiestáticas.
+* Usted se ha puesto en contacto con el soporte de NetApp para verificar que la unidad SSD necesita ser reemplazada y para obtener ayuda con el procedimiento de resolución adecuado.
++
+Necesitará la etiqueta de servicio o el número de serie cuando llame al soporte de NetApp .  El equipo de soporte trabajará con usted para obtener una unidad de reemplazo de acuerdo con su Acuerdo de Nivel de Servicio.
+
+
+
+.Acerca de esta tarea
+Las instrucciones se aplican a los siguientes modelos de nodos de almacenamiento SolidFire :
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+
+
+[NOTE]
+====
+Dependiendo de la versión de su software Element, los siguientes nodos no son compatibles:
+
+* Comenzando con los nodos de almacenamiento Element 12.8, SF4805, SF9605, SF19210 y SF38410.
+* Comenzando con los nodos de almacenamiento Element 12.7, SF2405 y SF9608.
+* A partir de los nodos de almacenamiento Element 12.0, SF3010, SF6010 y SF9010.
+
+
+====
+La siguiente figura muestra la ubicación de las unidades en un chasis SF9605:
+
+image::../media/sf_drives.gif[Esta figura muestra las unidades en el chasis SolidFire .]
+
+
+NOTE: La figura anterior es un ejemplo.  El SF9608 tiene una disposición de unidades diferente que incluye solo ocho unidades numeradas del uno al ocho, de izquierda a derecha.
+
+La ranura 0 contiene la unidad de metadatos del nodo.  Si va a sustituir la unidad en la ranura 0, debe pegar la etiqueta adhesiva incluida en la caja de envío en la unidad de repuesto, para poder identificarla por separado de las demás.
+
+[NOTE]
+====
+Siga estas buenas prácticas al manejar unidades:
+
+* Evite las descargas electrostáticas (ESD) manteniendo la unidad en la bolsa ESD hasta que esté listo para instalarla.
+* No introduzca herramientas metálicas ni cuchillos en la bolsa ESD.
+* Abra la bolsa ESD a mano o corte la parte superior con unas tijeras.
+* Conserva la bolsa ESD y cualquier material de embalaje por si necesitas devolver una unidad más adelante.
+* Utilice siempre una pulsera antiestática conectada a tierra a una superficie sin pintar de su chasis.
+* Utilice siempre ambas manos al extraer, instalar o transportar una unidad.
+* Nunca fuerce una unidad en el chasis.
+* No apile las unidades una encima de otra.
+* Utilice siempre embalaje homologado para el envío de unidades.
+
+
+====
+Aquí tenéis una descripción general de alto nivel de los pasos:
+
+* <<Retire la unidad del clúster.>>
+* <<Reemplace la unidad del chasis>>
+* <<Agrega la unidad al clúster.>>
+
+
+
+
+== Retire la unidad del clúster.
+
+El sistema SolidFire marca una unidad como averiada si su autodiagnóstico indica al nodo que ha fallado o si la comunicación con la unidad se interrumpe durante cinco minutos y medio o más.  El sistema muestra una lista de las unidades que han fallado.  Debe eliminar una unidad defectuosa de la lista de unidades defectuosas en el software NetApp Element .
+
+.Pasos
+. En la interfaz de usuario de Element, seleccione *Clúster* > *Unidades*.
+. Seleccione *Falló* para ver la lista de unidades que fallaron.
+. Anote el número de ranura de la unidad averiada.
++
+Necesitas esta información para localizar la unidad averiada en el chasis.
+
+. Retire la unidad defectuosa utilizando uno de los siguientes métodos:
++
+[cols="2*"]
+|===
+| Opción | Pasos 
+
+
+ a| 
+Para extraer unidades individuales
+ a| 
+.. Seleccione *Acciones* para la unidad que desea eliminar.
+.. Seleccione *Eliminar*.
+
+
+
+
+ a| 
+Para extraer varias unidades
+ a| 
+.. Seleccione todas las unidades que desea eliminar y, a continuación, seleccione *Acciones en lote*.
+.. Seleccione *Eliminar*.
+
+
+|===
+
+
+
+
+== Reemplace la unidad del chasis
+
+Después de eliminar una unidad defectuosa de la lista de unidades defectuosas en la interfaz de usuario de Element, estará listo para reemplazar físicamente la unidad defectuosa del chasis.
+
+.Pasos
+. Desembale la unidad de repuesto y colóquela sobre una superficie plana y libre de estática cerca del rack.
++
+Guarda los materiales de embalaje para cuando devuelvas la unidad defectuosa a NetApp.
+
+. Haga coincidir el número de ranura de la unidad averiada en la interfaz de usuario de Element con el número del chasis.
++
+La siguiente figura muestra un ejemplo de la numeración de las ranuras de la unidad:
+
++
+image::../media/sf_series_drive_numbers.gif[Esta figura muestra la numeración de las unidades para los nodos de almacenamiento SolidFire .]
+
++
+[cols="2*"]
+|===
+| Artículo | Descripción 
+
+
+ a| 
+1
+ a| 
+Números de ranura de la unidad
+
+|===
+. Pulse el círculo rojo de la unidad que desea extraer para liberarla.
++
+El pestillo se abre con un clic.
+
+. Deslice la unidad fuera del chasis y colóquela sobre una superficie nivelada y libre de estática.
+. Presione el círculo rojo en la unidad de repuesto antes de deslizarla en la ranura.
+. Inserte la unidad de repuesto y presione el círculo rojo para cerrar el pestillo.
+. Notifique al soporte de NetApp sobre el reemplazo de la unidad.
++
+El soporte de NetApp le proporcionará instrucciones para devolver la unidad defectuosa.
+
+
+
+
+
+== Agrega la unidad al clúster.
+
+Después de instalar una nueva unidad en el chasis, esta se registra como disponible.  Debes agregar la unidad al clúster utilizando la interfaz de usuario de Element antes de que pueda participar en el clúster.
+
+.Pasos
+. En la interfaz de usuario de Element, haga clic en *Clúster* > *Unidades*.
+. Haz clic en *Disponible* para ver la lista de unidades disponibles.
+. Elija una de las siguientes opciones para agregar unidades:
++
+[cols="2*"]
+|===
+| Opción | Pasos 
+
+
+ a| 
+Para agregar unidades individuales
+ a| 
+.. Seleccione el botón *Acciones* para la unidad que desea agregar.
+.. Seleccione *Agregar*.
+
+
+
+
+ a| 
+Para agregar varias unidades
+ a| 
+.. Seleccione las casillas de verificación de las unidades que desea agregar y, a continuación, seleccione *Acciones en lote*.
+.. Seleccione *Agregar*.
+
+
+|===
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

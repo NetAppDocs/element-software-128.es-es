@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listtests.html 
+sidebar: sidebar 
+keywords: test,tests,list,listing,listtests 
+summary: Puedes utilizar el método ListTests para listar las pruebas que están disponibles para ejecutarse en un nodo. 
+---
+= Pruebas de lista
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `ListTests` Método para listar las pruebas que están disponibles para ejecutarse en un nodo.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+pruebas
+ a| 
+Lista de pruebas que se pueden realizar en el nodo.
+ a| 
+matriz de cadenas
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "ListTests",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+   "tests": [
+             "TestConnectEnsemble",
+             "TestConnectMvip",
+             "TestConnectSvip",
+             "TestDrives",
+             "TestHardwareConfig",
+             "TestLocateCluster",
+             "TestPing",
+             "TestLocalConnectivity",
+             "TestRemoteConnectivity",
+             "TestNetworkConfig"
+           ]
+      }
+}
+----
+
+
+== Nueva versión
+
+9,6

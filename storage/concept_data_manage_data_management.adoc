@@ -1,0 +1,79 @@
+---
+permalink: storage/concept_data_manage_data_management.html 
+sidebar: sidebar 
+keywords: virtual volumes, volumes, manage 
+summary: 'Puede administrar los datos en un clúster que ejecuta el software Element desde la pestaña Administración en la interfaz de usuario de Element.  Las funciones de gestión de clústeres disponibles incluyen la creación y gestión de volúmenes de datos, cuentas de usuario, grupos de acceso a volúmenes, iniciadores y políticas de Calidad de Servicio (QoS).' 
+---
+= Aprenda sobre la gestión de volúmenes y volúmenes virtuales.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede administrar los datos en un clúster que ejecuta el software Element desde la pestaña Administración en la interfaz de usuario de Element.  Las funciones de gestión de clústeres disponibles incluyen la creación y gestión de volúmenes de datos, grupos de acceso a volúmenes, iniciadores y políticas de calidad de servicio (QoS).
+
+
+
+== Trabajar con volúmenes
+
+El sistema SolidFire aprovisiona almacenamiento mediante volúmenes.  Los volúmenes son dispositivos de bloque a los que acceden a través de la red los clientes iSCSI o Fibre Channel.  Desde la página Volúmenes en la pestaña Administración, puede crear, modificar, clonar y eliminar volúmenes en un nodo.  También puede consultar estadísticas sobre el ancho de banda del volumen y el uso de E/S.
+
+link:../storage/concept_data_manage_volumes_quality_of_service_policies.html["Aprenda a trabajar con volúmenes"]
+
+
+
+== Trabajar con volúmenes virtuales
+
+Puede ver información y realizar tareas para volúmenes virtuales y sus contenedores de almacenamiento asociados, puntos finales de protocolo, enlaces y hosts utilizando la interfaz de usuario de Element.
+
+El sistema de almacenamiento de software NetApp Element se suministra con la función de volúmenes virtuales (VVols) desactivada.  Debe realizar una tarea única de habilitar manualmente la funcionalidad de vSphere VVol a través de la interfaz de usuario de Element.
+
+Después de habilitar la funcionalidad VVol, aparece una pestaña VVols en la interfaz de usuario que ofrece opciones de monitoreo y administración limitadas relacionadas con VVols.  Además, un componente de software del lado del almacenamiento conocido como Proveedor VASA actúa como un servicio de reconocimiento de almacenamiento para vSphere.  La mayoría de los comandos de VVols, como la creación, clonación y edición de VVols, son iniciados por un servidor vCenter o un host ESXi y traducidos por el proveedor VASA a las API de Element para el sistema de almacenamiento de software Element.  Los comandos para crear, eliminar y administrar contenedores de almacenamiento y eliminar volúmenes virtuales se pueden iniciar mediante la interfaz de usuario de Element.
+
+La mayoría de las configuraciones necesarias para utilizar la funcionalidad de Volúmenes Virtuales con los sistemas de almacenamiento de software Element se realizan en vSphere.  Consulte la _Guía de configuración de volúmenes virtuales de VMware vSphere para almacenamiento SolidFire para registrar el proveedor VASA en vCenter, crear y administrar almacenes de datos VVol y administrar el almacenamiento según las políticas.
+
+
+NOTE: Para Element 12.5 y versiones anteriores, no registre más de un proveedor NetApp Element VASA en una sola instancia de vCenter.  Cuando se agrega un segundo proveedor NetApp Element VASA, todos los almacenes de datos VVOL quedan inaccesibles.
+
+
+NOTE: La compatibilidad con VASA para múltiples vCenters está disponible como un parche de actualización si ya ha registrado un proveedor de VASA con su vCenter.  Para instalar, descargue el archivo VASA39 .tar.gz desde el https://mysupport.netapp.com/products/element_software/VASA39/index.html["Descargas de software de NetApp"] Visite el sitio y siga las instrucciones del manifiesto.  El proveedor NetApp Element VASA utiliza un certificado NetApp .  Con este parche, vCenter utiliza el certificado sin modificaciones para admitir múltiples vCenters para el uso de VASA y VVols.  No modifique el certificado.  VASA no admite certificados SSL personalizados.
+
+link:../storage/task_data_manage_vvol_enable_virtual_volumes.html["Aprenda a trabajar con volúmenes virtuales"]
+
+
+
+== Trabajar con grupos de acceso por volumen e iniciadores
+
+Puede utilizar iniciadores iSCSI o iniciadores Fibre Channel para acceder a los volúmenes definidos dentro de los grupos de acceso a volúmenes.
+
+Puede crear grupos de acceso asignando IQN de iniciador iSCSI o WWPN de Fibre Channel en una colección de volúmenes.  Cada IQN que agregue a un grupo de acceso puede acceder a cada volumen del grupo sin necesidad de autenticación CHAP.
+
+Existen dos tipos de métodos de autenticación CHAP:
+
+* Autenticación CHAP a nivel de cuenta: Puede asignar la autenticación CHAP a la cuenta.
+* Autenticación CHAP a nivel de iniciador: Puede asignar un destino CHAP y secretos únicos para iniciadores específicos sin estar limitado a un único CHAP en una sola cuenta.  Esta autenticación CHAP a nivel de iniciador reemplaza las credenciales a nivel de cuenta.
+
+
+Opcionalmente, con CHAP por iniciador, puede exigir la autorización del iniciador y la autenticación CHAP por iniciador.  Estas opciones pueden definirse para cada iniciador y un grupo de acceso puede contener una combinación de iniciadores con diferentes opciones.
+
+Cada WWPN que agregue a un grupo de acceso habilita el acceso a la red Fibre Channel a los volúmenes del grupo de acceso.
+
+
+NOTE: Los grupos de acceso por volumen tienen los siguientes límites:
+
+* Se permite un máximo de 64 IQN o WWPN en un grupo de acceso.
+* Un grupo de acceso puede estar compuesto por un máximo de 2000 volúmenes.
+* Un IQN o WWPN solo puede pertenecer a un grupo de acceso.
+* Un único volumen puede pertenecer a un máximo de cuatro grupos de acceso.
+
+
+link:../storage/task_data_manage_vol_access_group_create_a_volume_access_group.html["Aprenda a trabajar con grupos de acceso por volumen e iniciadores."]
+
+
+
+== Para más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

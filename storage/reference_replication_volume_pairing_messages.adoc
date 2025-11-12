@@ -1,0 +1,44 @@
+---
+permalink: storage/reference_replication_volume_pairing_messages.html 
+sidebar: sidebar 
+keywords: volume pairing, messages, replication, data protection 
+summary: 'Puede ver los mensajes de emparejamiento de volúmenes durante el proceso de emparejamiento inicial en la página "Pares de volúmenes" que se encuentra en la pestaña "Protección de datos".  Estos mensajes pueden mostrarse tanto en el extremo de origen como en el de destino del par en la vista de lista de volúmenes replicados.' 
+---
+= Mensajes de emparejamiento de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede ver los mensajes de emparejamiento de volúmenes durante el proceso de emparejamiento inicial en la página "Pares de volúmenes" que se encuentra en la pestaña "Protección de datos".  Estos mensajes pueden mostrarse tanto en el extremo de origen como en el de destino del par en la vista de lista de volúmenes replicados.
+
+* *PausadoDesconectado*
++
+Se agotó el tiempo de espera de las RPC de replicación de origen o de sincronización.  Se ha perdido la conexión con el clúster remoto.  Compruebe las conexiones de red al clúster.
+
+* *Reanudando conexión*
++
+La sincronización de replicación remota ya está activa.  Iniciando el proceso de sincronización y esperando datos.
+
+* *Reanudando RRSync*
++
+Se está realizando una copia helicoidal única de los metadatos del volumen en el clúster emparejado.
+
+* *Reanudando LocalSync*
++
+Se está realizando una copia de doble hélice de los metadatos del volumen en el clúster emparejado.
+
+* *Reanudando la transferencia de datos*
++
+Se ha reanudado la transferencia de datos.
+
+* *Activo*
++
+Los volúmenes están emparejados y los datos se envían del volumen de origen al de destino; los datos están sincronizados.
+
+* *Inactivo*
++
+No se está produciendo ninguna actividad de replicación.
+
+

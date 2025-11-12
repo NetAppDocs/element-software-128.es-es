@@ -1,0 +1,183 @@
+---
+permalink: storage/reference_monitor_event_types.html 
+sidebar: sidebar 
+keywords: event types, monitor, event log 
+summary: 'El sistema informa de múltiples tipos de eventos; cada evento es una operación que el sistema ha completado.  Los eventos pueden ser rutinarios, normales o que requieran la atención del administrador.  La columna "Tipos de evento" en la página del registro de eventos indica en qué parte del sistema ocurrió el evento.' 
+---
+= Tipos de eventos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El sistema informa de múltiples tipos de eventos; cada evento es una operación que el sistema ha completado.  Los eventos pueden ser rutinarios, normales o que requieran la atención del administrador.  La columna "Tipos de evento" en la página del registro de eventos indica en qué parte del sistema ocurrió el evento.
+
+
+NOTE: El sistema no registra los comandos de API de solo lectura en el registro de eventos.
+
+La siguiente lista describe los tipos de eventos que aparecen en el registro de eventos:
+
+* *apiEvent*
++
+Eventos iniciados por un usuario a través de una API o interfaz web que modifican la configuración.
+
+* *binAssignmentsEvent*
++
+Eventos relacionados con la asignación de intervalos de datos.  Los bins son esencialmente contenedores que almacenan datos y se distribuyen por todo el clúster.
+
+* *binSyncEvent*
++
+Eventos del sistema relacionados con una reasignación de datos entre servicios de bloques.
+
+* *bsCheckEvent*
++
+Eventos del sistema relacionados con comprobaciones de servicio de bloqueo.
+
+* *bsKillEvent*
++
+Eventos del sistema relacionados con la finalización del servicio de bloqueo.
+
+* *Evento de operación masiva*
++
+Eventos relacionados con operaciones realizadas en un volumen completo, como una copia de seguridad, restauración, instantánea o clonación.
+
+* *clonación de evento*
++
+Eventos relacionados con la clonación de volúmenes.
+
+* *Evento maestro de clúster*
++
+Eventos que aparecen al inicializar el clúster o al realizar cambios en su configuración, como agregar o eliminar nodos.
+
+* [[csum_event]]*cSumEvent*
++
+Eventos relacionados con la detección de una discrepancia en la suma de comprobación durante la validación de la suma de comprobación de extremo a extremo.
+
++
+Los servicios que detectan una discrepancia en la suma de comprobación se detienen automáticamente y no se reinician después de generar este evento.
+
+* *evento de datos*
++
+Eventos relacionados con la lectura y escritura de datos.
+
+* *Evento de base de datos*
++
+Eventos relacionados con la base de datos global mantenida por los nodos del conjunto en el clúster.
+
+* *driveEvent*
++
+Eventos relacionados con las operaciones de conducción.
+
+* *Evento de cifrado en reposo*
++
+Eventos relacionados con el proceso de cifrado en un clúster.
+
+* *evento de conjunto*
++
+Eventos relacionados con el aumento o la disminución del número de nodos en un conjunto.
+
+* *Evento del canal de fibra*
++
+Eventos relacionados con la configuración y las conexiones a los nodos.
+
+* *gcEvento*
++
+Los eventos relacionados con los procesos se ejecutan cada 60 minutos para recuperar espacio de almacenamiento en las unidades de bloque.  Este proceso también se conoce como recogida de basura.
+
+* *ieEvento*
++
+Error interno del sistema.
+
+* *Evento de instalación*
++
+Eventos de instalación automática de software.  El software se está instalando automáticamente en un nodo pendiente.
+
+* *Evento iSCSIE*
++
+Eventos relacionados con problemas de iSCSI en el sistema.
+
+* *limitEvento*
++
+Eventos relacionados con el número de volúmenes o volúmenes virtuales en una cuenta o en el clúster que se acercan al máximo permitido.
+
+* *Evento de modo de mantenimiento*
++
+Eventos relacionados con el modo de mantenimiento del nodo, como la desactivación del nodo.
+
+* [[evento_de_red]]*evento_de_red*
++
+Eventos relacionados con el informe de errores de red para cada interfaz de tarjeta de interfaz de red (NIC) física.
+
++
+Estos eventos se activan cuando cualquier recuento de errores para una interfaz supera un umbral predeterminado de 1000 durante un intervalo de monitoreo de 10 minutos.  Estos eventos se aplican a errores de red como fallos de recepción, errores de comprobación de redundancia cíclica (CRC), errores de longitud, errores de desbordamiento y errores de trama.
+
+* *Evento de hardware de plataforma*
++
+Eventos relacionados con problemas detectados en dispositivos de hardware.
+
+* *evento de clúster remoto*
++
+Eventos relacionados con el emparejamiento de clústeres remotos.
+
+* *evento del planificador*
++
+Eventos relacionados con instantáneas programadas.
+
+* *evento de servicio*
++
+Eventos relacionados con el estado del servicio del sistema.
+
+* *sliceEvent*
++
+Eventos relacionados con el servidor Slice, como la eliminación de una unidad o volumen de metadatos.
+
++
+Existen tres tipos de eventos de reasignación de segmentos, que incluyen información sobre el servicio al que se asigna un volumen:
+
++
+** cambio: modificar el servicio principal a un nuevo servicio principal.
++
+[listing]
+----
+sliceID oldPrimaryServiceID->newPrimaryServiceID
+----
+** traslado: cambio del servicio secundario a un nuevo servicio secundario
++
+[listing]
+----
+sliceID {oldSecondaryServiceID(s)}->{newSecondaryServiceID(s)}
+----
+** poda: eliminar un volumen de un conjunto de servicios
++
+[listing]
+----
+sliceID {oldSecondaryServiceID(s)}
+----
+
+
+* *snmpTrapEvent*
++
+Eventos relacionados con las trampas SNMP.
+
+* *estadoEvento*
++
+Eventos relacionados con las estadísticas del sistema.
+
+* *tsEvento*
++
+Eventos relacionados con el servicio de transporte del sistema.
+
+* *Excepción inesperada*
++
+Eventos relacionados con excepciones inesperadas del sistema.
+
+* *ureEvento*
++
+Eventos relacionados con errores de lectura irrecuperables que ocurren durante la lectura desde el dispositivo de almacenamiento.
+
+* *Evento del proveedor vasa*
++
+Eventos relacionados con un proveedor VASA (vSphere APIs for Storage Awareness).
+
+

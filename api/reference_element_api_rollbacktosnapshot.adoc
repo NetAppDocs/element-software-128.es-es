@@ -1,0 +1,202 @@
+---
+permalink: api/reference_element_api_rollbacktosnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktosnapshot,snapshot,creating,create,roll,back,rollback,roll back,existing 
+summary: Puede utilizar el método RollbackToSnapshot para crear una instantánea existente de la imagen del volumen activo.  Este método crea una nueva instantánea a partir de una instantánea existente. 
+---
+= Revertir a instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `RollbackToSnapshot` Método para crear una instantánea existente de la imagen del volumen activo.  Este método crea una nueva instantánea a partir de una instantánea existente.
+
+La nueva instantánea se activa y la instantánea existente se conserva hasta que se elimine manualmente.  La instantánea previamente activa se elimina a menos que configure el parámetro saveCurrentState en verdadero.
+
+*LLENADO_DEL_CLÚSTER*
+
+[NOTE]
+====
+* Puede crear instantáneas si la plenitud del clúster se encuentra en la etapa 1, 2 o 3.  No se pueden crear instantáneas cuando la capacidad del clúster alcanza la etapa 4 o 5.
+* Es posible que se produzca un error al revertir un volumen a una instantánea cuando la sincronización de segmentos está en curso.  Rever `RollbackToSnapshot` una vez finalizada la sincronización.
+
+
+====
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de volumen
+ a| 
+ID del volumen.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+atributos JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+nombre
+ a| 
+Nombre de la instantánea.  Si no se proporciona ningún nombre, se utiliza el nombre de la instantánea a la que se está revirtiendo con "- copia" añadido al final del nombre.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ID de instantánea
+ a| 
+ID de una instantánea creada previamente en el volumen dado.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+guardarEstadoActual
+ a| 
+Especifica si se debe guardar o no la imagen del volumen activo anterior.  Valores válidos:
+
+* Verdadero: Se conserva la imagen del volumen activo anterior.
+* Falso: La imagen de volumen activa anterior se ha eliminado.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+suma de comprobación
+ a| 
+Una pequeña representación en cadena de los datos en la instantánea almacenada.
+ a| 
+cadena
+
+
+
+ a| 
+ID de instantánea
+ a| 
+Si saveCurrentState se estableció en falso, este valor es nulo.
+
+Si saveCurrentState se estableció en verdadero, el ID único de la instantánea recién creada.
+ a| 
+entero
+
+
+
+ a| 
+instantánea
+ a| 
+Si saveCurrentState se estableció en falso, este valor es nulo.
+
+Si saveCurrentState se estableció en verdadero, se creará un objeto que contiene información sobre la instantánea recién creada.
+ a| 
+xref:reference_element_api_snapshot.adoc[instantánea]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+ "method": "RollbackToSnapshot",
+ "params": {
+    "volumeID": 1,
+    "snapshotID": 3114,
+    "saveCurrentState": true
+  },
+  "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "checksum": "0x0",
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:27:32Z",
+      "enableRemoteReplication": false,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1-copy",
+      "snapshotID": 1,
+      "snapshotUUID": "30d7e3fe-0570-4d94-a8d5-3cc8097a6bfb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    },
+    "snapshotID": 1
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

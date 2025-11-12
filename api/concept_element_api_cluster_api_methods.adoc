@@ -1,0 +1,59 @@
+---
+permalink: api/concept_element_api_cluster_api_methods.html 
+sidebar: sidebar 
+keywords: cluster,API,methods,method,manage 
+summary: Los métodos de la API del clúster de software Element le permiten gestionar la configuración y la topología del clúster de almacenamiento y los nodos que pertenecen a un clúster de almacenamiento. 
+---
+= Métodos de la API de clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los métodos de la API del clúster de software Element le permiten gestionar la configuración y la topología del clúster de almacenamiento y los nodos que pertenecen a un clúster de almacenamiento.
+
+Algunos métodos de la API de clúster operan en nodos que forman parte de un clúster o que han sido configurados para unirse a un clúster.  Puedes agregar nodos a un clúster nuevo o a un clúster existente.  Los nodos que están listos para ser agregados a un clúster se encuentran en estado "pendiente", lo que significa que han sido configurados pero aún no se han agregado al clúster.
+
+* xref:reference_element_api_addnodes.adoc[Agregar nodos]
+* xref:reference_element_api_clearclusterfaults.adoc[Borrar fallos de clúster]
+* xref:reference_element_api_createclusterinterfacepreference.adoc[CrearPreferenciaDeInterfazDeClúster]
+* xref:reference_element_api_deleteclusterinterfacepreference.adoc[EliminarPreferenciaDeInterfazDeClúster]
+* xref:reference_element_api_disablefeature.adoc[Deshabilitar función]
+* xref:reference_element_api_enablefeature.adoc[Habilitar función]
+* xref:reference_element_api_getclustercapacity.adoc[Obtener capacidad del clúster]
+* xref:reference_element_api_getclusterfullthreshold.adoc[Umbral completo del clúster]
+* xref:reference_element_api_getclusterhardwareinfo.adoc[Obtener información de hardware del clúster]
+* xref:reference_element_api_getclusterinfo.adoc[Obtener información del clúster]
+* xref:reference_element_api_getclusterinterfacepreference.adoc[GetClusterInterfacePreference]
+* xref:reference_element_api_getclustermasternodeid.adoc[Obtener ID de nodo maestro del clúster]
+* xref:reference_element_api_getclusterstats.adoc[Obtener estadísticas del clúster]
+* xref:reference_element_api_getclusterversioninfo.adoc[ObtenerInformación de versión del clúster]
+* xref:reference_element_api_getfeaturestatus.adoc[Obtener estado de la función]
+* xref:reference_element_api_getloginsessioninfo.adoc[Obtener información de sesión de inicio de sesión]
+* xref:reference_element_api_getnodehardwareinfo.adoc[Información del hardware del nodo]
+* xref:reference_element_api_getnodestats.adoc[Obtener estadísticas del nodo]
+* xref:reference_element_api_listactivenodes.adoc[Lista de nodos activos]
+* xref:reference_element_api_listallnodes.adoc[Lista todos los nodos]
+* xref:reference_element_api_listclusterfaults.adoc[ListClusterFaults]
+* xref:reference_element_api_listclusterinterfacepreferences.adoc[Preferencias de interfaz de clúster de lista]
+* xref:reference_element_api_listevents.adoc[Lista de eventos]
+* xref:reference_element_api_listnodestats.adoc[Estadísticas de nodo de lista]
+* xref:reference_element_api_listiscsisessions.adoc[Lista de sesiones ISCSIS]
+* xref:reference_element_api_listservices.adoc[Servicios de listas]
+* xref:reference_element_api_listpendingnodes.adoc[Lista de nodos pendientes]
+* xref:reference_element_api_listpendingactivenodes.adoc[Lista de nodos activos pendientes]
+* xref:reference_element_api_modifyclusterfullthreshold.adoc[Modificar UmbralCompletoDeClúster]
+* xref:reference_element_api_modifyclusterinterfacepreference.adoc[ModificarPreferenciaDeInterfazDeClúster]
+* xref:reference_element_api_removenodes.adoc[Eliminar nodos]
+* xref:reference_element_api_setloginsessioninfo.adoc[SetLoginSessionInfo]
+* xref:reference_element_api_cluster_shutdown.adoc[Cerrar]
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_setntpinfo.html 
+sidebar: sidebar 
+keywords: ntp,info,set,setting,setntpinfo 
+summary: Puede utilizar el método SetNtpInfo para configurar NTP en los nodos del clúster.  Los valores que configure con esta interfaz se aplicarán a todos los nodos del clúster.  Si un servidor de difusión NTP transmite periódicamente información horaria en su red, puede configurar opcionalmente los nodos como clientes de difusión. 
+---
+= SetNtpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `SetNtpInfo` Método para configurar NTP en los nodos del clúster.  Los valores que configure con esta interfaz se aplicarán a todos los nodos del clúster.  Si un servidor de difusión NTP transmite periódicamente información horaria en su red, puede configurar opcionalmente los nodos como clientes de difusión.
+
+
+
+== Parámetros
+
+
+NOTE: Asegúrese de utilizar servidores NTP que sean internos a su red, en lugar de los predeterminados de instalación.
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+servidores
+ a| 
+Lista de servidores NTP para agregar a la configuración NTP de cada nodo.
+ a| 
+matriz de cadenas
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+cliente de difusión
+ a| 
+Habilita cada nodo del clúster como cliente de difusión.
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "SetNtpInfo",
+   "params": {
+     "servers"  : [
+       "ntpserver1.example.org",
+       "ntpserver2.example.org",
+       "ntpserver3.example.org"
+     ],
+     "broadcastclient" : false
+   },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== Nueva versión
+
+9,6

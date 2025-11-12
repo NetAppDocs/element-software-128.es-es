@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_setsnmpacl.html 
+sidebar: sidebar 
+keywords: setsnmpACL,set,setting,snmp,acl,permissions,access,control,list 
+summary: Puede utilizar el método SetSnmpACL para configurar los permisos de acceso SNMP en los nodos del clúster.  Los valores que establezca con esta interfaz se aplicarán a todos los nodos del clúster, y los valores que se pasen reemplazarán todos los valores establecidos en cualquier llamada anterior a SetSnmpACL.  Tenga en cuenta también que los valores establecidos con esta interfaz reemplazan todos los valores de red o usmUsers establecidos con SetSnmpInfo. 
+---
+= SetSnmpACL
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `SetSnmpACL` Método para configurar los permisos de acceso SNMP en los nodos del clúster.  Los valores que establezca con esta interfaz se aplicarán a todos los nodos del clúster, y los valores que se pasen reemplazarán todos los valores establecidos en cualquier llamada anterior a `SetSnmpACL` .  Tenga en cuenta también que los valores establecidos con esta interfaz reemplazan todos los valores de red o usmUsers establecidos con la `SetSnmpInfo` método.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+redes
+ a| 
+Lista de redes y el tipo de acceso que tienen a los servidores SNMP que se ejecutan en los nodos del clúster.  Consulte el objeto de red SNMP para conocer los valores de red posibles.  Este parámetro es obligatorio si SNMP v3 está deshabilitado.
+ a| 
+xref:reference_element_api_network_snmp.adoc[red]
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+usuarios de usm
+ a| 
+Lista de usuarios y el tipo de acceso que tienen a los servidores SNMP que se ejecutan en los nodos del clúster.  Este parámetro es obligatorio si SNMP v3 está habilitado.
+ a| 
+xref:reference_element_api_usmuser.adoc[usmUser]
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "SetSnmpACL",
+  "params": {
+    "usmUsers"  : [
+      {
+         "name": "jdoe",
+         "access": "rouser",
+         "secLevel": "priv",
+         "password": "mypassword",
+         "passphrase": "mypassphrase",
+      }
+    ]
+  },
+  "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_setsnmpinfo.adoc[SetSnmpInfo]

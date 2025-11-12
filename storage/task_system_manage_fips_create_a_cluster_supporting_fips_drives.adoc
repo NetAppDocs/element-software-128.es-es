@@ -1,0 +1,24 @@
+---
+permalink: storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, cluster, create 
+summary: 'La seguridad se está convirtiendo en un aspecto cada vez más crítico para el despliegue de soluciones en muchos entornos de clientes.  Las Normas Federales de Procesamiento de Información (FIPS) son normas para la seguridad informática y la interoperabilidad.  El cifrado certificado FIPS 140-2 para datos en reposo es un componente de la solución de seguridad general.' 
+---
+= Preparar el clúster Element para la función de unidades FIPS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La seguridad se está convirtiendo en un aspecto cada vez más crítico para el despliegue de soluciones en muchos entornos de clientes.  Las Normas Federales de Procesamiento de Información (FIPS) son normas para la seguridad informática y la interoperabilidad.  El cifrado certificado FIPS 140-2 para datos en reposo es un componente de la solución de seguridad general.
+
+Para preparar la activación de la función de unidades FIPS, debe evitar mezclar nodos en los que algunos sean compatibles con unidades FIPS y otros no.
+
+Un clúster se considera compatible con las unidades FIPS según las siguientes condiciones:
+
+* Todas las unidades están certificadas como unidades FIPS.
+* Todos los nodos son nodos de unidades FIPS.
+* El cifrado en reposo (EAR) está habilitado.
+* La función de controladores FIPS está habilitada.  Todas las unidades y nodos deben ser compatibles con FIPS y el cifrado en reposo debe estar habilitado para poder habilitar la función de unidad FIPS.
+

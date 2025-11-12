@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrornodes.html 
+sidebar: sidebar 
+keywords: snapmirror,node,nodes,list,listing,listsnapmirrornodes 
+summary: La interfaz web del software Element utiliza el método ListSnapMirrorNodes para obtener una lista de nodos en un clúster ONTAP remoto. 
+---
+= Nodos de espejo de ListSnap
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz web del software Element utiliza `ListSnapMirrorNodes` Método para obtener una lista de nodos en un clúster ONTAP remoto.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+Si se proporciona, el sistema enumera los nodos del punto final con el snapMirrorEndpointID especificado.  Si no se proporciona, el sistema enumera los nodos de todos los puntos de conexión SnapMirror conocidos.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorNodes
+ a| 
+Una lista de los nodos en el clúster ONTAP .
+ a| 
+xref:reference_element_api_snapmirrornode.adoc[snapMirrorNode]formación
+
+|===
+
+
+== Nueva versión
+
+10,1

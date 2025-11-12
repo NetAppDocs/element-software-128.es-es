@@ -1,0 +1,66 @@
+---
+permalink: storage/reference_monitor_iscsi_session_details.html 
+sidebar: sidebar 
+keywords: iscsi sessions, monitor 
+summary: Puede ver información sobre las sesiones iSCSI que están conectadas al clúster. 
+---
+= Detalles de la sesión iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede ver información sobre las sesiones iSCSI que están conectadas al clúster.
+
+La siguiente lista describe la información que puede encontrar sobre las sesiones iSCSI:
+
+* *Nodo*
++
+El nodo que aloja la partición de metadatos principal del volumen.
+
+* *Cuenta*
++
+El nombre de la cuenta propietaria del volumen.  Si el valor está en blanco, se muestra un guion (-).
+
+* *Volumen*
++
+El nombre del volumen identificado en el nodo.
+
+* *ID de volumen*
++
+Identificación del volumen asociado con el IQN objetivo.
+
+* *ID del iniciador*
++
+Un identificador generado por el sistema para el iniciador.
+
+* *Alias del iniciador*
++
+Un nombre opcional para el iniciador que facilita su búsqueda en una lista larga.
+
+* *Dirección IP del iniciador*
++
+La dirección IP del punto final que inicia la sesión.
+
+* *Iniciador IQN*
++
+El IQN del punto final que inicia la sesión.
+
+* *IP de destino*
++
+La dirección IP del nodo que aloja el volumen.
+
+* *IQN objetivo*
++
+El IQN del volumen.
+
+* *CAP*
++
+El algoritmo CHAP para una sesión iSCSI.  Si no se está utilizando un algoritmo CHAP, se muestra un guion (-).  Disponible a partir del Elemento 12.8.
+
+* *Creado el*
++
+Fecha en que se estableció la sesión.
+
+

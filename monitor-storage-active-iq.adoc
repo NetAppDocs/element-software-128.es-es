@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: monitor-storage-active-iq.html 
+keywords: solidfire, active, iq, activeiq, tool, aiq, monitor, storage 
+summary: Active IQ es una herramienta basada en la web que proporciona vistas históricas actualizadas continuamente de los datos de todo el clúster.  Puedes configurar alertas para eventos, umbrales o métricas específicas.  Active IQ le permite supervisar el rendimiento y la capacidad del sistema, así como mantenerse informado sobre el estado del clúster. 
+---
+= Monitorea el almacenamiento con SolidFire Active IQ
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+https://activeiq.solidfire.com["SolidFire Active IQ"^]Es una herramienta basada en la web que proporciona vistas históricas actualizadas continuamente de los datos de todo el clúster.  Puedes configurar alertas para eventos, umbrales o métricas específicas.  SolidFire Active IQ le permite supervisar el rendimiento y la capacidad del sistema, así como mantenerse informado sobre el estado del clúster.
+
+En SolidFire Active IQ encontrará la siguiente información sobre su sistema:
+
+* Número de nodos y estado de los nodos: sano, fuera de línea o con fallos.
+* Representación gráfica del uso de CPU y memoria, y de la limitación de nodos.
+* Detalles sobre el nodo, como el número de serie, la ubicación de la ranura en el chasis, el modelo y la versión del software NetApp Element que se ejecuta en el nodo de almacenamiento.
+* Información relacionada con la CPU y el almacenamiento de las máquinas virtuales
+
+
+Para obtener más información sobre SolidFire Active IQ, consulte la https://docs.netapp.com/us-en/solidfire-active-iq/index.html["Documentación de SolidFire Active IQ"^] .
+
+
+
+== Para más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["Sitio de soporte de NetApp > Herramientas para Active IQ"^]
+

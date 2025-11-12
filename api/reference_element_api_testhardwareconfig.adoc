@@ -1,0 +1,108 @@
+---
+permalink: api/reference_element_api_testhardwareconfig.html 
+sidebar: sidebar 
+keywords: node,test,testing,hardware,config,configuration,testhardwareconfig 
+summary: Puede utilizar el método TestHardwareConfig para realizar pruebas de hardware en un nodo.  Las opciones de prueba incluyen verificar las configuraciones de hardware, las versiones de firmware y que todas las unidades estén presentes. 
+---
+= Configuración de hardware de prueba
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `TestHardwareConfig` Método para realizar pruebas de hardware en un nodo.  Las opciones de prueba incluyen la verificación de las configuraciones de hardware, las versiones de firmware y que todas las unidades estén presentes.
+
+
+
+== Parámetros
+
+
+NOTE: Estas pruebas no están diseñadas para detectar fallos de hardware.
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+limpio
+ a| 
+Inicia la prueba de configuración de hardware con una caché limpia. Valores posibles:
+
+* verdadero: Elimina el archivo de resultados de pruebas almacenado en caché y vuelve a ejecutar las pruebas.
+* falso: Recupera los resultados de una prueba almacenada en caché.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+fuerza
+ a| 
+El parámetro de fuerza debe incluirse en este método para reiniciar correctamente el nodo.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+detalles
+ a| 
+Detalles de la configuración del hardware.
+ a| 
+Objeto JSON
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "TestHardwareConfig",
+   "params": {
+      "force": true
+     },
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Debido a la extensión de este ejemplo de respuesta, se documenta en un tema complementario.
+
+
+
+== Nueva versión
+
+9,6
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_response_example_testhardwareconfig.adoc[Configuración de hardware de prueba]

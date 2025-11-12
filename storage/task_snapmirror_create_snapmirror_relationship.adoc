@@ -1,0 +1,82 @@
+---
+permalink: storage/task_snapmirror_create_snapmirror_relationship.html 
+sidebar: sidebar 
+keywords: element, relationships, create, snapmirror, ui 
+summary: Debe crear una relación SnapMirror en la interfaz de usuario de NetApp Element . 
+---
+= Crear una relación SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe crear una relación SnapMirror en la interfaz de usuario de NetApp Element .
+
+
+NOTE: Cuando un volumen aún no está habilitado para SnapMirror y usted selecciona crear una relación desde la interfaz de usuario de Element, SnapMirror se habilita automáticamente en ese volumen.
+
+.Lo que necesitarás
+SnapMirror está habilitado en el volumen.
+
+.Pasos
+. Haz clic en *Administración* > *Volúmenes*.
+. Haga clic en el icono *Acciones* del volumen que formará parte de la relación.
+. Haga clic en *Crear una relación SnapMirror *.
+. En el cuadro de diálogo *Crear una relación SnapMirror *, seleccione un punto de conexión de la lista *Punto de conexión*.
+. Seleccione si la relación se creará utilizando un volumen ONTAP nuevo o un volumen ONTAP existente.
+. Para crear un nuevo volumen ONTAP en la interfaz de usuario de Element, haga clic en *Crear nuevo volumen*.
++
+.. Seleccione la *Máquina Virtual de Almacenamiento* para esta relación.
+.. Seleccione *Agregado* de la lista desplegable.
+.. En el campo *Sufijo del nombre del volumen*, introduzca un sufijo.
++
+
+NOTE: El sistema detecta el nombre del volumen de origen y lo copia al campo *Nombre del volumen*.  El sufijo que introduzcas añadirá un elemento al nombre.
+
+.. Haga clic en *Crear volumen de destino*.
+
+
+. Para utilizar un volumen ONTAP existente, haga clic en *Usar volumen existente*.
++
+.. Seleccione la *Máquina Virtual de Almacenamiento* para esta relación.
+.. Seleccione el volumen que será el destino de esta nueva relación.
+
+
+. En la sección *Detalles de la relación*, seleccione una póliza.  Si la política seleccionada tiene reglas de retención, la tabla de reglas muestra las reglas y las etiquetas asociadas.
+. *Opcional*: Seleccione un horario.
++
+Esto determina con qué frecuencia la relación crea copias.
+
+. *Opcional*: En el campo *Limitar ancho de banda a*, ingrese la cantidad máxima de ancho de banda que pueden consumir las transferencias de datos asociadas con esta relación.
+. Revisar detalles adicionales:
++
+** *Estado*: Estado actual de la relación del volumen de destino.  Los valores posibles son:
++
+*** no inicializado: El volumen de destino no se ha inicializado.
+*** snapmirrered: El volumen de destino se ha inicializado y está listo para recibir actualizaciones de SnapMirror .
+*** volumen interrumpido: El volumen de destino es de lectura/escritura y existen instantáneas.
+
+
+** *Estado*: Estado actual de la relación.  Los valores posibles son: inactivo, transfiriendo, comprobando, en reposo, en reposo, en cola, preparando, finalizando, abortando y rompiendo.
+** *Tiempo de retardo*: Cantidad de tiempo en segundos que el sistema de destino se retrasa con respecto al sistema de origen.  El tiempo de demora no debe ser mayor que el intervalo del programa de transferencia.
+** *Límite de ancho de banda*: La cantidad máxima de ancho de banda que pueden consumir las transferencias de datos asociadas con esta relación.
+** *Última transferencia*: Marca de tiempo de la última instantánea transferida.  Haz clic para obtener más información.
+** *Nombre de la política*: El nombre de la política ONTAP SnapMirror para la relación.
+** *Tipo de política*: Tipo de política ONTAP SnapMirror seleccionada para la relación.  Los valores posibles son:
++
+*** espejo asíncrono
+*** bóveda_espejo
+
+
+** *Nombre de la programación*: Nombre de la programación preexistente en el sistema ONTAP seleccionada para esta relación.
+
+
+. Para no inicializar en este momento, asegúrese de que la casilla de verificación *Inicializar* no esté seleccionada.
++
+
+NOTE: La inicialización puede llevar mucho tiempo.  Quizás te convenga ejecutarlo durante las horas de menor tráfico.  La inicialización realiza una transferencia básica; crea una copia instantánea del volumen de origen y luego transfiere esa copia y todos los bloques de datos a los que hace referencia al volumen de destino.  Puede inicializar manualmente o utilizar una programación para iniciar el proceso de inicialización (y las actualizaciones posteriores) según la programación establecida.
+
+. Haz clic en *Crear relación*.
+. Haz clic en *Protección de datos* > *Relaciones de SnapMirror * para ver esta nueva relación de SnapMirror .
+

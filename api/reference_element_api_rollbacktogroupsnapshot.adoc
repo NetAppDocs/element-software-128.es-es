@@ -1,0 +1,209 @@
+---
+permalink: api/reference_element_api_rollbacktogroupsnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktogroupsnapshot,snapshot,group,individual,creating,create,roll,back,rollback,roll back,existing 
+summary: Puede usar RollbackToGroupSnapshot para revertir todos los volúmenes individuales de un grupo de instantáneas a la instantánea individual de cada volumen. 
+---
+= Revertir a instantánea de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `RollbackToGroupSnapshot` revertir todos los volúmenes individuales de un grupo de instantáneas a la instantánea individual de cada volumen.
+
+Al revertir a una instantánea de grupo, se crea una instantánea temporal de cada volumen dentro de la instantánea de grupo.
+
+[NOTE]
+====
+* Se permite crear una instantánea si la plenitud del clúster está en la etapa 1, 2 o 3.  No se crean instantáneas cuando la capacidad del clúster se encuentra en la etapa 4 o 5.
+* Es posible que la reversión de volúmenes a una instantánea de grupo falle cuando la sincronización de segmentos esté en curso.  Rever `RollbackToGroupSnapshot` una vez finalizada la sincronización.
+
+
+====
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+`groupSnapshotID`
+ a| 
+Identificador único de la instantánea del grupo.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+`attributes`
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`name`
+ a| 
+Nombre de la instantánea de grupo del estado actual del volumen que se crea si `saveCurrentState` está establecido en verdadero.  Si no se especifica un nombre, el nombre de las instantáneas (volumen de grupo e individual) se establecerá en una marca de tiempo del momento en que se produjo la reversión.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`saveCurrentState`
+ a| 
+Especifica si se debe guardar o no la imagen del volumen activo anterior.  Valores válidos:
+
+* `true`Se conserva la imagen del volumen activo anterior.
+* `false`Se ha eliminado la imagen de volumen activa anterior.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+miembros
+ a| 
+Una matriz que contiene los ID de volumen y los ID de instantánea de los miembros de la instantánea del grupo.  Valores:
+
+* Suma de comprobación: Una pequeña representación en cadena de los datos en la instantánea almacenada.  Esta suma de comprobación se puede utilizar posteriormente para comparar otras instantáneas y detectar errores en los datos.  (cadena)
+* snapshotID: Identificador único de la instantánea a partir de la cual se crea la nueva instantánea.  El snapshotID debe ser una instantánea del volumen dado.  (entero)
+* volumeID: El ID del volumen de origen de la instantánea.  (entero)
+
+ a| 
+matriz de objetos JSON
+
+
+
+ a| 
+ID de instantánea del grupo
+ a| 
+Si `saveCurrentState` se estableció en falso, este valor es nulo.
+
+Si `saveCurrentState` se estableció en verdadero, el ID único de la instantánea de grupo recién creada.
+ a| 
+entero
+
+
+
+ a| 
+Instantánea de grupo
+ a| 
+Si `saveCurrentState` se estableció en falso, este valor es nulo.
+
+Si `saveCurrentState` se estableció en verdadero, un objeto que contiene información sobre la instantánea del grupo que `RollbackToGroupSnapshot` Acabo de retroceder a.
+ a| 
+xref:reference_element_api_groupsnapshot.adoc[Instantánea de grupo]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 438,
+  "method": "RollbackToGroupSnapshot",
+  "params": {
+    "groupSnapshotID": 1,
+    "name": "grpsnap1",
+    "saveCurrentState": true
+  }
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 438,
+  "result": {
+    "groupSnapshot": {
+      "attributes": {},
+      "createTime": "2016-04-06T17:27:17Z",
+      "groupSnapshotID": 1,
+      "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+      "members": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-06T17:27:17Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 1,
+          "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+          "name": "2016-04-06T17:27:17Z",
+          "snapshotID": 4,
+          "snapshotUUID": "03563c5e-51c4-4e3b-a256-a4d0e6b7959d",
+          "status": "done",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeID": 2
+        }
+      ],
+      "name": "2016-04-06T17:27:17Z",
+      "status": "done"
+    },
+    "groupSnapshotID": 3,
+    "members": [
+      {
+        "checksum": "0x0",
+        "snapshotID": 2,
+        "snapshotUUID": "719b162c-e170-4d80-b4c7-1282ed88f4e1",
+        "volumeID": 2
+      }
+    ]
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

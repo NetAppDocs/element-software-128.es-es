@@ -1,0 +1,106 @@
+---
+permalink: storage/task_monitor_system_alerts.html 
+sidebar: sidebar 
+keywords: system alerts, view, cluster faults, system errors 
+summary: Puede consultar las alertas para obtener información sobre fallos del clúster o errores en el sistema.  Las alertas pueden ser informativas, de advertencia o de error, y son un buen indicador del buen funcionamiento del clúster.  La mayoría de los errores se resuelven automáticamente. 
+---
+= Ver alertas del sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede consultar las alertas para obtener información sobre fallos del clúster o errores en el sistema.  Las alertas pueden ser informativas, de advertencia o de error, y son un buen indicador del buen funcionamiento del clúster.  La mayoría de los errores se resuelven automáticamente.
+
+Puede utilizar el método de la API ListClusterFaults para automatizar la supervisión de alertas.  Esto le permite recibir notificaciones sobre todas las alertas que se produzcan.
+
+. En la interfaz de usuario de Element, seleccione *Informes* > *Alertas*.
++
+El sistema actualiza las alertas en la página cada 30 segundos.
+
++
+Para cada evento, verá la siguiente información:
+
++
+|===
+
+
+| Artículo | Descripción 
+
+
+ a| 
+IDENTIFICACIÓN
+ a| 
+Identificador único asociado a una alerta de clúster.
+
+
+
+ a| 
+Gravedad
+ a| 
+El grado de importancia de la alerta. Valores posibles:
+
+** Advertencia: Un problema menor que podría requerir atención pronto.  Todavía se permiten las actualizaciones del sistema.
+** error: Un fallo que podría causar una degradación del rendimiento o la pérdida de alta disponibilidad (HA).  En general, los errores no deberían afectar al servicio.
+** crítico: Una falla grave que afecta el servicio.  El sistema no puede atender solicitudes de API o de E/S de cliente.  Operar en este estado podría conllevar una posible pérdida de datos.
+** bestPractice: No se está utilizando una práctica recomendada de configuración del sistema.
+
+
+
+
+ a| 
+Tipo
+ a| 
+El componente afectado por la falla.  Puede ser un nodo, una unidad, un clúster, un servicio o un volumen.
+
+
+
+ a| 
+Node
+ a| 
+Identificador del nodo al que se refiere este fallo.  Incluido para fallos de nodo y unidad, de lo contrario establecido en - (guion).
+
+
+
+ a| 
+ID de unidad
+ a| 
+Identificación de la unidad a la que se refiere este fallo.  Incluido en caso de fallos de la unidad, de lo contrario establecido en - (guion).
+
+
+
+ a| 
+Código de error
+ a| 
+Un código descriptivo que indica la causa del fallo.
+
+
+
+ a| 
+Detalles
+ a| 
+Descripción de la avería con detalles adicionales.
+
+
+
+ a| 
+Fecha
+ a| 
+Fecha y hora en que se registró la falla.
+
+|===
+. Haz clic en *Mostrar detalles* para ver información sobre una alerta individual.
+. Para ver los detalles de todas las alertas en la página, haga clic en la columna Detalles.
++
+Una vez que el sistema resuelve una alerta, toda la información sobre la misma, incluida la fecha en que se resolvió, se traslada al área de Resueltas.
+
+
+
+
+
+== Encuentra más información
+
+* xref:reference_monitor_cluster_fault_codes.adoc[Códigos de falla del clúster]
+* link:../api/concept_element_api_about_the_api.html["Gestiona el almacenamiento con la API de Element"]
+

@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_use_group_snapshots_for_data_protection.html 
+sidebar: sidebar 
+keywords: group snapshots, data protection, set of volumes, backup, rollback 
+summary: Puede crear una instantánea de grupo de un conjunto de volúmenes relacionados para conservar una copia puntual de los metadatos de cada volumen.  En el futuro, puede utilizar la instantánea del grupo como copia de seguridad o para revertir cambios y restaurar el estado del grupo de volúmenes a un estado anterior. 
+---
+= Utilizar instantáneas de grupo para la tarea de protección de datos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede crear una instantánea de grupo de un conjunto de volúmenes relacionados para conservar una copia puntual de los metadatos de cada volumen.  En el futuro, puede utilizar la instantánea del grupo como copia de seguridad o para revertir cambios y restaurar el estado del grupo de volúmenes a un estado anterior.
+
+
+
+== Encuentra más información
+
+* xref:task_data_protection_create_a_group_snapshot.adoc[Crea una instantánea de grupo]
+* xref:task_data_protection_edit_group_snapshots.adoc[Editar instantáneas de grupo]
+* xref:task_data_protection_edit_members_of_group_snapshot.adoc[Editar miembros de la instantánea del grupo]
+* xref:task_data_protection_delete_a_group_snapshot.adoc[Eliminar una instantánea de grupo]
+* xref:task_data_protection_roll_back_volumes_to_a_group_snapshot.adoc[Revertir volúmenes a una instantánea de grupo]
+* xref:task_data_protection_clone_multiple_volumes.adoc[Clonar múltiples volúmenes]
+* xref:task_data_protection_clone_multiple_volumes_from_a_group_snapshot.adoc[Clonar varios volúmenes a partir de una instantánea de grupo]
+

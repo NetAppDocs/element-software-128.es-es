@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_UI.html 
+summary: 'Con la interfaz de usuario del nodo de administración(https://<mNodeIP>:442[] ), puede realizar cambios en la configuración de red y clúster, ejecutar pruebas del sistema o utilizar utilidades del sistema.' 
+keywords: 'netapp, management node ui, mnode ui, :442, Element' 
+---
+= Descripción general de la interfaz de usuario del nodo de administración
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Con la interfaz de usuario del nodo de administración(`https://<ManagementNodeIP>:442` ), puede realizar cambios en la configuración de red y clúster, ejecutar pruebas del sistema o utilizar utilidades del sistema.
+
+Tareas que puedes realizar con la interfaz de usuario del nodo de administración:
+
+* link:task_mnode_enable_alerts.html["Configurar la monitorización de alertas"]
+* link:task_mnode_settings.html["Modifique y pruebe la configuración de la red, el clúster y el sistema del nodo de administración."]
+* link:task_mnode_run_system_utilities.html["Ejecutar utilidades del sistema desde el nodo de administración"]
+
+
+[discrete]
+== Encuentra más información
+
+* link:task_mnode_access_ui.html["Acceda al nodo de administración"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

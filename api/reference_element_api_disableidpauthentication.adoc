@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_disableidpauthentication.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,disable 
+summary: Puede utilizar el método DisableIdpAuthentication para deshabilitar la compatibilidad con la autenticación mediante IdP de terceros para el clúster.  Una vez deshabilitado, los usuarios autenticados por proveedores de identidad de terceros ya no pueden acceder al clúster y cualquier sesión autenticada activa queda invalidada/desconectada.  Los administradores de LDAP y del clúster pueden acceder al clúster a través de las interfaces de usuario compatibles. 
+---
+= Deshabilitar la autenticación Idp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `DisableIdpAuthentication` Método para deshabilitar la compatibilidad con la autenticación mediante proveedores de identidad de terceros para el clúster.  Una vez deshabilitado, los usuarios autenticados por proveedores de identidad de terceros ya no pueden acceder al clúster y cualquier sesión autenticada activa queda invalidada/desconectada.  Los administradores de LDAP y del clúster pueden acceder al clúster a través de las interfaces de usuario compatibles.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "DisableIdpAuthentication",
+  "params": {}
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+"result": {}
+}
+----
+
+
+== Nueva versión
+
+12,0

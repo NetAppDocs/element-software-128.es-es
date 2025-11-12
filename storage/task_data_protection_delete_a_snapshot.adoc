@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_protection_delete_a_snapshot.html 
+sidebar: sidebar 
+keywords: snapshot, delete, volume snapshot, storage cluster, remove snapshot 
+summary: Puede eliminar una instantánea de volumen de un clúster de almacenamiento que ejecuta el software Element.  Cuando borras una instantánea, el sistema la elimina inmediatamente. 
+---
+= Eliminar una instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede eliminar una instantánea de volumen de un clúster de almacenamiento que ejecuta el software Element.  Cuando borras una instantánea, el sistema la elimina inmediatamente.
+
+Puedes eliminar las instantáneas que se están replicando desde el clúster de origen.  Si una instantánea se está sincronizando con el clúster de destino cuando la eliminas, la replicación de sincronización se completa y la instantánea se elimina del clúster de origen.  La instantánea no se elimina del clúster de destino.
+
+También puede eliminar instantáneas que se hayan replicado en el destino desde el clúster de destino.  La instantánea eliminada se mantiene en una lista de instantáneas eliminadas en el destino hasta que el sistema detecta que usted ha eliminado la instantánea en el clúster de origen.  Cuando el destino detecta que has eliminado la instantánea de origen, detiene la replicación de la misma.
+
+Cuando se elimina una instantánea del clúster de origen, la instantánea del clúster de destino no se ve afectada (y viceversa).
+
+. Haz clic en *Protección de datos* > *Instantáneas*.
+. Haz clic en el icono *Acciones* de la instantánea que deseas eliminar.
+. En el menú que aparece, seleccione *Eliminar*.
+. Confirma la acción.
+

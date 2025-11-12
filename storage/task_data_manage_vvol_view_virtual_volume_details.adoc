@@ -1,0 +1,86 @@
+---
+permalink: storage/task_data_manage_vvol_view_virtual_volume_details.html 
+sidebar: sidebar 
+keywords: virtual volumes, view details vvols, vvols performance activity, vSphere 
+summary: En la interfaz de usuario de Element puede consultar la información de volumen virtual para todos los volúmenes virtuales activos en el clúster.  También puede ver la actividad de rendimiento de cada volumen virtual, incluyendo entrada, salida, rendimiento, latencia, profundidad de cola e información del volumen. 
+---
+= Ver detalles del volumen virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En la interfaz de usuario de Element puede consultar la información de volumen virtual para todos los volúmenes virtuales activos en el clúster.  También puede ver la actividad de rendimiento de cada volumen virtual, incluyendo entrada, salida, rendimiento, latencia, profundidad de cola e información del volumen.
+
+.Lo que necesitarás
+* Deberías haber habilitado la funcionalidad VVols en la interfaz de usuario de Element para el clúster.
+* Deberías haber creado un contenedor de almacenamiento asociado.
+* Deberías haber configurado tu clúster vSphere para usar la funcionalidad VVols del software Element.
+* Deberías haber creado al menos una máquina virtual en vSphere.
+
+
+.Pasos
+. Haga clic en *VVols* > *Volúmenes virtuales*.
++
+Se muestra la información de todos los volúmenes virtuales activos.
+
+. Haga clic en el icono *Acciones* del volumen virtual que desea revisar.
+. En el menú que aparece, seleccione *Ver detalles*.
+
+
+
+
+== Detalles
+
+La página Volúmenes virtuales de la pestaña VVols proporciona información sobre cada volumen virtual activo en el clúster, como el ID del volumen, el ID de la instantánea, el ID del volumen virtual principal y el ID del volumen virtual.
+
+* *ID de volumen*: El ID del volumen subyacente.
+* *ID de instantánea*: El ID de la instantánea de volumen subyacente.  El valor es 0 si el volumen virtual no representa una instantánea de SolidFire .
+* *ID de volumen virtual principal*: El ID de volumen virtual del volumen virtual principal.  Si el ID está compuesto únicamente por ceros, el volumen virtual es independiente y no tiene vínculo con un elemento principal.
+* *ID de volumen virtual*: El UUID del volumen virtual.
+* *Nombre*: El nombre asignado al volumen virtual.
+* *Contenedor de almacenamiento*: El contenedor de almacenamiento que posee el volumen virtual.
+* *Tipo de SO invitado*: Sistema operativo asociado al volumen virtual.
+* *Tipo de volumen virtual*: El tipo de volumen virtual: Configuración, Datos, Memoria, Intercambio u Otro.
+* *Acceso*: Los permisos de lectura y escritura asignados al volumen virtual.
+* *Tamaño*: El tamaño del volumen virtual en GB o GiB.
+* *Instantáneas*: El número de instantáneas asociadas.  Haz clic en el número para acceder a los detalles de la captura de pantalla.
+* *IOPS mínimas*: La configuración QoS de IOPS mínima del volumen virtual.
+* *IOPS máx.*: La configuración QoS de IOPS máxima del volumen virtual.
+* *IOPS de ráfaga*: La configuración QoS de ráfaga máxima del volumen virtual.
+* *VMW_VmID*: La información en los campos precedidos por "VMW_" está definida por VMware.
+* *Hora de creación*: Hora en que se completó la tarea de creación del volumen virtual.
+
+
+
+
+== Detalles de volumen virtual individual
+
+La página Volúmenes virtuales en la pestaña VVols proporciona la siguiente información sobre el volumen virtual cuando selecciona un volumen virtual individual y ve sus detalles.
+
+* *VMW_XXX*: La información en los campos precedidos por "VMW_" está definida por VMware.
+* *ID de volumen virtual principal*: El ID de volumen virtual del volumen virtual principal.  Si el ID está compuesto únicamente por ceros, el volumen virtual es independiente y no tiene vínculo con un elemento principal.
+* *ID de volumen virtual*: El UUID del volumen virtual.
+* *Tipo de volumen virtual*: El tipo de volumen virtual: Configuración, Datos, Memoria, Intercambio u Otro.
+* *ID de volumen*: El ID del volumen subyacente.
+* *Acceso*: Los permisos de lectura y escritura asignados al volumen virtual.
+* *Nombre de la cuenta*: Nombre de la cuenta que contiene el volumen.
+* *Grupos de acceso*: Grupos de acceso a volúmenes asociados.
+* *Tamaño total del volumen*: Capacidad total aprovisionada en bytes.
+* *Bloques distintos de cero*: Número total de bloques de 4 KiB con datos después de que se haya completado la última operación de recolección de basura.
+* *Bloques Cero*: Número total de bloques de 4 KiB sin datos después de que se haya completado la última ronda de operación de recolección de basura.
+* *Instantáneas*: El número de instantáneas asociadas.  Haz clic en el número para acceder a los detalles de la captura de pantalla.
+* *IOPS mínimas*: La configuración QoS de IOPS mínima del volumen virtual.
+* *IOPS máx.*: La configuración QoS de IOPS máxima del volumen virtual.
+* *IOPS de ráfaga*: La configuración QoS de ráfaga máxima del volumen virtual.
+* *Habilitar 512*: Debido a que los volúmenes virtuales siempre usan la emulación de tamaño de bloque de 512 bytes, el valor siempre es sí.
+* *Volúmenes emparejados*: Indica si un volumen está emparejado.
+* *Hora de creación*: Hora en que se completó la tarea de creación del volumen virtual.
+* *Tamaño de los bloques*: Tamaño de los bloques en el volumen.
+* *Escrituras no alineadas*: Para volúmenes 512e, el número de operaciones de escritura que no estaban en un límite de sector de 4k.  Un número elevado de escrituras no alineadas podría indicar una alineación de particiones incorrecta.
+* *Lecturas no alineadas*: Para volúmenes 512e, el número de operaciones de lectura que no estaban en un límite de sector de 4k.  Un elevado número de lecturas no alineadas podría indicar una alineación de particiones incorrecta.
+* *scsiEUIDeviceID*: Identificador de dispositivo SCSI único global para el volumen en formato de 16 bytes basado en EUI-64.
+* *scsiNAADeviceID*: Identificador de dispositivo SCSI único a nivel mundial para el volumen en formato NAA IEEE Registered Extended.
+* *Atributos*: Lista de pares nombre-valor en formato de objeto JSON.
+

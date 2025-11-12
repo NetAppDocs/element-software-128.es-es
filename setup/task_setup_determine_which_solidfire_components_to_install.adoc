@@ -1,0 +1,67 @@
+---
+permalink: setup/task_setup_determine_which_solidfire_components_to_install.html 
+sidebar: sidebar 
+keywords: setup, element, solidfire active iq 
+summary: 'Es posible que desee comprobar qué componentes de SolidFire , como el nodo de administración, Active IQ y el agente de supervisión de NetApp (NMA), debe instalar, según las opciones de configuración y despliegue.' 
+---
+= Determina qué componentes de SolidFire debes instalar.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es posible que desee comprobar qué componentes de SolidFire , como el nodo de administración, Active IQ y el agente de supervisión de NetApp (NMA), debe instalar, según las opciones de configuración y despliegue.
+
+La siguiente tabla enumera los componentes adicionales e indica si debe instalarlos.
+
+[cols="3*"]
+|===
+| Componente | clúster de almacenamiento SolidFire independiente | Clúster NetApp HCI 
+
+
+ a| 
+Nodo de gestión
+ a| 
+Recomendado
+ a| 
+Instalado por defecto, obligatorio
+
+
+
+ a| 
+Active IQ
+ a| 
+Recomendado*
+ a| 
+Recomendado*
+
+
+
+ a| 
+Agente de supervisión de NetApp
+ a| 
+No compatible
+ a| 
+Recomendado
+
+|===
+* Se requiere Active IQ para los clústeres de almacenamiento SolidFire con licencia de capacidad.
+
+.Pasos
+. Determinar qué componentes deben instalarse.
+. Complete la instalación de acuerdo con las instrucciones.link:../mnode/task_mnode_install.html["instalar el nodo de administración"] procedimiento.
++
+
+NOTE: Para configurar Active IQ, utilice el `--telemetry_active` parámetro en el script de configuración para habilitar la recopilación de datos para análisis por parte de Active IQ.
+
+. Para obtener información sobre el agente de supervisión de NetApp , consulte este enlace.link:../mnode/task_mnode_enable_activeIQ.html["procedimiento"] .
+
+
+
+
+== Para más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

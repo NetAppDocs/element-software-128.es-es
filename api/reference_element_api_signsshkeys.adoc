@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_signsshkeys.html 
+sidebar: sidebar 
+keywords: ssh, sign key 
+summary: 'Una vez habilitado SSH en un nodo o clúster, puede usar el método SignSshKeys para acceder a una shell en un nodo como sfadmin o sfreadonly. sfreadonly es una nueva cuenta de usuario (a partir de Element 12.5) que permite realizar la resolución de problemas inicial en un nodo, pero carece de privilegios para ejecutar comandos con privilegios elevados.' 
+---
+= Firmar claves Ssh
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Después de habilitar SSH en el clúster mediantelink:../api/reference_element_api_enablessh.html["Método HabilitarSSH"] , puedes usar el `SignSshKeys` Método para obtener acceso a una shell en un nodo.
+
+A partir del elemento 12.5, `sfreadonly` Es una nueva cuenta del sistema que permite la resolución de problemas básicos en un nodo.  Esta API permite el acceso SSH mediante `sfreadonly` Cuenta del sistema en todos los nodos del clúster.
+
+
+WARNING: Salvo indicación expresa del Soporte de NetApp , cualquier modificación del sistema no está soportada, anulará su contrato de soporte y puede provocar inestabilidad o inaccesibilidad de los datos.
+
+Después de utilizar este método, debe copiar el llavero de la respuesta, guardarlo en el sistema que iniciará la conexión SSH y, a continuación, ejecutar el siguiente comando:
+
+[listing]
+----
+ssh -i <identity_file> sfreadonly@<node_ip>
+----
+ `identity_file`es un archivo del cual se lee la identidad (clave privada) para la autenticación de clave pública y `node_ip` es la dirección IP del nodo.  Para obtener más información sobre `identity_file` , consulte la página del manual de SSH.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+duración
+ a| 
+Número entero del 1 al 24 que refleja el número de horas que la clave firmada será válida.  Si no se especifica la duración, se utiliza el valor predeterminado.
+ a| 
+entero
+ a| 
+1
+ a| 
+No
+
+
+
+ a| 
+clave pública
+ a| 
+Si se proporciona, este parámetro solo devolverá la clave pública firmada en lugar de crear un llavero completo para el usuario.
+
+
+NOTE: Las claves públicas se envían utilizando la barra de direcciones de un navegador con `+` se interpretan como signos espaciados y de ruptura.
+ a| 
+cadena
+ a| 
+Nulo
+ a| 
+No
+
+
+
+ a| 
+sfadmin
+ a| 
+Permite el acceso a la cuenta de shell sfadmin cuando se realiza la llamada a la API con acceso al clúster supportAdmin, o cuando el nodo no está en un clúster.
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+estado del generador de claves
+ a| 
+Contiene la identidad en la clave firmada, las entidades autorizadas y las fechas de inicio y fin válidas para la clave.
+ a| 
+cadena
+
+
+
+ a| 
+clave_privada
+ a| 
+El valor de una clave SSH privada solo se devuelve si la API genera un llavero completo para el usuario final.
+
+
+NOTE: El valor está codificado en Base64; debe decodificarlo cuando se escriba en un archivo para garantizar que se lea como una clave privada válida.
+ a| 
+cadena
+
+
+
+ a| 
+clave_pública
+ a| 
+El valor de una clave SSH pública solo se devuelve si la API genera un llavero completo para el usuario final.
+
+
+NOTE: Cuando se pasa un parámetro public_key al método de la API, solo se tiene en cuenta el parámetro public_key. `signed_public_key` El valor se devuelve en la respuesta.
+ a| 
+cadena
+
+
+
+ a| 
+clave pública firmada
+ a| 
+La clave pública SSH que resulta de firmar la clave pública, ya sea que esta haya sido proporcionada por el usuario o generada por la API.
+ a| 
+cadena
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+    "method": "SignSshKeys",
+    "params": {
+        "duration": 2,
+        "publicKey":<string>
+    },
+    "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "signedKeys": {
+      "keygen_status": <keygen_status>,
+      "signed_public_key": <signed_public_key>
+    }
+  }
+}
+----
+En este ejemplo, se firma y se devuelve una clave pública que es válida durante un período de tiempo de entre 1 y 24 horas.
+
+
+
+== Nueva versión
+
+12,5

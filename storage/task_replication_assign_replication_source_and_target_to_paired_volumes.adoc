@@ -1,0 +1,55 @@
+---
+permalink: storage/task_replication_assign_replication_source_and_target_to_paired_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, paired volumes, replication source, assign 
+summary: Una vez emparejados los volúmenes, debe asignar un volumen de origen y su volumen de destino de replicación.  Una fuente o destino de replicación puede ser cualquiera de los volúmenes de un par de volúmenes.  También puede utilizar este procedimiento para redirigir los datos enviados a un volumen de origen a un volumen de destino remoto en caso de que el volumen de origen deje de estar disponible. 
+---
+= Asignar una fuente y un destino de replicación a los volúmenes emparejados.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una vez emparejados los volúmenes, debe asignar un volumen de origen y su volumen de destino de replicación.  Una fuente o destino de replicación puede ser cualquiera de los volúmenes de un par de volúmenes.  También puede utilizar este procedimiento para redirigir los datos enviados a un volumen de origen a un volumen de destino remoto en caso de que el volumen de origen deje de estar disponible.
+
+.Lo que necesitarás
+Tienes acceso a los clústeres que contienen los volúmenes de origen y destino.
+
+.Pasos
+. Prepare el volumen fuente:
++
+.. Desde el clúster que contiene el volumen que desea asignar como origen, seleccione *Administración* > *Volúmenes*.
+.. Haz clic en el icono *Acciones* del volumen que deseas asignar como fuente y haz clic en *Editar*.
+.. En la lista desplegable *Acceso*, seleccione *Lectura/Escritura*.
++
+
+IMPORTANT: Si está invirtiendo la asignación de origen y destino, esta acción hará que el par de volúmenes muestre el siguiente mensaje hasta que se asigne un nuevo destino de replicación: `PausedMisconfigured`
+
++
+Cambiar el acceso pausa la replicación del volumen y provoca que se detenga la transmisión de datos.  Asegúrese de haber coordinado estos cambios en ambos sitios.
+
+.. Haz clic en *Guardar cambios*.
+
+
+. Prepare el volumen objetivo:
++
+.. Desde el clúster que contiene el volumen que desea asignar como destino, seleccione *Administración* > *Volúmenes*.
+.. Haz clic en el icono Acciones del volumen que deseas asignar como destino y haz clic en *Editar*.
+.. En la lista desplegable *Acceso*, seleccione *Destino de replicación*.
++
+
+IMPORTANT: Si asigna un volumen existente como destino de replicación, los datos de ese volumen se sobrescribirán.  Debe utilizar un nuevo volumen de destino que no contenga datos y tenga las características exactas del volumen de origen, como el tamaño, la configuración 512e y la configuración QoS.  El volumen objetivo puede ser mayor o igual en tamaño que el volumen de origen, pero no puede ser menor.
+
+.. Haz clic en *Guardar cambios*.
+
+
+
+
+
+
+== Encuentra más información
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[Emparejar volúmenes utilizando un ID de volumen]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[Emparejar volúmenes mediante una clave de emparejamiento]
+

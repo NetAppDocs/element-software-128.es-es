@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_task_virtual_volumes.html 
+sidebar: sidebar 
+keywords: object,objects,task 
+summary: El objeto de tarea contiene información sobre una tarea de volumen virtual que se está ejecutando actualmente o que ha finalizado en el sistema.  Puede utilizar el método ListVirtualVolumeTasks para recuperar esta información para todas las tareas de volumen virtual. 
+---
+= tarea (volúmenes virtuales)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto de tarea contiene información sobre una tarea de volumen virtual que se está ejecutando actualmente o que ha finalizado en el sistema.  Puedes usar el `ListVirtualVolumeTasks` Método para recuperar esta información para todas las tareas de volumen virtual.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+cancelado
+ a| 
+Indica si la tarea fue cancelada o no. Valores posibles:
+
+* verdadero
+* FALSO
+
+ a| 
+booleano
+
+
+
+ a| 
+cloneVirtualVolumeID
+ a| 
+El ID de volumen virtual único del volumen virtual que se está clonando (para tareas de clonación).
+ a| 
+UUID
+
+
+
+ a| 
+metadatos de padres
+ a| 
+Un objeto que contiene metadatos del elemento principal para tareas que clonan o crean instantáneas de un volumen virtual.
+ a| 
+Objeto JSON
+
+
+
+ a| 
+tamañoTotalPadre
+ a| 
+El espacio total disponible (en bytes) en el elemento padre para tareas de clonación o instantánea.
+ a| 
+entero
+
+
+
+ a| 
+tamaño usado del padre
+ a| 
+El espacio utilizado del padre (en bytes) para tareas de clonación o instantánea.
+ a| 
+entero
+
+
+
+ a| 
+operación
+ a| 
+El tipo de operación que realiza la tarea. Valores posibles:
+
+* desconocido: Se desconoce la operación de la tarea.
+* preparación: La tarea consiste en preparar un volumen virtual.
+* Instantánea: La tarea consiste en crear una instantánea de un volumen virtual.
+* Reversión: La tarea consiste en revertir un volumen virtual a una instantánea.
+* clonar: La tarea consiste en crear un clon del volumen virtual.
+* fastClone: La tarea consiste en crear un clon rápido de un volumen virtual.
+* copyDiffs: La tarea consiste en copiar bloques diferentes a un volumen virtual.
+
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+Estado actual de la tarea de volumen virtual. Valores posibles:
+
+* Error: La tarea ha fallado y ha devuelto un error.
+* En cola: La tarea está esperando a ser ejecutada.
+* En ejecución: La tarea se está ejecutando actualmente.
+* Éxito: La tarea se ha completado correctamente.
+
+ a| 
+cadena
+
+
+
+ a| 
+ID de host de volumen virtual
+ a| 
+El identificador único del host que inició la tarea.
+ a| 
+UUID
+
+
+
+ a| 
+ID de volumen virtual
+ a| 
+El nuevo ID de volumen virtual único (para tareas que crean un nuevo volumen virtual).
+ a| 
+UUID
+
+
+
+ a| 
+ID de tarea de volumen virtual
+ a| 
+El identificador único de la tarea.
+ a| 
+UUID
+
+|===
+
+
+== Encuentra más información
+
+xref:reference_element_api_listvirtualvolumetasks.adoc[Listar tareas de volumen virtual]

@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-collectlogs.html 
+summary: Puede utilizar NetApp Hybrid Cloud Control para recopilar registros de su instalación de Element que le ayudarán a solucionar problemas. 
+keywords: netapp, element, logs, collection, troubleshooting, monitor 
+---
+= Recopilar registros para la resolución de problemas
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si tiene problemas con la instalación de su almacenamiento all-flash SolidFire , puede recopilar registros para enviarlos al soporte de NetApp para ayudar con el diagnóstico.  Puede utilizar NetApp Hybrid Cloud Control o la API REST para recopilar registros en un sistema Element.
+
+.Lo que necesitarás
+* Asegúrese de que la versión de su clúster de almacenamiento esté ejecutando el software NetApp Element 11.3 o posterior.
+* Asegúrese de haber implementado un nodo de administración que ejecute la versión 11.3 o posterior.
+
+
+.Opciones de recopilación de registros
+Elige una de las siguientes opciones:
+
+* <<Utilice NetApp Hybrid Cloud Control para recopilar registros.>>
+* <<Utilice la API REST para recopilar registros.>>
+
+
+
+
+== Utilice NetApp Hybrid Cloud Control para recopilar registros.
+
+Puede acceder al área de recopilación de registros desde el panel de control de NetApp Hybrid Cloud.
+
+.Pasos
+. Abra la dirección IP del nodo de administración en un navegador web. Por ejemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Inicie sesión en NetApp Hybrid Cloud Control proporcionando las credenciales de administrador del clúster de almacenamiento Element.
+. Desde el Panel de control, seleccione el menú en la parte superior derecha.
+. Seleccione *Recopilar registros*.
++
+Si ya ha recopilado registros anteriormente, puede descargar el paquete de registros existente o iniciar una nueva recopilación de registros.
+
+. Seleccione un rango de fechas en el menú desplegable *Rango de fechas* para especificar qué fechas deben incluir los registros.
++
+Si especifica una fecha de inicio personalizada, puede seleccionar la fecha con la que comenzará el rango de fechas.  Se recopilarán los registros desde esa fecha hasta la actualidad.
+
+. En la sección *Recopilación de registros*, seleccione los tipos de archivos de registro que debe incluir el paquete de registros.
++
+Para los registros de almacenamiento, puede expandir la lista de nodos de almacenamiento y seleccionar nodos individuales de los que recopilar registros (o todos los nodos de la lista).
+
+. Seleccione *Recopilar registros* para iniciar la recopilación de registros.
++
+La recopilación de registros se ejecuta en segundo plano y la página muestra el progreso.
+
++
+
+NOTE: Dependiendo de los registros que recopiles, la barra de progreso podría permanecer en un porcentaje determinado durante varios minutos, o avanzar muy lentamente en algunos puntos.
+
+. Seleccione *Descargar registros* para descargar el paquete de registros.
++
+El paquete de registros está en formato de archivo .tgz comprimido de UNIX.
+
+
+
+
+
+== Utilice la API REST para recopilar registros.
+
+Puedes utilizar la API REST para recopilar los registros de Element.
+
+.Pasos
+. Localice el ID del clúster de almacenamiento:
++
+.. Abra la interfaz de usuario de la API REST del nodo de administración en el nodo de administración:
++
+[listing]
+----
+https://[management node IP]/logs/1/
+----
+.. Seleccione *Autorizar* y complete lo siguiente:
++
+... Introduzca el nombre de usuario y la contraseña del clúster.
+... Introduzca el ID del cliente como `mnode-client` si el valor no está ya asignado.
+... Seleccione *Autorizar* para iniciar una sesión.
+
+
+
+
+. Recopilar registros de Element:
++
+.. Seleccione *POST /bundle*.
+.. Seleccione *Probarlo*.
+.. Modifique los valores de los siguientes parámetros en el campo *Cuerpo de la solicitud* según el tipo de registros que necesite recopilar y el intervalo de tiempo correspondiente:
++
+|===
+| Parámetro | Tipo | Descripción 
+
+
+| `modifiedSince` | Cadena de fecha | Incluir únicamente los registros modificados después de esta fecha y hora.  Por ejemplo, el valor "2020-07-14T20:19:00.000Z" define una fecha de inicio del 14 de julio de 2020 a las 20:19 UTC. 
+
+
+| `mnodeLogs` | Booleano | Establezca este parámetro en `true` Incluir los registros del nodo de administración. 
+
+
+| `storageCrashDumps` | Booleano | Establezca este parámetro en `true` Incluir registros de depuración de fallos de nodos de almacenamiento. 
+
+
+| `storageLogs` | Booleano | Establezca este parámetro en `true` Incluir los registros de los nodos de almacenamiento. 
+
+
+| `storageNodeIds` | matriz UUID | Si `storageLogs` está configurado para `true` , complete este parámetro con los ID de los nodos del clúster de almacenamiento para limitar la recopilación de registros a esos nodos de almacenamiento específicos.  Utilice el `GET https://[management node IP]/logs/1/bundle/options` Punto de acceso para ver todos los ID de nodo posibles que puede usar. 
+|===
+.. Seleccione *Ejecutar* para comenzar la recopilación de registros.  La respuesta debería ser similar a la siguiente:
++
+[listing]
+----
+{
+  "_links": {
+    "self": "https://10.1.1.5/logs/1/bundle"
+  },
+  "taskId": "4157881b-z889-45ce-adb4-92b1843c53ee",
+  "taskLink": "https://10.1.1.5/logs/1/bundle"
+}
+----
+
+
+. Comprobar el estado de la tarea de recopilación de registros:
++
+.. Seleccione *GET /bundle*.
+.. Seleccione *Probarlo*.
+.. Seleccione *Ejecutar* para obtener el estado de la tarea de recopilación.
+.. Desplácese hasta el final del cuerpo de la respuesta.
++
+Deberías ver un `percentComplete` atributo que detalla el progreso de la colección.  Si la colección está completa, `downloadLink` El atributo contiene el enlace de descarga completo, incluido el nombre del archivo del paquete de registro.
+
+.. Copia el nombre del archivo al final del `downloadLink` atributo.
+
+
+. Descargue el paquete de registros recopilados:
++
+.. Seleccione *GET /bundle/{filename}*.
+.. Seleccione *Probarlo*.
+.. Pegue el nombre del archivo que copió anteriormente en el `filename` Campo de texto del parámetro.
+.. Seleccione *Ejecutar*.
++
+Tras la ejecución, aparece un enlace de descarga en el cuerpo de la respuesta.
+
+.. Seleccione *Descargar archivo* y guarde el archivo resultante en su ordenador.
++
+El paquete de registros está en formato de archivo .tgz comprimido de UNIX.
+
+
+
+
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

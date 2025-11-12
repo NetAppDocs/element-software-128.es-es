@@ -1,0 +1,85 @@
+---
+permalink: api/reference_element_api_getclusterstate.html 
+sidebar: sidebar 
+keywords: cluster,state,getting,get,getclusterstate 
+summary: Puede utilizar el método de la API GetClusterState para indicar si un nodo forma parte de un clúster o no. 
+---
+= Obtener estado del clúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetClusterState` Método API para indicar si un nodo forma parte de un clúster o no.
+
+
+
+== Parámetros
+
+Este método no tiene parámetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+clúster
+ a| 
+Nombre del clúster.
+ a| 
+cadena
+
+
+
+ a| 
+estado
+ a| 
+* Disponible: El nodo no ha sido configurado con un nombre de clúster.
+* Pendiente: El nodo está pendiente para un clúster con nombre específico y se puede agregar.
+* Activo: El nodo es un miembro activo de un clúster y no puede agregarse a otro clúster.
+
+ a| 
+cadena
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetClusterState",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" :
+      "cluster" :  "Cluster101"
+      "state" : "Active"
+}
+----
+
+
+== Nueva versión
+
+9,6

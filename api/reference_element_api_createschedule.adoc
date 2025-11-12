@@ -1,0 +1,539 @@
+---
+permalink: api/reference_element_api_createschedule.html 
+sidebar: sidebar 
+keywords: CreateSchedule,create,creating,schedule,schedules,snapshot,snapshots,scheduling,automatic,volume,volumes 
+summary: Puede utilizar CreateSchedule para programar una instantánea automática de un volumen a intervalos definidos. 
+---
+= Crear horario
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `CreateSchedule` programar una instantánea automática de un volumen a intervalos definidos.
+
+Posteriormente, puede utilizar la instantánea creada como copia de seguridad o para revertir cambios, a fin de garantizar que los datos de un volumen o grupo de volúmenes sean coherentes en el momento en que se creó la instantánea.  Si programas una instantánea para que se ejecute en un período de tiempo que no sea divisible por 5 minutos, la instantánea se ejecutará en el siguiente período de tiempo que sea divisible por 5 minutos.  Por ejemplo, si programa una instantánea para que se ejecute a las 12:42:00 UTC, se ejecutará a las 12:45:00 UTC.  No se puede programar una instantánea para que se ejecute a intervalos inferiores a 5 minutos.
+
+
+NOTE: Puede crear instantáneas si la plenitud del clúster se encuentra en la etapa 1, 2 o 3.  No se pueden crear instantáneas cuando la capacidad del clúster alcanza la etapa 4 o 5.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+`attributes`
+ a| 
+Utilice la cadena "`frecuencia`" para indicar la frecuencia de la instantánea. Valores posibles:
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+| `hasError` | *Se necesita ayuda con la descripción* | booleano | `false` | No 
+
+
+ a| 
+`hours`
+ a| 
+Número de horas entre instantáneas recurrentes u hora en tiempo GMT en la que se realizará la instantánea en el modo Días de la semana o Días del mes. Los valores válidos son de 0 a 23.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+| `lastRunStatus` | El resultado o estado de la última creación de instantánea programada. | cadena | Ninguno | No 
+
+
+ a| 
+`name`
+ a| 
+El nombre de la instantánea.  Si no se introduce ningún nombre, se utiliza la fecha y hora en que se tomó la instantánea del grupo.  La longitud máxima permitida para el nombre es de 244 caracteres.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`minutes`
+ a| 
+Número de minutos entre instantáneas recurrentes o el minuto en hora GMT en que se producirá la instantánea en el modo Días de la semana o Días del mes.  Los valores válidos son del 5 al 59.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`paused`
+ a| 
+Indica si se debe pausar la programación o no.  Valores válidos:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`recurring`
+ a| 
+Indica si la programación será recurrente o no.  Los valores válidos son:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+| `runNextInterval`  a| 
+Especifica si se debe ejecutar o no la instantánea la próxima vez que el planificador esté activo.  Cuando se establece en verdadero, la instantánea programada se ejecuta la próxima vez que el programador esté activo y se restablece a falso.  Los valores válidos son:
+
+* `true`
+* `false`
+
+| booleano | `false` | No 
+
+
+ a| 
+`scheduleName`
+ a| 
+Nombre único para el horario.  La longitud máxima permitida para el nombre del programa es de 244 caracteres.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+`scheduleType`
+ a| 
+Indica el tipo de horario que se va a crear.  El valor válido es una instantánea.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+El nombre único asignado a la programación, el período de retención de la instantánea creada y el ID del volumen desde el cual se creó la instantánea.  Valores válidos:
+
+* `volumeID`: El identificador del volumen que se incluirá en la instantánea.  (entero)
+* `volumes`: Una lista de identificadores de volumen que se incluirán en la instantánea del grupo.  (matriz de enteros)
+* `name`Nombre de la instantánea que se utilizará.  (cadena)
+* `enableRemoteReplication`Indica si la instantánea debe incluirse en la replicación remota.  (booleano)
+* `retention`: Cantidad de tiempo que se conservará la instantánea en HH:mm:ss.  Si está vacía, la instantánea se conserva indefinidamente.  (cadena)
+* `fifo`La instantánea se conserva según el principio de primero en entrar, primero en salir (FIFO).  (cadena)
+* `ensureSerialCreation`Especifique si se debe permitir la creación de una nueva instantánea si hay una replicación de instantánea anterior en curso.  (booleano)
+
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+La etiqueta utilizada por el software SnapMirror para especificar la política de retención de instantáneas en un punto final de SnapMirror .
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+`startingDate`
+ a| 
+Hora después de la cual se ejecutará el programa.  Si no se ha configurado, el horario comienza inmediatamente.  Formateado en hora UTC.
+ a| 
+cadena de fecha ISO 8601
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+| `toBeDeleted` | Especifica que esta programación de instantáneas debe eliminarse una vez completada la creación de la instantánea. | booleano | `false` | No 
+
+
+ a| 
+`monthdays`
+ a| 
+Los días del mes en que se tomará la fotografía.  Los valores válidos son del 1 al 31.
+ a| 
+matriz de enteros
+ a| 
+Ninguno
+ a| 
+Sí (si se programa para días del mes)
+
+
+
+ a| 
+`weekdays`
+ a| 
+Día de la semana en que se creará la instantánea.  Valores obligatorios (si se utilizan):
+
+* `Day`: 0 a 6 (de domingo a sábado)
+* `Offset`: para cada semana posible en un mes, del 1 al 6 (Si es mayor que 1, solo se coincidirá en el día N-1 de la semana).  Por ejemplo, offset:3 para domingo significa el tercer domingo del mes, mientras que offset:4 para miércoles significa el cuarto miércoles del mes.  Offset:0 significa que no se realiza ninguna acción.  Offset:1 (predeterminado) significa que la instantánea se crea para este día de la semana, independientemente de en qué parte del mes caiga.
+
+ a| 
+matriz de objetos JSON
+ a| 
+Ninguno
+ a| 
+Sí (si se programa por días de la semana)
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de programación
+ a| 
+ID del horario creado.
+ a| 
+entero
+
+
+
+ a| 
+cronograma
+ a| 
+Un objeto que contiene información sobre el horario recién creado.
+ a| 
+xref:reference_element_api_schedule.adoc[cronograma]
+
+|===
+
+
+== Ejemplo de solicitud 1
+
+El siguiente ejemplo de programación tiene los siguientes parámetros:
+
+* No se especifican horas ni minutos de inicio, por lo que el horario comienza lo más cerca posible de la medianoche (00:00:00Z).
+* No es recurrente (solo se ejecutará una vez).
+* Se ejecuta una vez, ya sea el primer domingo o miércoles después del 1 de junio de 2015, UTC 19:17:15Z (el día que ocurra primero).
+* Incluye un solo volumen (volumeID = 1).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":0,
+    "minutes":0,
+    "paused":false,
+    "recurring":false,
+    "scheduleName":"MCAsnapshot1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Week"
+    },
+    "scheduleInfo":{
+      "volumeID":"1",
+      "name":"MCA1"
+    },
+    "monthdays":[],
+    "weekdays":[
+      {
+        "day":0,
+        "offset":1
+      },
+      {
+        "day":3,
+        "offset":1
+      }
+    ],
+    "startingDate":"2015-06-01T19:17:54Z"
+  },
+   "id":1
+}
+}
+}
+----
+
+
+== Ejemplo de respuesta 1
+
+La solicitud anterior devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+      },
+      "hasError": false,
+      "hours": 0,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": false,
+      "runNextInterval": false,
+      "scheduleID": 4,
+      "scheduleInfo": {
+        "name": "MCA1",
+        "volumeID": "1"
+      },
+      "scheduleName": "MCAsnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-06-01T19:17:54Z",
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 0,
+          "offset": 1
+        },
+        {
+          "day": 3,
+          "offset": 1
+        }
+      ]
+    },
+    "scheduleID": 4
+  }
+}
+----
+
+
+== Ejemplo de solicitud 2
+
+El siguiente ejemplo de programación tiene los siguientes parámetros:
+
+* Es recurrente (se ejecutará en cada intervalo programado del mes a la hora especificada).
+* Se ejecuta los días 1, 10, 15 y 30 de cada mes siguiente a la fecha de inicio.
+* Se ejecuta a las 12:15 PM cada día en que está programado que ocurra.
+* Incluye un solo volumen (volumeID = 1).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+    "params":{
+      "hours":12,
+      "minutes":15,
+      "paused":false,
+      "recurring":true,
+      "scheduleName":"MCASnapshot1",
+      "scheduleType":"snapshot",
+      "attributes":{
+        "frequency":"Days Of Month"
+      },
+      "scheduleInfo":{
+        "volumeID":"1"
+      },
+      "weekdays":[
+      ],
+      "monthdays":[
+        1,
+        10,
+        15,
+        30
+      ],
+      "startingDate":"2015-04-02T18:03:15Z"
+    },
+    "id":1
+}
+----
+
+
+== Ejemplo de respuesta 2
+
+La solicitud anterior devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 12,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 15,
+      "monthdays": [
+        1,
+        10,
+        15,
+        30
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 5,
+      "scheduleInfo": {
+        "volumeID": "1"
+      },
+      "scheduleName": "MCASnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T18:03:15Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+      "scheduleID": 5
+  }
+}
+----
+
+
+== Ejemplo de solicitud 3
+
+El siguiente ejemplo de programación tiene los siguientes parámetros:
+
+* Comienza dentro de los 5 minutos del intervalo programado el 2 de abril de 2015.
+* Es recurrente (se ejecutará en cada intervalo programado del mes a la hora especificada).
+* Se ejecuta los días segundo, tercero y cuarto de cada mes siguiente a la fecha de inicio.
+* Se ejecuta a las 14:45 horas todos los días en que está programado que ocurra.
+* Incluye un grupo de volúmenes (volúmenes = 1 y 2).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":14,
+    "minutes":45,
+    "paused":false,
+    "recurring":true,
+    "scheduleName":"MCASnapUser1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Month"
+    },
+    "scheduleInfo":{
+      "volumes":[1,2]
+    },
+    "weekdays":[],
+    "monthdays":[2,3,4],
+    "startingDate":"2015-04-02T20:38:23Z"
+  },
+  "id":1
+}
+----
+
+
+== Ejemplo de respuesta 3
+
+La solicitud anterior devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 14,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 45,
+      "monthdays": [
+        2,
+        3,
+        4
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 6,
+      "scheduleInfo": {
+        "volumes": [
+          1,
+          2
+        ]
+      },
+      "scheduleName": "MCASnapUser1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T20:38:23Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+    "scheduleID": 6
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

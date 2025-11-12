@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_createpublicprivatekeypair.html 
+sidebar: sidebar 
+keywords: SSL keys,public and private keys,certificate signing request,creating key pair 
+summary: Puede utilizar el método CreatePublicPrivateKeyPair para crear claves SSL públicas y privadas.  Puede utilizar estas claves para generar solicitudes de firma de certificados.  Solo puede haber un par de claves en uso por cada clúster de almacenamiento.  Antes de utilizar este método para reemplazar las claves existentes, asegúrese de que ningún proveedor siga utilizando dichas claves. 
+---
+= Crear par de claves públicas y privadas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `CreatePublicPrivateKeyPair` Método para crear claves SSL públicas y privadas.  Puede utilizar estas claves para generar solicitudes de firma de certificados.  Solo puede haber un par de claves en uso por cada clúster de almacenamiento.  Antes de utilizar este método para reemplazar las claves existentes, asegúrese de que ningún proveedor siga utilizando dichas claves.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+nombre común
+ a| 
+El campo *Nombre común* (CN) del nombre distinguido X.509.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+país
+ a| 
+El campo de nombre distinguido *País* (C) de X.509.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+dirección de correo electrónico
+ a| 
+El nombre distinguido X.509 *Campo de dirección de correo electrónico* (MAIL).
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+localidad
+ a| 
+El campo de nombre distinguido X.509 *Nombre de localidad* (L).
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+organización
+ a| 
+El campo de nombre distinguido X.509 *Nombre de la organización* (O).
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+unidad organizativa
+ a| 
+El campo *Nombre de la unidad organizativa* del nombre distintivo X.509 (OU).
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+estado
+ a| 
+El campo de nombre distinguido X.509 *Estado* o *Nombre de provincia* (ST o SP o S).
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.  Si no hay ningún error, la creación de la clave se considera exitosa.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "CreatePublicPrivateKeyPair",
+  "params": {
+    "commonName": "Name",
+    "country": "US",
+    "emailAddress" : "email@domain.com"
+   },
+"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== Nueva versión
+
+11,7

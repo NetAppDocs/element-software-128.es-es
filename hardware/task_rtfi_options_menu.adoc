@@ -1,0 +1,107 @@
+---
+permalink: hardware/task_rtfi_options_menu.html 
+sidebar: sidebar 
+keywords: rtfi, return, factory, image, menu, options, upload, logs 
+summary: Obtenga información sobre las opciones del menú RTFI si el proceso RTFI no tiene éxito o si decide no continuar en la solicitud inicial del proceso RTFI. 
+---
+= Menú de opciones RTFI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El siguiente menú de opciones aparece si el proceso RTFI no tiene éxito o si elige no continuar en la solicitud inicial del proceso RTFI.
+
+image::../media/rtfi_menu_options.PNG[Opciones del menú RTFI de SolidFire]
+
+
+NOTE: Póngase en contacto con el soporte de NetApp antes de utilizar cualquiera de las siguientes opciones de comando.
+
+[cols="25,75"]
+|===
+| Opción | Descripción 
+
+
+| Reiniciar | Finaliza el proceso RTFI y reinicia el nodo en su estado actual.  No se realiza ninguna limpieza. 
+
+
+| Apagado | Apaga correctamente el nodo en su estado actual.  No se realiza ninguna limpieza. 
+
+
+| Salida | Finaliza el proceso RTFI y abre una ventana de comandos. 
+
+
+| Registros de carga | Recopila todos los registros del sistema y carga un único archivo de registro consolidado en una URL específica. 
+|===
+
+
+== Registros de carga
+
+Recopile todos los registros del sistema y cárguelos a una URL específica según el siguiente procedimiento.
+
+.Pasos
+. En el menú de opciones RTFI, ingrese *UploadLogs*.
+. Introduzca la información del directorio remoto:
++
+.. Escriba una URL que incluya el protocolo. Por ejemplo: `\ftp://,scp://,http://,orhttps://` .
+.. (Opcional) Agregue un nombre de usuario y una contraseña integrados. Por ejemplo: `scp://user:password@URLaddress.com` .
++
+
+NOTE: Para conocer todas las opciones de sintaxis, consulte la https://curl.se/docs/manpage.html["rizo"^] Manual de usuario.
+
++
+El archivo de registro se carga y se guarda en el directorio especificado como un `.tbz2` archivo.
+
+
+
+
+
+
+
+== Utilice el túnel de soporte
+
+Si necesita asistencia técnica para su sistema NetApp HCI o su sistema de almacenamiento all-flash SolidFire , el soporte de NetApp puede conectarse de forma remota con su sistema.  Para iniciar una sesión y obtener acceso remoto, el soporte de NetApp puede abrir una conexión Secure Shell (SSH) inversa a su entorno.
+
+Puede abrir un puerto TCP para una conexión de túnel inverso SSH con el soporte de NetApp .  Esta conexión permite al soporte de NetApp iniciar sesión en su nodo de administración.
+
+.Antes de empezar
+* Para los servicios de administración 2.18 y posteriores, la capacidad de acceso remoto está deshabilitada en el nodo de administración de forma predeterminada.  Para habilitar la funcionalidad de acceso remoto, consulte https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["Gestionar la funcionalidad SSH en el nodo de administración"] .
+* Si su nodo de administración se encuentra detrás de un servidor proxy, se requieren los siguientes puertos TCP en el archivo sshd.config:
++
+[cols="15,25,60"]
+|===
+| Puerto TCP | Descripción | Dirección de conexión 
+
+
+| 443 | Llamadas a la API/HTTPS para el reenvío inverso de puertos a través de un túnel de soporte abierto a la interfaz web | Nodo de gestión a nodos de almacenamiento 
+
+
+| 22 | acceso de inicio de sesión SSH | Nodo de gestión a nodos de almacenamiento o desde nodos de almacenamiento a nodo de gestión 
+|===
+
+
+.Pasos
+* Inicie sesión en su nodo de administración y abra una sesión de terminal.
+* Cuando se le solicite, ingrese lo siguiente:
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* Para cerrar el túnel de soporte remoto, introduzca lo siguiente:
++
+`rst --killall`
+
+* (Opcional) Desactivar https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["funcionalidad de acceso remoto"] de nuevo.
++
+
+NOTE: SSH permanecerá habilitado en el nodo de administración si no lo deshabilita.  La configuración habilitada para SSH persiste en el nodo de administración a través de actualizaciones y mejoras hasta que se deshabilita manualmente.
+
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+

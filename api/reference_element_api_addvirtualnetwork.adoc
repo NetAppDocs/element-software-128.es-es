@@ -1,0 +1,206 @@
+---
+permalink: api/reference_element_api_addvirtualnetwork.html 
+sidebar: sidebar 
+keywords: addvirtualnetwork,cluster,add,adding,virtual,network 
+summary: Puede utilizar el método AddVirtualNetwork para agregar una nueva red virtual a una configuración de clúster. 
+---
+= Agregar red virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `AddVirtualNetwork` Método para agregar una nueva red virtual a una configuración de clúster.
+
+Al agregar una red virtual, se crea una interfaz para cada nodo y cada interfaz requiere una dirección IP de red virtual.  El número de direcciones IP que especifique como parámetro para este método de API debe ser igual o mayor que el número de nodos del clúster.  El sistema aprovisiona direcciones de red virtuales de forma masiva y las asigna automáticamente a nodos individuales.  No es necesario asignar manualmente direcciones de red virtuales a los nodos.
+
+
+NOTE: El método AddVirtualNetwork se utiliza únicamente para crear una nueva red virtual.  Si desea realizar cambios en una red virtual existente, utilice elxref:reference_element_api_modifyvirtualnetwork.adoc[Modificar red virtual] método.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+bloques de direcciones
+ a| 
+Rango único de direcciones IP para incluir en la red virtual.  Miembros requeridos para el objeto:
+
+* inicio: El inicio del rango de direcciones IP.  (cadena)
+* tamaño: El número de direcciones IP que se incluirán en el bloque.  (entero)
+
+ a| 
+matriz de objetos JSON
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nombre-valor en formato de objeto JSON.
+ a| 
+Objeto JSON
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+puerta
+ a| 
+La dirección IP de una puerta de enlace de la red virtual.  Este parámetro solo es válido si el parámetro de espacio de nombres está establecido en verdadero.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+nombre
+ a| 
+Un nombre definido por el usuario para la nueva red virtual.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+espacio de nombres
+ a| 
+Cuando se establece en verdadero, habilita la funcionalidad de VLAN de almacenamiento enrutable mediante la creación y configuración de un espacio de nombres y la red virtual contenida en él.
+ a| 
+booleano
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+máscara de red
+ a| 
+Máscara de red única para la red virtual que se está creando.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+svip
+ a| 
+Dirección IP de almacenamiento única para la red virtual que se está creando.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+etiqueta de red virtual
+ a| 
+Una etiqueta de red virtual (VLAN) única.  Los valores admitidos son del 1 al 4094.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+*Nota:* Los parámetros de red virtual deben ser únicos para cada red virtual cuando se establece el espacio de nombres en falso.
+
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID de red virtual
+ a| 
+El ID de red virtual de la nueva red virtual.
+ a| 
+entero
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "AddVirtualNetwork",
+  "params": {
+    "virtualNetworkTag": 2010,
+    "name": "network1",
+    "addressBlocks" : [
+        { "start": "192.86.5.1", "size": 10 },
+        { "start": "192.86.5.50", "size": 20 }
+    ],
+    "netmask" : "255.255.192.0",
+    "gateway" : "10.0.1.254",
+    "svip" : "192.86.5.200",
+    "attributes" : {}
+    "namespace" : true
+  },
+"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "virtualNetworkID": 5
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

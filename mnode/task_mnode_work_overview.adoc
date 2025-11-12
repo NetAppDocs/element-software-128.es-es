@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview.html 
+summary: 'Puede utilizar el nodo de administración (mNode) para usar los servicios del sistema, administrar los activos y la configuración del clúster, ejecutar pruebas y utilidades del sistema, configurar Active IQ para la supervisión del sistema y habilitar el acceso al soporte de NetApp para la resolución de problemas.' 
+keywords: netapp, mnode, api, rest api, mnode ui, management node ui 
+---
+= Descripción general del nodo de gestión
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede utilizar el nodo de administración (mNode) para usar los servicios del sistema, administrar los activos y la configuración del clúster, ejecutar pruebas y utilidades del sistema, configurar Active IQ para la supervisión del sistema y habilitar el acceso al soporte de NetApp para la resolución de problemas.
+
+
+NOTE: Como práctica recomendada, asocie solo un nodo de administración con una instancia de VMware vCenter y evite definir los mismos recursos de almacenamiento y computación o instancias de vCenter en varios nodos de administración.
+
+Para los clústeres que ejecutan la versión 11.3 o posterior del software Element, puede trabajar con el nodo de administración utilizando una de las dos interfaces siguientes:
+
+* Con la interfaz de usuario del nodo de administración(`https://[mNode IP]:442` ), puede realizar cambios en la configuración de red y clúster, ejecutar pruebas del sistema o utilizar utilidades del sistema.
+* Con la interfaz de usuario de la API REST integrada(`https://[mNode IP]/mnode` ), puede ejecutar o comprender las API relacionadas con los servicios del nodo de administración, incluida la configuración del servidor proxy, las actualizaciones del nivel de servicio o la administración de activos.
+
+
+Instalar o recuperar un nodo de administración:
+
+* link:task_mnode_install.html["Instalar un nodo de administración"]
+* link:task_mnode_install_add_storage_NIC.html["Configurar un controlador de interfaz de red (NIC) de almacenamiento"]
+* link:task_mnode_recover.html["Recuperar un nodo de administración"]
+
+
+Acceda al nodo de administración:
+
+* link:task_mnode_access_ui.html["Acceda al nodo de administración (interfaz de usuario o API REST)."]
+
+
+Cambiar el certificado SSL predeterminado:
+
+* link:reference_change_mnode_default_ssl_certificate.html["Cambiar el certificado SSL predeterminado del nodo de administración"]
+
+
+Realizar tareas con la interfaz de usuario del nodo de administración:
+
+* link:task_mnode_work_overview_UI.html["Descripción general de la interfaz de usuario del nodo de administración"]
+
+
+Realizar tareas con las API REST del nodo de gestión:
+
+* link:task_mnode_work_overview_API.html["Descripción general de la interfaz de usuario de la API REST del nodo de administración"]
+
+
+Deshabilite o habilite la funcionalidad SSH remota o inicie una sesión de túnel de soporte remoto con el Soporte de NetApp para ayudarle a solucionar problemas:
+
+* link:task_mnode_enable_node_troubleshooting_sessions.html["Acceso a nodos de almacenamiento mediante SSH para la resolución de problemas básicos"]
++
+** link:task_mnode_enable_remote_support_connections.html["Habilitar conexiones remotas de soporte de NetApp"]
+** link:task_mnode_ssh_management.html["Gestionar la funcionalidad SSH en el nodo de administración"]
+
+
+
+
+[discrete]
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

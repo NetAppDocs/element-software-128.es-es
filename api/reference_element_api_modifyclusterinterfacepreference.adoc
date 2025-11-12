@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_modifyclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,interface,preference,modifyclusterinterfacepreference 
+summary: El método ModifyClusterInterfacePreference permite a los sistemas integrados con clústeres de almacenamiento que ejecutan el software Element cambiar una preferencia de interfaz de clúster existente.  Este método es para uso interno. 
+---
+= ModificarPreferenciaDeInterfazDeClúster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El `ModifyClusterInterfacePreference` Este método permite que los sistemas integrados con clústeres de almacenamiento que ejecutan el software Element cambien una preferencia de interfaz de clúster existente.  Este método es para uso interno.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+nombre
+ a| 
+El nombre de la preferencia de interfaz del clúster que se va a modificar.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+valor
+ a| 
+El nuevo valor de la preferencia de interfaz del clúster.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método no devuelve ningún valor.
+
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+	"method": "ModifyClusterInterfacePreference",
+	"params": {
+	"name": "testname",
+	"value": "newvalue"
+},
+	"id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {}
+}
+----
+
+
+== Nueva versión
+
+11,0

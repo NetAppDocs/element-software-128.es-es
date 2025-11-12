@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_remove_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, remove, multi-drive slice service 
+summary: 'Puede eliminar las unidades del servicio de segmentación de múltiples unidades (MDSS).  Este procedimiento se aplica únicamente si el nodo tiene varias unidades de partición.' 
+---
+= Retire las unidades MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede extraer las unidades del servicio de segmentación de unidades múltiples (MDSS).  Este procedimiento se aplica únicamente si el nodo tiene varias unidades de partición.
+
+
+NOTE: Si fallan la unidad de partición del sistema y la unidad de la ranura 2, el sistema apagará los servicios de partición y extraerá las unidades.  Si no se produce ningún fallo y se extraen las unidades, ambas deben extraerse al mismo tiempo.
+
+. Haz clic en *Clúster* > *Unidades*.
+. Desde la pestaña *Unidades disponibles*, haga clic en la casilla de verificación de las unidades de partición que se van a eliminar.
+. Haz clic en *Acciones en lote*.
+. Haga clic en *Eliminar*.
+. Confirma la acción.
+

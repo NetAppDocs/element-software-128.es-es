@@ -1,0 +1,26 @@
+---
+permalink: storage/task_replication_perform_remote_replication_between_element_clusters.html 
+sidebar: sidebar 
+keywords: remote replication, clusters, Element software, failover, failback 
+summary: Para los clústeres que ejecutan el software Element, la replicación en tiempo real permite la creación rápida de copias remotas de datos de volumen.  Puedes emparejar un clúster de almacenamiento con hasta cuatro clústeres de almacenamiento adicionales.  Puede replicar datos de volumen de forma síncrona o asíncrona desde cualquiera de los clústeres de un par de clústeres para escenarios de conmutación por error y recuperación ante fallos. 
+---
+= Realizar replicación remota entre clústeres que ejecutan el software NetApp Element .
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para los clústeres que ejecutan el software Element, la replicación en tiempo real permite la creación rápida de copias remotas de datos de volumen.  Puedes emparejar un clúster de almacenamiento con hasta cuatro clústeres de almacenamiento adicionales.  Puede replicar datos de volumen de forma síncrona o asíncrona desde cualquiera de los clústeres de un par de clústeres para escenarios de conmutación por error y recuperación ante fallos.
+
+El proceso de replicación incluye los siguientes pasos:
+
+image::../media/replication_element_clusters_workflow.gif[Diagrama de flujo de trabajo de replicación]
+
+* link:task_replication_plan_cluster_and_volume_pairing.html["Planificar el emparejamiento de clústeres y volúmenes para la replicación en tiempo real."]
+* link:task_replication_pair_clusters.html["Agrupaciones de pares para replicación"]
+* link:task_replication_pair_volumes.html["Volúmenes de pares"]
+* link:task_replication_validate_volume_replication.html["Validar la replicación de volumen"]
+* link:task_replication_delete_volume_relationship_after_replication.html["Eliminar una relación de volumen después de la replicación"]
+* link:task_replication_manage_volume_relationships.html["Gestionar las relaciones de volumen"]
+

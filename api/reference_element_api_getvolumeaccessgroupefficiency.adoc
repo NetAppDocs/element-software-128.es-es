@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeaccessgroupefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,access,group,efficiency,GetVolumeAccessGroupEfficiency 
+summary: Puede utilizar el método GetVolumeAccessGroupEfficiency para obtener información sobre la eficiencia de un grupo de acceso a volúmenes.  Para calcular la capacidad, solo se utiliza el grupo de acceso al volumen que proporcione como parámetro en este método de la API. 
+---
+= ObtenerEficienciaDeGrupoDeAccesoDeVolumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar el `GetVolumeAccessGroupEfficiency` Método para obtener información sobre la eficiencia de un grupo de acceso por volumen.  Para calcular la capacidad, solo se utiliza el grupo de acceso al volumen que proporcione como parámetro en este método de la API.
+
+
+
+== Parámetro
+
+Este método tiene el siguiente parámetro de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de grupo de acceso al volumen
+ a| 
+Especifica el grupo de acceso al volumen para el cual se calcula la capacidad.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+compresión
+ a| 
+Cantidad de espacio ahorrado mediante la compresión de datos para todos los volúmenes del grupo de acceso a volúmenes.  Se expresa como una relación donde un valor de 1 significa que los datos se han almacenado sin compresión.
+ a| 
+flotar
+
+
+
+ a| 
+deduplicación
+ a| 
+La cantidad de espacio ahorrado al no duplicar datos para todos los volúmenes en el grupo de acceso a volúmenes.  Expresado como una proporción.
+ a| 
+flotar
+
+
+
+ a| 
+aprovisionamiento ligero
+ a| 
+La proporción de espacio utilizado con respecto a la cantidad de espacio asignado para almacenar datos.  Expresado como una proporción.
+ a| 
+flotar
+
+
+
+ a| 
+marca de tiempo
+ a| 
+La última vez que se recopilaron datos de eficiencia fue después de la recogida de basura.
+ a| 
+cadena de datos ISO 8601
+
+
+
+ a| 
+volúmenes faltantes
+ a| 
+Los volúmenes de los que no se pudieron obtener datos de eficiencia.  La falta de volúmenes puede deberse a una recolección de basura reciente, a una pérdida de red temporal o a servicios reiniciados desde el último ciclo de recolección de basura.
+ a| 
+matriz de enteros
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+   "method": "GetVolumeAccessGroupEfficiency",
+   "params": {
+      "volumeAccessGroupID": 1
+   },
+   "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.006012925331075,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T17:05:27Z"
+   }
+}
+----
+
+
+== Nueva versión
+
+9,6

@@ -1,0 +1,37 @@
+---
+permalink: api/reference_element_api_volume_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: volume,pairing,order,operations,volumes,pairing,pair,pairs 
+summary: Debe crear un par de clústeres entre dos clústeres correspondientes antes de que se puedan emparejar los volúmenes. 
+---
+= Orden de operaciones de emparejamiento de volúmenes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe crear un par de clústeres entre dos clústeres correspondientes antes de que se puedan emparejar los volúmenes.
+
+Utilice el siguiente conjunto de métodos de la API para establecer una conexión de clúster:
+
+* xref:reference_element_api_startvolumepairing.adoc[Emparejamiento de volumen inicial]:
++
+Este método de la API crea y devuelve una clave de emparejamiento de volúmenes que se utiliza para crear un par de volúmenes.  La clave contiene información que se utiliza para establecer comunicaciones entre volúmenes.
+
+* xref:reference_element_api_completevolumepairing.adoc[Emparejamiento de volumen completo]:
++
+Este método utiliza la clave de emparejamiento creada con elxref:reference_element_api_startvolumepairing.adoc[Emparejamiento de volumen inicial] Método API para crear un par de volúmenes.  Emitir elxref:reference_element_api_completevolumepairing.adoc[Emparejamiento de volumen completo] Método API con los parámetros volumeID y volumePairingKey al volumen de destino.
+
+
+
+Solo uno de los volúmenes emparejados puede identificarse como volumen objetivo de replicación.  Utilice elxref:reference_element_api_modifyvolumepair.adoc[Modificar par de volúmenes] Método API para establecer la dirección de la replicación de datos del volumen identificando qué volumen es el destino.  Los datos se replican desde el volumen de origen al volumen de destino.
+
+
+
+== Encuentra más información
+
+* xref:reference_element_api_startvolumepairing.adoc[Emparejamiento de volumen inicial]
+* xref:reference_element_api_completevolumepairing.adoc[Emparejamiento de volumen completo]
+* xref:reference_element_api_modifyvolumepair.adoc[Modificar par de volúmenes]
+

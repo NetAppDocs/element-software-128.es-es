@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_remote_support_connections.html 
+summary: Puede utilizar el nodo de administración para habilitar el acceso de soporte de NetApp para la resolución de problemas. 
+keywords: netapp, mnode, management node, connect to support, support tunnel, rst 
+---
+= Inicie una sesión de soporte remoto de NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si necesita asistencia técnica para su sistema de almacenamiento all-flash SolidFire , el soporte de NetApp puede conectarse de forma remota con su sistema.  Para iniciar una sesión y obtener acceso remoto, el soporte de NetApp puede abrir una conexión Secure Shell (SSH) inversa a su entorno.
+
+Puede abrir un puerto TCP para una conexión de túnel inverso SSH con el soporte de NetApp .  Esta conexión permite al soporte de NetApp iniciar sesión en su nodo de administración.
+
+.Antes de empezar
+* Para los servicios de administración 2.18 y posteriores, la capacidad de acceso remoto está deshabilitada en el nodo de administración de forma predeterminada.  Para habilitar la funcionalidad de acceso remoto, consulte https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["Gestionar la funcionalidad SSH en el nodo de administración"] .
+* Si su nodo de administración se encuentra detrás de un servidor proxy, se requieren los siguientes puertos TCP en el archivo sshd.config:
++
+[cols="15,25,60"]
+|===
+| Puerto TCP | Descripción | Dirección de conexión 
+
+
+| 443 | Llamadas a la API/HTTPS para el reenvío inverso de puertos a través de un túnel de soporte abierto a la interfaz web | Nodo de gestión a nodos de almacenamiento 
+
+
+| 22 | acceso de inicio de sesión SSH | Nodo de gestión a nodos de almacenamiento o desde nodos de almacenamiento a nodo de gestión 
+|===
+
+
+.Pasos
+* Inicie sesión en su nodo de administración y abra una sesión de terminal.
+* Cuando se le solicite, ingrese lo siguiente:
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* Para cerrar el túnel de soporte remoto, introduzca lo siguiente:
++
+`rst --killall`
+
+* (Opcional) Desactivar https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["funcionalidad de acceso remoto"] de nuevo.
++
+
+NOTE: SSH permanecerá habilitado en el nodo de administración si no lo deshabilita.  La configuración habilitada para SSH persiste en el nodo de administración a través de actualizaciones y mejoras hasta que se deshabilita manualmente.
+
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+

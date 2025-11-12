@@ -1,0 +1,42 @@
+---
+permalink: storage/task_data_protection_edit_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, edit, modify 
+summary: Puede modificar las programaciones de instantáneas existentes.  Tras la modificación, la próxima vez que se ejecute la programación, utilizará los atributos actualizados.  Las instantáneas creadas por la programación original permanecen en el sistema de almacenamiento. 
+---
+= Editar un cronograma de instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede modificar las programaciones de instantáneas existentes.  Tras la modificación, la próxima vez que se ejecute la programación, utilizará los atributos actualizados.  Las instantáneas creadas por la programación original permanecen en el sistema de almacenamiento.
+
+.Pasos
+. Haz clic en *Protección de datos* > *Programaciones*.
+. Haz clic en el icono *Acciones* del horario que quieras cambiar.
+. En el menú que aparece, haga clic en *Editar*.
+. En el campo *CSV de ID de volumen*, modifique el ID de volumen único o la lista de ID de volumen separados por comas que se incluyen actualmente en la operación de instantánea.
+. Para pausar o reanudar la programación, seleccione una de las siguientes opciones:
++
+** Para pausar una programación activa, seleccione *Sí* de la lista *Pausar programación manualmente*.
+** Para reanudar una programación pausada, seleccione *No* de la lista *Pausar programación manualmente*.
+
+
+. Si lo desea, introduzca un nombre diferente para el horario en el campo *Nombre del nuevo horario*.
+. Para cambiar la programación para que se ejecute en diferentes días de la semana o del mes, seleccione *Tipo de programación* y cambie la programación de las opciones proporcionadas.
+. *Opcional:* Seleccione *Programación recurrente* para repetir la programación de instantáneas indefinidamente.
+. *Opcional:* Introduzca o modifique el nombre de la nueva instantánea en el campo *Nombre de la nueva instantánea*.
++
+Si deja el campo en blanco, el sistema utilizará la fecha y hora de creación de la instantánea como nombre.
+
+. *Opcional:* Seleccione la casilla de verificación *Incluir instantáneas en la replicación cuando se emparejan* para garantizar que las instantáneas se capturen en la replicación cuando se empareje el volumen principal.
+. Para cambiar la configuración de retención, seleccione una de las siguientes opciones:
++
+** Haz clic en *Conservar para siempre* para guardar la instantánea en el sistema indefinidamente.
+** Haga clic en *Establecer período de retención* y utilice los controles numéricos de fecha para seleccionar el período de tiempo durante el cual el sistema conservará la instantánea.
+
+
+. Haz clic en *Guardar cambios*.
+

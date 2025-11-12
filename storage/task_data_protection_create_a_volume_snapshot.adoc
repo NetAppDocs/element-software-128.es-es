@@ -1,0 +1,48 @@
+---
+permalink: storage/task_data_protection_create_a_volume_snapshot.html 
+sidebar: sidebar 
+keywords: volume snapshot, create, active volume, preserve volume 
+summary: Puede crear una instantánea de un volumen activo para conservar la imagen del volumen en cualquier momento.  Puedes crear hasta 32 instantáneas para un solo volumen. 
+---
+= Cree una instantánea de volumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede crear una instantánea de un volumen activo para conservar la imagen del volumen en cualquier momento.  Puedes crear hasta 32 instantáneas para un solo volumen.
+
+. Haz clic en *Administración* > *Volúmenes*.
+. Haga clic en el icono *Acciones* del volumen que desea utilizar para la instantánea.
+. En el menú que aparece, seleccione *Instantánea*.
+. En el cuadro de diálogo *Crear instantánea del volumen*, introduzca el nombre de la nueva instantánea.
+. *Opcional:* Seleccione la casilla de verificación *Incluir instantánea en la replicación cuando se empareje* para garantizar que la instantánea se capture en la replicación cuando se empareje el volumen principal.
+. Para configurar el período de retención de la instantánea, seleccione una de las siguientes opciones:
++
+** Haz clic en *Conservar para siempre* para guardar la instantánea en el sistema indefinidamente.
+** Haz clic en *Establecer período de retención* y usa los controles de fecha para elegir el tiempo durante el cual el sistema conservará la instantánea.
+
+
+. Para tomar una instantánea única e inmediata, siga los siguientes pasos:
++
+.. Haz clic en *Tomar instantánea ahora*.
+.. Haz clic en **Crear instantánea**.
+
+
+. Para programar la ejecución de la instantánea en un momento futuro, siga los siguientes pasos:
++
+.. Haga clic en *Crear programación de instantáneas*.
+.. Ingrese un *Nuevo Nombre de Horario*.
+.. Elige un *Tipo de horario* de la lista.
+.. *Opcional:* Seleccione la casilla de verificación *Programación recurrente* para repetir la instantánea programada periódicamente.
+.. Haz clic en *Crear horario*.
+
+
+
+
+
+
+== Encuentra más información
+
+xref:task_data_protection_schedule_a_snapshot_task.adoc[Programa una instantánea]

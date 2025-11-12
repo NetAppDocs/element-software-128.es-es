@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_intro_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords: fibre channel nodes, fibre channel switch, clients, protcols, iSCSi protocols, clusters, interconnections, fc, FC, connectivity, fibre channel connectivity, fibre channel nodes, fibre channel protocol 
+summary: Los nodos Fibre Channel de SolidFire proporcionan conectividad a un conmutador Fibre Channel, al que puede conectar clientes Fibre Channel.  Los nodos Fibre Channel actúan como un convertidor de protocolo entre los protocolos Fibre Channel e iSCSI; esto le permite agregar conectividad Fibre Channel a cualquier clúster SolidFire nuevo o existente. 
+---
+= nodos de canal de fibra
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Los nodos Fibre Channel de SolidFire proporcionan conectividad a un conmutador Fibre Channel, al que puede conectar clientes Fibre Channel.  Los nodos Fibre Channel actúan como un convertidor de protocolo entre los protocolos Fibre Channel e iSCSI; esto le permite agregar conectividad Fibre Channel a cualquier clúster SolidFire nuevo o existente.
+
+Los nodos Fibre Channel tienen las siguientes características:
+
+* Los conmutadores Fibre Channel gestionan el estado de la estructura, proporcionando interconexiones optimizadas.
+* El tráfico entre dos puertos fluye únicamente a través de los conmutadores; no se transmite a ningún otro puerto.
+* El fallo de un puerto es aislado y no afecta al funcionamiento de los demás puertos.
+* En una estructura, varios pares de puertos pueden comunicarse simultáneamente.
+

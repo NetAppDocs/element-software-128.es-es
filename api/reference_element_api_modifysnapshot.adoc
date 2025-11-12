@@ -1,0 +1,169 @@
+---
+permalink: api/reference_element_api_modifysnapshot.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,attributes,attribute 
+summary: 'Puede utilizar ModificarInstantánea para cambiar los atributos actualmente asignados a una instantánea.  También puede utilizar este método para permitir que las instantáneas creadas en el volumen de lectura/escritura \(origen\) se repliquen de forma remota en un clúster de almacenamiento de destino que ejecute el software Element.' 
+---
+= Modificar instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes usar `ModifySnapshot` para cambiar los atributos actualmente asignados a una instantánea.  También puede utilizar este método para permitir que las instantáneas creadas en el volumen de lectura/escritura (origen) se repliquen de forma remota en un clúster de almacenamiento de destino que ejecute el software Element.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+
+
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+habilitar la replicación remota
+ a| 
+Utilice esta opción para permitir que la instantánea creada se replique en un clúster de almacenamiento remoto. Valores posibles:
+
+* `true`La instantánea se replicará en el almacenamiento remoto.
+* `false`La instantánea no se replicará en el almacenamiento remoto.
+
+ a| 
+booleano
+ a| 
+FALSO
+ a| 
+No
+
+
+
+ a| 
+tiempo de expiración
+ a| 
+Especifique el tiempo después del cual se puede eliminar la instantánea.  No se puede utilizar con retención.  Si no se especifica ni el tiempo de expiración ni la retención de la instantánea original, la instantánea no caducará.  El formato de hora es una cadena de fecha ISO 8601 para la expiración basada en el tiempo; de lo contrario, no expirará.  Un valor nulo provoca que la instantánea se conserve de forma permanente.  Un valor de fifo hace que la instantánea se conserve en base al orden de llegada (FIFO), en relación con otras instantáneas FIFO en el volumen.  La API fallará si no hay espacio FIFO disponible.
+ a| 
+cadena de fecha ISO 8601
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+nombre
+ a| 
+El nombre de la instantánea.  Si no se introduce ningún nombre, se utiliza la fecha y hora en que se tomó la fotografía.  La longitud máxima permitida para el nombre es de 255 caracteres.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+La etiqueta utilizada por el software SnapMirror para especificar la política de retención de instantáneas en un punto final de SnapMirror .
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+No
+
+
+
+ a| 
+ID de instantánea
+ a| 
+Identificador de la instantánea.
+ a| 
+cadena
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valor de retorno
+
+Este método tiene el siguiente valor de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+instantánea
+ a| 
+Un objeto que contiene información sobre la instantánea recién modificada.
+ a| 
+xref:reference_element_api_snapshot.adoc[instantánea]
+
+|===
+
+
+== Ejemplo de solicitud
+
+Las solicitudes para este método son similares al siguiente ejemplo:
+
+[listing]
+----
+{
+  "method": "ModifySnapshot",
+  "params": {
+    "snapshotID": 3114,
+    "enableRemoteReplication": "true",
+    "name" : "Chicago"
+  },
+  "id": 1
+}
+----
+
+
+== Ejemplo de respuesta
+
+Este método devuelve una respuesta similar al siguiente ejemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:26:20Z",
+      "enableRemoteReplication": true,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1",
+      "snapshotID": 3114,
+      "snapshotUUID": "5809a671-4ad0-4a76-9bf6-01cccf1e65eb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    }
+  }
+}
+----
+
+
+== Nueva versión
+
+9,6

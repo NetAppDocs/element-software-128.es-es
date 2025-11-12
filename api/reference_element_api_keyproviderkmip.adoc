@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_keyproviderkmip.html 
+sidebar: sidebar 
+keywords: key provider,KMIP,keys 
+summary: 'El objeto keyProviderKmip describe un proveedor de claves del Protocolo de Interoperabilidad de Gestión de Claves (KMIP).  Un proveedor de claves es tanto un mecanismo como una ubicación para recuperar claves de autenticación para su uso con funciones de clúster como el cifrado en reposo.' 
+---
+= proveedor de clavesKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+El objeto keyProviderKmip describe un proveedor de claves del Protocolo de Interoperabilidad de Gestión de Claves (KMIP).  Un proveedor de claves es tanto un mecanismo como una ubicación para recuperar claves de autenticación para su uso con funciones de clúster como el cifrado en reposo.
+
+
+
+== miembros del objeto
+
+Este objeto contiene los siguientes miembros:
+
+|===
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+ID del proveedor de clave
+ a| 
+El identificador del proveedor de claves KMIP.  Este es un valor único asignado por el clúster durante la creación del proveedor de claves que no se puede cambiar.
+ a| 
+entero
+
+
+
+ a| 
+keyProviderIsActive
+ a| 
+Verdadero si el proveedor de claves KMIP está activo.  Un proveedor se considera activo si existen claves pendientes que fueron creadas pero aún no eliminadas y, por lo tanto, se asume que todavía están en uso.
+ a| 
+booleano
+
+
+
+ a| 
+nombre del proveedor de clave
+ a| 
+El nombre del proveedor de claves KMIP.
+ a| 
+cadena
+
+
+
+ a| 
+IDs de servidor de claves
+ a| 
+Un identificador de servidor clave asociado a este proveedor.  El servidor debe añadirse antes de que este proveedor pueda activarse.  El servidor no se puede eliminar mientras este proveedor esté activo.  Solo se admite un ID de servidor por proveedor.
+ a| 
+matriz de enteros
+
+
+
+ a| 
+Capacidades de kmip
+ a| 
+Las capacidades de este proveedor de claves KMIP incluyen detalles sobre la biblioteca subyacente, el cumplimiento de FIPS, el proveedor SSL, etc.
+ a| 
+cadena
+
+|===

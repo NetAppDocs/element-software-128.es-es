@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_protection_schedule_a_snapshot_task.html 
+sidebar: sidebar 
+keywords: snapshot, schedule, volume snapshots, group snapshots 
+summary: Puede proteger los datos de un volumen o un grupo de volúmenes programando instantáneas de volumen para que se realicen a intervalos específicos.  Puede programar la ejecución automática de instantáneas de un solo volumen o de instantáneas de grupo. 
+---
+= Programa una instantánea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede proteger los datos de un volumen o un grupo de volúmenes programando instantáneas de volumen para que se realicen a intervalos específicos.  Puede programar la ejecución automática de instantáneas de un solo volumen o de instantáneas de grupo.
+
+Al configurar una programación de instantáneas, puede elegir intervalos de tiempo basados en días de la semana o días del mes.  También puedes especificar los días, horas y minutos antes de que se tome la siguiente instantánea.  Puede almacenar las instantáneas resultantes en un sistema de almacenamiento remoto si el volumen se está replicando.
+
+
+
+== Encuentra más información
+
+* xref:task_data_protection_create_a_snapshot_schedule.adoc[Crea un cronograma de instantáneas]
+* xref:task_data_protection_edit_a_snapshot_schedule.adoc[Editar un cronograma de instantáneas]
+* xref:task_data_protection_delete_a_snapshot_schedule.adoc[Eliminar una programación de instantáneas]
+* xref:task_data_protection_copy_a_snapshot_schedule.adoc[Copiar un cronograma de instantánea]
+

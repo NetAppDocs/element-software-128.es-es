@@ -1,0 +1,81 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP 
+summary: La interfaz web de Element utiliza el método BreakSnapMirrorRelationship para romper una relación SnapMirror .  Cuando se rompe una relación SnapMirror , el volumen de destino se convierte en un volumen de lectura y escritura independiente, y entonces puede divergir del origen.  Puede restablecer la relación con el método API ResyncSnapMirrorRelationship.  Este método requiere que el clúster ONTAP esté disponible. 
+---
+= Relación BreakSnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La interfaz web de Element utiliza `BreakSnapMirrorRelationship` Método para romper una relación SnapMirror .  Cuando se rompe una relación SnapMirror , el volumen de destino se convierte en un volumen de lectura y escritura independiente, y entonces puede divergir del origen.  Puedes restablecer la relación con el `ResyncSnapMirrorRelationship` Método API.  Este método requiere que el clúster ONTAP esté disponible.
+
+
+
+== Parámetros
+
+Este método tiene los siguientes parámetros de entrada:
+
+|===
+| Nombre | Descripción | Tipo | Valor predeterminado | Requerido 
+
+
+ a| 
+ID de punto final de SnapMirror
+ a| 
+El ID del punto final del sistema de almacenamiento ONTAP remoto que se comunica con el clúster de almacenamiento Element.
+ a| 
+entero
+ a| 
+Ninguno
+ a| 
+Sí
+
+
+
+ a| 
+volumen de destino
+ a| 
+El volumen de destino en la relación SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Ninguno
+ a| 
+Sí
+
+|===
+
+
+== Valores de retorno
+
+Este método tiene los siguientes valores de retorno:
+
+|===
+
+
+| Nombre | Descripción | Tipo 
+
+
+ a| 
+snapMirrorRelationship
+ a| 
+Un objeto que contiene información sobre la relación SnapMirror rota.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]
+
+|===
+
+
+== Nueva versión
+
+10,1
+
+
+
+== Encuentra más información
+
+xref:reference_element_api_breaksnapmirrorvolume.adoc[BreakSnapMirrorVolume]

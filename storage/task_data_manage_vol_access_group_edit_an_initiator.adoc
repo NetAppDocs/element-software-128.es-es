@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vol_access_group_edit_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, edit, change alias, chap, credentials 
+summary: Puedes cambiar el alias de un iniciador existente o agregar un alias si aún no existe. 
+---
+= Editar un iniciador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes cambiar el alias de un iniciador existente o agregar un alias si aún no existe.
+
+Para agregar un nombre de cuenta CHAP y credenciales por iniciador, debe usar el `ModifyInitiator` Llamada a la API para eliminar y agregar acceso y atributos CHAP.
+
+Verlink:../api/concept_element_api_about_the_api.html["Gestiona el almacenamiento con la API de Element"] .
+
+.Pasos
+. Haz clic en *Administración* > *Iniciadores*.
+. Haz clic en el icono de Acciones del iniciador que deseas editar.
+. Haga clic en *Editar*.
+. Introduzca un nuevo alias para el iniciador en el campo *Alias*.
+. Haz clic en *Guardar cambios*.
+

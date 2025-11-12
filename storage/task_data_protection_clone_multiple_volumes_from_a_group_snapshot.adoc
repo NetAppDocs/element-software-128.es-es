@@ -1,0 +1,34 @@
+---
+permalink: storage/task_data_protection_clone_multiple_volumes_from_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: multiple volumes, group snapshot, clone, create, data protection 
+summary: Puede clonar un grupo de volúmenes a partir de una instantánea de grupo en un momento dado.  Esta operación requiere que ya exista una instantánea de grupo de los volúmenes, ya que dicha instantánea se utiliza como base para crear los volúmenes.  Una vez creados los volúmenes, podrá utilizarlos como cualquier otro volumen del sistema. 
+---
+= Clonación de varios volúmenes a partir de una instantánea de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede clonar un grupo de volúmenes a partir de una instantánea de grupo en un momento dado.  Esta operación requiere que ya exista una instantánea de grupo de los volúmenes, ya que dicha instantánea se utiliza como base para crear los volúmenes.  Una vez creados los volúmenes, podrá utilizarlos como cualquier otro volumen del sistema.
+
+El tamaño del volumen y la carga actual del clúster afectan al tiempo necesario para completar una operación de clonación.
+
+. Haz clic en *Protección de datos* > *Instantáneas de grupo*.
+. Haga clic en el icono Acciones de la instantánea de grupo que desea utilizar para los clones de volumen.
+. En el menú resultante, seleccione *Clonar volúmenes desde instantánea de grupo*.
+. Introduzca un *Nuevo prefijo de nombre de volumen* en el cuadro de diálogo *Clonar volúmenes desde instantánea de grupo*.
++
+El prefijo se aplica a todos los volúmenes creados a partir de la instantánea del grupo.
+
+. *Opcional:* Seleccione una cuenta diferente a la que pertenecerá el clon.
++
+Si no selecciona una cuenta, el sistema asigna los nuevos volúmenes a la cuenta de volumen actual.
+
+. *Opcional:* Seleccione un método de acceso diferente para los volúmenes en el clon.
++
+Si no selecciona un método de acceso, el sistema utiliza el acceso al volumen actual.
+
+. Haz clic en *Iniciar clonación*.
+

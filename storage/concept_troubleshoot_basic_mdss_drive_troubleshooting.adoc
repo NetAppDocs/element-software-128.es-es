@@ -1,0 +1,67 @@
+---
+permalink: storage/concept_troubleshoot_basic_mdss_drive_troubleshooting.html 
+sidebar: sidebar 
+keywords: mdss drives, troubleshoot, multi-drive slice service 
+summary: 'Puede recuperar las unidades de metadatos (o particiones) agregándolas nuevamente al clúster en caso de que falle una o ambas unidades de metadatos.  Puede realizar la operación de recuperación en la interfaz de usuario de NetApp Element si la función MDSS ya está habilitada en el nodo.' 
+---
+= Solución de problemas básicos de la unidad MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede recuperar las unidades de metadatos (o particiones) volviéndolas a agregar al clúster en caso de que falle una o ambas unidades de metadatos.  Puede realizar la operación de recuperación en la interfaz de usuario de NetApp Element si la función MDSS ya está habilitada en el nodo.
+
+Si una o ambas unidades de metadatos de un nodo experimentan una falla, el servicio de segmentación se apagará y los datos de ambas unidades se respaldarán en unidades diferentes del nodo.
+
+Los siguientes escenarios describen posibles situaciones de fallo y proporcionan recomendaciones básicas para corregir el problema:
+
+
+
+== La unidad de partición del sistema falla
+
+* En este escenario, se verifica la ranura 2 y se devuelve a un estado disponible.
+* Es necesario volver a llenar la unidad de partición del sistema antes de que se pueda volver a poner en línea el servicio de partición.
+* Debes reemplazar la unidad de partición del sistema; cuando esté disponible, agrega esta unidad y la unidad de la ranura 2 al mismo tiempo.
+
+
+
+NOTE: No se puede agregar la unidad en la ranura 2 por sí sola como unidad de metadatos.  Debes volver a agregar ambas unidades al nodo al mismo tiempo.
+
+
+
+== La ranura 2 falla
+
+* En este escenario, se verifica la unidad de partición del sistema y se devuelve a un estado disponible.
+* Debes reemplazar la ranura 2 con una de repuesto; cuando la ranura 2 esté disponible, agrega la unidad de partición del sistema y la unidad de la ranura 2 al mismo tiempo.
+
+
+
+
+== La unidad de partición del sistema y la ranura 2 fallan
+
+* Debes reemplazar tanto la unidad de partición del sistema como la ranura 2 con una unidad de repuesto.  Cuando ambas unidades estén disponibles, agregue la unidad de partición del sistema y la unidad de la ranura 2 al mismo tiempo.
+
+
+
+
+== Orden de operaciones
+
+* Reemplace la unidad de hardware defectuosa con una unidad de repuesto (reemplace ambas unidades si ambas han fallado).
+* Vuelva a agregar las unidades al clúster cuando se hayan repoblado y estén disponibles.
+
+
+
+
+== Verificar operaciones
+
+* Verifique que las unidades en la ranura 0 (o interna) y la ranura 2 se identifiquen como unidades de metadatos en la lista de Unidades Activas.
+* Verifique que se haya completado todo el balanceo de segmentos (no debe haber más mensajes de movimiento de segmentos en el registro de eventos durante al menos 30 minutos).
+
+
+
+
+== Para más información
+
+xref:task_troubleshoot_add_mdss_drives.adoc[Agregar unidades MDSS]

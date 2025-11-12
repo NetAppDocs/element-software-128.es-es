@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_create_an_endpoint.html 
+sidebar: sidebar 
+keywords: element, endpoints, create, snapmirror, ui 
+summary: Debe crear un punto de conexión SnapMirror en la interfaz de usuario de NetApp Element antes de poder crear una relación. 
+---
+= Crea un punto de conexión de SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Debe crear un punto de conexión SnapMirror en la interfaz de usuario de NetApp Element antes de poder crear una relación.
+
+Un punto de conexión SnapMirror es un clúster ONTAP que sirve como destino de replicación para un clúster que ejecuta el software Element.  Antes de crear una relación SnapMirror , primero debe crear un punto de conexión SnapMirror .
+
+Puede crear y administrar hasta cuatro puntos de conexión SnapMirror en un clúster de almacenamiento que ejecute el software Element.
+
+
+NOTE: Si un punto de conexión existente se creó originalmente utilizando la API y no se guardaron las credenciales, puede ver el punto de conexión en la interfaz de usuario de Element y verificar su existencia, pero no se puede administrar mediante la interfaz de usuario de Element.  Este punto de conexión solo se puede gestionar mediante la API de Element.
+
+Para obtener más detalles sobre los métodos de la API, consulte link:../api/concept_element_api_about_the_api.html["Gestiona el almacenamiento con la API de Element"].
+
+.Lo que necesitarás
+* Deberías haber habilitado SnapMirror en la interfaz de usuario de Element para el clúster de almacenamiento.
+* Conoces las credenciales ONTAP para el punto final.
+
+
+.Pasos
+. Haga clic en *Protección de datos* > *Puntos de conexión de SnapMirror *.
+. Haz clic en *Crear punto de conexión*.
+. En el cuadro de diálogo *Crear un nuevo punto de conexión*, introduzca la dirección IP de administración del clúster del sistema ONTAP .
+. Introduzca las credenciales de administrador de ONTAP asociadas al punto de conexión.
+. Revisar detalles adicionales:
++
+** LIFs: Enumera las interfaces lógicas intercluster de ONTAP utilizadas para comunicarse con Element.
+** Estado: Muestra el estado actual del punto de conexión de SnapMirror .  Los valores posibles son: conectado, desconectado y no administrado.
+
+
+. Haz clic en *Crear punto de conexión*.
+

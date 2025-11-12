@@ -1,0 +1,14 @@
+---
+permalink: setup/task_setup_set_up_an_element_storage_system.html 
+sidebar: sidebar 
+keywords:  
+summary: La configuración de un sistema de almacenamiento de software NetApp Element implica configurar un nodo de almacenamiento, crear un clúster de almacenamiento y agregar unidades al clúster.  Si utiliza una red Fibre Channel, puede configurar un nodo Fibre Channel. 
+---
+= Configura un sistema de almacenamiento Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configuración de un sistema de almacenamiento de software NetApp Element implica configurar un nodo de almacenamiento, crear un clúster de almacenamiento y agregar unidades al clúster.  Si utiliza una red Fibre Channel, puede configurar un nodo Fibre Channel.

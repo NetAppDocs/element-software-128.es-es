@@ -1,0 +1,47 @@
+---
+permalink: storage/task_replication_pair_clusters.html 
+sidebar: sidebar 
+keywords: pair clusters, replication, connect clusters, data protection 
+summary: 'Como primer paso para utilizar la funcionalidad de replicación en tiempo real, debe emparejar dos clústeres.  Después de emparejar y conectar dos clústeres, puede configurar los volúmenes activos de un clúster para que se repliquen continuamente en un segundo clúster, lo que proporciona protección continua de datos (CDP).' 
+---
+= Agrupaciones de pares para replicación
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Como primer paso para utilizar la funcionalidad de replicación en tiempo real, debe emparejar dos clústeres.  Después de emparejar y conectar dos clústeres, puede configurar los volúmenes activos de un clúster para que se repliquen continuamente en un segundo clúster, lo que proporciona protección continua de datos (CDP).
+
+.Lo que necesitarás
+* Debe tener privilegios de administrador de clúster en uno o ambos clústeres que se están emparejando.
+* Todas las MIP y SIP de los nodos están enrutadas entre sí.
+* Debe haber menos de 2000 ms de latencia de ida y vuelta entre clústeres.
+* Ambos clústeres de almacenamiento deben tener nombres de clúster únicos, MVIP, SVIP y direcciones IP de todos los nodos.
+* La diferencia entre las versiones del software Element en los clústeres no es mayor que una versión principal.  Si la diferencia es mayor, uno de los clústeres debe actualizarse para realizar la replicación de datos.
+
+
+
+NOTE: El emparejamiento de clústeres requiere conectividad completa entre los nodos de la red de gestión.  La replicación requiere conectividad entre los nodos individuales de la red del clúster de almacenamiento.
+
+Puedes emparejar un clúster con hasta cuatro clústeres más para replicar volúmenes.  También puedes emparejar clústeres dentro del grupo de clústeres entre sí.
+
+
+
+== Emparejar clústeres usando MVIP o una clave de emparejamiento
+
+Puede emparejar un clúster de origen y un clúster de destino utilizando el MVIP del clúster de destino si existe acceso de administrador de clúster a ambos clústeres.  Si el acceso de administrador de clúster solo está disponible en uno de los clústeres de un par, se puede utilizar una clave de emparejamiento en el clúster de destino para completar el emparejamiento del clúster.
+
+. Seleccione uno de los siguientes métodos para emparejar clústeres:
++
+** link:task_replication_pair_cluster_using_mvip.html["Agrupamiento de pares mediante MVIP"]Utilice este método si existe acceso de administrador de clúster a ambos clústeres. Este método utiliza el MVIP del clúster remoto para emparejar dos clústeres.
+** link:task_replication_pair_cluster_using_pairing_key.html["Agrupar grupos mediante una clave de emparejamiento"]Utilice este método si solo uno de los clústeres tiene acceso de administrador. Este método genera una clave de emparejamiento que se puede utilizar en el clúster de destino para completar el emparejamiento del clúster.
+
+
+
+
+
+
+== Encuentra más información
+
+xref:reference_prereq_network_port_requirements.adoc[Requisitos del puerto de red]

@@ -1,0 +1,27 @@
+---
+permalink: storage/task_replication_change_the_mode.html 
+sidebar: sidebar 
+keywords: volume pairings, replication mode, change, volume pair properties 
+summary: Puede editar las propiedades del par de volúmenes para cambiar el modo de replicación de la relación del par de volúmenes. 
+---
+= Cambiar el modo de replicación
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puede editar las propiedades del par de volúmenes para cambiar el modo de replicación de la relación del par de volúmenes.
+
+. Seleccione *Protección de datos* > *Pares de volúmenes*.
+. Haz clic en el icono de Acciones para el par de volúmenes.
+. Haga clic en *Editar*.
+. En el panel *Editar par de volúmenes*, seleccione un nuevo modo de replicación:
++
+** *Tiempo real (asíncrono)*: Las escrituras se confirman al cliente después de que se hayan confirmado en el clúster de origen.
+** *En tiempo real (síncrono)*: Las escrituras se confirman al cliente después de que se hayan confirmado tanto en el clúster de origen como en el de destino.
+** *Solo instantáneas*: Solo se replican las instantáneas creadas en el clúster de origen.  Las escrituras activas desde el volumen de origen no se replican.  *Atención:* Cambiar el modo de replicación cambia el modo inmediatamente.  Asegúrese de haber coordinado estos cambios en ambos sitios.
+
+
+. Haz clic en *Guardar cambios*.
+

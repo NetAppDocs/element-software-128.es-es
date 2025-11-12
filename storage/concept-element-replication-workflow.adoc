@@ -1,0 +1,18 @@
+---
+permalink: storage/concept-element-replication-workflow.html 
+sidebar: sidebar 
+keywords: workflow, replication, element, ontap, cli 
+summary: Tanto si replica datos de Element a ONTAP como de ONTAP a Element, deberá configurar una programación de trabajos, especificar una política y crear e inicializar la relación.  Puede utilizar una política predeterminada o personalizada. 
+---
+= Flujo de trabajo para la replicación entre Element y ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Tanto si replica datos de Element a ONTAP como de ONTAP a Element, deberá configurar una programación de trabajos, especificar una política y crear e inicializar la relación.  Puede utilizar una política predeterminada o personalizada.
+
+El flujo de trabajo presupone que usted ha completado las tareas previas que se enumeran enlink:element-replication-index.html#prerequisites["Prerrequisitos"] .  Para obtener información completa sobre las políticas de SnapMirror , incluyendo orientación sobre qué política utilizar, consultelink:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Resumen de protección de datos"^] .
+
+image:solidfire-to-ontap-backup-workflow.gif["Flujo de trabajo de Solidfire a ONTAP"]

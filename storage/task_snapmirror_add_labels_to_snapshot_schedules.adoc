@@ -1,0 +1,55 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshot_schedules.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, schedules, policies 
+summary: Puedes agregar etiquetas SnapMirror a las programaciones de instantáneas para asegurarte de que se aplique una política SnapMirror .  Puede ver las etiquetas disponibles desde un cuadro de diálogo de relación SnapMirror existente o desde el Administrador del sistema NetAppONTAP. 
+---
+= Agregar etiquetas de SnapMirror a las programaciones de instantáneas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puedes agregar etiquetas SnapMirror a las programaciones de instantáneas para asegurarte de que se aplique una política SnapMirror .  Puede ver las etiquetas disponibles desde un cuadro de diálogo de relación SnapMirror existente o desde el Administrador del sistema NetAppONTAP.
+
+.Lo que necesitarás
+* SnapMirror debe estar habilitado a nivel de clúster.
+* La etiqueta que desea agregar ya existe en ONTAP.
+
+
+.Pasos
+. Haz clic en *Protección de datos* > *Programaciones*.
+. Agregue una etiqueta de SnapMirror a una programación de una de las siguientes maneras:
++
+[cols="25,75"]
+|===
+| Opción | Pasos 
+
+
+ a| 
+Crear un nuevo horario
+ a| 
+.. Seleccione *Crear horario*.
+.. Introduzca todos los demás datos relevantes.
+.. Seleccione *Crear horario*.
+
+
+
+
+ a| 
+Modificar el cronograma existente
+ a| 
+.. Haz clic en el icono *Acciones* del calendario al que quieras añadir una etiqueta y selecciona *Editar*.
+.. En el cuadro de diálogo resultante, introduzca el texto en el campo *Etiqueta de SnapMirror *.
+.. Seleccione *Guardar cambios*.
+
+
+|===
+
+
+
+
+== Encuentra más información
+
+xref:task_data_protection_create_a_snapshot_schedule.adoc[Crea un cronograma de instantáneas]

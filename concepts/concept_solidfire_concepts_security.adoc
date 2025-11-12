@@ -1,0 +1,80 @@
+---
+permalink: concepts/concept_solidfire_concepts_security.html 
+sidebar: sidebar 
+keywords: solidfire security, element security, encryption at rest, software encryption at rest, external key management, fips 140-2, mfa 
+summary: Cuando utiliza el software NetApp Element , sus datos están protegidos por protocolos de seguridad estándar del sector. 
+---
+= Seguridad
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cuando utiliza su sistema de almacenamiento totalmente flash SolidFire , sus datos están protegidos por protocolos de seguridad estándar del sector.
+
+
+
+== Cifrado en reposo (hardware)
+
+Todas las unidades en los nodos de almacenamiento son capaces de utilizar el cifrado AES de 256 bits a nivel de unidad.  Cada unidad tiene su propia clave de cifrado, que se crea cuando la unidad se inicializa por primera vez.  Al habilitar la función de cifrado, se crea una contraseña para todo el clúster y, a continuación, se distribuyen fragmentos de la contraseña a todos los nodos del clúster.  Ningún nodo individual almacena la contraseña completa.  La contraseña se utiliza entonces para proteger con contraseña todo el acceso a las unidades.  La contraseña es necesaria para desbloquear la unidad y luego no se necesita a menos que se desconecte la alimentación de la unidad o se bloquee la unidad.
+
+link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Habilitar la función de cifrado de hardware en reposo"^]No afecta al rendimiento ni a la eficiencia del clúster.  Si se elimina una unidad o nodo con cifrado habilitado de la configuración del clúster mediante la API de Element o la interfaz de usuario de Element, se deshabilitará el cifrado en reposo en las unidades.  Una vez extraída la unidad, se puede borrar de forma segura utilizando el método `SecureEraseDrives` Método API.  Si se extrae por la fuerza una unidad o nodo físico, los datos permanecen protegidos por la contraseña de todo el clúster y las claves de cifrado individuales de la unidad.
+
+
+
+== Cifrado en reposo (software)
+
+Otro tipo de cifrado en reposo, el cifrado en reposo por software, permite cifrar todos los datos escritos en las unidades SSD de un clúster de almacenamiento. link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Cuando está habilitado"^] Encripta todos los datos escritos y desencripta todos los datos leídos automáticamente en el software.  El cifrado de software en reposo reproduce la implementación de la unidad de autocifrado (SED) en el hardware para proporcionar seguridad de los datos en ausencia de SED.
+
+
+WARNING: Para los clústeres de almacenamiento all-flash SolidFire , el cifrado de software en reposo debe habilitarse durante la creación del clúster y no puede deshabilitarse después de que se haya creado el clúster.
+
+Tanto el cifrado en reposo basado en software como el basado en hardware pueden utilizarse de forma independiente o en combinación entre sí.
+
+
+
+== Gestión de claves externas
+
+Puede configurar el software Element para que utilice un servicio de administración de claves (KMS) de terceros compatible con KMIP para administrar las claves de cifrado del clúster de almacenamiento.  Cuando habilita esta función, la clave de cifrado de la contraseña de acceso a la unidad de todo el clúster de almacenamiento es administrada por un KMS que usted especifica.
+
+Element puede utilizar los siguientes servicios de gestión de claves:
+
+* Gemalto SafeNet KeySecure
+* SafeNet en KeySecure
+* Control de teclas HyTrust
+* Administrador de seguridad de datos de Vormetric
+* Administrador del ciclo de vida de las claves de seguridad de IBM
+
+
+Para obtener más información sobre la configuración de la administración de claves externas, consultelink:../storage/concept_system_manage_key_get_started_with_external_key_management.html["Primeros pasos con la administración de claves externas"] documentación.
+
+
+
+== Autenticación multifactor
+
+La autenticación multifactor (MFA) le permite exigir a los usuarios que presenten varios tipos de evidencia para autenticarse con la interfaz de usuario web de NetApp Element o la interfaz de usuario del nodo de almacenamiento al iniciar sesión.  Puede configurar Element para que acepte únicamente la autenticación multifactor para los inicios de sesión, integrándose con su sistema de gestión de usuarios y proveedor de identidad existentes.  Puedes configurar Element para que se integre con un proveedor de identidad SAML 2.0 existente que puede aplicar múltiples esquemas de autenticación, como contraseña y mensaje de texto, contraseña y mensaje de correo electrónico u otros métodos.
+
+Puede combinar la autenticación multifactor con proveedores de identidad (IdP) comunes compatibles con SAML 2.0, como Microsoft Active Directory Federation Services (ADFS) y Shibboleth.
+
+Para configurar la autenticación multifactor (MFA), consulte link:../storage/task_system_manage_mfa_set_up_multi_factor_authentication.html["habilitar la autenticación multifactor"] documentación.
+
+
+
+== FIPS 140-2 para HTTPS y cifrado de datos en reposo
+
+Los clústeres de almacenamiento NetApp SolidFire admiten cifrado que cumple con los requisitos del Estándar Federal de Procesamiento de Información (FIPS) 140-2 para módulos criptográficos.  Puede habilitar el cumplimiento de FIPS 140-2 en su clúster SolidFire tanto para las comunicaciones HTTPS como para el cifrado de unidades.
+
+Cuando habilita el modo de funcionamiento FIPS 140-2 en su clúster, este activa el Módulo de Seguridad Criptográfica de NetApp (NCSM) y aprovecha el cifrado certificado FIPS 140-2 Nivel 1 para todas las comunicaciones a través de HTTPS con la interfaz de usuario y la API de NetApp Element .  Usted usa el `EnableFeature` API de elementos con la `fips` Parámetro para habilitar el cifrado HTTPS FIPS 140-2.  En clústeres de almacenamiento con hardware compatible con FIPS, también puede habilitar el cifrado de unidad FIPS para datos en reposo mediante `EnableFeature` API de elementos con la `FipsDrives` parámetro.
+
+Para obtener más información sobre cómo preparar un nuevo clúster de almacenamiento para el cifrado FIPS 140-2, consultelink:../storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["Cree un clúster que admita unidades FIPS."] .
+
+Para obtener más información sobre cómo habilitar FIPS 140-2 en un clúster existente y preparado, consultelink:../api/reference_element_api_enablefeature.html["API de elementos EnableFeature"] .
+
+
+
+== Para más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plugin de NetApp Element para vCenter Server"^]
+

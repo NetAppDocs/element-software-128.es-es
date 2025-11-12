@@ -1,0 +1,71 @@
+---
+permalink: hardware/task_sfseries_psurepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, power supply replacement, sf-series nodes 
+summary: Cada chasis SolidFire incluye dos unidades de alimentación para redundancia de energía.  Si falla una fuente de alimentación, debe sustituirla lo antes posible para garantizar que el chasis tenga una fuente de alimentación redundante. 
+---
+= Reemplace una unidad de fuente de alimentación
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cada chasis SolidFire incluye dos unidades de alimentación para redundancia de energía.  Si falla una fuente de alimentación, debe sustituirla lo antes posible para garantizar que el chasis tenga una fuente de alimentación redundante.
+
+.Lo que necesitarás
+* Usted ha determinado que es necesario reemplazar la fuente de alimentación.
+* Tienes una fuente de alimentación de repuesto.
+* Usted ha comprobado que la segunda fuente de alimentación está funcionando.
+* Llevas una pulsera antiestática (ESD) o has tomado otras precauciones antiestáticas.
+
+
+.Acerca de esta tarea
+Las instrucciones se aplican si tiene un chasis de una unidad de rack (1U) con cualquiera de los siguientes nodos:
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+Dependiendo de la versión de su software Element, los siguientes nodos no son compatibles:
+
+* Comenzando con los nodos de almacenamiento Element 12.8, SF4805, SF9605, SF19210 y SF38410.
+* Comenzando con los nodos de almacenamiento Element 12.7, SF2405 y SF9608, y los nodos FC FC0025 y SF-FCN-01.
+* A partir de los nodos de almacenamiento Element 12.0, SF3010, SF6010 y SF9010.
+
+
+====
+.Pasos
+. Desconecte el cable de alimentación de la fuente de alimentación que está reemplazando.
+. Pulse el botón de liberación para deslizar la unidad de alimentación fuera del chasis.
++
+
+IMPORTANT: Asegúrese de utilizar ambas manos para soportar el peso de la fuente de alimentación.
+
+. Utilizando ambas manos, alinee los bordes de la fuente de alimentación de repuesto con la abertura del chasis y empuje suavemente la unidad hacia el interior del chasis.
++
+
+IMPORTANT: No utilice una fuerza excesiva al deslizar la fuente de alimentación en el chasis para evitar daños en el hardware.
+
+. Enchufe el cable de alimentación.
+. Devuelva la unidad defectuosa a NetApp siguiendo las instrucciones de la caja que le fue enviada.
++
+Puede ponerse en contacto con el soporte de NetApp para obtener ayuda con el procedimiento de reemplazo.
+
+
+
+
+
+== Encuentra más información
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentación del software SolidFire y Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentación para versiones anteriores de los productos NetApp SolidFire y Element"^]
+
