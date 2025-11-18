@@ -13,12 +13,13 @@ summary: 'Puede utilizar el método EnableEncryptionAtRest para habilitar el cif
 [role="lead"]
 Puedes usar el `EnableEncryptionAtRest` Método para habilitar el cifrado en reposo del Estándar de Cifrado Avanzado (AES) de 256 bits en el clúster, de modo que el clúster pueda administrar la clave de cifrado utilizada para las unidades en cada nodo.  Esta función no está habilitada de forma predeterminada.
 
+[NOTE]
+====
+* Para ver el estado actual del cifrado en reposo y/o del cifrado de software en reposo en el clúster, utilice la siguiente información:link:../api/reference_element_api_getclusterinfo["método para obtener información del clúster"^] . Puedes usar el `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["Método para obtener información sobre el clúster que utiliza para cifrar los datos en reposo."^].
+* Este método no permite el cifrado de software en reposo.  Esto solo se puede hacer utilizando ellink:../api/reference_element_api_createcluster.html["método de creación de clúster"^] con `enableSoftwareEncryptionAtRest` empezar a `true` .
 
-TIP: Para ver el estado actual del cifrado en reposo y/o del cifrado de software en reposo en el clúster, utilice la siguiente información:link:../api/reference_element_api_getclusterinfo["método para obtener información del clúster"^] . Puedes usar el `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["Método para obtener información sobre el clúster que utiliza para cifrar los datos en reposo."^].
 
-
-NOTE: Este método no permite el cifrado de software en reposo.  Esto solo se puede hacer utilizando ellink:../api/reference_element_api_createcluster.html["método de creación de clúster"^] con `enableSoftwareEncryptionAtRest` empezar a `true` .
-
+====
 Cuando se habilita el cifrado en reposo, el clúster administra automáticamente las claves de cifrado internamente para las unidades en cada nodo del clúster.
 
 Si se especifica un keyProviderID, la contraseña se genera y se recupera según el tipo de proveedor de claves.  Normalmente, esto se realiza utilizando un servidor de claves del Protocolo de Interoperabilidad de Gestión de Claves (KMIP) en el caso de un proveedor de claves KMIP.  Tras esta operación, el proveedor especificado se considera activo y no se puede eliminar hasta que se deshabilite el cifrado en reposo mediante el `DisableEncryptionAtRest` método.

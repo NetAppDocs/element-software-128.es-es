@@ -71,7 +71,7 @@ link:../api/reference_element_api_addnodes.html["Aprenda sobre los métodos de l
 
 Puedes utilizar estos métodos de la API para crear un clúster de almacenamiento.  Todos estos métodos deben utilizarse contra el punto final de la API en un único nodo.
 
-link:../api/reference_element_api_checkproposedcluster.html["Aprenda sobre los métodos de la API de creación de clústeres"]
+link:../api/reference_element_api_checkproposedcluster.html["Aprenda sobre los métodos de la API de creación de clústeres."]
 
 
 
